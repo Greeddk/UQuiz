@@ -1,0 +1,23 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "MovieSearchView_placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search the movie you want to create as a quiz!"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "퀴즈로 만들 영화를 검색해주세요!"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

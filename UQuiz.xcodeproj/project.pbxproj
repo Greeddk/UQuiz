@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -31,6 +31,8 @@
 		42AD0D6C2B9B09AD002B8A48 /* MovieSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D6B2B9B09AD002B8A48 /* MovieSearchView.swift */; };
 		42AD0D6E2B9B09E9002B8A48 /* MovieSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D6D2B9B09E9002B8A48 /* MovieSearchViewModel.swift */; };
 		42AD0D712B9B0AEA002B8A48 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D702B9B0AEA002B8A48 /* Observable.swift */; };
+		42AD0D7A2B9B1306002B8A48 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 42AD0D792B9B1306002B8A48 /* Localizable.xcstrings */; };
+		42AD0D7D2B9B132D002B8A48 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D7C2B9B132D002B8A48 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +57,9 @@
 		42AD0D6B2B9B09AD002B8A48 /* MovieSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchView.swift; sourceTree = "<group>"; };
 		42AD0D6D2B9B09E9002B8A48 /* MovieSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchViewModel.swift; sourceTree = "<group>"; };
 		42AD0D702B9B0AEA002B8A48 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		42AD0D792B9B1306002B8A48 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		42AD0D7B2B9B1306002B8A48 /* mul */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; name = mul; path = mul.lproj/LaunchScreen.xcstrings; sourceTree = "<group>"; };
+		42AD0D7C2B9B132D002B8A48 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +98,8 @@
 		42570E4E2B9983920042B338 /* UQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				42570E5D2B9983950042B338 /* Info.plist */,
+				42AD0D7E2B9B1469002B8A48 /* plist */,
 				42AD0D4F2B9AF94C002B8A48 /* App */,
 				42AD0D5F2B9AFC0B002B8A48 /* Database */,
 				42AD0D6F2B9B0ADE002B8A48 /* Observable */,
@@ -102,7 +109,6 @@
 				42AD0D522B9AF97B002B8A48 /* Base */,
 				42AD0D6A2B9B0925002B8A48 /* MovieSearch */,
 				42AD0D502B9AF959002B8A48 /* Resources */,
-				42570E5D2B9983950042B338 /* Info.plist */,
 			);
 			path = UQuiz;
 			sourceTree = "<group>";
@@ -130,6 +136,7 @@
 			children = (
 				42AD0D592B9AFB9F002B8A48 /* UIColor+Extension.swift */,
 				42AD0D5B2B9AFBD6002B8A48 /* UIView+Extension.swift */,
+				42AD0D7C2B9B132D002B8A48 /* String+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -188,6 +195,14 @@
 			path = Observable;
 			sourceTree = "<group>";
 		};
+		42AD0D7E2B9B1469002B8A48 /* plist */ = {
+			isa = PBXGroup;
+			children = (
+				42AD0D792B9B1306002B8A48 /* Localizable.xcstrings */,
+			);
+			path = plist;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -237,6 +252,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = 42570E432B9983920042B338;
 			packageReferences = (
@@ -260,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42570E642B9986060042B338 /* .gitignore in Resources */,
+				42AD0D7A2B9B1306002B8A48 /* Localizable.xcstrings in Resources */,
 				42570E5C2B9983950042B338 /* LaunchScreen.storyboard in Resources */,
 				42570E592B9983950042B338 /* Assets.xcassets in Resources */,
 			);
@@ -280,6 +297,7 @@
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
 				42AD0D632B9AFDCB002B8A48 /* SearchMovie.swift in Sources */,
 				42AD0D5C2B9AFBD6002B8A48 /* UIView+Extension.swift in Sources */,
+				42AD0D7D2B9B132D002B8A48 /* String+Extension.swift in Sources */,
 				42AD0D672B9B00EE002B8A48 /* TMDBAPI.swift in Sources */,
 				42AD0D542B9AFA33002B8A48 /* BaseViewController.swift in Sources */,
 				42AD0D562B9AFAD9002B8A48 /* BaseView.swift in Sources */,
@@ -298,6 +316,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				42570E5B2B9983950042B338 /* Base */,
+				42AD0D7B2B9B1306002B8A48 /* mul */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -310,6 +329,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -373,6 +393,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
