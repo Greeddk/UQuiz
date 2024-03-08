@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct SearchMovie {
-    let result: [Movie]
+struct SearchMovie: Decodable {
+    let results: [Movie]
 }
 
-struct Movie {
-    let genre: [Int]
-    let poster: String
+struct Movie: Decodable {
+    let genre: [Int]?
+    let poster: String?
     let title: String
     
     enum CodingKeys: String, CodingKey {

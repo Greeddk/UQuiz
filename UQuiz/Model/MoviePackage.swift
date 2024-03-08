@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MoviePackage {
+struct MoviePackage: Decodable {
     let name: String
     let maker: String
     let movieList: [Movie]
