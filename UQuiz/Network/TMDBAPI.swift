@@ -37,7 +37,7 @@ enum TMDBAPI {
         switch self {
         case .imageURL(let imageURL):
             return URL(string: "https://image.tmdb.org/t/p/w500" + imageURL)!
-        case .movieSearchURL(let query):
+        case .movieSearchURL:
             return URL(string: baseURL + "/search/movie")!
         }
     }
