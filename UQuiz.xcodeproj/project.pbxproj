@@ -37,6 +37,8 @@
 		42AD0D852B9D8BC7002B8A48 /* MovieInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D842B9D8BC7002B8A48 /* MovieInfoCollectionViewCell.swift */; };
 		42AD0D882B9D95C5002B8A48 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D872B9D95C5002B8A48 /* MainTabBarController.swift */; };
 		42AD0D8A2B9DAF55002B8A48 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D892B9DAF55002B8A48 /* UIViewController+Extension.swift */; };
+		42B7EC492B9ED56A00AE0F52 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC482B9ED56A00AE0F52 /* SettingViewController.swift */; };
+		42B7EC4C2B9ED58B00AE0F52 /* QuizListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +70,8 @@
 		42AD0D842B9D8BC7002B8A48 /* MovieInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		42AD0D872B9D95C5002B8A48 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		42AD0D892B9DAF55002B8A48 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		42B7EC482B9ED56A00AE0F52 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +122,9 @@
 				42AD0D522B9AF97B002B8A48 /* Base */,
 				42AD0D862B9D9075002B8A48 /* TabBar */,
 				42AD0D812B9C9A89002B8A48 /* SetNicknameView */,
+				42B7EC4A2B9ED57D00AE0F52 /* QuizListView */,
 				42AD0D6A2B9B0925002B8A48 /* MovieSearch */,
+				42B7EC472B9ED54200AE0F52 /* SettingView */,
 			);
 			path = UQuiz;
 			sourceTree = "<group>";
@@ -231,6 +237,22 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		42B7EC472B9ED54200AE0F52 /* SettingView */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC482B9ED56A00AE0F52 /* SettingViewController.swift */,
+			);
+			path = SettingView;
+			sourceTree = "<group>";
+		};
+		42B7EC4A2B9ED57D00AE0F52 /* QuizListView */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */,
+			);
+			path = QuizListView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -318,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42AD0D852B9D8BC7002B8A48 /* MovieInfoCollectionViewCell.swift in Sources */,
+				42B7EC492B9ED56A00AE0F52 /* SettingViewController.swift in Sources */,
 				42AD0D712B9B0AEA002B8A48 /* Observable.swift in Sources */,
 				42AD0D6E2B9B09E9002B8A48 /* MovieSearchViewModel.swift in Sources */,
 				42AD0D5A2B9AFB9F002B8A48 /* UIColor+Extension.swift in Sources */,
@@ -332,6 +355,7 @@
 				42AD0D542B9AFA33002B8A48 /* BaseViewController.swift in Sources */,
 				42AD0D562B9AFAD9002B8A48 /* BaseView.swift in Sources */,
 				42AD0D612B9AFD0E002B8A48 /* MoviePackage.swift in Sources */,
+				42B7EC4C2B9ED58B00AE0F52 /* QuizListViewController.swift in Sources */,
 				42570E502B9983920042B338 /* AppDelegate.swift in Sources */,
 				42570E522B9983920042B338 /* SceneDelegate.swift in Sources */,
 				42AD0D882B9D95C5002B8A48 /* MainTabBarController.swift in Sources */,

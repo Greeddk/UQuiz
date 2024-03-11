@@ -8,26 +8,35 @@
 import UIKit
 import SnapKit
 
-class MovieSearchView: BaseView {
+final class MovieSearchView: BaseView {
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureLayout())
-    let addedMovieCountLabel = UILabel()
-    let makeQuizPackageButton = UIButton()
     let searchBar = UISearchBar()
-  
+    private var cellWidth: CGFloat = 0
+
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        cellWidth = (self.frame.width - 30) / 2
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.itemSize = CGSize(width: cellWidth, height: cellWidth * 1.5)
+            layout.minimumLineSpacing = 10
+            layout.minimumInteritemSpacing = 10
+        }
+    }
+    
     override func configureHierarchy() {
-        addSubviews([searchBar, collectionView, addedMovieCountLabel, makeQuizPackageButton])
+        addSubviews([searchBar, collectionView])
     }
     
     override func setConstraints() {
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide)
-            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(20)
-            make.height.equalTo(50)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(10)
+            make.height.equalTo(40)
         }
         
         collectionView.snp.makeConstraints { make in
@@ -44,13 +53,7 @@ class MovieSearchView: BaseView {
 
     private func configureLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
-        DispatchQueue.main.async {
-            //TODO: width 값 찾는 호출 방법 생각해보기
-            let cellWidth = (self.frame.width - 30) / 2
-            layout.itemSize = CGSize(width: cellWidth, height: cellWidth * 1.5)
-            layout.minimumLineSpacing = 10
-            layout.minimumInteritemSpacing = 10
-        }
         return layout
     }
+    
 }

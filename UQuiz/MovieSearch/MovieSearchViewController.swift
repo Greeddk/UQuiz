@@ -26,6 +26,9 @@ final class MovieSearchViewController: BaseViewController {
             self.mainView.collectionView.reloadData()
             self.logger.info("outputList \(self.viewModel.outputRequestList.value)")
         }
+        viewModel.outputAddedToPackageList.bind { _ in
+            self.setNavigationBar()
+        }
     }
 
     override func configureViewController() {
@@ -33,6 +36,17 @@ final class MovieSearchViewController: BaseViewController {
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
         mainView.collectionView.register(MovieInfoCollectionViewCell.self, forCellWithReuseIdentifier: MovieInfoCollectionViewCell.identifier)
+    }
+    
+    private func setNavigationBar() {
+        navigationItem.title = String(format: "MovieSearchVC_NavigationTitle".localized, viewModel.outputAddedToPackageList.value.count)
+        let makeQuizPackageButton = UIBarButtonItem(title: "MovieSearchVC_barButtonTitle".localized, style: .plain, target: self, action: #selector(makeQuizPackageButtonClicked))
+        navigationItem.rightBarButtonItem = makeQuizPackageButton
+    }
+    
+    @objc
+    private func makeQuizPackageButtonClicked() {
+        
     }
 
 }
