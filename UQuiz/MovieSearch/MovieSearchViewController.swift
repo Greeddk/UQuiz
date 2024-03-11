@@ -46,7 +46,8 @@ final class MovieSearchViewController: BaseViewController {
     
     @objc
     private func makeQuizPackageButtonClicked() {
-        
+        let vc = MakeMovieAreaQuizViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

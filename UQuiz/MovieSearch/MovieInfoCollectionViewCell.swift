@@ -58,7 +58,7 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
     
     func configureCell(movieItem: Movie) {
         guard let poster = movieItem.poster else { return }
-        let url = URL(string: PosterbaseURL.baseUrl + poster)
+        let url = PosterURL.imageURL(detailURL: poster).endpoint
         posterImage.kf.setImage(with: url)
         movieTitle.text = " " + movieItem.title + " "
     }

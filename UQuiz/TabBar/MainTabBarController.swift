@@ -28,11 +28,11 @@ final class MainTabBarController: UITabBarController {
         var tabBarIcon: UIImage! {
             switch self {
             case .QuizList:
-                return UIImage(systemName: "list.dash")?.withBaselineOffset(fromBottom: 15)
+                return UIImage(systemName: "list.dash")?.withBaselineOffset(fromBottom: 10)
             case .MakeQuiz:
-                return UIImage(systemName: "plus.circle")?.withBaselineOffset(fromBottom: 20)
+                return UIImage(systemName: "plus.circle")?.withBaselineOffset(fromBottom: 15)
             case .Setting:
-                return UIImage(systemName: "person.fill")?.withBaselineOffset(fromBottom: 18)
+                return UIImage(systemName: "person.fill")?.withBaselineOffset(fromBottom: 13)
             }
         }
     }

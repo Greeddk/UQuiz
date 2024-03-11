@@ -13,10 +13,6 @@ final class MovieSearchView: BaseView {
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureLayout())
     let searchBar = UISearchBar()
     private var cellWidth: CGFloat = 0
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
