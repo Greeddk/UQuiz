@@ -17,7 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         
         window = UIWindow(windowScene: scene)
-        window?.rootViewController = MainTabBarController()
+        
+        let value = UserDefaultsManager.shared.userState
+        
+        if value {
+            window?.rootViewController = MainTabBarController()
+        } else {
+            window?.rootViewController = SetNicknameViewController()
+        }
+        
         window?.makeKeyAndVisible()
     }
 

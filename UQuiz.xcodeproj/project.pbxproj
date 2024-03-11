@@ -41,6 +41,15 @@
 		42B7EC4C2B9ED58B00AE0F52 /* QuizListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */; };
 		42B7EC4F2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC4E2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift */; };
 		42B7EC512B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC502B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift */; };
+		42B7EC532B9EF46E00AE0F52 /* SetNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC522B9EF46E00AE0F52 /* SetNicknameViewController.swift */; };
+		42B7EC552B9EF49C00AE0F52 /* SetNicknameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC542B9EF49C00AE0F52 /* SetNicknameView.swift */; };
+		42B7EC582B9EF7D100AE0F52 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 42B7EC572B9EF7D100AE0F52 /* TextFieldEffects */; };
+		42B7EC5B2B9EF82200AE0F52 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC5A2B9EF82200AE0F52 /* RoundImageView.swift */; };
+		42B7EC5D2B9F065200AE0F52 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC5C2B9F065200AE0F52 /* UserDefaultsManager.swift */; };
+		42B7EC5F2B9F06E500AE0F52 /* SetNicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC5E2B9F06E500AE0F52 /* SetNicknameViewModel.swift */; };
+		42B7EC612B9F0BBD00AE0F52 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC602B9F0BBD00AE0F52 /* SettingView.swift */; };
+		42B7EC632B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC622B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift */; };
+		42B7EC652B9F119800AE0F52 /* MakerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC642B9F119800AE0F52 /* MakerInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +85,14 @@
 		42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListViewController.swift; sourceTree = "<group>"; };
 		42B7EC4E2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMovieAreaQuizViewController.swift; sourceTree = "<group>"; };
 		42B7EC502B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMovieAreaQuizView.swift; sourceTree = "<group>"; };
+		42B7EC522B9EF46E00AE0F52 /* SetNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameViewController.swift; sourceTree = "<group>"; };
+		42B7EC542B9EF49C00AE0F52 /* SetNicknameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameView.swift; sourceTree = "<group>"; };
+		42B7EC5A2B9EF82200AE0F52 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
+		42B7EC5C2B9F065200AE0F52 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		42B7EC5E2B9F06E500AE0F52 /* SetNicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameViewModel.swift; sourceTree = "<group>"; };
+		42B7EC602B9F0BBD00AE0F52 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		42B7EC622B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCollectionViewCell.swift; sourceTree = "<group>"; };
+		42B7EC642B9F119800AE0F52 /* MakerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +103,7 @@
 				42AD0D492B9AF8DC002B8A48 /* SnapKit in Frameworks */,
 				42AD0D462B9AF8D3002B8A48 /* Kingfisher in Frameworks */,
 				42AD0D4C2B9AF8F6002B8A48 /* Realm in Frameworks */,
+				42B7EC582B9EF7D100AE0F52 /* TextFieldEffects in Frameworks */,
 				42AD0D4E2B9AF8F6002B8A48 /* RealmSwift in Frameworks */,
 				42AD0D432B9AF8CD002B8A48 /* Alamofire in Frameworks */,
 			);
@@ -124,6 +142,7 @@
 				42AD0D5D2B9AFC00002B8A48 /* Network */,
 				42AD0D512B9AF977002B8A48 /* Extension */,
 				42AD0D522B9AF97B002B8A48 /* Base */,
+				42B7EC592B9EF81700AE0F52 /* CustomView */,
 				42AD0D862B9D9075002B8A48 /* TabBar */,
 				42AD0D812B9C9A89002B8A48 /* SetNicknameView */,
 				42B7EC4A2B9ED57D00AE0F52 /* QuizListView */,
@@ -189,6 +208,7 @@
 			children = (
 				42AD0D602B9AFD0E002B8A48 /* MoviePackage.swift */,
 				42AD0D622B9AFDCB002B8A48 /* SearchMovie.swift */,
+				42B7EC642B9F119800AE0F52 /* MakerInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,6 +216,7 @@
 		42AD0D5F2B9AFC0B002B8A48 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				42B7EC5C2B9F065200AE0F52 /* UserDefaultsManager.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -230,6 +251,9 @@
 		42AD0D812B9C9A89002B8A48 /* SetNicknameView */ = {
 			isa = PBXGroup;
 			children = (
+				42B7EC522B9EF46E00AE0F52 /* SetNicknameViewController.swift */,
+				42B7EC542B9EF49C00AE0F52 /* SetNicknameView.swift */,
+				42B7EC5E2B9F06E500AE0F52 /* SetNicknameViewModel.swift */,
 			);
 			path = SetNicknameView;
 			sourceTree = "<group>";
@@ -246,6 +270,8 @@
 			isa = PBXGroup;
 			children = (
 				42B7EC482B9ED56A00AE0F52 /* SettingViewController.swift */,
+				42B7EC602B9F0BBD00AE0F52 /* SettingView.swift */,
+				42B7EC622B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift */,
 			);
 			path = SettingView;
 			sourceTree = "<group>";
@@ -265,6 +291,14 @@
 				42B7EC502B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift */,
 			);
 			path = MakeMovieAreaQuizView;
+			sourceTree = "<group>";
+		};
+		42B7EC592B9EF81700AE0F52 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC5A2B9EF82200AE0F52 /* RoundImageView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +323,7 @@
 				42AD0D482B9AF8DC002B8A48 /* SnapKit */,
 				42AD0D4B2B9AF8F6002B8A48 /* Realm */,
 				42AD0D4D2B9AF8F6002B8A48 /* RealmSwift */,
+				42B7EC572B9EF7D100AE0F52 /* TextFieldEffects */,
 			);
 			productName = UQuiz;
 			productReference = 42570E4C2B9983920042B338 /* UQuiz.app */;
@@ -324,6 +359,7 @@
 				42AD0D442B9AF8D3002B8A48 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				42AD0D472B9AF8DC002B8A48 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				42AD0D4A2B9AF8F6002B8A48 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				42B7EC562B9EF7D100AE0F52 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 			);
 			productRefGroup = 42570E4D2B9983920042B338 /* Products */;
 			projectDirPath = "";
@@ -356,13 +392,17 @@
 				42AD0D852B9D8BC7002B8A48 /* MovieInfoCollectionViewCell.swift in Sources */,
 				42B7EC492B9ED56A00AE0F52 /* SettingViewController.swift in Sources */,
 				42AD0D712B9B0AEA002B8A48 /* Observable.swift in Sources */,
+				42B7EC552B9EF49C00AE0F52 /* SetNicknameView.swift in Sources */,
+				42B7EC612B9F0BBD00AE0F52 /* SettingView.swift in Sources */,
 				42AD0D6E2B9B09E9002B8A48 /* MovieSearchViewModel.swift in Sources */,
 				42AD0D5A2B9AFB9F002B8A48 /* UIColor+Extension.swift in Sources */,
+				42B7EC532B9EF46E00AE0F52 /* SetNicknameViewController.swift in Sources */,
 				42AD0D6C2B9B09AD002B8A48 /* MovieSearchView.swift in Sources */,
 				42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */,
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
 				42AD0D632B9AFDCB002B8A48 /* SearchMovie.swift in Sources */,
 				42AD0D5C2B9AFBD6002B8A48 /* UIView+Extension.swift in Sources */,
+				42B7EC652B9F119800AE0F52 /* MakerInfo.swift in Sources */,
 				42AD0D8A2B9DAF55002B8A48 /* UIViewController+Extension.swift in Sources */,
 				42AD0D7D2B9B132D002B8A48 /* String+Extension.swift in Sources */,
 				42B7EC512B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift in Sources */,
@@ -372,10 +412,14 @@
 				42AD0D612B9AFD0E002B8A48 /* MoviePackage.swift in Sources */,
 				42B7EC4C2B9ED58B00AE0F52 /* QuizListViewController.swift in Sources */,
 				42570E502B9983920042B338 /* AppDelegate.swift in Sources */,
+				42B7EC5F2B9F06E500AE0F52 /* SetNicknameViewModel.swift in Sources */,
+				42B7EC632B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift in Sources */,
 				42570E522B9983920042B338 /* SceneDelegate.swift in Sources */,
 				42AD0D882B9D95C5002B8A48 /* MainTabBarController.swift in Sources */,
+				42B7EC5D2B9F065200AE0F52 /* UserDefaultsManager.swift in Sources */,
 				42AD0D802B9C695A002B8A48 /* PosterURL.swift in Sources */,
 				42AD0D692B9B010F002B8A48 /* APIKey.swift in Sources */,
+				42B7EC5B2B9EF82200AE0F52 /* RoundImageView.swift in Sources */,
 				42AD0D582B9AFB53002B8A48 /* BaseCollectionViewCell.swift in Sources */,
 				42B7EC4F2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift in Sources */,
 			);
@@ -635,6 +679,14 @@
 				kind = branch;
 			};
 		};
+		42B7EC562B9EF7D100AE0F52 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -662,6 +714,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 42AD0D4A2B9AF8F6002B8A48 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
+		};
+		42B7EC572B9EF7D100AE0F52 /* TextFieldEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42B7EC562B9EF7D100AE0F52 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
+			productName = TextFieldEffects;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

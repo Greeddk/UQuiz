@@ -6,14 +6,12 @@
 //
 
 import UIKit
-import Kingfisher
 
 final class MakeMovieAreaQuizViewController: BaseViewController {
     //TODO: 네비게이션 타이틀 영역에 버튼을 넣어 다음문제 이전 문제로 넘어갈 수 있게, 문제 만들기 버튼과 reset 버튼도 필요
     let mainView = MakeMovieAreaQuizView()
     
     var selectedArea: [Int] = []
-    let movieURL = "/8uUU2pxm6IYZw8UgnKJyx7Dqwu9.jpg"
     var selectedCells = 0
     
     override func loadView() {
