@@ -12,7 +12,7 @@ final class PosterListViewModel {
     private let apiManager = TMDBAPIManager.shared
     
     var inputMovieID: Observable<Int> = Observable(0)
-    var inputViewDidLoadTrigger: Observable<Void?> = Observable(nil)
+    var inputItemSelectTrigger: Observable<Int> = Observable(0)
     
     var outputPosterList: Observable<[Poster]> = Observable([])
     
@@ -25,8 +25,7 @@ final class PosterListViewModel {
     private func fetchPosters() {
         apiManager.requestPosters(id: inputMovieID.value) { [weak self] value in
             guard let self = self else { return }
-            self.outputPosterList.value = value.posters
-            print("poster fetching~~~")
+            self.outputPosterList.value = value
         }
     }
 }

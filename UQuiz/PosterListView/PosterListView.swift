@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class PosterListView: BaseView {
 
@@ -26,14 +27,12 @@ final class PosterListView: BaseView {
     
     override func setConstraints() {
         collectionView.snp.makeConstraints { make in
-            make.verticalEdges.equalTo(self.safeAreaLayoutGuide)
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(10)
+            make.bottom.equalTo(self.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(10)
         }
     }
     
-    override func configureView() {
-        
-    }
     
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()

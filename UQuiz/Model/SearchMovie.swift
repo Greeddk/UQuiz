@@ -14,7 +14,7 @@ struct SearchMovie: Decodable {
 struct Movie: Decodable, Hashable, Identifiable {
     let id: Int
     let genre: [Int]?
-    let poster: String?
+    var poster: String?
     let title: String
     
     enum CodingKeys: String, CodingKey {

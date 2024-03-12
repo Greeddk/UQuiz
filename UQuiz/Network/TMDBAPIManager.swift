@@ -30,11 +30,11 @@ final class TMDBAPIManager {
         
     }
     
-    func requestPosters(id: Int, completionHandler: @escaping (Posters) -> Void) {
+    func requestPosters(id: Int, completionHandler: @escaping ([Poster]) -> Void) {
         AF.request(Router.posters(id)).responseDecodable(of: Posters.self) { response in
             switch response.result {
             case .success(let success):
-                completionHandler(success)
+                completionHandler(success.posters)
             case .failure(let failure):
                 self.logger.error("통신 에러 \(failure)")
             }

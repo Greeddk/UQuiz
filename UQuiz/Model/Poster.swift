@@ -8,7 +8,6 @@
 import Foundation
 
 struct Posters: Decodable {
-    let id: Int
     let posters: [Poster]
 }
 

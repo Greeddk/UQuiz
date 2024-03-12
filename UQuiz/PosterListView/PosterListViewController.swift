@@ -12,6 +12,7 @@ final class PosterListViewController: BaseViewController {
     
     let mainView = PosterListView()
     let viewModel = PosterListViewModel()
+    var closure: ((String) -> Void)?
     
     override func loadView() {
         self.view = mainView
@@ -19,7 +20,6 @@ final class PosterListViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.inputViewDidLoadTrigger.value = ()
         viewModel.outputPosterList.bind { _ in
             self.mainView.collectionView.reloadData()
         }
@@ -44,6 +44,12 @@ extension PosterListViewController: UICollectionViewDelegate, UICollectionViewDa
         let url = PosterURL.imageURL(detailURL: viewModel.outputPosterList.value[indexPath.item].poster).endpoint
         cell.posterImage.kf.setImage(with: url)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //값 전달
+        closure?(viewModel.outputPosterList.value[indexPath.item].poster)
+        dismiss(animated: true)
     }
     
 }

@@ -40,10 +40,13 @@ final class MovieSearchViewController: BaseViewController {
     
     private func setNavigationBar() {
         navigationController?.navigationBar.topItem?.title = String(format: "MovieSearchVC_NavigationTitle".localized, viewModel.outputAddedToPackage.value.count)
-//        navigationController?.navigationItem.title = String(format: "MovieSearchVC_NavigationTitle".localized, viewModel.outputAddedToPackageList.value.count)
         let makeQuizPackageButton = UIBarButtonItem(title: "MovieSearchVC_barButtonTitle".localized, style: .plain, target: self, action: #selector(makeQuizPackageButtonClicked))
+        if viewModel.outputAddedToPackage.value.count != 0 {
+            makeQuizPackageButton.isEnabled = true
+        } else {
+            makeQuizPackageButton.isEnabled = false
+        }
         navigationController?.navigationBar.topItem?.rightBarButtonItem = makeQuizPackageButton
-//        navigationController?.navigationItem.rightBarButtonItem = makeQuizPackageButton
     }
     
     @objc
@@ -75,17 +78,15 @@ extension MovieSearchViewController: UICollectionViewDelegate, UICollectionViewD
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieInfoCollectionViewCell.identifier, for: indexPath) as! MovieInfoCollectionViewCell
         let item = viewModel.outputRequestList.value[indexPath.item]
         cell.configureCell(movieItem: item)
-        cell.addToPackageButton.tag = indexPath.item
-        cell.addToPackageButton.addTarget(self, action: #selector(addToPackageButtonClicked(sender:)), for: .touchUpInside)
         let boolValue = viewModel.outputAddedToPackage.value.contains(item)
-        cell.addToPackageButton.tintColor = boolValue ? .green : .systemGray
+        cell.addToPackageImage.tintColor = boolValue ? .green : .systemGray
         return cell
     }
     
-    @objc
-    private func addToPackageButtonClicked(sender: UIButton!) {
-        viewModel.inputButtonClickedTrigger.value = viewModel.outputRequestList.value[sender.tag]
-        mainView.collectionView.reloadItems(at: [IndexPath(item: sender.tag, section: 0)])
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function)
+        viewModel.inputButtonClickedTrigger.value = viewModel.outputRequestList.value[indexPath.item]
+        collectionView.reloadItems(at: [indexPath])
     }
     
 }

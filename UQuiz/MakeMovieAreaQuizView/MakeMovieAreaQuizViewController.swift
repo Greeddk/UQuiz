@@ -8,7 +8,7 @@
 import UIKit
 
 final class MakeMovieAreaQuizViewController: BaseViewController {
-    //TODO: 네비게이션 타이틀 영역에 버튼을 넣어 다음문제 이전 문제로 넘어갈 수 있게, 문제 만들기 버튼과 reset 버튼도 필요
+
     let mainView = MakeMovieAreaQuizView()
     let viewModel = MakeMovieAreaQuizViewModel()
     
@@ -34,14 +34,50 @@ final class MakeMovieAreaQuizViewController: BaseViewController {
         mainView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         mainView.collectionView.backgroundColor = .clear
         mainView.showPostersButton.addTarget(self, action: #selector(showPosterButtonClicked), for: .touchUpInside)
+        mainView.nextMovieButton.addTarget(self, action: #selector(nextMovieButtonClicked), for: .touchUpInside)
+        mainView.previousMovieButton.addTarget(self, action: #selector(previousMovieButtonClicked), for: .touchUpInside)
+        fetchPoster()
+        let resetButton = UIBarButtonItem(title: "reset", style: .plain, target: self, action: #selector(resetButtonClicked))
+        navigationItem.rightBarButtonItem = resetButton
+    }
+    
+    private func fetchPoster() {
         let url = viewModel.outputQuizPackage.value[viewModel.currentIndex.value].poster
         mainView.fetchPoster(detailURL: url)
+    }
+    
+    @objc
+    private func nextMovieButtonClicked() {
+        //TODO: last index일때 처리
+        if viewModel.outputQuizPackage.value.count == viewModel.currentIndex.value + 1 {
+            
+        } else {
+            viewModel.inputIndex.value = viewModel.currentIndex.value + 1
+            fetchPoster()
+        }
+    }
+    
+    @objc
+    private func previousMovieButtonClicked() {
+        //TODO: first index 일때 처리
+        if viewModel.currentIndex.value != 0 {
+            viewModel.inputIndex.value = viewModel.currentIndex.value - 1
+            fetchPoster()
+        } else {
+            
+        }
     }
     
     @objc
     private func showPosterButtonClicked() {
         let vc = PosterListViewController()
         vc.viewModel.inputMovieID.value = viewModel.outputQuizPackage.value[viewModel.currentIndex.value].id
+        vc.closure = { selectedPoster in
+            self.viewModel.outputQuizPackage.value[self.viewModel.currentIndex.value].poster = selectedPoster
+//            let url = self.viewModel.outputQuizPackage.value[self.viewModel.currentIndex.value].poster
+//            self.mainView.fetchPoster(detailURL: url)
+            self.fetchPoster()
+        }
         present(vc, animated: true)
     }
     
@@ -57,10 +93,6 @@ final class MakeMovieAreaQuizViewController: BaseViewController {
             }
         }
         
-//        let vc = QuizViewController()
-//        vc.selectedArea = self.selectedArea
-//        vc.movieImageURL = self.movieURL
-//        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc

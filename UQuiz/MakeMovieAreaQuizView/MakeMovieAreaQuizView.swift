@@ -11,7 +11,6 @@ import SnapKit
 final class MakeMovieAreaQuizView: BaseView {
     //TODO: 다음, 이전 버튼 그리고 다른 포스터로 바꾸기 버튼(모달)
     
-    let resetButton = UIButton()
     let posterView = UIImageView()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     let previousMovieButton = UIButton()
@@ -22,7 +21,8 @@ final class MakeMovieAreaQuizView: BaseView {
     override func layoutSubviews() {
         screenWidth = (self.frame.width - 40)
         posterView.snp.updateConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+//            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            make.centerY.equalTo(self.safeAreaLayoutGuide).offset(-50)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
             make.width.equalTo(screenWidth)
             make.height.equalTo(screenWidth * 1.5)
@@ -35,12 +35,13 @@ final class MakeMovieAreaQuizView: BaseView {
     }
     
     override func configureHierarchy() {
-        addSubviews([resetButton, posterView, collectionView, nextMovieButton, previousMovieButton, showPostersButton])
+        addSubviews([posterView, collectionView, nextMovieButton, previousMovieButton, showPostersButton])
     }
     
     override func setConstraints() {
         posterView.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+//            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            make.centerY.equalTo(self.safeAreaLayoutGuide).offset(-50)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
             make.width.equalTo(360)
             make.height.equalTo(540)
@@ -50,16 +51,33 @@ final class MakeMovieAreaQuizView: BaseView {
             make.edges.equalTo(posterView)
         }
         
-        showPostersButton.snp.makeConstraints { make in
-            make.top.equalTo(collectionView.snp.bottom).offset(4)
-            make.width.equalTo(50)
+        previousMovieButton.snp.makeConstraints { make in
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-20)
+            make.leading.equalTo(self.safeAreaLayoutGuide).offset(20)
         }
+        
+        showPostersButton.snp.makeConstraints { make in
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-20)
+            make.centerX.equalTo(self.safeAreaLayoutGuide)
+        }
+        
+        nextMovieButton.snp.makeConstraints { make in
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-20)
+            make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
+        }
+        
     }
     
     override func configureView() {
+        previousMovieButton.setTitle("이전 영화", for: .normal)
+        previousMovieButton.setTitleColor(.black, for: .normal)
+        previousMovieButton.backgroundColor = .blue
         showPostersButton.setTitle("다른 포스터", for: .normal)
         showPostersButton.setTitleColor(.black, for: .normal)
         showPostersButton.backgroundColor = .green
+        nextMovieButton.setTitle("다음 영화", for: .normal)
+        nextMovieButton.setTitleColor(.black, for: .normal)
+        nextMovieButton.backgroundColor = .red
     }
     
     func fetchPoster(detailURL: String?) {

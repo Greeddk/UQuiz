@@ -16,11 +16,11 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
         view.layer.cornerRadius = 8
         return view
     }()
-    let addToPackageButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
-        button.tintColor = .systemGray
-        return button
+    let addToPackageImage = {
+        let image = UIImageView()
+        image.image = UIImage(systemName: "plus.circle.fill")
+        image.tintColor = .systemGray
+        return image
     }()
     let movieTitle = {
         let view = UILabel()
@@ -36,7 +36,7 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureHierarchy() {
-        addSubviews([posterImage, addToPackageButton, movieTitle])
+        addSubviews([posterImage, addToPackageImage, movieTitle])
     }
     
     override func setConstraints() {
@@ -44,7 +44,7 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
             make.edges.equalTo(self.safeAreaLayoutGuide)
         }
         
-        addToPackageButton.snp.makeConstraints { make in
+        addToPackageImage.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(10)
             make.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
         }

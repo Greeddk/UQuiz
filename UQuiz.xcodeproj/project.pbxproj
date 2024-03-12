@@ -317,8 +317,8 @@
 		42B7EC772BA028D700AE0F52 /* PosterListView */ = {
 			isa = PBXGroup;
 			children = (
-				42B7EC782BA0290B00AE0F52 /* PosterListView.swift */,
 				42B7EC7A2BA02AB800AE0F52 /* PosterListViewController.swift */,
+				42B7EC782BA0290B00AE0F52 /* PosterListView.swift */,
 				42B7EC7C2BA02B8400AE0F52 /* PosterListViewModel.swift */,
 			);
 			path = PosterListView;
