@@ -10,6 +10,7 @@ import UIKit
 final class MakeMovieAreaQuizViewController: BaseViewController {
     //TODO: 네비게이션 타이틀 영역에 버튼을 넣어 다음문제 이전 문제로 넘어갈 수 있게, 문제 만들기 버튼과 reset 버튼도 필요
     let mainView = MakeMovieAreaQuizView()
+    let viewModel = MakeMovieAreaQuizViewModel()
     
     var selectedArea: [Int] = []
     var selectedCells = 0
@@ -24,16 +25,24 @@ final class MakeMovieAreaQuizViewController: BaseViewController {
             selectedArea.append(0)
         }
         view.backgroundColor = .white
+
+    }
     
-//        let url = PosterURL.imageURL(detailURL: movieURL).endpoint
-//        posterView.kf.setImage(with: url)
-//        posterView.contentMode = .scaleAspectFit
-        
+    override func configureViewController() {
         mainView.collectionView.dataSource = self
         mainView.collectionView.delegate = self
         mainView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         mainView.collectionView.backgroundColor = .clear
-        
+        mainView.showPostersButton.addTarget(self, action: #selector(showPosterButtonClicked), for: .touchUpInside)
+        let url = viewModel.outputQuizPackage.value[viewModel.currentIndex.value].poster
+        mainView.fetchPoster(detailURL: url)
+    }
+    
+    @objc
+    private func showPosterButtonClicked() {
+        let vc = PosterListViewController()
+        vc.viewModel.inputMovieID.value = viewModel.outputQuizPackage.value[viewModel.currentIndex.value].id
+        present(vc, animated: true)
     }
     
     @objc

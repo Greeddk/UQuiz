@@ -50,6 +50,11 @@
 		42B7EC612B9F0BBD00AE0F52 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC602B9F0BBD00AE0F52 /* SettingView.swift */; };
 		42B7EC632B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC622B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift */; };
 		42B7EC652B9F119800AE0F52 /* MakerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC642B9F119800AE0F52 /* MakerInfo.swift */; };
+		42B7EC722BA0251700AE0F52 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC712BA0251700AE0F52 /* Poster.swift */; };
+		42B7EC792BA0290B00AE0F52 /* PosterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC782BA0290B00AE0F52 /* PosterListView.swift */; };
+		42B7EC7B2BA02AB800AE0F52 /* PosterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC7A2BA02AB800AE0F52 /* PosterListViewController.swift */; };
+		42B7EC7D2BA02B8400AE0F52 /* PosterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC7C2BA02B8400AE0F52 /* PosterListViewModel.swift */; };
+		42B7EC7F2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC7E2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +98,11 @@
 		42B7EC602B9F0BBD00AE0F52 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		42B7EC622B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		42B7EC642B9F119800AE0F52 /* MakerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerInfo.swift; sourceTree = "<group>"; };
+		42B7EC712BA0251700AE0F52 /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
+		42B7EC782BA0290B00AE0F52 /* PosterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListView.swift; sourceTree = "<group>"; };
+		42B7EC7A2BA02AB800AE0F52 /* PosterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListViewController.swift; sourceTree = "<group>"; };
+		42B7EC7C2BA02B8400AE0F52 /* PosterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListViewModel.swift; sourceTree = "<group>"; };
+		42B7EC7E2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMovieAreaQuizViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +158,7 @@
 				42B7EC4A2B9ED57D00AE0F52 /* QuizListView */,
 				42AD0D6A2B9B0925002B8A48 /* MovieSearch */,
 				42B7EC4D2B9EE67A00AE0F52 /* MakeMovieAreaQuizView */,
+				42B7EC772BA028D700AE0F52 /* PosterListView */,
 				42B7EC472B9ED54200AE0F52 /* SettingView */,
 			);
 			path = UQuiz;
@@ -209,6 +220,7 @@
 				42AD0D602B9AFD0E002B8A48 /* MoviePackage.swift */,
 				42AD0D622B9AFDCB002B8A48 /* SearchMovie.swift */,
 				42B7EC642B9F119800AE0F52 /* MakerInfo.swift */,
+				42B7EC712BA0251700AE0F52 /* Poster.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -289,6 +301,7 @@
 			children = (
 				42B7EC4E2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift */,
 				42B7EC502B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift */,
+				42B7EC7E2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift */,
 			);
 			path = MakeMovieAreaQuizView;
 			sourceTree = "<group>";
@@ -299,6 +312,16 @@
 				42B7EC5A2B9EF82200AE0F52 /* RoundImageView.swift */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		42B7EC772BA028D700AE0F52 /* PosterListView */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC782BA0290B00AE0F52 /* PosterListView.swift */,
+				42B7EC7A2BA02AB800AE0F52 /* PosterListViewController.swift */,
+				42B7EC7C2BA02B8400AE0F52 /* PosterListViewModel.swift */,
+			);
+			path = PosterListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,17 +421,20 @@
 				42AD0D5A2B9AFB9F002B8A48 /* UIColor+Extension.swift in Sources */,
 				42B7EC532B9EF46E00AE0F52 /* SetNicknameViewController.swift in Sources */,
 				42AD0D6C2B9B09AD002B8A48 /* MovieSearchView.swift in Sources */,
+				42B7EC7D2BA02B8400AE0F52 /* PosterListViewModel.swift in Sources */,
 				42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */,
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
 				42AD0D632B9AFDCB002B8A48 /* SearchMovie.swift in Sources */,
 				42AD0D5C2B9AFBD6002B8A48 /* UIView+Extension.swift in Sources */,
 				42B7EC652B9F119800AE0F52 /* MakerInfo.swift in Sources */,
+				42B7EC722BA0251700AE0F52 /* Poster.swift in Sources */,
 				42AD0D8A2B9DAF55002B8A48 /* UIViewController+Extension.swift in Sources */,
 				42AD0D7D2B9B132D002B8A48 /* String+Extension.swift in Sources */,
 				42B7EC512B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift in Sources */,
 				42AD0D672B9B00EE002B8A48 /* Router.swift in Sources */,
 				42AD0D542B9AFA33002B8A48 /* BaseViewController.swift in Sources */,
 				42AD0D562B9AFAD9002B8A48 /* BaseView.swift in Sources */,
+				42B7EC7F2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift in Sources */,
 				42AD0D612B9AFD0E002B8A48 /* MoviePackage.swift in Sources */,
 				42B7EC4C2B9ED58B00AE0F52 /* QuizListViewController.swift in Sources */,
 				42570E502B9983920042B338 /* AppDelegate.swift in Sources */,
@@ -417,7 +443,9 @@
 				42570E522B9983920042B338 /* SceneDelegate.swift in Sources */,
 				42AD0D882B9D95C5002B8A48 /* MainTabBarController.swift in Sources */,
 				42B7EC5D2B9F065200AE0F52 /* UserDefaultsManager.swift in Sources */,
+				42B7EC7B2BA02AB800AE0F52 /* PosterListViewController.swift in Sources */,
 				42AD0D802B9C695A002B8A48 /* PosterURL.swift in Sources */,
+				42B7EC792BA0290B00AE0F52 /* PosterListView.swift in Sources */,
 				42AD0D692B9B010F002B8A48 /* APIKey.swift in Sources */,
 				42B7EC5B2B9EF82200AE0F52 /* RoundImageView.swift in Sources */,
 				42AD0D582B9AFB53002B8A48 /* BaseCollectionViewCell.swift in Sources */,

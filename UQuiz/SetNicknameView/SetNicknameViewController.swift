@@ -36,12 +36,16 @@ final class SetNicknameViewController: BaseViewController {
     
     @objc
     private func submitButtonClicked() {
-        viewModel.inputUserStateChangeTrigger.value = ()
-        
-        let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        let sceneDelegate = windowScene?.delegate as? SceneDelegate
-        sceneDelegate?.window?.rootViewController = MainTabBarController()
-        sceneDelegate?.window?.makeKeyAndVisible()
+        if !viewModel.udManager.userState {
+            viewModel.inputUserStateChangeTrigger.value = ()
+            
+            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+            let sceneDelegate = windowScene?.delegate as? SceneDelegate
+            sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: MainTabBarController()) 
+            sceneDelegate?.window?.makeKeyAndVisible()
+        } else {
+            navigationController?.dismiss(animated: true)
+        }
     }
 
 }

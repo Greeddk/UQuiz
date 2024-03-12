@@ -14,7 +14,7 @@ final class MovieSearchViewModel {
     var inputAPIRequest: Observable<String?> = Observable(nil)
     var inputButtonClickedTrigger: Observable<Movie?> = Observable(nil)
     var outputRequestList: Observable<[Movie]> = Observable([])
-    var outputAddedToPackageList: Observable<Set<Movie>> = Observable([])
+    var outputAddedToPackage: Observable<Set<Movie>> = Observable([])
     
     init() {
         inputAPIRequest.bind { value in
@@ -22,12 +22,12 @@ final class MovieSearchViewModel {
         }
         inputButtonClickedTrigger.bind { value in
             guard let value = value else { return }
-            if self.outputAddedToPackageList.value.contains(value) {
-                self.outputAddedToPackageList.value.remove(value)
+            if self.outputAddedToPackage.value.contains(value) {
+                self.outputAddedToPackage.value.remove(value)
             } else {
-                self.outputAddedToPackageList.value.insert(value)
+                self.outputAddedToPackage.value.insert(value)
             }
-            print("outputaddedList",self.outputAddedToPackageList.value)
+            print("outputaddedList",self.outputAddedToPackage.value)
         }
     }
     

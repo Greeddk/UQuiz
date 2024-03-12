@@ -9,7 +9,8 @@ import Foundation
 import Alamofire
 
 enum Router: URLRequestConvertible {
-    case get([String: String])
+    case search([String: String])
+    case posters(Int)
     
     var baseURL: URL {
         return URL(string: "https://api.themoviedb.org/3")!
@@ -21,15 +22,19 @@ enum Router: URLRequestConvertible {
     
     var method: HTTPMethod {
         switch self {
-        case .get:
+        case .search:
+            return .get
+        case .posters:
             return .get
         }
     }
     
     var path: String {
         switch self {
-        case .get:
+        case .search:
             return "search/movie"
+        case .posters(let id):
+            return "movie/\(id)/images"
         }
     }
     
@@ -40,10 +45,12 @@ enum Router: URLRequestConvertible {
         request.headers = headers
         
         switch self {
-        case let .get(Parameters):
+        case let .search(Parameters):
             request = try URLEncodedFormParameterEncoder().encode(Parameters, into: request)
+        case .posters(_):
+            return request
         }
-
+        print(request)
         return request
     }
 }

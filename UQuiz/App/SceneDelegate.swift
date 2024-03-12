@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let value = UserDefaultsManager.shared.userState
         
         if value {
-            window?.rootViewController = MainTabBarController()
+            window?.rootViewController = UINavigationController(rootViewController: MainTabBarController()) 
         } else {
             window?.rootViewController = SetNicknameViewController()
         }

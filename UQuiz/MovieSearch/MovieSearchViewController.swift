@@ -26,7 +26,7 @@ final class MovieSearchViewController: BaseViewController {
             self.mainView.collectionView.reloadData()
             self.logger.info("outputList \(self.viewModel.outputRequestList.value)")
         }
-        viewModel.outputAddedToPackageList.bind { _ in
+        viewModel.outputAddedToPackage.bind { _ in
             self.setNavigationBar()
         }
     }
@@ -39,14 +39,18 @@ final class MovieSearchViewController: BaseViewController {
     }
     
     private func setNavigationBar() {
-        navigationItem.title = String(format: "MovieSearchVC_NavigationTitle".localized, viewModel.outputAddedToPackageList.value.count)
+        navigationController?.navigationBar.topItem?.title = String(format: "MovieSearchVC_NavigationTitle".localized, viewModel.outputAddedToPackage.value.count)
+//        navigationController?.navigationItem.title = String(format: "MovieSearchVC_NavigationTitle".localized, viewModel.outputAddedToPackageList.value.count)
         let makeQuizPackageButton = UIBarButtonItem(title: "MovieSearchVC_barButtonTitle".localized, style: .plain, target: self, action: #selector(makeQuizPackageButtonClicked))
-        navigationItem.rightBarButtonItem = makeQuizPackageButton
+        navigationController?.navigationBar.topItem?.rightBarButtonItem = makeQuizPackageButton
+//        navigationController?.navigationItem.rightBarButtonItem = makeQuizPackageButton
     }
     
     @objc
     private func makeQuizPackageButtonClicked() {
         let vc = MakeMovieAreaQuizViewController()
+        let list = Array(viewModel.outputAddedToPackage.value)
+        vc.viewModel.inputQuizPackage.value = list
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -73,7 +77,7 @@ extension MovieSearchViewController: UICollectionViewDelegate, UICollectionViewD
         cell.configureCell(movieItem: item)
         cell.addToPackageButton.tag = indexPath.item
         cell.addToPackageButton.addTarget(self, action: #selector(addToPackageButtonClicked(sender:)), for: .touchUpInside)
-        let boolValue = viewModel.outputAddedToPackageList.value.contains(item)
+        let boolValue = viewModel.outputAddedToPackage.value.contains(item)
         cell.addToPackageButton.tintColor = boolValue ? .green : .systemGray
         return cell
     }
