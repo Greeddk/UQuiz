@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 import os
 
-class TMDBAPIManager {
+final class TMDBAPIManager {
     
     private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "APIManger")
     static let shared = TMDBAPIManager()

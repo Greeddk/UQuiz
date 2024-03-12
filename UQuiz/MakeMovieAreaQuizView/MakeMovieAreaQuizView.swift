@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MakeMovieAreaQuizView: BaseView {
+final class MakeMovieAreaQuizView: BaseView {
     //TODO: 다음, 이전 버튼 그리고 다른 포스터로 바꾸기 버튼(모달)
     
     let resetButton = UIButton()

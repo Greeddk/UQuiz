@@ -32,7 +32,7 @@ final class SettingViewController: BaseViewController {
     }
     
     private func configureDataSource() {
-        let cellRegisteration = UICollectionView.CellRegistration<ProfileSettingCollectionViewCell, Int> { cell, indexPath, itemIdentifier in
+        let cellRegistration = UICollectionView.CellRegistration<ProfileSettingCollectionViewCell, Int> { cell, indexPath, itemIdentifier in
             cell.roundProfileImage.image = UIImage(systemName: "person")
             cell.nicknameLabel.text = "메이커 이름"
             cell.changeNicknameButton.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
@@ -44,7 +44,7 @@ final class SettingViewController: BaseViewController {
         }
         
         dataSource = UICollectionViewDiffableDataSource(collectionView: mainView.collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegisteration, for: indexPath, item: itemIdentifier)
+            let cell = collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
             return cell
         })
     }
