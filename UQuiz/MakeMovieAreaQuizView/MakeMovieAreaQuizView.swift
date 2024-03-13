@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 final class MakeMovieAreaQuizView: BaseView {
-    //TODO: 다음, 이전 버튼 그리고 다른 포스터로 바꾸기 버튼(모달)
     
     let posterView = UIImageView()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
@@ -27,10 +26,14 @@ final class MakeMovieAreaQuizView: BaseView {
             make.width.equalTo(screenWidth)
             make.height.equalTo(screenWidth * 1.5)
         }
+        collectionView.snp.updateConstraints { make in
+            make.edges.equalTo(posterView)
+        }
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.itemSize = CGSize(width: screenWidth / 36, height: screenWidth / 36)
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
-            layout.itemSize = CGSize(width: screenWidth / 36, height: screenWidth / 36)
+            layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
     

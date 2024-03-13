@@ -26,4 +26,8 @@ final class Observable<T> {
         self.closure = closure
     }
     
+    func noInitBind(_ closure: @escaping (T) -> Void) {
+        self.closure = closure
+    }
+    
 }

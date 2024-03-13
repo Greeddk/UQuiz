@@ -55,6 +55,7 @@
 		42B7EC7B2BA02AB800AE0F52 /* PosterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC7A2BA02AB800AE0F52 /* PosterListViewController.swift */; };
 		42B7EC7D2BA02B8400AE0F52 /* PosterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC7C2BA02B8400AE0F52 /* PosterListViewModel.swift */; };
 		42B7EC7F2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC7E2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift */; };
+		42B7EC832BA178FF00AE0F52 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC822BA178FF00AE0F52 /* Quiz.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		42B7EC7A2BA02AB800AE0F52 /* PosterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListViewController.swift; sourceTree = "<group>"; };
 		42B7EC7C2BA02B8400AE0F52 /* PosterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListViewModel.swift; sourceTree = "<group>"; };
 		42B7EC7E2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMovieAreaQuizViewModel.swift; sourceTree = "<group>"; };
+		42B7EC822BA178FF00AE0F52 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 				42AD0D622B9AFDCB002B8A48 /* SearchMovie.swift */,
 				42B7EC642B9F119800AE0F52 /* MakerInfo.swift */,
 				42B7EC712BA0251700AE0F52 /* Poster.swift */,
+				42B7EC822BA178FF00AE0F52 /* Quiz.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				42AD0D802B9C695A002B8A48 /* PosterURL.swift in Sources */,
 				42B7EC792BA0290B00AE0F52 /* PosterListView.swift in Sources */,
 				42AD0D692B9B010F002B8A48 /* APIKey.swift in Sources */,
+				42B7EC832BA178FF00AE0F52 /* Quiz.swift in Sources */,
 				42B7EC5B2B9EF82200AE0F52 /* RoundImageView.swift in Sources */,
 				42AD0D582B9AFB53002B8A48 /* BaseCollectionViewCell.swift in Sources */,
 				42B7EC4F2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift in Sources */,

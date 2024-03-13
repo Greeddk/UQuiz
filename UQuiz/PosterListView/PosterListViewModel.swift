@@ -23,9 +23,11 @@ final class PosterListViewModel {
     }
     
     private func fetchPosters() {
-        apiManager.requestPosters(id: inputMovieID.value) { [weak self] value in
-            guard let self = self else { return }
-            self.outputPosterList.value = value
+        apiManager.requestPosters(id: inputMovieID.value) { value in
+            let targetPoster = value.filter({ $0.country == "ko" || $0.country == "en" }).sorted(by: { $0.country > $1.country })
+            let restPoster = value.filter({ $0.country != "ko" && $0.country != "en"}).sorted(by: { $0.country > $1.country })
+            let sortedList = targetPoster + restPoster
+            self.outputPosterList.value = sortedList
         }
     }
 }

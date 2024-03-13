@@ -43,6 +43,7 @@ extension PosterListViewController: UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieInfoCollectionViewCell.identifier, for: indexPath) as! MovieInfoCollectionViewCell
         let url = PosterURL.imageURL(detailURL: viewModel.outputPosterList.value[indexPath.item].poster).endpoint
         cell.posterImage.kf.setImage(with: url)
+        cell.addToPackageImage.isHidden = true
         return cell
     }
     
