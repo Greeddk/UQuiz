@@ -88,7 +88,8 @@ final class MakeMovieAreaQuizViewController: BaseViewController {
     private func showPosterButtonClicked() {
         let vc = PosterListViewController()
         vc.viewModel.inputMovieID.value = viewModel.outputQuizPackage.value[viewModel.currentIndex.value].id
-        vc.closure = { selectedPoster in
+        vc.closure = { [weak self] selectedPoster in
+            guard let self = self else { return }
             self.viewModel.outputQuizPackage.value[self.viewModel.currentIndex.value].poster = selectedPoster
             self.fetchPoster()
         }

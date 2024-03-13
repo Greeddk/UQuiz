@@ -56,6 +56,10 @@
 		42B7EC7D2BA02B8400AE0F52 /* PosterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC7C2BA02B8400AE0F52 /* PosterListViewModel.swift */; };
 		42B7EC7F2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC7E2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift */; };
 		42B7EC832BA178FF00AE0F52 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC822BA178FF00AE0F52 /* Quiz.swift */; };
+		42B7EC852BA1A06100AE0F52 /* QuizListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC842BA1A06100AE0F52 /* QuizListViewModel.swift */; };
+		42B7EC872BA1A12700AE0F52 /* QuizListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC862BA1A12700AE0F52 /* QuizListView.swift */; };
+		42B7EC8A2BA1A14000AE0F52 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 42B7EC892BA1A14000AE0F52 /* CollectionViewPagingLayout */; };
+		42B7EC8C2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC8B2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +109,9 @@
 		42B7EC7C2BA02B8400AE0F52 /* PosterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListViewModel.swift; sourceTree = "<group>"; };
 		42B7EC7E2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMovieAreaQuizViewModel.swift; sourceTree = "<group>"; };
 		42B7EC822BA178FF00AE0F52 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		42B7EC842BA1A06100AE0F52 /* QuizListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListViewModel.swift; sourceTree = "<group>"; };
+		42B7EC862BA1A12700AE0F52 /* QuizListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListView.swift; sourceTree = "<group>"; };
+		42B7EC8B2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCardCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +124,7 @@
 				42AD0D4C2B9AF8F6002B8A48 /* Realm in Frameworks */,
 				42B7EC582B9EF7D100AE0F52 /* TextFieldEffects in Frameworks */,
 				42AD0D4E2B9AF8F6002B8A48 /* RealmSwift in Frameworks */,
+				42B7EC8A2BA1A14000AE0F52 /* CollectionViewPagingLayout in Frameworks */,
 				42AD0D432B9AF8CD002B8A48 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,6 +303,9 @@
 			isa = PBXGroup;
 			children = (
 				42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */,
+				42B7EC842BA1A06100AE0F52 /* QuizListViewModel.swift */,
+				42B7EC862BA1A12700AE0F52 /* QuizListView.swift */,
+				42B7EC8B2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift */,
 			);
 			path = QuizListView;
 			sourceTree = "<group>";
@@ -350,6 +361,7 @@
 				42AD0D4B2B9AF8F6002B8A48 /* Realm */,
 				42AD0D4D2B9AF8F6002B8A48 /* RealmSwift */,
 				42B7EC572B9EF7D100AE0F52 /* TextFieldEffects */,
+				42B7EC892BA1A14000AE0F52 /* CollectionViewPagingLayout */,
 			);
 			productName = UQuiz;
 			productReference = 42570E4C2B9983920042B338 /* UQuiz.app */;
@@ -386,6 +398,7 @@
 				42AD0D472B9AF8DC002B8A48 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				42AD0D4A2B9AF8F6002B8A48 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				42B7EC562B9EF7D100AE0F52 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
+				42B7EC882BA1A14000AE0F52 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
 			);
 			productRefGroup = 42570E4D2B9983920042B338 /* Products */;
 			projectDirPath = "";
@@ -418,7 +431,9 @@
 				42AD0D852B9D8BC7002B8A48 /* MovieInfoCollectionViewCell.swift in Sources */,
 				42B7EC492B9ED56A00AE0F52 /* SettingViewController.swift in Sources */,
 				42AD0D712B9B0AEA002B8A48 /* Observable.swift in Sources */,
+				42B7EC852BA1A06100AE0F52 /* QuizListViewModel.swift in Sources */,
 				42B7EC552B9EF49C00AE0F52 /* SetNicknameView.swift in Sources */,
+				42B7EC872BA1A12700AE0F52 /* QuizListView.swift in Sources */,
 				42B7EC612B9F0BBD00AE0F52 /* SettingView.swift in Sources */,
 				42AD0D6E2B9B09E9002B8A48 /* MovieSearchViewModel.swift in Sources */,
 				42AD0D5A2B9AFB9F002B8A48 /* UIColor+Extension.swift in Sources */,
@@ -431,6 +446,7 @@
 				42AD0D5C2B9AFBD6002B8A48 /* UIView+Extension.swift in Sources */,
 				42B7EC652B9F119800AE0F52 /* MakerInfo.swift in Sources */,
 				42B7EC722BA0251700AE0F52 /* Poster.swift in Sources */,
+				42B7EC8C2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift in Sources */,
 				42AD0D8A2B9DAF55002B8A48 /* UIViewController+Extension.swift in Sources */,
 				42AD0D7D2B9B132D002B8A48 /* String+Extension.swift in Sources */,
 				42B7EC512B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift in Sources */,
@@ -719,6 +735,14 @@
 				minimumVersion = 1.7.0;
 			};
 		};
+		42B7EC882BA1A14000AE0F52 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amirdew/CollectionViewPagingLayout.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -751,6 +775,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 42B7EC562B9EF7D100AE0F52 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
 			productName = TextFieldEffects;
+		};
+		42B7EC892BA1A14000AE0F52 /* CollectionViewPagingLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42B7EC882BA1A14000AE0F52 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */;
+			productName = CollectionViewPagingLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

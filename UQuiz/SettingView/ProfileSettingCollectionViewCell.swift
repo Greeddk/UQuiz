@@ -15,14 +15,14 @@ final class ProfileSettingCollectionViewCell: BaseCollectionViewCell {
     let changeNicknameButton = UIButton()
     
     override func configureHierarchy() {
-        addSubviews([roundProfileImage, nicknameLabel, changeNicknameButton])
+        contentView.addSubviews([roundProfileImage, nicknameLabel, changeNicknameButton])
     }
     
     override func setConstraints() {
         roundProfileImage.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
-            make.leading.equalTo(self.safeAreaLayoutGuide).offset(20)
-            make.bottom.equalTo(self.safeAreaLayoutGuide).inset(20)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(20)
+            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(20)
+            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(20)
             make.size.equalTo(60)
         }
         

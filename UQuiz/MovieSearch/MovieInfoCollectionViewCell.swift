@@ -36,17 +36,17 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureHierarchy() {
-        addSubviews([posterImage, addToPackageImage, movieTitle])
+        contentView.addSubviews([posterImage, addToPackageImage, movieTitle])
     }
     
     override func setConstraints() {
         posterImage.snp.makeConstraints { make in
-            make.edges.equalTo(self.safeAreaLayoutGuide)
+            make.edges.equalTo(contentView.safeAreaLayoutGuide)
         }
         
         addToPackageImage.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(10)
-            make.trailing.equalTo(self.safeAreaLayoutGuide).inset(10)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(10)
+            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
         }
         
         movieTitle.snp.makeConstraints { make in
