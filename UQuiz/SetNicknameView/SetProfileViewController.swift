@@ -1,5 +1,5 @@
 //
-//  SetNicknameViewController.swift
+//  SetProfileViewController.swift
 //  UQuiz
 //
 //  Created by Greed on 3/11/24.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-final class SetNicknameViewController: BaseViewController {
+final class SetProfileViewController: BaseViewController {
     
-    let mainView = SetNicknameView()
-    let viewModel = SetNicknameViewModel()
-    let imageViewModel = ImageManagerViewModel()
+    let mainView = SetProfileView()
+    let viewModel = SetProfileViewModel()
+    let imageViewModel = ProfileManagerViewModel()
     
     override func loadView() {
         self.view = mainView
@@ -24,6 +24,14 @@ final class SetNicknameViewController: BaseViewController {
         }
         viewModel.outputValidation.noInitBind { [weak self] validate in
             self?.mainView.changeLabelColor(isValidate: validate)
+        }
+        imageViewModel.inputLoadProfileImageTrigger.value = ()
+        imageViewModel.outputUserProfileImage.bind { image in
+            guard let image = image else { return }
+            self.mainView.roundProfileImage.image = image
+        }
+        imageViewModel.outputNickname.bind { value in
+            self.mainView.nicknameTextField.text = value
         }
     }
     
@@ -44,31 +52,33 @@ final class SetNicknameViewController: BaseViewController {
     
     @objc
     private func submitButtonClicked() {
-        if !viewModel.udManager.userState {
-            if viewModel.outputValidation.value {
+        if viewModel.outputValidation.value {
+            guard let text = mainView.nicknameTextField.text else { return }
+            imageViewModel.inputUserNickname.value = text
+            imageViewModel.inputUserProfileSaveTrigger.value = ()
+            if !viewModel.udManager.userState {
                 viewModel.inputUserStateChangeTrigger.value = ()
-                imageViewModel.inputUserProfileSaveTrigger.value = ()
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate
                 sceneDelegate?.window?.rootViewController = MainTabBarController()
                 sceneDelegate?.window?.makeKeyAndVisible()
             } else {
-                mainView.shakeTextfield()
+                navigationController?.popViewController(animated: true)
             }
         } else {
-            navigationController?.dismiss(animated: true)
+            mainView.shakeTextfield()
         }
     }
 
 }
 
-extension SetNicknameViewController: UITextFieldDelegate {
+extension SetProfileViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         viewModel.inputTextFieldChanged.value = textField.text
     }
 }
 
-extension SetNicknameViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension SetProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true)

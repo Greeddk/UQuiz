@@ -8,11 +8,12 @@
 import UIKit
 
 final class SettingViewController: BaseViewController {
-    
-    enum Section {
+
+    enum Section: CaseIterable {
         case first
     }
     
+    let profileViewModel = ProfileManagerViewModel()
     let mainView = SettingView()
     
     var dataSource: UICollectionViewDiffableDataSource<Section, Int>!
@@ -23,9 +24,11 @@ final class SettingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        profileViewModel.inputLoadProfileImageTrigger.value = ()
         configureDataSource()
         updateSnapshot()
     }
+    // 이미지나 닉네임이 변경되었을 시, 샐이 리로드 되게하기
     
     override func configureViewController() {
         mainView.collectionView.delegate = self
@@ -33,11 +36,16 @@ final class SettingViewController: BaseViewController {
     
     private func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration<ProfileSettingCollectionViewCell, Int> { cell, indexPath, itemIdentifier in
-            cell.roundProfileImage.image = UIImage(systemName: "person")
-            cell.nicknameLabel.text = "메이커 이름"
+            if self.profileViewModel.outputUserProfileImage.value == nil {
+                cell.roundProfileImage.image = UIImage(systemName: "person")
+            } else {
+                cell.roundProfileImage.image = self.profileViewModel.outputUserProfileImage.value
+            }
+            self.profileViewModel.outputNickname.bind { value in
+                cell.nicknameLabel.text = value
+            }
             cell.changeNicknameButton.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
             cell.changeNicknameButton.addTarget(self, action: #selector(self.changeNicknameButtonClicked), for: .touchUpInside)
-            
             var background = UIBackgroundConfiguration.listPlainCell()
             background.backgroundColor = .lightGray
             cell.backgroundConfiguration = background
@@ -58,7 +66,8 @@ final class SettingViewController: BaseViewController {
     
     @objc
     private func changeNicknameButtonClicked() {
-        let vc = SetNicknameViewController()
+        let vc = SetProfileViewController()
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
     

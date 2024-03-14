@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Quiz {
+struct PosterQuiz {
     let id: Int
     let genre: [Int]?
     var poster: String?

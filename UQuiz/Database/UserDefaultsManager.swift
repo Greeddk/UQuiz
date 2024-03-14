@@ -13,6 +13,8 @@ final class UserDefaultsManager {
 
     enum UDKey: String {
         case userState
+        case nickname
+        case profileImage
     }
     
     let ud = UserDefaults.standard
@@ -25,4 +27,23 @@ final class UserDefaultsManager {
             ud.setValue(newValue, forKey: UDKey.userState.rawValue)
         }
     }
+    
+    var nickname: String {
+        get {
+            ud.string(forKey: UDKey.nickname.rawValue) ?? ""
+        }
+        set {
+            ud.setValue(newValue, forKey: UDKey.nickname.rawValue)
+        }
+    }
+    
+    var profileImage: String {
+        get {
+            ud.string(forKey: UDKey.profileImage.rawValue) ?? ""
+        }
+        set {
+            ud.setValue(newValue, forKey: UDKey.profileImage.rawValue)
+        }
+    }
+    
 }

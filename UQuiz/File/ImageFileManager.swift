@@ -15,6 +15,7 @@ class ImageFileManager {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         
         let fileURL = documentDirectory.appendingPathComponent("\(filename).jpg")
+        print(fileURL)
         
         guard let data = image.jpegData(compressionQuality: 0.5) else { return }
         do {
@@ -39,11 +40,11 @@ class ImageFileManager {
     func removeImageFromDocument(filename: String) {
         guard let documentDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }
         
-        let fileURL = documentDirectory.appendingPathComponent("\(filename).jpg").pathExtension
+        let fileURL = documentDirectory.appendingPathComponent("\(filename).jpg")
         
-        if FileManager.default.fileExists(atPath: fileURL) {
+        if FileManager.default.fileExists(atPath: fileURL.path()) {
             do {
-                try FileManager.default.removeItem(atPath: fileURL)
+                try FileManager.default.removeItem(atPath: fileURL.path())
             } catch {
                 print("file remove error", error)
             }

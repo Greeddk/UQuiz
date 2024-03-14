@@ -1,5 +1,5 @@
 //
-//  SetNicknameView.swift
+//  SetProfileView.swift
 //  UQuiz
 //
 //  Created by Greed on 3/11/24.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import TextFieldEffects
 
-final class SetNicknameView: BaseView {
+final class SetProfileView: BaseView {
     
     let roundProfileImage = RoundImageView(frame: .zero)
     let cameraImageView = UIImageView()

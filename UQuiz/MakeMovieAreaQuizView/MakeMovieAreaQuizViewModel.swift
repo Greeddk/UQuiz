@@ -14,7 +14,7 @@ final class MakeMovieAreaQuizViewModel {
     var inputSelectedCellTrigger: Observable<Int> = Observable(0)
     var inputResetSelectedAreaTrigger: Observable<Void?> = Observable(nil)
     
-    var outputQuizPackage: Observable<[Quiz]> = Observable([])
+    var outputQuizPackage: Observable<[PosterQuiz]> = Observable([])
     var currentIndex: Observable<Int> = Observable(0)
     var outputSelectedCellList: Observable<[Int]> = Observable([])
     var alertTrigger: Observable<String> = Observable("")
@@ -77,10 +77,10 @@ final class MakeMovieAreaQuizViewModel {
         }
     }
     
-    private func changeMovieToQuiz(items: [Movie]) -> [Quiz] {
-        var outputList: [Quiz] = []
+    private func changeMovieToQuiz(items: [Movie]) -> [PosterQuiz] {
+        var outputList: [PosterQuiz] = []
         items.forEach { movie in
-            outputList.append(Quiz(item: movie))
+            outputList.append(PosterQuiz(item: movie))
         }
         return outputList
     }

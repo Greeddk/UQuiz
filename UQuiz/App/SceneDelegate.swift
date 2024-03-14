@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if value {
             window?.rootViewController = MainTabBarController()
         } else {
-            window?.rootViewController = SetNicknameViewController()
+            window?.rootViewController = SetProfileViewController()
         }
         
         window?.makeKeyAndVisible()
