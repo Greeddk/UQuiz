@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42091DCC2BA2D64C006BA897 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DCB2BA2D64C006BA897 /* ImageFileManager.swift */; };
+		42091DCF2BA2E469006BA897 /* ImageManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DCE2BA2E469006BA897 /* ImageManagerViewModel.swift */; };
 		42570E502B9983920042B338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E4F2B9983920042B338 /* AppDelegate.swift */; };
 		42570E522B9983920042B338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E512B9983920042B338 /* SceneDelegate.swift */; };
 		42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E532B9983920042B338 /* MovieSearchViewController.swift */; };
@@ -65,6 +66,7 @@
 
 /* Begin PBXFileReference section */
 		42091DCB2BA2D64C006BA897 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
+		42091DCE2BA2E469006BA897 /* ImageManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerViewModel.swift; sourceTree = "<group>"; };
 		42570E4C2B9983920042B338 /* UQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42570E4F2B9983920042B338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42570E512B9983920042B338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,14 @@
 			path = File;
 			sourceTree = "<group>";
 		};
+		42091DCD2BA2E413006BA897 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				42091DCE2BA2E469006BA897 /* ImageManagerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		42570E432B9983920042B338 = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +183,7 @@
 				42AD0D5D2B9AFC00002B8A48 /* Network */,
 				42AD0D512B9AF977002B8A48 /* Extension */,
 				42AD0D522B9AF97B002B8A48 /* Base */,
+				42091DCD2BA2E413006BA897 /* ViewModel */,
 				42B7EC592B9EF81700AE0F52 /* CustomView */,
 				42AD0D862B9D9075002B8A48 /* TabBar */,
 				42AD0D812B9C9A89002B8A48 /* SetNicknameView */,
@@ -451,6 +462,7 @@
 				42B7EC532B9EF46E00AE0F52 /* SetNicknameViewController.swift in Sources */,
 				42AD0D6C2B9B09AD002B8A48 /* MovieSearchView.swift in Sources */,
 				42B7EC7D2BA02B8400AE0F52 /* PosterListViewModel.swift in Sources */,
+				42091DCF2BA2E469006BA897 /* ImageManagerViewModel.swift in Sources */,
 				42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */,
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
 				42AD0D632B9AFDCB002B8A48 /* SearchMovie.swift in Sources */,

@@ -61,7 +61,8 @@ final class SetNicknameView: BaseView {
         cameraImageView.backgroundColor = .white
         cameraImageView.layer.cornerRadius = 16
         cameraImageView.tintColor = UIColor(red: 73/255, green: 220/255, blue: 146/255, alpha: 1)
-        nicknameTextField.placeholder = "닉네임을 입력해주세요 :)"
+        validLabel.text = "만든 퀴즈에 표시될 닉네임을 입력해주세요"
+        nicknameTextField.placeholder = "메이커 닉네임"
         nicknameTextField.placeholderFontScale = 1.1
         nicknameTextField.borderActiveColor = UIColor(red: 73/255, green: 220/255, blue: 146/255, alpha: 1)
         nicknameTextField.borderInactiveColor = .lightGray
@@ -72,6 +73,18 @@ final class SetNicknameView: BaseView {
         submitButton.tintColor = .white
         submitButton.backgroundColor = UIColor(red: 73/255, green: 220/255, blue: 146/255, alpha: 1)
         submitButton.setTitle("완료", for: .normal)
+    }
+    
+    func changeLabelColor(isValidate: Bool) {
+        if isValidate {
+            validLabel.textColor = .green
+        } else {
+            validLabel.textColor = .systemRed
+        }
+    }
+    
+    func shakeTextfield() {
+        nicknameTextField.shake()
     }
     
 }

@@ -11,6 +11,7 @@ final class SetNicknameViewController: BaseViewController {
     
     let mainView = SetNicknameView()
     let viewModel = SetNicknameViewModel()
+    let imageViewModel = ImageManagerViewModel()
     
     override func loadView() {
         self.view = mainView
@@ -18,7 +19,12 @@ final class SetNicknameViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        viewModel.outputNicknameValidation.noInitBind { [weak self] text in
+            self?.mainView.validLabel.text = text
+        }
+        viewModel.outputValidation.noInitBind { [weak self] validate in
+            self?.mainView.changeLabelColor(isValidate: validate)
+        }
     }
     
     override func configureViewController() {
@@ -31,7 +37,6 @@ final class SetNicknameViewController: BaseViewController {
     
     @objc
     private func tapGestureTapped() {
-        print(#function)
         let vc = UIImagePickerController()
         vc.delegate = self
         present(vc, animated: true)
@@ -40,12 +45,16 @@ final class SetNicknameViewController: BaseViewController {
     @objc
     private func submitButtonClicked() {
         if !viewModel.udManager.userState {
-            viewModel.inputUserStateChangeTrigger.value = ()
-            
-            let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-            let sceneDelegate = windowScene?.delegate as? SceneDelegate
-            sceneDelegate?.window?.rootViewController = MainTabBarController()
-            sceneDelegate?.window?.makeKeyAndVisible()
+            if viewModel.outputValidation.value {
+                viewModel.inputUserStateChangeTrigger.value = ()
+                imageViewModel.inputUserProfileSaveTrigger.value = ()
+                let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                let sceneDelegate = windowScene?.delegate as? SceneDelegate
+                sceneDelegate?.window?.rootViewController = MainTabBarController()
+                sceneDelegate?.window?.makeKeyAndVisible()
+            } else {
+                mainView.shakeTextfield()
+            }
         } else {
             navigationController?.dismiss(animated: true)
         }
@@ -54,7 +63,9 @@ final class SetNicknameViewController: BaseViewController {
 }
 
 extension SetNicknameViewController: UITextFieldDelegate {
-    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        viewModel.inputTextFieldChanged.value = textField.text
+    }
 }
 
 extension SetNicknameViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -66,6 +77,7 @@ extension SetNicknameViewController: UIImagePickerControllerDelegate, UINavigati
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             mainView.roundProfileImage.image = pickedImage
+            imageViewModel.inputUserProfileImage.value = pickedImage
         }
         dismiss(animated: true)
     }

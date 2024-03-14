@@ -12,20 +12,34 @@ final class SetNicknameViewModel {
     let udManager = UserDefaultsManager.shared
     
     var inputUserStateChangeTrigger: Observable<Void?> = Observable(nil)
+    var inputTextFieldChanged: Observable<String?> = Observable(nil)
+    
+    var outputNicknameValidation: Observable<String> = Observable("")
+    var outputValidation: Observable<Bool> = Observable(false)
+
     
     init() {
-        inputUserStateChangeTrigger.noInitBind { _ in
-            self.changeUserState()
+        inputUserStateChangeTrigger.noInitBind { [weak self] _ in
+            self?.changeUserState()
+        }
+        inputTextFieldChanged.noInitBind { [weak self] text in
+            guard let text = text else { return }
+            self?.validateNickname(text)
         }
     }
     
-    private func validateNickname() {
-        
+    private func validateNickname(_ text: String) {
+        if text.count <= 1 {
+            outputNicknameValidation.value = "닉네임을 두글자 이상 입력해주세요"
+            outputValidation.value = false
+        } else {
+            outputNicknameValidation.value = "사용해도 좋은 닉네임입니다!"
+            outputValidation.value = true
+        }
     }
     
     private func changeUserState() {
         udManager.userState = true
     }
-    
     
 }
