@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42091DCC2BA2D64C006BA897 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DCB2BA2D64C006BA897 /* ImageFileManager.swift */; };
 		42570E502B9983920042B338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E4F2B9983920042B338 /* AppDelegate.swift */; };
 		42570E522B9983920042B338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E512B9983920042B338 /* SceneDelegate.swift */; };
 		42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E532B9983920042B338 /* MovieSearchViewController.swift */; };
@@ -63,6 +64,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42091DCB2BA2D64C006BA897 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		42570E4C2B9983920042B338 /* UQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42570E4F2B9983920042B338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42570E512B9983920042B338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42091DCA2BA2D625006BA897 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				42091DCB2BA2D64C006BA897 /* ImageFileManager.swift */,
+			);
+			path = File;
+			sourceTree = "<group>";
+		};
 		42570E432B9983920042B338 = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +167,7 @@
 				42AD0D7E2B9B1469002B8A48 /* plist */,
 				42AD0D4F2B9AF94C002B8A48 /* App */,
 				42AD0D5F2B9AFC0B002B8A48 /* Database */,
+				42091DCA2BA2D625006BA897 /* File */,
 				42AD0D6F2B9B0ADE002B8A48 /* Observable */,
 				42AD0D5E2B9AFC06002B8A48 /* Model */,
 				42AD0D5D2B9AFC00002B8A48 /* Network */,
@@ -459,6 +470,7 @@
 				42570E502B9983920042B338 /* AppDelegate.swift in Sources */,
 				42B7EC5F2B9F06E500AE0F52 /* SetNicknameViewModel.swift in Sources */,
 				42B7EC632B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift in Sources */,
+				42091DCC2BA2D64C006BA897 /* ImageFileManager.swift in Sources */,
 				42570E522B9983920042B338 /* SceneDelegate.swift in Sources */,
 				42AD0D882B9D95C5002B8A48 /* MainTabBarController.swift in Sources */,
 				42B7EC5D2B9F065200AE0F52 /* UserDefaultsManager.swift in Sources */,

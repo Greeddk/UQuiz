@@ -61,7 +61,7 @@ final class MakeMovieAreaQuizViewController: BaseViewController {
                 //quiz 묶음 저장
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate
-                sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: MainTabBarController())
+                sceneDelegate?.window?.rootViewController = MainTabBarController()
                 sceneDelegate?.window?.makeKeyAndVisible()
             } else {
                 viewModel.inputIndex.value = viewModel.currentIndex.value + 1

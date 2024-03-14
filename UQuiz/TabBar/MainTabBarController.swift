@@ -17,14 +17,11 @@ final class MainTabBarController: UITabBarController {
         var viewController: UIViewController {
             switch self {
             case .QuizList:
-//                return UINavigationController(rootViewController: QuizListViewController())
-                return QuizListViewController()
+                return UINavigationController(rootViewController: QuizListViewController())
             case .MakeQuiz:
-//                return UINavigationController(rootViewController: MovieSearchViewController())
-                return MovieSearchViewController()
+                return UINavigationController(rootViewController: MovieSearchViewController())
             case .Setting:
-//                return UINavigationController(rootViewController: SettingViewController())
-                return SettingViewController()
+                return UINavigationController(rootViewController: SettingViewController())
             }
         }
         

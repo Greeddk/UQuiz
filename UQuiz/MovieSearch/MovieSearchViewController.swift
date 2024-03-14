@@ -39,14 +39,15 @@ final class MovieSearchViewController: BaseViewController {
     }
     
     private func setNavigationBar() {
-        navigationController?.navigationBar.topItem?.title = String(format: "MovieSearchVC_NavigationTitle".localized, viewModel.outputAddedToPackage.value.count)
+        navigationItem.title = String(format: "MovieSearchVC_NavigationTitle".localized, viewModel.outputAddedToPackage.value.count)
         let makeQuizPackageButton = UIBarButtonItem(title: "MovieSearchVC_barButtonTitle".localized, style: .plain, target: self, action: #selector(makeQuizPackageButtonClicked))
         if viewModel.outputAddedToPackage.value.count != 0 {
             makeQuizPackageButton.isEnabled = true
         } else {
             makeQuizPackageButton.isEnabled = false
         }
-        navigationController?.navigationBar.topItem?.rightBarButtonItem = makeQuizPackageButton
+        
+        navigationItem.rightBarButtonItem = makeQuizPackageButton
     }
     
     @objc
@@ -54,6 +55,7 @@ final class MovieSearchViewController: BaseViewController {
         let vc = MakeMovieAreaQuizViewController()
         let list = Array(viewModel.outputAddedToPackage.value)
         vc.viewModel.inputQuizPackage.value = list
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
 

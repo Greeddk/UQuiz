@@ -17,17 +17,17 @@ final class PosterListViewModel {
     var outputPosterList: Observable<[Poster]> = Observable([])
     
     init() {
-        inputMovieID.bind { _ in
-            self.fetchPosters()
+        inputMovieID.bind { [weak self] _ in
+            self?.fetchPosters()
         }
     }
     
     private func fetchPosters() {
-        apiManager.requestPosters(id: inputMovieID.value) { value in
+        apiManager.requestPosters(id: inputMovieID.value) { [weak self] value in
             let targetPoster = value.filter({ $0.country == "ko" || $0.country == "en" }).sorted(by: { $0.country > $1.country })
             let restPoster = value.filter({ $0.country != "ko" && $0.country != "en"}).sorted(by: { $0.country > $1.country })
             let sortedList = targetPoster + restPoster
-            self.outputPosterList.value = sortedList
+            self?.outputPosterList.value = sortedList
         }
     }
 }

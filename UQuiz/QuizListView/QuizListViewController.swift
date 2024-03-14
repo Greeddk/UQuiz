@@ -17,13 +17,17 @@ final class QuizListViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setNavigationBar()
     }
     
     override func configureViewController() {
         mainView.collectionView.dataSource = self
         mainView.collectionView.register(QuizCardCollectionViewCell.self, forCellWithReuseIdentifier: QuizCardCollectionViewCell.identifier)
         mainView.collectionView.isPagingEnabled = true
+    }
+    
+    private func setNavigationBar() {
+        navigationItem.title = "MainView"
     }
 
 

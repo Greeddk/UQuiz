@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Kingfisher
 
 final class PosterListViewController: BaseViewController {
     
@@ -20,7 +19,8 @@ final class PosterListViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.outputPosterList.bind { _ in
+        viewModel.outputPosterList.bind { [weak self] _ in
+            guard let self = self else { return }
             self.mainView.collectionView.reloadData()
         }
     }
@@ -41,9 +41,7 @@ extension PosterListViewController: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieInfoCollectionViewCell.identifier, for: indexPath) as! MovieInfoCollectionViewCell
-        let url = PosterURL.imageURL(detailURL: viewModel.outputPosterList.value[indexPath.item].poster).endpoint
-        cell.posterImage.kf.setImage(with: url)
-        cell.addToPackageImage.isHidden = true
+        cell.fetchThumbnails(item: viewModel.outputPosterList.value[indexPath.item])
         return cell
     }
     

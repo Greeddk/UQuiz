@@ -33,7 +33,6 @@ final class PosterListView: BaseView {
         }
     }
     
-    
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         return layout

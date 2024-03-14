@@ -63,4 +63,10 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
         movieTitle.text = " " + movieItem.title + " "
     }
     
+    func fetchThumbnails(item: Poster) {
+        let url = PosterURL.thumbnailURL(detailURL: item.poster).endpoint
+        posterImage.kf.setImage(with: url)
+        addToPackageImage.isHidden = true
+    }
+    
 }

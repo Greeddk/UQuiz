@@ -40,15 +40,9 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
     }
 }
 
-extension QuizCardCollectionViewCell: ScaleTransformView {
-    var scalableView: UIView {
-        card
+extension QuizCardCollectionViewCell: SnapshotTransformView {
+
+    var snapshotOptions: SnapshotTransformViewOptions {
+        .layout(.chess)
     }
-    
-    var scaleOptions: ScaleTransformViewOptions {
-        .layout(.rotary)
-    }
-    
-    
-    
 }

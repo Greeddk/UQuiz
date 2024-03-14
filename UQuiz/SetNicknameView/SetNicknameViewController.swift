@@ -32,6 +32,9 @@ final class SetNicknameViewController: BaseViewController {
     @objc
     private func tapGestureTapped() {
         print(#function)
+        let vc = UIImagePickerController()
+        vc.delegate = self
+        present(vc, animated: true)
     }
     
     @objc
@@ -41,7 +44,7 @@ final class SetNicknameViewController: BaseViewController {
             
             let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
             let sceneDelegate = windowScene?.delegate as? SceneDelegate
-            sceneDelegate?.window?.rootViewController = UINavigationController(rootViewController: MainTabBarController()) 
+            sceneDelegate?.window?.rootViewController = MainTabBarController()
             sceneDelegate?.window?.makeKeyAndVisible()
         } else {
             navigationController?.dismiss(animated: true)
@@ -52,4 +55,18 @@ final class SetNicknameViewController: BaseViewController {
 
 extension SetNicknameViewController: UITextFieldDelegate {
     
+}
+
+extension SetNicknameViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            mainView.roundProfileImage.image = pickedImage
+        }
+        dismiss(animated: true)
+    }
 }

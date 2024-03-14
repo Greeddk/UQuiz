@@ -14,7 +14,7 @@ final class SetNicknameViewModel {
     var inputUserStateChangeTrigger: Observable<Void?> = Observable(nil)
     
     init() {
-        inputUserStateChangeTrigger.bind { _ in
+        inputUserStateChangeTrigger.noInitBind { _ in
             self.changeUserState()
         }
     }

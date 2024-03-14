@@ -58,6 +58,8 @@ final class SetNicknameView: BaseView {
         roundProfileImage.layer.borderColor = UIColor(red: 73/255, green: 220/255, blue: 146/255, alpha: 1).cgColor
         roundProfileImage.layer.borderWidth = 4
         cameraImageView.image = UIImage(systemName: "camera.circle.fill")
+        cameraImageView.backgroundColor = .white
+        cameraImageView.layer.cornerRadius = 16
         cameraImageView.tintColor = UIColor(red: 73/255, green: 220/255, blue: 146/255, alpha: 1)
         nicknameTextField.placeholder = "닉네임을 입력해주세요 :)"
         nicknameTextField.placeholderFontScale = 1.1
