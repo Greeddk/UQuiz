@@ -57,7 +57,7 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
         gradientTitleBackView.snp.makeConstraints { make in
             make.bottom.equalTo(posterImage.snp.bottom)
             make.horizontalEdges.equalTo(posterImage)
-            make.height.equalTo(40)
+            make.height.equalTo(100)
         }
         
         movieTitle.snp.makeConstraints { make in
@@ -69,8 +69,8 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
 
     private func setupGradient() {
         let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradient.locations = [0.0, 1.0]
+        gradient.colors = [UIColor.black.withAlphaComponent(0.8).cgColor, UIColor.clear.cgColor]
+        gradient.locations = [0.0, 0.9]
         gradient.startPoint = CGPoint(x: 0.5, y: 1.0)
         gradient.endPoint = CGPoint(x: 0.5, y: 0)
         DispatchQueue.main.async {
