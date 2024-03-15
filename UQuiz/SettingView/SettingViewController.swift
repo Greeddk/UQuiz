@@ -13,10 +13,10 @@ final class SettingViewController: BaseViewController {
         case first
     }
     
-    let profileViewModel = ProfileManagerViewModel()
-    let mainView = SettingView()
+    private let profileViewModel = ProfileManagerViewModel()
+    private let mainView = SettingView()
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Int>!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Int>!
     
     override func loadView() {
         self.view = mainView
@@ -28,7 +28,7 @@ final class SettingViewController: BaseViewController {
         configureDataSource()
         updateSnapshot()
     }
-    // 이미지나 닉네임이 변경되었을 시, 샐이 리로드 되게하기
+    // TODO: 이미지나 닉네임이 변경되었을 시, 샐이 리로드 되게하기
     
     override func configureViewController() {
         mainView.collectionView.delegate = self

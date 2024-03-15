@@ -29,6 +29,13 @@ final class PosterListViewController: BaseViewController {
         mainView.collectionView.delegate = self
         mainView.collectionView.dataSource = self
         mainView.collectionView.register(MovieInfoCollectionViewCell.self, forCellWithReuseIdentifier: MovieInfoCollectionViewCell.identifier)
+        let dismissButton = UIBarButtonItem(image: UIImage(systemName: "xmark.circle"), style: .plain, target: self, action: #selector(dismissButtonClicked))
+        navigationItem.rightBarButtonItem = dismissButton
+    }
+    
+    @objc
+    private func dismissButtonClicked() {
+        dismiss(animated: true)
     }
 
 }

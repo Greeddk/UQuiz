@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 import Kingfisher
 
 final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
@@ -22,21 +23,25 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
         image.tintColor = .systemGray
         return image
     }()
+    let gradientTitleBackView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
     let movieTitle = {
         let view = UILabel()
-        view.layer.backgroundColor = UIColor.white.cgColor
-        view.layer.opacity = 0.8
-        view.layer.cornerRadius = 4
         view.font = .systemFont(ofSize: 14)
+        view.textColor = .white
         return view
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setupGradient()
     }
     
     override func configureHierarchy() {
-        contentView.addSubviews([posterImage, addToPackageImage, movieTitle])
+        contentView.addSubviews([posterImage, addToPackageImage, gradientTitleBackView, movieTitle])
     }
     
     override func setConstraints() {
@@ -49,10 +54,28 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
             make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(10)
         }
         
+        gradientTitleBackView.snp.makeConstraints { make in
+            make.bottom.equalTo(posterImage.snp.bottom)
+            make.horizontalEdges.equalTo(posterImage)
+            make.height.equalTo(40)
+        }
+        
         movieTitle.snp.makeConstraints { make in
             make.bottom.equalTo(posterImage.snp.bottom).inset(4)
-            make.trailing.equalTo(posterImage.snp.trailing).inset(4)
-            make.leading.greaterThanOrEqualTo(posterImage.snp.leading).offset(4)
+            make.leading.equalTo(posterImage.snp.leading).offset(8)
+            make.trailing.greaterThanOrEqualTo(posterImage.snp.trailing).offset(-8)
+        }
+    }
+
+    private func setupGradient() {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradient.locations = [0.0, 1.0]
+        gradient.startPoint = CGPoint(x: 0.5, y: 1.0)
+        gradient.endPoint = CGPoint(x: 0.5, y: 0)
+        DispatchQueue.main.async {
+            gradient.frame = self.gradientTitleBackView.bounds
+            self.gradientTitleBackView.layer.addSublayer(gradient)
         }
     }
     
@@ -60,7 +83,7 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
         guard let poster = movieItem.poster else { return }
         let url = PosterURL.imageURL(detailURL: poster).endpoint
         posterImage.kf.setImage(with: url)
-        movieTitle.text = " " + movieItem.title + " "
+        movieTitle.text = movieItem.title
     }
     
     func fetchThumbnails(item: Poster) {

@@ -40,7 +40,7 @@ extension QuizListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizCardCollectionViewCell.identifier, for: indexPath) as! QuizCardCollectionViewCell
-        cell.title.text = "\(indexPath.item)"
+//        cell.title.text = "\(indexPath.item)"
         return cell
     }
     

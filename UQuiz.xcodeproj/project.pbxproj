@@ -322,8 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */,
-				42B7EC842BA1A06100AE0F52 /* QuizListViewModel.swift */,
 				42B7EC862BA1A12700AE0F52 /* QuizListView.swift */,
+				42B7EC842BA1A06100AE0F52 /* QuizListViewModel.swift */,
 				42B7EC8B2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift */,
 			);
 			path = QuizListView;

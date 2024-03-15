@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ProfileManagerViewModel {
+final class ProfileManagerViewModel {
     
-    let imageManager = ImageFileManager.shared
-    let udManager = UserDefaultsManager.shared
+    private let imageManager = ImageFileManager.shared
+    private let udManager = UserDefaultsManager.shared
     
     var inputUserProfileImage: Observable<UIImage?> = Observable(nil)
     var inputUserProfileSaveTrigger: Observable<Void?> = Observable(nil)
