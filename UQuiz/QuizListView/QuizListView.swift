@@ -41,5 +41,4 @@ class QuizListView: BaseView {
         return layout
     }
     
-    
 }

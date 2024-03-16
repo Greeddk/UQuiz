@@ -60,12 +60,12 @@ final class MakeMovieAreaQuizViewController: BaseViewController {
             if viewModel.outputQuizPackage.value.count == viewModel.currentIndex.value + 1 {
                 showTextFieldAlert(title: "이름을 정해주세요", message: "퀴즈의 이름을 입력해주세요!", placeHolder: "타이틀") { title in
                     self.viewModel.inputQuizTitle.value = title
+                    self.viewModel.inputSavePackageToRealmTrigger.value = ()
+                    let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
+                    let sceneDelegate = windowScene?.delegate as? SceneDelegate
+                    sceneDelegate?.window?.rootViewController = MainTabBarController()
+                    sceneDelegate?.window?.makeKeyAndVisible()
                 }
-                viewModel.inputSavePackageToRealmTrigger.value = ()
-                let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-                let sceneDelegate = windowScene?.delegate as? SceneDelegate
-                sceneDelegate?.window?.rootViewController = MainTabBarController()
-                sceneDelegate?.window?.makeKeyAndVisible()
             } else {
                 viewModel.inputIndex.value = viewModel.currentIndex.value + 1
                 fetchPoster()
