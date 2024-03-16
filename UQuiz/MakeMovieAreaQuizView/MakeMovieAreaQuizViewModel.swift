@@ -9,20 +9,28 @@ import Foundation
 
 final class MakeMovieAreaQuizViewModel {
     
+    private let quizRepository = PosterQuizPackageRepository()
+    private let makerRepository = MakerInfoRepository()
+    
     var inputQuizPackage: Observable<[Movie]> = Observable([])
     var inputIndex: Observable<Int> = Observable(0)
     var inputSelectedCellTrigger: Observable<Int> = Observable(0)
     var inputResetSelectedAreaTrigger: Observable<Void?> = Observable(nil)
     var inputSavePackageToRealmTrigger: Observable<Void?> = Observable(nil)
+    var inputQuizTitle: Observable<String> = Observable("영화 맞추기")
     
     var outputQuizPackage: Observable<[PosterQuiz]> = Observable([])
     var currentIndex: Observable<Int> = Observable(0)
     var outputSelectedCellList: Observable<[Int]> = Observable([])
     var alertTrigger: Observable<String> = Observable("")
     
-    let cellArea: [Int] = [-74, -73, -72, -71, -70, -38, -37, -36, -35, -34, -2, -1, 0, 1, 2, 34, 35, 36, 37, 38, 70, 71, 72, 73, 74]
+    private let cellArea: [Int] = [-74, -73, -72, -71, -70, -38, -37, -36, -35, -34, -2, -1, 0, 1, 2, 34, 35, 36, 37, 38, 70, 71, 72, 73, 74]
     
     init() {
+        transform()
+    }
+    
+    private func transform() {
         inputQuizPackage.bind { value in
             self.outputQuizPackage.value = self.changeMovieToQuiz(items: value)
         }
@@ -36,8 +44,13 @@ final class MakeMovieAreaQuizViewModel {
             self.selectArea(index: index)
         }
         inputSavePackageToRealmTrigger.noInitBind { _ in
-            <#code#>
+            self.saveQuiz()
         }
+    }
+    
+    private func saveQuiz() {
+        let maker = makerRepository.fetchMakerInfo()
+        quizRepository.createPackage(package: outputQuizPackage.value, title: inputQuizTitle.value, makerInfo: maker)
     }
     
     private func validateArea(index: Int) -> Bool {

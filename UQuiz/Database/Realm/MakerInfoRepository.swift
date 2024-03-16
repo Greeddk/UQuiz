@@ -12,8 +12,8 @@ final class MakerInfoRepository {
     
     private let realm = try! Realm()
     
-    func createProfile(nickname: String, profile: String) {
-        let data = RealmMakerInfo(nickname: nickname, profile: profile)
+    func createProfile(nickname: String, profile: String?) {
+        let data = RealmMakerInfo(nickname: nickname, profile: profile ?? "default")
         do {
             try realm.write {
                 realm.add(data)
@@ -29,7 +29,7 @@ final class MakerInfoRepository {
     }
     
     func updateMakerInfo(nickname: String?, profile: String?) {
-        var maker = fetchMakerInfo()
+        let maker = fetchMakerInfo()
         do {
             try realm.write {
                 maker.nickname = nickname ?? maker.nickname

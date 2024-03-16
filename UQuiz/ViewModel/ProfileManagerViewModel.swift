@@ -11,6 +11,7 @@ final class ProfileManagerViewModel {
     
     private let imageManager = ImageFileManager.shared
     private let udManager = UserDefaultsManager.shared
+    private let makerRepository = MakerInfoRepository()
     
     var inputUserProfileImage: Observable<UIImage?> = Observable(nil)
     var inputUserProfileSaveTrigger: Observable<Void?> = Observable(nil)
@@ -32,21 +33,29 @@ final class ProfileManagerViewModel {
             self.outputNickname.value = self.udManager.nickname
         }
     }
-    
+    // 상황에 따라서  makerinfo 저장
     private func profileImageSave() {
+
         let image = loadImage()
         udManager.nickname = inputUserNickname.value
-        guard let pickedImage = outputUserProfileImage.value else {
-            return
-        }
-        if image == nil {
+
+        if let pickedImage = outputUserProfileImage.value {
             imageManager.saveImageToDocument(image: pickedImage, filename: inputUserNickname.value + "profile")
+            udManager.profileImage = inputUserNickname.value + "profile"
+            handleProfileImageUpdate(profileImage: udManager.profileImage)
         } else {
-            removeImage()
-            imageManager.saveImageToDocument(image: pickedImage, filename: inputUserNickname.value + "profile")
+            handleProfileImageUpdate(profileImage: nil)
         }
-        udManager.profileImage = inputUserNickname.value
     }
+
+    private func handleProfileImageUpdate(profileImage: String?) {
+        if !udManager.userState {
+            makerRepository.createProfile(nickname: udManager.nickname, profile: profileImage)
+        } else {
+            makerRepository.updateMakerInfo(nickname: udManager.nickname, profile: profileImage)
+        }
+    }
+
     
     private func loadImage() -> UIImage? {
         imageManager.loadImageFromDocument(filename: udManager.profileImage + "profile")

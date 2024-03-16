@@ -9,7 +9,8 @@ import UIKit
 
 final class QuizListViewController: BaseViewController {
     
-    let mainView = QuizListView()
+    private let mainView = QuizListView()
+    private let viewModel = QuizListViewModel()
     
     override func loadView() {
         self.view = mainView
@@ -18,6 +19,7 @@ final class QuizListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        viewModel.inputFetchPackageListTrigger.value = ()
     }
     
     override func configureViewController() {
@@ -30,17 +32,17 @@ final class QuizListViewController: BaseViewController {
         navigationItem.title = "MainView"
     }
 
-
 }
 
 extension QuizListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        return viewModel.outputPackageList.value.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizCardCollectionViewCell.identifier, for: indexPath) as! QuizCardCollectionViewCell
-//        cell.title.text = "\(indexPath.item)"
+        let package = viewModel.outputPackageList.value[indexPath.item]
+        cell.setUI(package)
         return cell
     }
     

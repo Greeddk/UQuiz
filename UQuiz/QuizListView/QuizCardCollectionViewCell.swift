@@ -82,6 +82,13 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
     private func createBlurEffect() -> UIBlurEffect {
         return UIBlurEffect(style: .regular)
     }
+    
+    func setUI(_ package: RealmPosterQuizPackage) {
+        title.text = package.title
+        guard let detailURL = package.quizs.last?.poster else { return }
+        let url = PosterURL.thumbnailURL(detailURL: detailURL).endpoint
+        posterView.kf.setImage(with: url)
+    }
 }
 
 

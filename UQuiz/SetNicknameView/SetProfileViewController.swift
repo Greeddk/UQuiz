@@ -9,9 +9,9 @@ import UIKit
 
 final class SetProfileViewController: BaseViewController {
     
-    let mainView = SetProfileView()
-    let viewModel = SetProfileViewModel()
-    let imageViewModel = ProfileManagerViewModel()
+    private let mainView = SetProfileView()
+    private let viewModel = SetProfileViewModel()
+    private let imageViewModel = ProfileManagerViewModel()
     
     override func loadView() {
         self.view = mainView
@@ -56,7 +56,7 @@ final class SetProfileViewController: BaseViewController {
             guard let text = mainView.nicknameTextField.text else { return }
             imageViewModel.inputUserNickname.value = text
             imageViewModel.inputUserProfileSaveTrigger.value = ()
-            if !viewModel.udManager.userState {
+            if !UserDefaultsManager.shared.userState {
                 viewModel.inputUserStateChangeTrigger.value = ()
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate

@@ -13,7 +13,7 @@ final class PosterQuizPackageRepository {
     private let realm = try! Realm()
     
     private func changeModelToRealmObject(quiz: PosterQuiz) -> RealmPosterQuiz {
-        var tmpGenre = List<Int>()
+        let tmpGenre = List<Int>()
         quiz.genre?.forEach({
             tmpGenre.append($0)
         })
@@ -25,15 +25,23 @@ final class PosterQuizPackageRepository {
     }
     
     func createPackage(package: [PosterQuiz], title: String, makerInfo: RealmMakerInfo) {
-        var tmp = List<RealmPosterQuiz>()
+        let tmp = List<RealmPosterQuiz>()
         package.forEach {
             tmp.append(changeModelToRealmObject(quiz: $0))
         }
         let quizPackage = RealmPosterQuizPackage(title: title, quizs: tmp, maker: makerInfo)
+        do {
+            try realm.write {
+                realm.add(quizPackage)
+            }
+        } catch {
+            print("createpackage error")
+        }
     }
     
     func fetchPackages() -> [RealmPosterQuizPackage] {
-        Array(realm.objects(RealmPosterQuizPackage.self))
+        print(realm.configuration.fileURL)
+        return Array(realm.objects(RealmPosterQuizPackage.self))
     }
     
     func deletePackage(package: RealmPosterQuizPackage) {

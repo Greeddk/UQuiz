@@ -9,7 +9,7 @@ import Foundation
 
 final class SetProfileViewModel {
     
-    let udManager = UserDefaultsManager.shared
+    private let udManager = UserDefaultsManager.shared
     
     var inputUserStateChangeTrigger: Observable<Void?> = Observable(nil)
     var inputTextFieldChanged: Observable<String?> = Observable(nil)
