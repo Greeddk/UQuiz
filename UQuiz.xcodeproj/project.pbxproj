@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		42091DCC2BA2D64C006BA897 /* ImageFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DCB2BA2D64C006BA897 /* ImageFileManager.swift */; };
 		42091DCF2BA2E469006BA897 /* ProfileManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DCE2BA2E469006BA897 /* ProfileManagerViewModel.swift */; };
+		42091DD52BA579A5006BA897 /* RealmPosterQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DD42BA579A5006BA897 /* RealmPosterQuiz.swift */; };
+		42091DD92BA58D1E006BA897 /* MakerInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DD82BA58D1E006BA897 /* MakerInfoRepository.swift */; };
+		42091DDB2BA58DAF006BA897 /* PosterQuizPackageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DDA2BA58DAF006BA897 /* PosterQuizPackageRepository.swift */; };
 		42570E502B9983920042B338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E4F2B9983920042B338 /* AppDelegate.swift */; };
 		42570E522B9983920042B338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E512B9983920042B338 /* SceneDelegate.swift */; };
 		42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E532B9983920042B338 /* MovieSearchViewController.swift */; };
@@ -66,6 +69,9 @@
 /* Begin PBXFileReference section */
 		42091DCB2BA2D64C006BA897 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		42091DCE2BA2E469006BA897 /* ProfileManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManagerViewModel.swift; sourceTree = "<group>"; };
+		42091DD42BA579A5006BA897 /* RealmPosterQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPosterQuiz.swift; sourceTree = "<group>"; };
+		42091DD82BA58D1E006BA897 /* MakerInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerInfoRepository.swift; sourceTree = "<group>"; };
+		42091DDA2BA58DAF006BA897 /* PosterQuizPackageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterQuizPackageRepository.swift; sourceTree = "<group>"; };
 		42570E4C2B9983920042B338 /* UQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42570E4F2B9983920042B338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42570E512B9983920042B338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +154,24 @@
 				42091DCE2BA2E469006BA897 /* ProfileManagerViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		42091DD62BA58CDB006BA897 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC5C2B9F065200AE0F52 /* UserDefaultsManager.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		42091DD72BA58CE6006BA897 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				42091DD42BA579A5006BA897 /* RealmPosterQuiz.swift */,
+				42091DD82BA58D1E006BA897 /* MakerInfoRepository.swift */,
+				42091DDA2BA58DAF006BA897 /* PosterQuizPackageRepository.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		42570E432B9983920042B338 = {
@@ -258,7 +282,8 @@
 		42AD0D5F2B9AFC0B002B8A48 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				42B7EC5C2B9F065200AE0F52 /* UserDefaultsManager.swift */,
+				42091DD72BA58CE6006BA897 /* Realm */,
+				42091DD62BA58CDB006BA897 /* UserDefaults */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -459,6 +484,7 @@
 				42B7EC532B9EF46E00AE0F52 /* SetProfileViewController.swift in Sources */,
 				42AD0D6C2B9B09AD002B8A48 /* MovieSearchView.swift in Sources */,
 				42B7EC7D2BA02B8400AE0F52 /* PosterListViewModel.swift in Sources */,
+				42091DDB2BA58DAF006BA897 /* PosterQuizPackageRepository.swift in Sources */,
 				42091DCF2BA2E469006BA897 /* ProfileManagerViewModel.swift in Sources */,
 				42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */,
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
@@ -476,6 +502,7 @@
 				42AD0D612B9AFD0E002B8A48 /* MoviePackage.swift in Sources */,
 				42B7EC4C2B9ED58B00AE0F52 /* QuizListViewController.swift in Sources */,
 				42570E502B9983920042B338 /* AppDelegate.swift in Sources */,
+				42091DD92BA58D1E006BA897 /* MakerInfoRepository.swift in Sources */,
 				42B7EC5F2B9F06E500AE0F52 /* SetProfileViewModel.swift in Sources */,
 				42B7EC632B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift in Sources */,
 				42091DCC2BA2D64C006BA897 /* ImageFileManager.swift in Sources */,
@@ -490,6 +517,7 @@
 				42B7EC5B2B9EF82200AE0F52 /* RoundImageView.swift in Sources */,
 				42AD0D582B9AFB53002B8A48 /* BaseCollectionViewCell.swift in Sources */,
 				42B7EC4F2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift in Sources */,
+				42091DD52BA579A5006BA897 /* RealmPosterQuiz.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

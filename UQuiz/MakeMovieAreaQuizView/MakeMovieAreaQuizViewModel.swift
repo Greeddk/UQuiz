@@ -13,6 +13,7 @@ final class MakeMovieAreaQuizViewModel {
     var inputIndex: Observable<Int> = Observable(0)
     var inputSelectedCellTrigger: Observable<Int> = Observable(0)
     var inputResetSelectedAreaTrigger: Observable<Void?> = Observable(nil)
+    var inputSavePackageToRealmTrigger: Observable<Void?> = Observable(nil)
     
     var outputQuizPackage: Observable<[PosterQuiz]> = Observable([])
     var currentIndex: Observable<Int> = Observable(0)
@@ -33,6 +34,9 @@ final class MakeMovieAreaQuizViewModel {
         }
         inputSelectedCellTrigger.noInitBind { index in
             self.selectArea(index: index)
+        }
+        inputSavePackageToRealmTrigger.noInitBind { _ in
+            <#code#>
         }
     }
     
