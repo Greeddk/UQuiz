@@ -88,8 +88,6 @@ final class SolvePosterAreaQuizView: BaseView {
         guard let detailUrl = detailURL else { return }
         let url = PosterURL.imageURL(detailURL: detailUrl).endpoint
         posterView.kf.setImage(with: url)
-        posterView.layer.borderColor = UIColor.red.cgColor
-        posterView.layer.borderWidth = 2
         posterView.contentMode = .scaleToFill
     }
     

@@ -8,7 +8,7 @@
 import UIKit
 
 final class SolvePosterAreaQuizViewController: BaseViewController {
-
+    
     let mainView = SolvePosterAreaQuizView()
     let viewModel = SolvePosterAreaQuizViewModel()
     
@@ -17,7 +17,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
     override func configureViewController() {
@@ -32,7 +32,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     private func submitButtonClicked() {
         
     }
-
+    
 }
 
 extension SolvePosterAreaQuizViewController: UICollectionViewDataSource {
@@ -43,8 +43,14 @@ extension SolvePosterAreaQuizViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        let list = viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea
-        // TODO: 보이는 부분 안보이는 부분 설정
+        let selectedArea = Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea).flatMap { data in
+            data.area
+        }
+        if selectedArea.contains(indexPath.item) {
+            cell.backgroundColor = .clear
+        } else {
+            cell.backgroundColor = .black
+        }
         return cell
     }
     

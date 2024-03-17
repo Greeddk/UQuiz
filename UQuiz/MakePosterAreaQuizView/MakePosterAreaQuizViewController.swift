@@ -103,7 +103,6 @@ final class MakePosterAreaQuizViewController: BaseViewController {
     private func resetButtonClicked() {
         viewModel.outputQuizPackage.value[viewModel.currentIndex.value].numberOfselectArea = 0
         viewModel.inputResetSelectedAreaTrigger.value = ()
-//        resetCollectionView()
         fetchCollectionViewSelectedData()
     }
     
