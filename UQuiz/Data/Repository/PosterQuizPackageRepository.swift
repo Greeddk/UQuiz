@@ -33,11 +33,21 @@ final class PosterQuizPackageRepository {
         }
         let quizPackage = RealmPosterQuizPackage(title: title, quizs: tmp, maker: makerInfo)
         do {
-            try realm.write {
+            try realm.write { 
                 realm.add(quizPackage)
             }
         } catch {
             print("createpackage error")
+        }
+    }
+    
+    func updateQuizIsCorrect(_ quiz: RealmPosterQuiz, isCorrect: Bool) {
+        do {
+            try realm.write {
+                quiz.isCorrect = isCorrect
+            }
+        } catch {
+            print("update Quiz Error")
         }
     }
     

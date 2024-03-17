@@ -52,6 +52,7 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
         let vc = SolvePosterAreaQuizViewController()
         let list = Array(viewModel.outputPackageList.value[indexPath.item].quizs)
         vc.viewModel.outputQuizList.value = list
+        vc.info = viewModel.outputPackageList.value[indexPath.item].title
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }

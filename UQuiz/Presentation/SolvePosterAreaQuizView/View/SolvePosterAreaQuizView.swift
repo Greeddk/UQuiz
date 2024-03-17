@@ -76,12 +76,13 @@ final class SolvePosterAreaQuizView: BaseView {
     
     override func configureView() {
         collectionView.backgroundColor = .clear
-        submitButton.setTitle("test", for: .normal)
+        submitButton.setTitle("입력", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)
         answerTextField.placeholder = "정답 입력"
         answerTextField.layer.cornerRadius = 12
         answerTextField.layer.borderWidth = 1
         answerTextField.layer.borderColor = UIColor.black.cgColor
+        answerTextField.textAlignment = .center
     }
     
     func fetchPoster(detailURL: String?) {
@@ -94,6 +95,10 @@ final class SolvePosterAreaQuizView: BaseView {
     private func collectionViewLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         return layout
+    }
+    
+    func clearTextField() {
+        answerTextField.text = ""
     }
     
 }

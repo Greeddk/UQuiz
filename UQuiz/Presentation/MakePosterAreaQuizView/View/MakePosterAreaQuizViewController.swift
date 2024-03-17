@@ -19,7 +19,7 @@ final class MakePosterAreaQuizViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.alertTrigger.noInitBind { message in
-            self.showAlert(title: "주의!", message: message, okTitle: "확인")
+            self.showAlert(title: "주의!", message: message, okTitle: "확인") { }
         }
     }
     
@@ -44,7 +44,6 @@ final class MakePosterAreaQuizViewController: BaseViewController {
     private func fetchCollectionViewSelectedData() {
         resetCollectionView()
         let list =  viewModel.outputQuizPackage.value[viewModel.currentIndex.value].selectedArea
-        print(list)
         let flattenedList = list.flatMap { $0 }
         for index in flattenedList {
             let cell = mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
@@ -71,7 +70,7 @@ final class MakePosterAreaQuizViewController: BaseViewController {
                 fetchCollectionViewSelectedData()
             }
         } else {
-            showAlert(title: "더 선택해주세요!", message: "5곳의 영역을 선택해주세요", okTitle: "확인")
+            showAlert(title: "더 선택해주세요!", message: "5곳의 영역을 선택해주세요", okTitle: "확인") { }
         }
     }
     
@@ -82,7 +81,7 @@ final class MakePosterAreaQuizViewController: BaseViewController {
             fetchPoster()
             fetchCollectionViewSelectedData()
         } else {
-            showAlert(title: "이전 영화가 없습니다", message: "영역 선택 혹은 다음으로 넘어가주세요!", okTitle: "확인")
+            showAlert(title: "이전 영화가 없습니다", message: "영역 선택 혹은 다음으로 넘어가주세요!", okTitle: "확인") { }
         }
     }
     
