@@ -46,6 +46,7 @@ extension SolvePosterAreaQuizViewController: UICollectionViewDataSource {
         let selectedArea = Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea).flatMap { data in
             data.area
         }
+        //TODO: 차례대로 나타나게 하기
         if selectedArea.contains(indexPath.item) {
             cell.backgroundColor = .clear
         } else {

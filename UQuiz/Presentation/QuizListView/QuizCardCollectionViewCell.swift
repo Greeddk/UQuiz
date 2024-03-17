@@ -63,7 +63,6 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    //TODO: corner radius 적용
     override func configureView() {
         cardViewContainer.layer.shadowOffset = .init(width: 0, height: 0.5)
         cardViewContainer.layer.shadowOpacity = 0.7
@@ -145,7 +144,6 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
 //        }
 //    }
 //    
-//    //TODO: corner radius 적용
 //    override func configureView() {
 //        cardViewContainer.layer.shadowOffset = .init(width: 0, height: 0.5)
 //        cardViewContainer.layer.shadowOpacity = 0.7

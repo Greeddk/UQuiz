@@ -204,6 +204,125 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		42091DE52BA6FDDD006BA897 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC4E2B9EE69300AE0F52 /* MakePosterAreaQuizViewController.swift */,
+				42B7EC502B9EE77B00AE0F52 /* MakePosterAreaQuizView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		42091DE62BA6FDE2006BA897 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC7E2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		42091DE72BA6FDFE006BA897 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				42AD0D6D2B9B09E9002B8A48 /* MovieSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		42091DE82BA6FE04006BA897 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42AD0D6B2B9B09AD002B8A48 /* MovieSearchView.swift */,
+				42570E532B9983920042B338 /* MovieSearchViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		42091DE92BA6FE1C006BA897 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC7C2BA02B8400AE0F52 /* PosterListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		42091DEA2BA6FE22006BA897 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC7A2BA02AB800AE0F52 /* PosterListViewController.swift */,
+				42B7EC782BA0290B00AE0F52 /* PosterListView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		42091DEB2BA6FE3A006BA897 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC5E2B9F06E500AE0F52 /* SetProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		42091DEC2BA6FE3E006BA897 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC522B9EF46E00AE0F52 /* SetProfileViewController.swift */,
+				42B7EC542B9EF49C00AE0F52 /* SetProfileView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		42091DED2BA6FE4B006BA897 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC842BA1A06100AE0F52 /* QuizListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		42091DEE2BA6FE50006BA897 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC862BA1A12700AE0F52 /* QuizListView.swift */,
+				42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		42091DEF2BA6FF10006BA897 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				42B7EC592B9EF81700AE0F52 /* CustomView */,
+				42091DCD2BA2E413006BA897 /* ViewModel */,
+				42AD0D522B9AF97B002B8A48 /* BaseView */,
+				42AD0D862B9D9075002B8A48 /* TabBar */,
+				42B7EC4A2B9ED57D00AE0F52 /* QuizListView */,
+				42AD0D6A2B9B0925002B8A48 /* MovieSearchView */,
+				42091DDC2BA5E99B006BA897 /* SolvePosterAreaQuizView */,
+				42B7EC4D2B9EE67A00AE0F52 /* MakePosterAreaQuizView */,
+				42B7EC772BA028D700AE0F52 /* PosterListView */,
+				42B7EC472B9ED54200AE0F52 /* SettingView */,
+				42AD0D812B9C9A89002B8A48 /* SetNicknameView */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		42091DF02BA70074006BA897 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				42AD0D5E2B9AFC06002B8A48 /* Model */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		42091DF12BA7011E006BA897 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				42AD0D512B9AF977002B8A48 /* Extension */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		42570E432B9983920042B338 = {
 			isa = PBXGroup;
 			children = (
@@ -225,46 +344,36 @@
 			isa = PBXGroup;
 			children = (
 				42570E5D2B9983950042B338 /* Info.plist */,
-				42AD0D502B9AF959002B8A48 /* Resources */,
 				42AD0D7E2B9B1469002B8A48 /* plist */,
-				42AD0D4F2B9AF94C002B8A48 /* App */,
+				42AD0D4F2B9AF94C002B8A48 /* Application */,
+				42AD0D502B9AF959002B8A48 /* Resource */,
+				42091DF02BA70074006BA897 /* Domain */,
 				42AD0D5F2B9AFC0B002B8A48 /* Database */,
 				42091DCA2BA2D625006BA897 /* File */,
 				42AD0D6F2B9B0ADE002B8A48 /* Observable */,
-				42AD0D5E2B9AFC06002B8A48 /* Model */,
+				42091DEF2BA6FF10006BA897 /* Presentation */,
 				42AD0D5D2B9AFC00002B8A48 /* Network */,
-				42AD0D512B9AF977002B8A48 /* Extension */,
-				42AD0D522B9AF97B002B8A48 /* Base */,
-				42091DCD2BA2E413006BA897 /* ViewModel */,
-				42B7EC592B9EF81700AE0F52 /* CustomView */,
-				42AD0D862B9D9075002B8A48 /* TabBar */,
-				42AD0D812B9C9A89002B8A48 /* SetNicknameView */,
-				42B7EC4A2B9ED57D00AE0F52 /* QuizListView */,
-				42AD0D6A2B9B0925002B8A48 /* MovieSearchView */,
-				42B7EC4D2B9EE67A00AE0F52 /* MakePosterAreaQuizView */,
-				42091DDC2BA5E99B006BA897 /* SolvePosterAreaQuizView */,
-				42B7EC772BA028D700AE0F52 /* PosterListView */,
-				42B7EC472B9ED54200AE0F52 /* SettingView */,
+				42091DF12BA7011E006BA897 /* Util */,
 			);
 			path = UQuiz;
 			sourceTree = "<group>";
 		};
-		42AD0D4F2B9AF94C002B8A48 /* App */ = {
+		42AD0D4F2B9AF94C002B8A48 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				42570E4F2B9983920042B338 /* AppDelegate.swift */,
 				42570E512B9983920042B338 /* SceneDelegate.swift */,
 			);
-			path = App;
+			path = Application;
 			sourceTree = "<group>";
 		};
-		42AD0D502B9AF959002B8A48 /* Resources */ = {
+		42AD0D502B9AF959002B8A48 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
 				42570E5A2B9983950042B338 /* LaunchScreen.storyboard */,
 				42570E582B9983950042B338 /* Assets.xcassets */,
 			);
-			path = Resources;
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		42AD0D512B9AF977002B8A48 /* Extension */ = {
@@ -278,14 +387,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
-		42AD0D522B9AF97B002B8A48 /* Base */ = {
+		42AD0D522B9AF97B002B8A48 /* BaseView */ = {
 			isa = PBXGroup;
 			children = (
 				42AD0D532B9AFA33002B8A48 /* BaseViewController.swift */,
 				42AD0D552B9AFAD9002B8A48 /* BaseView.swift */,
 				42AD0D572B9AFB53002B8A48 /* BaseCollectionViewCell.swift */,
 			);
-			path = Base;
+			path = BaseView;
 			sourceTree = "<group>";
 		};
 		42AD0D5D2B9AFC00002B8A48 /* Network */ = {
@@ -321,9 +430,8 @@
 		42AD0D6A2B9B0925002B8A48 /* MovieSearchView */ = {
 			isa = PBXGroup;
 			children = (
-				42AD0D6D2B9B09E9002B8A48 /* MovieSearchViewModel.swift */,
-				42570E532B9983920042B338 /* MovieSearchViewController.swift */,
-				42AD0D6B2B9B09AD002B8A48 /* MovieSearchView.swift */,
+				42091DE82BA6FE04006BA897 /* View */,
+				42091DE72BA6FDFE006BA897 /* ViewModel */,
 				42AD0D842B9D8BC7002B8A48 /* MovieInfoCollectionViewCell.swift */,
 			);
 			path = MovieSearchView;
@@ -348,9 +456,8 @@
 		42AD0D812B9C9A89002B8A48 /* SetNicknameView */ = {
 			isa = PBXGroup;
 			children = (
-				42B7EC5E2B9F06E500AE0F52 /* SetProfileViewModel.swift */,
-				42B7EC522B9EF46E00AE0F52 /* SetProfileViewController.swift */,
-				42B7EC542B9EF49C00AE0F52 /* SetProfileView.swift */,
+				42091DEC2BA6FE3E006BA897 /* View */,
+				42091DEB2BA6FE3A006BA897 /* ViewModel */,
 			);
 			path = SetNicknameView;
 			sourceTree = "<group>";
@@ -376,9 +483,8 @@
 		42B7EC4A2B9ED57D00AE0F52 /* QuizListView */ = {
 			isa = PBXGroup;
 			children = (
-				42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */,
-				42B7EC862BA1A12700AE0F52 /* QuizListView.swift */,
-				42B7EC842BA1A06100AE0F52 /* QuizListViewModel.swift */,
+				42091DEE2BA6FE50006BA897 /* View */,
+				42091DED2BA6FE4B006BA897 /* ViewModel */,
 				42B7EC8B2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift */,
 			);
 			path = QuizListView;
@@ -387,9 +493,8 @@
 		42B7EC4D2B9EE67A00AE0F52 /* MakePosterAreaQuizView */ = {
 			isa = PBXGroup;
 			children = (
-				42B7EC4E2B9EE69300AE0F52 /* MakePosterAreaQuizViewController.swift */,
-				42B7EC502B9EE77B00AE0F52 /* MakePosterAreaQuizView.swift */,
-				42B7EC7E2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift */,
+				42091DE52BA6FDDD006BA897 /* View */,
+				42091DE62BA6FDE2006BA897 /* ViewModel */,
 			);
 			path = MakePosterAreaQuizView;
 			sourceTree = "<group>";
@@ -405,9 +510,8 @@
 		42B7EC772BA028D700AE0F52 /* PosterListView */ = {
 			isa = PBXGroup;
 			children = (
-				42B7EC7A2BA02AB800AE0F52 /* PosterListViewController.swift */,
-				42B7EC782BA0290B00AE0F52 /* PosterListView.swift */,
-				42B7EC7C2BA02B8400AE0F52 /* PosterListViewModel.swift */,
+				42091DEA2BA6FE22006BA897 /* View */,
+				42091DE92BA6FE1C006BA897 /* ViewModel */,
 			);
 			path = PosterListView;
 			sourceTree = "<group>";

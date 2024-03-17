@@ -39,7 +39,10 @@ final class SettingViewController: BaseViewController {
             if self.profileViewModel.outputUserProfileImage.value == nil {
                 cell.roundProfileImage.image = UIImage(systemName: "person")
             } else {
-                cell.roundProfileImage.image = self.profileViewModel.outputUserProfileImage.value
+                self.profileViewModel.outputUserProfileImage.bind { value in
+                    cell.roundProfileImage.image = value
+                }
+//                cell.roundProfileImage.image = self.profileViewModel.outputUserProfileImage.value
             }
             self.profileViewModel.outputNickname.bind { value in
                 cell.nicknameLabel.text = value
@@ -73,7 +76,7 @@ final class SettingViewController: BaseViewController {
     
 }
 
-extension SettingViewController: UICollectionViewDelegate{
+extension SettingViewController: UICollectionViewDelegate {
   
     
 }

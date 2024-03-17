@@ -33,7 +33,7 @@ final class ProfileManagerViewModel {
             self.outputNickname.value = self.udManager.nickname
         }
     }
-    // 상황에 따라서  makerinfo 저장
+    
     private func profileImageSave() {
 
         let image = loadImage()
