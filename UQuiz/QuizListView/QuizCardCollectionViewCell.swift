@@ -88,6 +88,7 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
         guard let detailURL = package.quizs.last?.poster else { return }
         let url = PosterURL.thumbnailURL(detailURL: detailURL).endpoint
         posterView.kf.setImage(with: url)
+        numberOfQuiz.text = "\(package.numberOfQuiz)"
     }
 }
 

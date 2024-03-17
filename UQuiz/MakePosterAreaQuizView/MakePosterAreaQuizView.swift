@@ -1,5 +1,5 @@
 //
-//  MakeMovieAreaQuizView.swift
+//  MakePosterAreaQuizView.swift
 //  UQuiz
 //
 //  Created by Greed on 3/11/24.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class MakeMovieAreaQuizView: BaseView {
+final class MakePosterAreaQuizView: BaseView {
     
     let posterView = UIImageView()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
@@ -18,19 +18,24 @@ final class MakeMovieAreaQuizView: BaseView {
     private var screenWidth: CGFloat = 0
     
     override func layoutSubviews() {
-        screenWidth = (self.frame.width - 40)
+        screenWidth = self.frame.width
+        var collectionViewWidth: CGFloat = 0
+        if screenWidth >= 410 {
+            collectionViewWidth = 400
+        } else {
+            collectionViewWidth = 350
+        }
         posterView.snp.updateConstraints { make in
-//            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
-            make.centerY.equalTo(self.safeAreaLayoutGuide).offset(-50)
+            make.centerY.equalTo(self.safeAreaLayoutGuide).offset(-30)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
-            make.width.equalTo(screenWidth)
-            make.height.equalTo(screenWidth * 1.5)
+            make.width.equalTo(collectionViewWidth)
+            make.height.equalTo(collectionViewWidth * 1.5)
         }
         collectionView.snp.updateConstraints { make in
             make.edges.equalTo(posterView)
         }
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            layout.itemSize = CGSize(width: screenWidth / 36, height: screenWidth / 36)
+            layout.itemSize = CGSize(width: collectionViewWidth / 50, height: collectionViewWidth / 50)
             layout.minimumLineSpacing = 0
             layout.minimumInteritemSpacing = 0
             layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -43,8 +48,7 @@ final class MakeMovieAreaQuizView: BaseView {
     
     override func setConstraints() {
         posterView.snp.makeConstraints { make in
-//            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
-            make.centerY.equalTo(self.safeAreaLayoutGuide).offset(-50)
+            make.centerY.equalTo(self.safeAreaLayoutGuide).offset(-30)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
             make.width.equalTo(360)
             make.height.equalTo(540)

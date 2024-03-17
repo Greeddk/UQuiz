@@ -24,7 +24,7 @@ final class MakeMovieAreaQuizViewModel {
     var outputSelectedCellList: Observable<[Int]> = Observable([])
     var alertTrigger: Observable<String> = Observable("")
     
-    private let cellArea: [Int] = [-74, -73, -72, -71, -70, -38, -37, -36, -35, -34, -2, -1, 0, 1, 2, 34, 35, 36, 37, 38, 70, 71, 72, 73, 74]
+    private let cellArea: [Int] = [-102, -101, -100, -99, -98, -52, -51, -50, -49, -48, -2, -1, 0, 1, 2, 48, 49, 50, 51, 52, 98, 99, 100, 101, 102]
     
     init() {
         transform()
@@ -38,7 +38,7 @@ final class MakeMovieAreaQuizViewModel {
             self.currentIndex.value = value
         }
         inputResetSelectedAreaTrigger.noInitBind { _ in
-            self.outputQuizPackage.value[self.currentIndex.value].selectedArea = self.resetSelectedList()
+            self.outputQuizPackage.value[self.currentIndex.value].selectedArea = []
         }
         inputSelectedCellTrigger.noInitBind { index in
             self.selectArea(index: index)
@@ -56,7 +56,8 @@ final class MakeMovieAreaQuizViewModel {
     private func validateArea(index: Int) -> Bool {
         
         for value in cellArea {
-            if outputQuizPackage.value[currentIndex.value].selectedArea[index + value] == 1 {
+            let flattedList = outputQuizPackage.value[currentIndex.value].selectedArea.flatMap { $0 }
+            if flattedList.contains(index + value) {
                 alertTrigger.value = "같은 영역을 선택할 수 없습니다!"
                 return false
             }
@@ -72,23 +73,25 @@ final class MakeMovieAreaQuizViewModel {
             return
         }
         
-        if index % 36 == 0 || index % 36 == 1 { //왼쪽
+        if index % 50 == 0 || index % 50 == 1 { //왼쪽
             print(index)
             alertTrigger.value = "조금 더 안쪽 부분을 선택해주세요!"
-        } else if (0...71).contains(index) { //위쪽
+        } else if (0...99).contains(index) { //위쪽
             print(index)
             alertTrigger.value = "조금 더 안쪽 부분을 선택해주세요!"
-        } else if index % 36 == 34 || index % 36 == 35 { //오른쪽
+        } else if index % 50 == 48 || index % 50 == 49 { //오른쪽
             print(index)
             alertTrigger.value = "조금 더 안쪽 부분을 선택해주세요!"
-        } else if (1871...1943).contains(index) { //아래쪽
+        } else if (3651...3749).contains(index) { //아래쪽
             print(index)
             alertTrigger.value = "조금 더 안쪽 부분을 선택해주세요!"
         } else {
             if validateArea(index: index) {
+                var tmp: [Int] = []
                 for value in cellArea {
-                    outputQuizPackage.value[currentIndex.value].selectedArea[index + value] = 1
+                    tmp.append(index + value)
                 }
+                outputQuizPackage.value[currentIndex.value].selectedArea.append(tmp)
                 outputQuizPackage.value[currentIndex.value].numberOfselectArea += 1
             }
         }
@@ -98,14 +101,6 @@ final class MakeMovieAreaQuizViewModel {
         var outputList: [PosterQuiz] = []
         items.forEach { movie in
             outputList.append(PosterQuiz(item: movie))
-        }
-        return outputList
-    }
-    
-    private func resetSelectedList() -> [Int] {
-        var outputList: [Int] = []
-        for _ in 0...1943 {
-            outputList.append(0)
         }
         return outputList
     }

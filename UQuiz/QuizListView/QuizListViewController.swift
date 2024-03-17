@@ -24,6 +24,7 @@ final class QuizListViewController: BaseViewController {
     
     override func configureViewController() {
         mainView.collectionView.dataSource = self
+        mainView.collectionView.delegate = self
         mainView.collectionView.register(QuizCardCollectionViewCell.self, forCellWithReuseIdentifier: QuizCardCollectionViewCell.identifier)
         mainView.collectionView.isPagingEnabled = true
     }
@@ -34,7 +35,8 @@ final class QuizListViewController: BaseViewController {
 
 }
 
-extension QuizListViewController: UICollectionViewDataSource {
+extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.outputPackageList.value.count
     }
@@ -46,4 +48,14 @@ extension QuizListViewController: UICollectionViewDataSource {
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = SolvePosterAreaQuizViewController()
+        let list = Array(viewModel.outputPackageList.value[indexPath.item].quizs)
+        vc.viewModel.outputQuizList.value = list
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
+
 }
+
+

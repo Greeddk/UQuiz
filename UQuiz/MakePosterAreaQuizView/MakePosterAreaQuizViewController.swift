@@ -1,5 +1,5 @@
 //
-//  MakeMovieAreaQuizViewController.swift
+//  MakePosterAreaQuizViewController.swift
 //  UQuiz
 //
 //  Created by Greed on 3/11/24.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class MakeMovieAreaQuizViewController: BaseViewController {
+final class MakePosterAreaQuizViewController: BaseViewController {
     
-    let mainView = MakeMovieAreaQuizView()
+    let mainView = MakePosterAreaQuizView()
     let viewModel = MakeMovieAreaQuizViewModel()
     
     override func loadView() {
@@ -42,14 +42,13 @@ final class MakeMovieAreaQuizViewController: BaseViewController {
     }
     
     private func fetchCollectionViewSelectedData() {
+        resetCollectionView()
         let list =  viewModel.outputQuizPackage.value[viewModel.currentIndex.value].selectedArea
-        for index in 0...list.count - 1 {
-            let cell = mainView.collectionView.cellForItem(at: NSIndexPath(item: index, section: 0) as IndexPath)
-            if list[index] == 0 {
-                cell?.backgroundColor = .black.withAlphaComponent(0.7)
-            } else {
-                cell?.backgroundColor = UIColor.white.withAlphaComponent(0.2)
-            }
+        print(list)
+        let flattenedList = list.flatMap { $0 }
+        for index in flattenedList {
+            let cell = mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+            cell?.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         }
     }
     
@@ -104,15 +103,23 @@ final class MakeMovieAreaQuizViewController: BaseViewController {
     private func resetButtonClicked() {
         viewModel.outputQuizPackage.value[viewModel.currentIndex.value].numberOfselectArea = 0
         viewModel.inputResetSelectedAreaTrigger.value = ()
+//        resetCollectionView()
         fetchCollectionViewSelectedData()
+    }
+    
+    private func resetCollectionView() {
+        for index in 0...3749 {
+            let cell = mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+            cell?.backgroundColor = .black.withAlphaComponent(0.7)
+        }
     }
     
 }
 
-extension MakeMovieAreaQuizViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension MakePosterAreaQuizViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1944
+        return 3750
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

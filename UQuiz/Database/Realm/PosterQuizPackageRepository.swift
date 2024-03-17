@@ -17,11 +17,13 @@ final class PosterQuizPackageRepository {
         quiz.genre?.forEach({
             tmpGenre.append($0)
         })
-        let tmpSelectedArea = List<Int>()
+        let tmpSelectedList = List<RealmSelectedArea>()
         quiz.selectedArea.forEach { value in
-            tmpSelectedArea.append(value)
+            let tmp = RealmSelectedArea()
+            tmp.area.append(objectsIn: value)
+            tmpSelectedList.append(tmp)
         }
-        return RealmPosterQuiz(id: quiz.id, genre: tmpGenre, poster: quiz.poster ?? "", title: quiz.title, selectedArea: tmpSelectedArea, numberOfselectArea: quiz.numberOfselectArea)
+        return RealmPosterQuiz(movieId: quiz.id, genre: tmpGenre, poster: quiz.poster ?? "", title: quiz.title, selectedArea: tmpSelectedList, numberOfselectArea: quiz.numberOfselectArea)
     }
     
     func createPackage(package: [PosterQuiz], title: String, makerInfo: RealmMakerInfo) {

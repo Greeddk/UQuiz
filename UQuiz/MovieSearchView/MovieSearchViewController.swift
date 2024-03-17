@@ -52,7 +52,7 @@ final class MovieSearchViewController: BaseViewController {
     
     @objc
     private func makeQuizPackageButtonClicked() {
-        let vc = MakeMovieAreaQuizViewController()
+        let vc = MakePosterAreaQuizViewController()
         let list = Array(viewModel.outputAddedToPackage.value)
         vc.viewModel.inputQuizPackage.value = list
         vc.hidesBottomBarWhenPushed = true

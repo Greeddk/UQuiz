@@ -12,6 +12,9 @@
 		42091DD52BA579A5006BA897 /* RealmPosterQuiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DD42BA579A5006BA897 /* RealmPosterQuiz.swift */; };
 		42091DD92BA58D1E006BA897 /* MakerInfoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DD82BA58D1E006BA897 /* MakerInfoRepository.swift */; };
 		42091DDB2BA58DAF006BA897 /* PosterQuizPackageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DDA2BA58DAF006BA897 /* PosterQuizPackageRepository.swift */; };
+		42091DE02BA5EAEE006BA897 /* SolvePosterAreaQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DDF2BA5EAEE006BA897 /* SolvePosterAreaQuizViewController.swift */; };
+		42091DE22BA5EB02006BA897 /* SolvePosterAreaQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DE12BA5EB02006BA897 /* SolvePosterAreaQuizViewModel.swift */; };
+		42091DE42BA5EB1F006BA897 /* SolvePosterAreaQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DE32BA5EB1F006BA897 /* SolvePosterAreaQuizView.swift */; };
 		42570E502B9983920042B338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E4F2B9983920042B338 /* AppDelegate.swift */; };
 		42570E522B9983920042B338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E512B9983920042B338 /* SceneDelegate.swift */; };
 		42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E532B9983920042B338 /* MovieSearchViewController.swift */; };
@@ -28,7 +31,6 @@
 		42AD0D582B9AFB53002B8A48 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D572B9AFB53002B8A48 /* BaseCollectionViewCell.swift */; };
 		42AD0D5A2B9AFB9F002B8A48 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D592B9AFB9F002B8A48 /* UIColor+Extension.swift */; };
 		42AD0D5C2B9AFBD6002B8A48 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D5B2B9AFBD6002B8A48 /* UIView+Extension.swift */; };
-		42AD0D612B9AFD0E002B8A48 /* MoviePackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D602B9AFD0E002B8A48 /* MoviePackage.swift */; };
 		42AD0D632B9AFDCB002B8A48 /* SearchMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D622B9AFDCB002B8A48 /* SearchMovie.swift */; };
 		42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D642B9B00AD002B8A48 /* TMDBAPIManager.swift */; };
 		42AD0D672B9B00EE002B8A48 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D662B9B00EE002B8A48 /* Router.swift */; };
@@ -44,8 +46,8 @@
 		42AD0D8A2B9DAF55002B8A48 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D892B9DAF55002B8A48 /* UIViewController+Extension.swift */; };
 		42B7EC492B9ED56A00AE0F52 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC482B9ED56A00AE0F52 /* SettingViewController.swift */; };
 		42B7EC4C2B9ED58B00AE0F52 /* QuizListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */; };
-		42B7EC4F2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC4E2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift */; };
-		42B7EC512B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC502B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift */; };
+		42B7EC4F2B9EE69300AE0F52 /* MakePosterAreaQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC4E2B9EE69300AE0F52 /* MakePosterAreaQuizViewController.swift */; };
+		42B7EC512B9EE77B00AE0F52 /* MakePosterAreaQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC502B9EE77B00AE0F52 /* MakePosterAreaQuizView.swift */; };
 		42B7EC532B9EF46E00AE0F52 /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC522B9EF46E00AE0F52 /* SetProfileViewController.swift */; };
 		42B7EC552B9EF49C00AE0F52 /* SetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC542B9EF49C00AE0F52 /* SetProfileView.swift */; };
 		42B7EC582B9EF7D100AE0F52 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 42B7EC572B9EF7D100AE0F52 /* TextFieldEffects */; };
@@ -72,6 +74,9 @@
 		42091DD42BA579A5006BA897 /* RealmPosterQuiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPosterQuiz.swift; sourceTree = "<group>"; };
 		42091DD82BA58D1E006BA897 /* MakerInfoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerInfoRepository.swift; sourceTree = "<group>"; };
 		42091DDA2BA58DAF006BA897 /* PosterQuizPackageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterQuizPackageRepository.swift; sourceTree = "<group>"; };
+		42091DDF2BA5EAEE006BA897 /* SolvePosterAreaQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvePosterAreaQuizViewController.swift; sourceTree = "<group>"; };
+		42091DE12BA5EB02006BA897 /* SolvePosterAreaQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvePosterAreaQuizViewModel.swift; sourceTree = "<group>"; };
+		42091DE32BA5EB1F006BA897 /* SolvePosterAreaQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolvePosterAreaQuizView.swift; sourceTree = "<group>"; };
 		42570E4C2B9983920042B338 /* UQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42570E4F2B9983920042B338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42570E512B9983920042B338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,7 +90,6 @@
 		42AD0D572B9AFB53002B8A48 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		42AD0D592B9AFB9F002B8A48 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		42AD0D5B2B9AFBD6002B8A48 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		42AD0D602B9AFD0E002B8A48 /* MoviePackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePackage.swift; sourceTree = "<group>"; };
 		42AD0D622B9AFDCB002B8A48 /* SearchMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovie.swift; sourceTree = "<group>"; };
 		42AD0D642B9B00AD002B8A48 /* TMDBAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPIManager.swift; sourceTree = "<group>"; };
 		42AD0D662B9B00EE002B8A48 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -102,8 +106,8 @@
 		42AD0D892B9DAF55002B8A48 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		42B7EC482B9ED56A00AE0F52 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		42B7EC4B2B9ED58B00AE0F52 /* QuizListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListViewController.swift; sourceTree = "<group>"; };
-		42B7EC4E2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMovieAreaQuizViewController.swift; sourceTree = "<group>"; };
-		42B7EC502B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeMovieAreaQuizView.swift; sourceTree = "<group>"; };
+		42B7EC4E2B9EE69300AE0F52 /* MakePosterAreaQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePosterAreaQuizViewController.swift; sourceTree = "<group>"; };
+		42B7EC502B9EE77B00AE0F52 /* MakePosterAreaQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakePosterAreaQuizView.swift; sourceTree = "<group>"; };
 		42B7EC522B9EF46E00AE0F52 /* SetProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewController.swift; sourceTree = "<group>"; };
 		42B7EC542B9EF49C00AE0F52 /* SetProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileView.swift; sourceTree = "<group>"; };
 		42B7EC5A2B9EF82200AE0F52 /* RoundImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundImageView.swift; sourceTree = "<group>"; };
@@ -174,6 +178,32 @@
 			path = Realm;
 			sourceTree = "<group>";
 		};
+		42091DDC2BA5E99B006BA897 /* SolvePosterAreaQuizView */ = {
+			isa = PBXGroup;
+			children = (
+				42091DDE2BA5EA7B006BA897 /* View */,
+				42091DDD2BA5EA74006BA897 /* ViewModel */,
+			);
+			path = SolvePosterAreaQuizView;
+			sourceTree = "<group>";
+		};
+		42091DDD2BA5EA74006BA897 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				42091DE12BA5EB02006BA897 /* SolvePosterAreaQuizViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		42091DDE2BA5EA7B006BA897 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				42091DDF2BA5EAEE006BA897 /* SolvePosterAreaQuizViewController.swift */,
+				42091DE32BA5EB1F006BA897 /* SolvePosterAreaQuizView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		42570E432B9983920042B338 = {
 			isa = PBXGroup;
 			children = (
@@ -210,8 +240,9 @@
 				42AD0D862B9D9075002B8A48 /* TabBar */,
 				42AD0D812B9C9A89002B8A48 /* SetNicknameView */,
 				42B7EC4A2B9ED57D00AE0F52 /* QuizListView */,
-				42AD0D6A2B9B0925002B8A48 /* MovieSearch */,
-				42B7EC4D2B9EE67A00AE0F52 /* MakeMovieAreaQuizView */,
+				42AD0D6A2B9B0925002B8A48 /* MovieSearchView */,
+				42B7EC4D2B9EE67A00AE0F52 /* MakePosterAreaQuizView */,
+				42091DDC2BA5E99B006BA897 /* SolvePosterAreaQuizView */,
 				42B7EC772BA028D700AE0F52 /* PosterListView */,
 				42B7EC472B9ED54200AE0F52 /* SettingView */,
 			);
@@ -271,7 +302,6 @@
 		42AD0D5E2B9AFC06002B8A48 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				42AD0D602B9AFD0E002B8A48 /* MoviePackage.swift */,
 				42AD0D622B9AFDCB002B8A48 /* SearchMovie.swift */,
 				42B7EC712BA0251700AE0F52 /* Poster.swift */,
 				42B7EC822BA178FF00AE0F52 /* PosterQuiz.swift */,
@@ -288,15 +318,15 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
-		42AD0D6A2B9B0925002B8A48 /* MovieSearch */ = {
+		42AD0D6A2B9B0925002B8A48 /* MovieSearchView */ = {
 			isa = PBXGroup;
 			children = (
+				42AD0D6D2B9B09E9002B8A48 /* MovieSearchViewModel.swift */,
 				42570E532B9983920042B338 /* MovieSearchViewController.swift */,
 				42AD0D6B2B9B09AD002B8A48 /* MovieSearchView.swift */,
-				42AD0D6D2B9B09E9002B8A48 /* MovieSearchViewModel.swift */,
 				42AD0D842B9D8BC7002B8A48 /* MovieInfoCollectionViewCell.swift */,
 			);
-			path = MovieSearch;
+			path = MovieSearchView;
 			sourceTree = "<group>";
 		};
 		42AD0D6F2B9B0ADE002B8A48 /* Observable */ = {
@@ -318,9 +348,9 @@
 		42AD0D812B9C9A89002B8A48 /* SetNicknameView */ = {
 			isa = PBXGroup;
 			children = (
+				42B7EC5E2B9F06E500AE0F52 /* SetProfileViewModel.swift */,
 				42B7EC522B9EF46E00AE0F52 /* SetProfileViewController.swift */,
 				42B7EC542B9EF49C00AE0F52 /* SetProfileView.swift */,
-				42B7EC5E2B9F06E500AE0F52 /* SetProfileViewModel.swift */,
 			);
 			path = SetNicknameView;
 			sourceTree = "<group>";
@@ -354,14 +384,14 @@
 			path = QuizListView;
 			sourceTree = "<group>";
 		};
-		42B7EC4D2B9EE67A00AE0F52 /* MakeMovieAreaQuizView */ = {
+		42B7EC4D2B9EE67A00AE0F52 /* MakePosterAreaQuizView */ = {
 			isa = PBXGroup;
 			children = (
-				42B7EC4E2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift */,
-				42B7EC502B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift */,
+				42B7EC4E2B9EE69300AE0F52 /* MakePosterAreaQuizViewController.swift */,
+				42B7EC502B9EE77B00AE0F52 /* MakePosterAreaQuizView.swift */,
 				42B7EC7E2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift */,
 			);
-			path = MakeMovieAreaQuizView;
+			path = MakePosterAreaQuizView;
 			sourceTree = "<group>";
 		};
 		42B7EC592B9EF81700AE0F52 /* CustomView */ = {
@@ -489,17 +519,18 @@
 				42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */,
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
 				42AD0D632B9AFDCB002B8A48 /* SearchMovie.swift in Sources */,
+				42091DE02BA5EAEE006BA897 /* SolvePosterAreaQuizViewController.swift in Sources */,
 				42AD0D5C2B9AFBD6002B8A48 /* UIView+Extension.swift in Sources */,
 				42B7EC722BA0251700AE0F52 /* Poster.swift in Sources */,
 				42B7EC8C2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift in Sources */,
 				42AD0D8A2B9DAF55002B8A48 /* UIViewController+Extension.swift in Sources */,
 				42AD0D7D2B9B132D002B8A48 /* String+Extension.swift in Sources */,
-				42B7EC512B9EE77B00AE0F52 /* MakeMovieAreaQuizView.swift in Sources */,
+				42B7EC512B9EE77B00AE0F52 /* MakePosterAreaQuizView.swift in Sources */,
 				42AD0D672B9B00EE002B8A48 /* Router.swift in Sources */,
 				42AD0D542B9AFA33002B8A48 /* BaseViewController.swift in Sources */,
 				42AD0D562B9AFAD9002B8A48 /* BaseView.swift in Sources */,
+				42091DE22BA5EB02006BA897 /* SolvePosterAreaQuizViewModel.swift in Sources */,
 				42B7EC7F2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift in Sources */,
-				42AD0D612B9AFD0E002B8A48 /* MoviePackage.swift in Sources */,
 				42B7EC4C2B9ED58B00AE0F52 /* QuizListViewController.swift in Sources */,
 				42570E502B9983920042B338 /* AppDelegate.swift in Sources */,
 				42091DD92BA58D1E006BA897 /* MakerInfoRepository.swift in Sources */,
@@ -514,9 +545,10 @@
 				42B7EC792BA0290B00AE0F52 /* PosterListView.swift in Sources */,
 				42AD0D692B9B010F002B8A48 /* APIKey.swift in Sources */,
 				42B7EC832BA178FF00AE0F52 /* PosterQuiz.swift in Sources */,
+				42091DE42BA5EB1F006BA897 /* SolvePosterAreaQuizView.swift in Sources */,
 				42B7EC5B2B9EF82200AE0F52 /* RoundImageView.swift in Sources */,
 				42AD0D582B9AFB53002B8A48 /* BaseCollectionViewCell.swift in Sources */,
-				42B7EC4F2B9EE69300AE0F52 /* MakeMovieAreaQuizViewController.swift in Sources */,
+				42B7EC4F2B9EE69300AE0F52 /* MakePosterAreaQuizViewController.swift in Sources */,
 				42091DD52BA579A5006BA897 /* RealmPosterQuiz.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

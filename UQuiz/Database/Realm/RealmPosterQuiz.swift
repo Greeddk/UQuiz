@@ -13,6 +13,9 @@ final class RealmPosterQuizPackage: Object {
     @Persisted var title: String
     @Persisted var quizs: List<RealmPosterQuiz>
     @Persisted var makerInfo: RealmMakerInfo?
+    var numberOfQuiz: Int {
+        self.quizs.count
+    }
     
     convenience init(title: String, quizs: List<RealmPosterQuiz>, maker: RealmMakerInfo) {
         self.init()
@@ -24,17 +27,18 @@ final class RealmPosterQuizPackage: Object {
 }
 
 final class RealmPosterQuiz: Object {
-    @Persisted(primaryKey: true) var id: Int
+    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted var movieId: Int
     @Persisted var genre: List<Int>
     @Persisted var poster: String
     @Persisted var title: String
-    @Persisted var selectedArea: List<Int>
+    @Persisted var selectedArea: List<RealmSelectedArea>
     @Persisted var numberOfselectArea: Int
     @Persisted var isCorrect: Bool
     
-    convenience init(id: Int, genre: List<Int>, poster: String, title: String, selectedArea: List<Int>, numberOfselectArea: Int) {
+    convenience init(movieId: Int, genre: List<Int>, poster: String, title: String, selectedArea: List<RealmSelectedArea>, numberOfselectArea: Int) {
         self.init()
-        self.id = id
+        self.movieId = movieId
         self.genre = genre
         self.poster = poster
         self.title = title
@@ -43,6 +47,10 @@ final class RealmPosterQuiz: Object {
         self.isCorrect = false
     }
 
+}
+
+final class RealmSelectedArea: EmbeddedObject {
+    @Persisted var area: List<Int>
 }
 
 final class RealmMakerInfo: Object {
