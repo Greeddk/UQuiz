@@ -168,14 +168,13 @@
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
-		42091DD72BA58CE6006BA897 /* Realm */ = {
+		42091DD72BA58CE6006BA897 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				42091DD42BA579A5006BA897 /* RealmPosterQuiz.swift */,
 				42091DD82BA58D1E006BA897 /* MakerInfoRepository.swift */,
 				42091DDA2BA58DAF006BA897 /* PosterQuizPackageRepository.swift */,
 			);
-			path = Realm;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		42091DDC2BA5E99B006BA897 /* SolvePosterAreaQuizView */ = {
@@ -292,9 +291,7 @@
 		42091DEF2BA6FF10006BA897 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				42B7EC592B9EF81700AE0F52 /* CustomView */,
-				42091DCD2BA2E413006BA897 /* ViewModel */,
-				42AD0D522B9AF97B002B8A48 /* BaseView */,
+				42091DF22BA70225006BA897 /* Common */,
 				42AD0D862B9D9075002B8A48 /* TabBar */,
 				42B7EC4A2B9ED57D00AE0F52 /* QuizListView */,
 				42AD0D6A2B9B0925002B8A48 /* MovieSearchView */,
@@ -318,9 +315,29 @@
 		42091DF12BA7011E006BA897 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				42091DCA2BA2D625006BA897 /* File */,
+				42091DD62BA58CDB006BA897 /* UserDefaults */,
 				42AD0D512B9AF977002B8A48 /* Extension */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		42091DF22BA70225006BA897 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				42091DCD2BA2E413006BA897 /* ViewModel */,
+				42B7EC592B9EF81700AE0F52 /* CustomView */,
+				42AD0D522B9AF97B002B8A48 /* BaseView */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		42091DF32BA70247006BA897 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42091DD42BA579A5006BA897 /* RealmPosterQuiz.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		42570E432B9983920042B338 = {
@@ -348,8 +365,7 @@
 				42AD0D4F2B9AF94C002B8A48 /* Application */,
 				42AD0D502B9AF959002B8A48 /* Resource */,
 				42091DF02BA70074006BA897 /* Domain */,
-				42AD0D5F2B9AFC0B002B8A48 /* Database */,
-				42091DCA2BA2D625006BA897 /* File */,
+				42AD0D5F2B9AFC0B002B8A48 /* Data */,
 				42AD0D6F2B9B0ADE002B8A48 /* Observable */,
 				42091DEF2BA6FF10006BA897 /* Presentation */,
 				42AD0D5D2B9AFC00002B8A48 /* Network */,
@@ -418,13 +434,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		42AD0D5F2B9AFC0B002B8A48 /* Database */ = {
+		42AD0D5F2B9AFC0B002B8A48 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				42091DD72BA58CE6006BA897 /* Realm */,
-				42091DD62BA58CDB006BA897 /* UserDefaults */,
+				42091DF32BA70247006BA897 /* Model */,
+				42091DD72BA58CE6006BA897 /* Repository */,
 			);
-			path = Database;
+			path = Data;
 			sourceTree = "<group>";
 		};
 		42AD0D6A2B9B0925002B8A48 /* MovieSearchView */ = {
