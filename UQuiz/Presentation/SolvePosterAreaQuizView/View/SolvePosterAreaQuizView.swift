@@ -11,6 +11,8 @@ import Kingfisher
 
 final class SolvePosterAreaQuizView: BaseView {
     
+    let timerBackView = UIView()
+    let timeLimitBar = UIProgressView(progressViewStyle: .default)
     let posterView = UIImageView()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     let answerTextField = UITextField()
@@ -27,7 +29,7 @@ final class SolvePosterAreaQuizView: BaseView {
             collectionViewWidth = 350
         }
         posterView.snp.updateConstraints { make in
-            make.centerY.equalTo(self.safeAreaLayoutGuide).offset(-30)
+            make.centerY.equalTo(self.safeAreaLayoutGuide).offset(-10)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
             make.width.equalTo(collectionViewWidth)
             make.height.equalTo(collectionViewWidth * 1.5)
@@ -44,12 +46,22 @@ final class SolvePosterAreaQuizView: BaseView {
     }
     
     override func configureHierarchy() {
-        addSubviews([posterView, collectionView, answerTextField, submitButton])
+        addSubviews([timerBackView, timeLimitBar, posterView, collectionView, answerTextField, submitButton])
     }
     
     override func setConstraints() {
+        timerBackView.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(50)
+            make.height.equalTo(25)
+        }
+        
+        timeLimitBar.snp.makeConstraints { make in
+            make.edges.equalTo(timerBackView).inset(4)
+        }
+       
         posterView.snp.makeConstraints { make in
-            make.centerY.equalTo(self.safeAreaLayoutGuide).offset(-30)
+            make.centerY.equalTo(self.safeAreaLayoutGuide).offset(-10)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
             make.width.equalTo(360)
             make.height.equalTo(540)
@@ -60,7 +72,7 @@ final class SolvePosterAreaQuizView: BaseView {
         }
         
         answerTextField.snp.makeConstraints { make in
-            make.top.equalTo(collectionView.snp.bottom).offset(20)
+            make.top.equalTo(collectionView.snp.bottom).offset(4)
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(30)
             make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-70)
             make.height.equalTo(40)
@@ -75,6 +87,13 @@ final class SolvePosterAreaQuizView: BaseView {
     }
     
     override func configureView() {
+        timerBackView.layer.cornerRadius = 8
+        timerBackView.layer.borderColor = UIColor.purple.cgColor
+        timerBackView.layer.borderWidth = 1
+        timeLimitBar.layer.cornerRadius = 8
+        timeLimitBar.clipsToBounds = true
+        timeLimitBar.progressTintColor = .systemBlue
+        timeLimitBar.trackTintColor = .clear
         collectionView.backgroundColor = .clear
         submitButton.setTitle("입력", for: .normal)
         submitButton.setTitleColor(.black, for: .normal)

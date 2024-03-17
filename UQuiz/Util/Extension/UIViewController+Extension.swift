@@ -57,11 +57,9 @@ extension UIViewController {
     }
     
     @objc func keyboardWillShow(_ sender: Notification) {
-        // 현재 동작하고 있는 이벤트에서 키보드의 frame을 받아옴
         guard let keyboardFrame = sender.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
         let keyboardHeight = keyboardFrame.cgRectValue.height
 
-        // ⭐️ 이 조건을 넣어주지 않으면, 각각의 텍스트필드마다 keyboardWillShow 동작이 실행되므로 아래와 같은 현상이 발생
         if view.frame.origin.y == 0 {
             view.frame.origin.y -= keyboardHeight
         }

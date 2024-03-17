@@ -12,6 +12,8 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     let mainView = SolvePosterAreaQuizView()
     let viewModel = SolvePosterAreaQuizViewModel()
     var info: String = ""
+    var currentPercentage: Float = 0
+    var timer = Timer()
     
     override func loadView() {
         self.view = mainView
@@ -32,6 +34,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
             vc.viewModel.inputData.value = self.viewModel.outputQuizList.value
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        setTimer()
     }
     
     override func configureViewController() {
@@ -42,6 +45,44 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         let detailURL = viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].poster
         mainView.fetchPoster(detailURL: detailURL)
         navigationItem.title = info
+    }
+    
+    private func setTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
+            self.currentPercentage += 1/2000
+            self.mainView.timeLimitBar.setProgress(self.currentPercentage, animated: true)
+            if self.currentPercentage >= 1 {
+                //다 끝났을 때 설정
+                self.timer.invalidate()
+                self.showAlert(title: "시간초과", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
+                    self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
+                    self.mainView.collectionView.isHidden = true
+                    self.resetTimeLimitBar()
+                    self.goNext()
+                }
+            }
+        }
+    }
+    
+    private func resetTimeLimitBar() {
+        DispatchQueue.main.async {
+            self.currentPercentage = 0
+            UIView.animate(withDuration: 5.5, animations: {
+                self.mainView.timeLimitBar.setProgress(self.currentPercentage, animated: true)
+            })
+        }
+    }
+    
+    private func goNext() {
+        let timeDelay: DispatchTimeInterval = .seconds(5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay) {
+            self.viewModel.inputNextIndexTrigger.value = ()
+            self.fetchPoster()
+            self.fetchCollectionViewSelectedArea()
+            if !self.viewModel.outputGameOverStatus.value {
+                self.setTimer()
+            }
+        }
     }
     
     @objc
@@ -58,7 +99,12 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
                 self.fetchCollectionViewSelectedArea()
             }
         } else {
-            showAlert(title: "오답", message: "다시 한번 생각해보세요", okTitle: "확인") { }
+            //            showAlert(title: "오답", message: "다시 한번 생각해보세요", okTitle: "확인") { }
+            mainView.posterView.shake()
+            mainView.collectionView.shake()
+            mainView.answerTextField.shake()
+            mainView.submitButton.shake()
+            self.mainView.clearTextField()
         }
     }
     
@@ -68,6 +114,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     }
     
     private func fetchCollectionViewSelectedArea() {
+        mainView.collectionView.isHidden = false
         resetCollectionView()
         let list =  Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea)
         let flattenedList = list.flatMap { $0.area }
@@ -117,5 +164,5 @@ extension SolvePosterAreaQuizViewController: UITextFieldDelegate {
         viewModel.inputAnswerSubmit.value = mainView.answerTextField.text
         return true
     }
-
+    
 }
