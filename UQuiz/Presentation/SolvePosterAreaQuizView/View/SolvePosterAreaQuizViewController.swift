@@ -79,6 +79,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
             self.viewModel.inputNextIndexTrigger.value = ()
             self.fetchPoster()
             self.fetchCollectionViewSelectedArea()
+            self.mainView.clearTextField()
             if !self.viewModel.outputGameOverStatus.value {
                 self.setTimer()
             }
@@ -92,14 +93,20 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     
     private func judgeValue(value: Bool) {
         if value {
-            showAlert(title: "정답", message: "확인을 누르면 다음으로 이동합니다.", okTitle: "확인") {
-                self.viewModel.inputNextIndexTrigger.value = ()
-                self.mainView.clearTextField()
-                self.fetchPoster()
-                self.fetchCollectionViewSelectedArea()
+            self.timer.invalidate()
+            self.showAlert(title: "정답", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
+                self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
+                self.mainView.collectionView.isHidden = true
+                self.resetTimeLimitBar()
+                self.goNext()
             }
+//            showAlert(title: "정답", message: "확인을 누르면 다음으로 이동합니다.", okTitle: "확인") {
+//                self.viewModel.inputNextIndexTrigger.value = ()
+//                self.mainView.clearTextField()
+//                self.fetchPoster()
+//                self.fetchCollectionViewSelectedArea()
+//            }
         } else {
-            //            showAlert(title: "오답", message: "다시 한번 생각해보세요", okTitle: "확인") { }
             mainView.posterView.shake()
             mainView.collectionView.shake()
             mainView.answerTextField.shake()
