@@ -20,10 +20,6 @@ struct PosterQuiz {
         self.genre = item.genre
         self.poster = item.poster
         self.title = item.title
-//        var tmp: [[Int]] = []
-//        for _ in 0...1943 {
-//            tmp.append(0)
-//        }
         self.selectedArea = []
         self.numberOfselectArea = 0
     }

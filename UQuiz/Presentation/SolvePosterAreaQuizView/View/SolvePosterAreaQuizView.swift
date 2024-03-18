@@ -51,7 +51,8 @@ final class SolvePosterAreaQuizView: BaseView {
     
     override func setConstraints() {
         timerBackView.snp.makeConstraints { make in
-            make.top.equalTo(self.safeAreaLayoutGuide)
+            make.top.lessThanOrEqualTo(self.safeAreaLayoutGuide).offset(20)
+            make.bottom.lessThanOrEqualTo(posterView.snp.top).offset(-10)
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(50)
             make.height.equalTo(25)
         }
@@ -72,8 +73,8 @@ final class SolvePosterAreaQuizView: BaseView {
         }
         
         answerTextField.snp.makeConstraints { make in
-            make.top.equalTo(collectionView.snp.bottom).offset(4)
-            make.leading.equalTo(self.safeAreaLayoutGuide).offset(30)
+            make.top.lessThanOrEqualTo(collectionView.snp.bottom).offset(10)
+            make.leading.equalTo(self.safeAreaLayoutGuide).offset(40)
             make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-70)
             make.height.equalTo(40)
         }

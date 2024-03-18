@@ -29,7 +29,6 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
             self.showAlert(title: "", message: text, okTitle: "확인") { }
         }
         viewModel.outputGameOverStatus.noInitBind { value in
-            //TODO: quizResultview로 이동
             let vc = QuizResultViewController()
             vc.viewModel.inputData.value = self.viewModel.outputQuizList.value
             self.navigationController?.pushViewController(vc, animated: true)
@@ -52,7 +51,6 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
             self.currentPercentage += 1/2000
             self.mainView.timeLimitBar.setProgress(self.currentPercentage, animated: true)
             if self.currentPercentage >= 1 {
-                //다 끝났을 때 설정
                 self.timer.invalidate()
                 self.showAlert(title: "시간초과", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
                     self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
@@ -100,12 +98,6 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
                 self.resetTimeLimitBar()
                 self.goNext()
             }
-//            showAlert(title: "정답", message: "확인을 누르면 다음으로 이동합니다.", okTitle: "확인") {
-//                self.viewModel.inputNextIndexTrigger.value = ()
-//                self.mainView.clearTextField()
-//                self.fetchPoster()
-//                self.fetchCollectionViewSelectedArea()
-//            }
         } else {
             mainView.posterView.shake()
             mainView.collectionView.shake()
