@@ -44,7 +44,11 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizCardCollectionViewCell.identifier, for: indexPath) as! QuizCardCollectionViewCell
         let package = viewModel.outputPackageList.value[indexPath.item]
-        cell.setUI(package)
+        viewModel.inputIndex.value = indexPath.item
+        viewModel.outputProfileImage.bind { image in
+            cell.setUI(package, profileImage: (image ?? UIImage(systemName: "person"))!)
+        }
+        cell.setIndexLabel(index: "\(indexPath.item + 1) / \(viewModel.outputPackageList.value.count)")
         return cell
     }
     

@@ -35,7 +35,7 @@ final class ProfileManagerViewModel {
     }
     
     private func profileImageSave() {
-
+        // TODO: 이미지 유무에 따른 로직 처리
         let image = loadImage()
         udManager.nickname = inputUserNickname.value
 

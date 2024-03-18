@@ -45,7 +45,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         mainView.fetchPoster(detailURL: detailURL)
         navigationItem.title = info
     }
-    
+    // TODO: 뒤로 가기 했을 때 타이머 끄기
     private func setTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             self.currentPercentage += 1/2000
