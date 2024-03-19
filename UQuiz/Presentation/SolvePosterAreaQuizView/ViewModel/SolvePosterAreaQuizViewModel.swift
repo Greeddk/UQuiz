@@ -48,7 +48,6 @@ final class SolvePosterAreaQuizViewModel {
     private func setTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             self.outputCurrentPercentage.value += 1/2000
-            print(self.outputCurrentPercentage.value)
             if self.outputCurrentPercentage.value >= 1 {
                 self.inputInvalidTimerTrigger.value = ()
                 self.outputTimeOverStatus.value = ()

@@ -71,6 +71,7 @@ extension SolvePosterAreaQuizViewController {
             self.resetTimeLimitBar()
             self.goNext()
         }
+        createImojiRainParticles()
     }
     
     private func resetTimeLimitBar() {
@@ -110,6 +111,7 @@ extension SolvePosterAreaQuizViewController {
                 self.resetTimeLimitBar()
                 self.goNext()
             }
+            createCongratsParticles()
         } else {
             mainView.posterView.shake()
             mainView.collectionView.shake()
@@ -179,3 +181,77 @@ extension SolvePosterAreaQuizViewController: UITextFieldDelegate {
     }
     
 }
+
+// MARK: 정답 / 오답 애니메이션
+extension SolvePosterAreaQuizViewController {
+    
+    func createImojiRainParticles() {
+        let cell = CAEmitterCell()
+        cell.contents = "🤣".textToImage()!.cgImage
+        cell.birthRate = 5
+        cell.lifetime = 10
+        cell.scale = 0.1
+        cell.yAcceleration = 100
+        cell.alphaSpeed = -0.1
+        
+        let emitterLayer = CAEmitterLayer()
+        emitterLayer.emitterShape = .line
+        emitterLayer.emitterSize = CGSize(width: view.frame.width,
+                                          height: view.frame.height)
+        emitterLayer.emitterPosition = CGPoint(x: view.center.x,
+                                               y: .zero)
+        emitterLayer.emitterCells = [cell]
+        emitterLayer.birthRate = 2
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            emitterLayer.birthRate = 0
+        }
+        
+        view.layer.addSublayer(emitterLayer)
+    }
+    
+    func createCongratsParticles() {
+        let emitterLayer = CAEmitterLayer()
+        let heart = makeEmitterCells(imoji: "😍")
+        let popper = makeEmitterCells(imoji: "🎉")
+        let movie = makeEmitterCells(imoji: "🎬")
+        let popcorn = makeEmitterCells(imoji: "🍿")
+        let thumbup = makeEmitterCells(imoji: "👍")
+        
+        emitterLayer.emitterCells = [heart, popper, movie, popcorn, thumbup]
+        
+        let centerPoint = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
+        print(centerPoint)
+        emitterLayer.emitterPosition = CGPoint(x: centerPoint.x, y: centerPoint.y)
+        emitterLayer.birthRate = 1
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            emitterLayer.birthRate = 0
+        }
+        view.layer.addSublayer(emitterLayer)
+    }
+    
+    func makeEmitterCells(imoji: String) -> CAEmitterCell {
+        let cell = CAEmitterCell()
+        let image = imoji.textToImage()!
+        cell.contents = image.cgImage
+        
+        cell.lifetime = 3
+        cell.birthRate = 20
+        
+        cell.scale = 0.15
+        cell.scaleRange = 0.05
+        
+        cell.spin = 5
+        cell.spinRange = 10
+        
+        cell.emissionRange = CGFloat.pi * 2
+        
+        cell.velocity = 1000
+        cell.velocityRange = 100
+        cell.yAcceleration = 1000
+        
+        return cell
+    }
+    
+}
+
