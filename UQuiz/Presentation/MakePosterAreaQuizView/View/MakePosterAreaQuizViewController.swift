@@ -32,8 +32,9 @@ final class MakePosterAreaQuizViewController: BaseViewController {
         mainView.nextMovieButton.addTarget(self, action: #selector(nextMovieButtonClicked), for: .touchUpInside)
         mainView.previousMovieButton.addTarget(self, action: #selector(previousMovieButtonClicked), for: .touchUpInside)
         fetchPoster()
-        let resetButton = UIBarButtonItem(title: "reset", style: .plain, target: self, action: #selector(resetButtonClicked))
+        let resetButton = UIBarButtonItem(title: "선택초기화", style: .plain, target: self, action: #selector(resetButtonClicked))
         navigationItem.rightBarButtonItem = resetButton
+        setNavigationBackButton()
     }
     
     private func fetchPoster() {
@@ -134,30 +135,32 @@ extension MakePosterAreaQuizViewController: UICollectionViewDelegate, UICollecti
     
 }
 
-//private func animateButtonTouch(isDecrease: Bool, reset: Bool = false) {
-//    let timing = CAMediaTimingFunction(name: reset ? .easeIn : .easeOut)
-//    let animation: CABasicAnimation = CABasicAnimation(keyPath: "transform")
-//    
-//    var newTransform = CATransform3DIdentity
-//    newTransform.m34 = -0.004
-//    newTransform = CATransform3DRotate(newTransform, (isDecrease ? -1 : 1) * .pi / 6, 0, 1, 0)
-//    
-//    CATransaction.begin()
-//    if !reset {
-//        CATransaction.setCompletionBlock { [weak self] in
-//            self?.animateButtonTouch(isDecrease: isDecrease, reset: true)
+//extension MakePosterAreaQuizViewController {
+//    private func animateButtonTouch(isDecrease: Bool, reset: Bool = false) {
+//        let timing = CAMediaTimingFunction(name: reset ? .easeIn : .easeOut)
+//        let animation: CABasicAnimation = CABasicAnimation(keyPath: "transform")
+//        
+//        var newTransform = CATransform3DIdentity
+//        newTransform.m34 = -0.004
+//        newTransform = CATransform3DRotate(newTransform, (isDecrease ? -1 : 1) * .pi / 6, 0, 1, 0)
+//        
+//        CATransaction.begin()
+//        if !reset {
+//            CATransaction.setCompletionBlock { [weak self] in
+//                self?.animateButtonTouch(isDecrease: isDecrease, reset: true)
+//            }
 //        }
+//        CATransaction.setAnimationTimingFunction(timing)
+//        animation.duration = 0.18
+//        if reset {
+//            animation.fromValue = newTransform
+//            animation.toValue = CATransform3DIdentity
+//        } else {
+//            animation.fromValue = CATransform3DIdentity
+//            animation.toValue = newTransform
+//        }
+//        container.layer.transform = (animation.toValue as? CATransform3D)!
+//        container.layer.add(animation, forKey: nil)
+//        CATransaction.commit()
 //    }
-//    CATransaction.setAnimationTimingFunction(timing)
-//    animation.duration = 0.18
-//    if reset {
-//        animation.fromValue = newTransform
-//        animation.toValue = CATransform3DIdentity
-//    } else {
-//        animation.fromValue = CATransform3DIdentity
-//        animation.toValue = newTransform
-//    }
-//    container.layer.transform = (animation.toValue as? CATransform3D)!
-//    container.layer.add(animation, forKey: nil)
-//    CATransaction.commit()
 //}

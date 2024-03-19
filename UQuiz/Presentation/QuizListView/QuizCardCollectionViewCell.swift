@@ -90,8 +90,8 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
         cardBackgroundView.clipsToBounds = true
         title.font = .systemFont(ofSize: 30, weight: .bold)
         title.numberOfLines = 2
-        numberOfQuizs.font = .systemFont(ofSize: 10)
-        profileContainer.backgroundColor = .white
+        numberOfQuizs.font = .systemFont(ofSize: 14)
+        profileContainer.backgroundColor = .test
         profileContainer.layer.cornerRadius = 20
         makerProfile.layer.cornerRadius = 15
         makerProfile.clipsToBounds = true

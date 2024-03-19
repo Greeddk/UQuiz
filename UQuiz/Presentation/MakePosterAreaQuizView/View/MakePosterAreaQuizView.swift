@@ -59,32 +59,29 @@ final class MakePosterAreaQuizView: BaseView {
         }
         
         previousMovieButton.snp.makeConstraints { make in
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-20)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(20)
+            make.size.equalTo(60)
         }
         
         showPostersButton.snp.makeConstraints { make in
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-20)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
+            make.size.equalTo(60)
         }
         
         nextMovieButton.snp.makeConstraints { make in
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-20)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
             make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
+            make.size.equalTo(60)
         }
         
     }
     
     override func configureView() {
-        previousMovieButton.setTitle("이전 영화", for: .normal)
-        previousMovieButton.setTitleColor(.black, for: .normal)
-        previousMovieButton.backgroundColor = .blue
-        showPostersButton.setTitle("다른 포스터", for: .normal)
-        showPostersButton.setTitleColor(.black, for: .normal)
-        showPostersButton.backgroundColor = .green
-        nextMovieButton.setTitle("다음 영화", for: .normal)
-        nextMovieButton.setTitleColor(.black, for: .normal)
-        nextMovieButton.backgroundColor = .red
+        previousMovieButton.setImage(UIImage(named: "previousButton"), for: .normal)
+        showPostersButton.setImage(UIImage(named: "posterButton"), for: .normal)
+        nextMovieButton.setImage(UIImage(named: "nextButton"), for: .normal)
     }
     
     func fetchPoster(detailURL: String?) {
