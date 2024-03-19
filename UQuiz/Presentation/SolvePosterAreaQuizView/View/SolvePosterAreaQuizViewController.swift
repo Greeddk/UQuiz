@@ -205,6 +205,9 @@ extension SolvePosterAreaQuizViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             emitterLayer.birthRate = 0
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            emitterLayer.removeFromSuperlayer()
+        }
         
         view.layer.addSublayer(emitterLayer)
     }
@@ -226,6 +229,10 @@ extension SolvePosterAreaQuizViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             emitterLayer.birthRate = 0
+            
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            emitterLayer.removeFromSuperlayer()
         }
         view.layer.addSublayer(emitterLayer)
     }
