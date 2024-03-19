@@ -12,8 +12,6 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     let mainView = SolvePosterAreaQuizView()
     let viewModel = SolvePosterAreaQuizViewModel()
     var info: String = ""
-    var currentPercentage: Float = 0
-    var timer = Timer()
     
     override func loadView() {
         self.view = mainView
@@ -33,7 +31,13 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
             vc.viewModel.inputData.value = self.viewModel.outputQuizList.value
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        setTimer()
+        viewModel.outputCurrentPercentage.bind { value in
+            self.mainView.updateTimeLimitBar(value)
+        }
+        viewModel.outputTimeOverStatus.noInitBind { _ in
+            self.timeOverAction()
+        }
+        viewModel.inputSetTimerTrigger.value = ()
     }
     
     override func configureViewController() {
@@ -43,34 +47,36 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         mainView.answerTextField.delegate = self
         let detailURL = viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].poster
         mainView.fetchPoster(detailURL: detailURL)
+        setNavigationBackButton()
         navigationItem.title = info
+        navigationController?.navigationBar.backgroundColor = .test
     }
-    // TODO: 뒤로 가기 했을 때 타이머 끄기
-    private func setTimer() {
-        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
-            self.currentPercentage += 1/2000
-            self.mainView.timeLimitBar.setProgress(self.currentPercentage, animated: true)
-            if self.currentPercentage >= 1 {
-                self.timer.invalidate()
-                self.showAlert(title: "시간초과", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
-                    self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
-                    self.mainView.collectionView.isHidden = true
-                    self.resetTimeLimitBar()
-                    self.goNext()
-                }
-            }
+    
+    override func backButtonClicked() {
+        super.backButtonClicked()
+        self.viewModel.inputInvalidTimerTrigger.value = ()
+    }
+
+}
+
+// MARK: Private Func
+extension SolvePosterAreaQuizViewController {
+    
+    // MARK: 시간 초과시 알러트
+    private func timeOverAction() {
+        self.showAlert(title: "시간초과", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
+            self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
+            self.mainView.collectionView.isHidden = true
+            self.resetTimeLimitBar()
+            self.goNext()
         }
     }
     
     private func resetTimeLimitBar() {
-        DispatchQueue.main.async {
-            self.currentPercentage = 0
-            UIView.animate(withDuration: 5.5, animations: {
-                self.mainView.timeLimitBar.setProgress(self.currentPercentage, animated: true)
-            })
-        }
+        self.viewModel.inputTimeLimitBarPercentage.value = 0
     }
     
+    // MARK: 다음 퀴즈 fetch
     private func goNext() {
         let timeDelay: DispatchTimeInterval = .seconds(5)
         DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay) {
@@ -79,7 +85,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
             self.fetchCollectionViewSelectedArea()
             self.mainView.clearTextField()
             if !self.viewModel.outputGameOverStatus.value {
-                self.setTimer()
+                self.viewModel.inputSetTimerTrigger.value = ()
             }
         }
     }
@@ -89,9 +95,10 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         viewModel.inputAnswerSubmit.value = mainView.answerTextField.text
     }
     
+    // MARK: 정답 / 오답 판별
     private func judgeValue(value: Bool) {
         if value {
-            self.timer.invalidate()
+            self.viewModel.inputInvalidTimerTrigger.value = ()
             self.showAlert(title: "정답", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
                 self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
                 self.mainView.collectionView.isHidden = true
@@ -107,11 +114,13 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         }
     }
     
+    // MARK: Poster 로드
     private func fetchPoster() {
         let url = viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].poster
         mainView.fetchPoster(detailURL: url)
     }
     
+    // MARK: CollectionView 선택 영역 표시
     private func fetchCollectionViewSelectedArea() {
         mainView.collectionView.isHidden = false
         resetCollectionView()
@@ -123,13 +132,13 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         }
     }
     
+    // MARK: CollectionView 초기화
     private func resetCollectionView() {
         for index in 0...3749 {
             let cell = mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
             cell?.backgroundColor = .black
         }
     }
-    
 }
 
 // MARK: CollectionView Setting

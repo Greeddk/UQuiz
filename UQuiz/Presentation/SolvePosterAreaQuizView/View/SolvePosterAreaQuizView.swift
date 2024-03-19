@@ -8,6 +8,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import SafeAreaBrush
 
 final class SolvePosterAreaQuizView: BaseView {
     
@@ -45,10 +46,12 @@ final class SolvePosterAreaQuizView: BaseView {
         }
     }
     
+    // MARK: Hierarchy
     override func configureHierarchy() {
         addSubviews([timerBackView, timeLimitBar, posterView, collectionView, answerTextField, submitButton])
     }
     
+    // MARK: snapKit Layout
     override func setConstraints() {
         timerBackView.snp.makeConstraints { make in
             make.top.lessThanOrEqualTo(self.safeAreaLayoutGuide).offset(20)
@@ -87,6 +90,7 @@ final class SolvePosterAreaQuizView: BaseView {
         
     }
     
+    // MARK: View
     override func configureView() {
         timerBackView.layer.cornerRadius = 8
         timerBackView.layer.borderColor = UIColor.purple.cgColor
@@ -105,6 +109,21 @@ final class SolvePosterAreaQuizView: BaseView {
         answerTextField.textAlignment = .center
     }
     
+    // MARK: collectionView Layout
+    private func collectionViewLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        return layout
+    }
+    
+}
+
+// MARK: Public Func
+extension SolvePosterAreaQuizView {
+    
+    func updateTimeLimitBar(_ progress: Float) {
+        timeLimitBar.setProgress(progress, animated: true)
+    }
+    
     func fetchPoster(detailURL: String?) {
         guard let detailUrl = detailURL else { return }
         let url = PosterURL.imageURL(detailURL: detailUrl).endpoint
@@ -112,13 +131,7 @@ final class SolvePosterAreaQuizView: BaseView {
         posterView.contentMode = .scaleToFill
     }
     
-    private func collectionViewLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewFlowLayout()
-        return layout
-    }
-    
     func clearTextField() {
         answerTextField.text = ""
     }
-    
 }

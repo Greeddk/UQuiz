@@ -16,18 +16,18 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
     let cardViewContainer = UIView()
     let cardBackgroundView = UIView()
     let posterView = UIImageView()
-    lazy var blurView = UIVisualEffectView(effect: createBlurEffect())
+    let blurView = UIVisualEffectView(effect: createBlurEffect())
     let title = UILabel()
-    let quizCount = UILabel()
+    let numberOfQuizs = UILabel()
     let profileContainer = UIView()
     let makerProfile = UIImageView()
     let makerNickname = UILabel()
     
-    // 컨텐트뷰안에 카드뷰, 메이커뷰, 퀴즈 인포뷰
     override func configureHierarchy() {
-        contentView.addSubviews([cardViewContainer, title, quizCount, profileContainer, indexLabel])
+        contentView.addSubviews([cardViewContainer, title, numberOfQuizs, profileContainer, indexLabel])
         cardViewContainer.addSubviews([cardBackgroundView])
-        cardBackgroundView.addSubviews([posterView, blurView])
+        cardBackgroundView.addSubviews([posterView])
+        posterView.addSubview(blurView)
         profileContainer.addSubviews([makerProfile, makerNickname])
     }
     
@@ -55,9 +55,9 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
             make.centerX.equalTo(contentView)
             make.top.equalTo(cardBackgroundView.snp.bottom).offset(20)
         }
-        quizCount.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(2)
-            make.trailing.equalTo(title.snp.trailing)
+        numberOfQuizs.snp.makeConstraints { make in
+            make.top.equalTo(posterView.snp.bottom).offset(2)
+            make.trailing.equalTo(posterView.snp.trailing).offset(-4)
         }
         profileContainer.snp.makeConstraints { make in
             make.top.equalTo(title.snp.bottom).offset(30)
@@ -86,14 +86,16 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
         cardBackgroundView.clipsToBounds = true
         title.font = .systemFont(ofSize: 30, weight: .bold)
         title.numberOfLines = 2
-        quizCount.font = .systemFont(ofSize: 10)
+        numberOfQuizs.font = .systemFont(ofSize: 10)
         profileContainer.backgroundColor = .white
         profileContainer.layer.cornerRadius = 20
         makerProfile.layer.cornerRadius = 15
+        makerProfile.clipsToBounds = true
         makerNickname.font = .systemFont(ofSize: 20)
+        blurView.frame = posterView.frame
     }
     
-    private func createBlurEffect() -> UIBlurEffect {
+    static func createBlurEffect() -> UIBlurEffect {
         return UIBlurEffect(style: .regular)
     }
     
@@ -102,7 +104,7 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
         guard let detailURL = package.quizs.last?.poster else { return }
         let url = PosterURL.thumbnailURL(detailURL: detailURL).endpoint
         posterView.kf.setImage(with: url)
-        quizCount.text = "\(package.numberOfQuiz)문제"
+        numberOfQuizs.text = "\(package.numberOfQuiz)문제"
         makerNickname.text = package.makerInfo?.nickname
         makerProfile.image = profileImage
     }
@@ -121,7 +123,7 @@ extension QuizCardCollectionViewCell: TransformableView {
         
         let normalTransform = CGAffineTransform(translationX: bounds.width * progress, y: 0)
         title.transform = normalTransform
-        quizCount.transform = normalTransform
+        numberOfQuizs.transform = normalTransform
         indexLabel.transform = normalTransform
     }
     

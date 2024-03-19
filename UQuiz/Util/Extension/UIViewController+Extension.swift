@@ -19,8 +19,19 @@ extension UIViewController {
         view.endEditing(true)
     }
     
+    func setNavigationBackButton() {
+        hideBackButton()
+        let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backButtonClicked))
+        navigationItem.leftBarButtonItem = backButton
+    }
+    
     func hideBackButton() {
         navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
+    @objc
+    func backButtonClicked() {
+        navigationController?.popViewController(animated: true)
     }
     
     func showAlert(title: String, message: String, okTitle: String, action: @escaping (() -> Void)) {
