@@ -26,6 +26,8 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
     let gradientTitleBackView = {
         let view = UIView()
         view.backgroundColor = .clear
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 8
         return view
     }()
     let movieTitle = {
@@ -90,6 +92,7 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
         let url = PosterURL.thumbnailURL(detailURL: item.poster).endpoint
         posterImage.kf.setImage(with: url)
         addToPackageImage.isHidden = true
+        gradientTitleBackView.isHidden = true
     }
     
 }

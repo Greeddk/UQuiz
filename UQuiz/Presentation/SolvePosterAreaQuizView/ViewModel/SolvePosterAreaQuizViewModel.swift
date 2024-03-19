@@ -68,8 +68,11 @@ final class SolvePosterAreaQuizViewModel {
             outputStatusString.value = "정답을 입력해주세요"
             return
         }
-        let correctAnswer = outputQuizList.value[outputCurrentIndex.value].title.lowercased()
-        if correctAnswer == answer.lowercased() {
+        let quizItem = outputQuizList.value[outputCurrentIndex.value]
+        let correctAnswer = quizItem.title.matchString(quizItem.title).lowercased()
+        let originAnswer = quizItem.original_title.matchString(quizItem.original_title).lowercased()
+        let changedUserAnswer = answer.matchString(answer).lowercased()
+        if correctAnswer == changedUserAnswer || originAnswer == changedUserAnswer {
             outputIsCorrect.value = true
             repository.updateQuizIsCorrect(outputQuizList.value[outputCurrentIndex.value], isCorrect: true)
         } else {

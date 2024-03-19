@@ -33,8 +33,10 @@ final class QuizListViewModel {
     }
     
     private func fetchProfileImage(index: Int) {
-        guard let filename = outputPackageList.value[inputIndex.value].makerInfo?.profile else { return }
-        outputProfileImage.value = fileManager.loadImageFromDocument(filename: filename)
+        if outputPackageList.value.count > 0 {
+            guard let filename = outputPackageList.value[inputIndex.value].makerInfo?.profile else { return }
+            outputProfileImage.value = fileManager.loadImageFromDocument(filename: filename)
+        }
     }
     
 }

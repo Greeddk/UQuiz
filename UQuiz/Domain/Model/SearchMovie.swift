@@ -16,11 +16,13 @@ struct Movie: Decodable, Hashable, Identifiable {
     let genre: [Int]?
     var poster: String?
     let title: String
+    let original_title: String
     
     enum CodingKeys: String, CodingKey {
         case id
         case genre = "genre_ids"
         case poster = "poster_path"
         case title
+        case original_title
     }
 }

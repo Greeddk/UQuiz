@@ -12,6 +12,7 @@ struct PosterQuiz {
     let genre: [Int]?
     var poster: String?
     let title: String
+    let original_title: String
     var selectedArea: [[Int]]
     var numberOfselectArea: Int
     
@@ -20,6 +21,7 @@ struct PosterQuiz {
         self.genre = item.genre
         self.poster = item.poster
         self.title = item.title
+        self.original_title = item.original_title
         self.selectedArea = []
         self.numberOfselectArea = 0
     }

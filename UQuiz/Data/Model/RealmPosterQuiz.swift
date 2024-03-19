@@ -32,16 +32,18 @@ final class RealmPosterQuiz: Object {
     @Persisted var genre: List<Int>
     @Persisted var poster: String
     @Persisted var title: String
+    @Persisted var original_title: String
     @Persisted var selectedArea: List<RealmSelectedArea>
     @Persisted var numberOfselectArea: Int
     @Persisted var isCorrect: Bool
     
-    convenience init(movieId: Int, genre: List<Int>, poster: String, title: String, selectedArea: List<RealmSelectedArea>, numberOfselectArea: Int) {
+    convenience init(movieId: Int, genre: List<Int>, poster: String, title: String, original_title: String, selectedArea: List<RealmSelectedArea>, numberOfselectArea: Int) {
         self.init()
         self.movieId = movieId
         self.genre = genre
         self.poster = poster
         self.title = title
+        self.original_title = original_title
         self.selectedArea = selectedArea
         self.numberOfselectArea = numberOfselectArea
         self.isCorrect = false

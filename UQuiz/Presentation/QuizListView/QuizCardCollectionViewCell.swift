@@ -37,7 +37,7 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
     
     override func setConstraints() {
         indexLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(10)
+            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(30)
             make.centerX.equalTo(contentView)
         }
         cardViewContainer.snp.makeConstraints { make in

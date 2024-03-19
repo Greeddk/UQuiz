@@ -43,18 +43,10 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     override func configureViewController() {
         mainView.collectionView.dataSource = self
         mainView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        mainView.submitButton.addTarget(self, action: #selector(submitButtonClicked), for: .touchUpInside)
         mainView.answerTextField.delegate = self
         let detailURL = viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].poster
         mainView.fetchPoster(detailURL: detailURL)
-        setNavigationBackButton()
-        navigationItem.title = info
-        navigationController?.navigationBar.backgroundColor = .test
-    }
-    
-    override func backButtonClicked() {
-        super.backButtonClicked()
-        self.viewModel.inputInvalidTimerTrigger.value = ()
+        navigationController?.isNavigationBarHidden = true
     }
     
 }
@@ -95,11 +87,6 @@ extension SolvePosterAreaQuizViewController {
         }
     }
     
-    @objc
-    private func submitButtonClicked() {
-        viewModel.inputAnswerSubmit.value = mainView.answerTextField.text
-    }
-    
     // MARK: 정답 / 오답 판별
     private func judgeValue(value: Bool) {
         if value {
@@ -116,7 +103,6 @@ extension SolvePosterAreaQuizViewController {
             mainView.posterView.shake()
             mainView.collectionView.shake()
             mainView.answerTextField.shake()
-            mainView.submitButton.shake()
             self.mainView.clearTextField()
         }
     }
@@ -222,14 +208,11 @@ extension SolvePosterAreaQuizViewController {
         
         emitterLayer.emitterCells = [heart, popper, movie, popcorn, thumbup]
         
-        let centerPoint = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
-        print(centerPoint)
-        emitterLayer.emitterPosition = CGPoint(x: centerPoint.x, y: centerPoint.y)
+        emitterLayer.emitterPosition = CGPoint(x: view.center.x, y: view.center.y)
         emitterLayer.birthRate = 1
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             emitterLayer.birthRate = 0
-            
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             emitterLayer.removeFromSuperlayer()

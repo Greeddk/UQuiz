@@ -16,7 +16,6 @@ final class SolvePosterAreaQuizView: BaseView {
     let posterView = UIImageView()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout())
     let answerTextField = UITextField()
-    let submitButton = UIButton()
     private var screenWidth: CGFloat = 0
     
     //MARK: layout
@@ -47,7 +46,7 @@ final class SolvePosterAreaQuizView: BaseView {
     
     // MARK: Hierarchy
     override func configureHierarchy() {
-        addSubviews([timerBackView, timeLimitBar, posterView, collectionView, answerTextField, submitButton])
+        addSubviews([timerBackView, timeLimitBar, posterView, collectionView, answerTextField])
     }
     
     // MARK: snapKit Layout
@@ -76,15 +75,8 @@ final class SolvePosterAreaQuizView: BaseView {
         
         answerTextField.snp.makeConstraints { make in
             make.top.lessThanOrEqualTo(collectionView.snp.bottom).offset(10)
-            make.leading.equalTo(self.safeAreaLayoutGuide).offset(40)
-            make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-70)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(40)
             make.height.equalTo(40)
-        }
-        
-        submitButton.snp.makeConstraints { make in
-            make.top.equalTo(answerTextField)
-            make.leading.equalTo(answerTextField.snp.trailing)
-            make.size.equalTo(40)
         }
         
     }
@@ -99,13 +91,12 @@ final class SolvePosterAreaQuizView: BaseView {
         timeLimitBar.progressTintColor = .systemBlue
         timeLimitBar.trackTintColor = .clear
         collectionView.backgroundColor = .clear
-        submitButton.setTitle("입력", for: .normal)
-        submitButton.setTitleColor(.black, for: .normal)
         answerTextField.placeholder = "정답 입력"
         answerTextField.layer.cornerRadius = 12
         answerTextField.layer.borderWidth = 1
         answerTextField.layer.borderColor = UIColor.black.cgColor
         answerTextField.textAlignment = .center
+        answerTextField.returnKeyType = .done
     }
     
     // MARK: collectionView Layout
@@ -136,6 +127,5 @@ extension SolvePosterAreaQuizView {
     
     func setTextFieldAndButtonEnable(isEnabled: Bool) {
         answerTextField.isEnabled = isEnabled
-        submitButton.isEnabled = isEnabled
     }
 }
