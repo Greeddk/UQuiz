@@ -56,7 +56,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         super.backButtonClicked()
         self.viewModel.inputInvalidTimerTrigger.value = ()
     }
-
+    
 }
 
 // MARK: Private Func
@@ -64,6 +64,7 @@ extension SolvePosterAreaQuizViewController {
     
     // MARK: 시간 초과시 알러트
     private func timeOverAction() {
+        mainView.setTextFieldAndButtonEnable(isEnabled: false)
         self.showAlert(title: "시간초과", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
             self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
             self.mainView.collectionView.isHidden = true
@@ -73,7 +74,9 @@ extension SolvePosterAreaQuizViewController {
     }
     
     private func resetTimeLimitBar() {
-        self.viewModel.inputTimeLimitBarPercentage.value = 0
+        UIView.animate(withDuration: 5.5, animations: {
+            self.viewModel.inputTimeLimitBarPercentage.value = 0
+        })
     }
     
     // MARK: 다음 퀴즈 fetch
@@ -83,6 +86,7 @@ extension SolvePosterAreaQuizViewController {
             self.viewModel.inputNextIndexTrigger.value = ()
             self.fetchPoster()
             self.fetchCollectionViewSelectedArea()
+            self.mainView.setTextFieldAndButtonEnable(isEnabled: true)
             self.mainView.clearTextField()
             if !self.viewModel.outputGameOverStatus.value {
                 self.viewModel.inputSetTimerTrigger.value = ()
@@ -98,8 +102,9 @@ extension SolvePosterAreaQuizViewController {
     // MARK: 정답 / 오답 판별
     private func judgeValue(value: Bool) {
         if value {
-            self.viewModel.inputInvalidTimerTrigger.value = ()
-            self.showAlert(title: "정답", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
+            mainView.setTextFieldAndButtonEnable(isEnabled: false)
+            viewModel.inputInvalidTimerTrigger.value = ()
+            showAlert(title: "정답", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
                 self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
                 self.mainView.collectionView.isHidden = true
                 self.resetTimeLimitBar()

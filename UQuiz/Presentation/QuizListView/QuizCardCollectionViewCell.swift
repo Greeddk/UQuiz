@@ -31,6 +31,10 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
         profileContainer.addSubviews([makerProfile, makerNickname])
     }
     
+    override func prepareForReuse() {
+        blurView.alpha = 1.0
+    }
+    
     override func setConstraints() {
         indexLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView.safeAreaLayoutGuide).offset(10)
@@ -40,7 +44,7 @@ class QuizCardCollectionViewCell: BaseCollectionViewCell {
             make.width.equalTo(200)
             make.height.equalTo(250)
             make.centerX.equalTo(contentView)
-            make.top.equalTo(contentView).offset(50)
+            make.centerY.equalTo(contentView).offset(-50)
         }
         cardBackgroundView.snp.makeConstraints { make in
             make.edges.equalTo(cardViewContainer)

@@ -8,7 +8,6 @@
 import UIKit
 import SnapKit
 import Kingfisher
-import SafeAreaBrush
 
 final class SolvePosterAreaQuizView: BaseView {
     
@@ -133,5 +132,10 @@ extension SolvePosterAreaQuizView {
     
     func clearTextField() {
         answerTextField.text = ""
+    }
+    
+    func setTextFieldAndButtonEnable(isEnabled: Bool) {
+        answerTextField.isEnabled = isEnabled
+        submitButton.isEnabled = isEnabled
     }
 }
