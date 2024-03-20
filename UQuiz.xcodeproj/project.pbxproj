@@ -18,6 +18,16 @@
 		42091DF82BA7126C006BA897 /* QuizResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DF72BA7126C006BA897 /* QuizResultViewController.swift */; };
 		42091DFA2BA7128B006BA897 /* QuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DF92BA7128B006BA897 /* QuizResultView.swift */; };
 		42091DFC2BA713A3006BA897 /* QuizResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DFB2BA713A3006BA897 /* QuizResultViewModel.swift */; };
+		422D5F242BAAC5120085E6D0 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D5F232BAAC5120085E6D0 /* UIFont+Extension.swift */; };
+		422D5F2F2BAAC6090085E6D0 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F262BAAC6090085E6D0 /* Pretendard-Thin.otf */; };
+		422D5F302BAAC6090085E6D0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F272BAAC6090085E6D0 /* Pretendard-Medium.otf */; };
+		422D5F312BAAC6090085E6D0 /* Pretendard-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F282BAAC6090085E6D0 /* Pretendard-ExtraLight.otf */; };
+		422D5F322BAAC6090085E6D0 /* Pretendard-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F292BAAC6090085E6D0 /* Pretendard-Light.otf */; };
+		422D5F332BAAC6090085E6D0 /* Pretendard-ExtraBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F2A2BAAC6090085E6D0 /* Pretendard-ExtraBold.otf */; };
+		422D5F342BAAC6090085E6D0 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F2B2BAAC6090085E6D0 /* Pretendard-Regular.otf */; };
+		422D5F352BAAC6090085E6D0 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F2C2BAAC6090085E6D0 /* Pretendard-Bold.otf */; };
+		422D5F362BAAC6090085E6D0 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F2D2BAAC6090085E6D0 /* Pretendard-Black.otf */; };
+		422D5F372BAAC6090085E6D0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F2E2BAAC6090085E6D0 /* Pretendard-SemiBold.otf */; };
 		42570E502B9983920042B338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E4F2B9983920042B338 /* AppDelegate.swift */; };
 		42570E522B9983920042B338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E512B9983920042B338 /* SceneDelegate.swift */; };
 		42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E532B9983920042B338 /* MovieSearchViewController.swift */; };
@@ -83,6 +93,16 @@
 		42091DF72BA7126C006BA897 /* QuizResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewController.swift; sourceTree = "<group>"; };
 		42091DF92BA7128B006BA897 /* QuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultView.swift; sourceTree = "<group>"; };
 		42091DFB2BA713A3006BA897 /* QuizResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewModel.swift; sourceTree = "<group>"; };
+		422D5F232BAAC5120085E6D0 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		422D5F262BAAC6090085E6D0 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
+		422D5F272BAAC6090085E6D0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		422D5F282BAAC6090085E6D0 /* Pretendard-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraLight.otf"; sourceTree = "<group>"; };
+		422D5F292BAAC6090085E6D0 /* Pretendard-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Light.otf"; sourceTree = "<group>"; };
+		422D5F2A2BAAC6090085E6D0 /* Pretendard-ExtraBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-ExtraBold.otf"; sourceTree = "<group>"; };
+		422D5F2B2BAAC6090085E6D0 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		422D5F2C2BAAC6090085E6D0 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		422D5F2D2BAAC6090085E6D0 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
+		422D5F2E2BAAC6090085E6D0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		42570E4C2B9983920042B338 /* UQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42570E4F2B9983920042B338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42570E512B9983920042B338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -374,6 +394,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		422D5F252BAAC5FA0085E6D0 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				422D5F2D2BAAC6090085E6D0 /* Pretendard-Black.otf */,
+				422D5F2C2BAAC6090085E6D0 /* Pretendard-Bold.otf */,
+				422D5F2A2BAAC6090085E6D0 /* Pretendard-ExtraBold.otf */,
+				422D5F282BAAC6090085E6D0 /* Pretendard-ExtraLight.otf */,
+				422D5F292BAAC6090085E6D0 /* Pretendard-Light.otf */,
+				422D5F272BAAC6090085E6D0 /* Pretendard-Medium.otf */,
+				422D5F2B2BAAC6090085E6D0 /* Pretendard-Regular.otf */,
+				422D5F2E2BAAC6090085E6D0 /* Pretendard-SemiBold.otf */,
+				422D5F262BAAC6090085E6D0 /* Pretendard-Thin.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 		42570E432B9983920042B338 = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +455,7 @@
 		42AD0D502B9AF959002B8A48 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				422D5F252BAAC5FA0085E6D0 /* Font */,
 				42570E5A2B9983950042B338 /* LaunchScreen.storyboard */,
 				42570E582B9983950042B338 /* Assets.xcassets */,
 			);
@@ -432,6 +469,7 @@
 				42AD0D5B2B9AFBD6002B8A48 /* UIView+Extension.swift */,
 				42AD0D7C2B9B132D002B8A48 /* String+Extension.swift */,
 				42AD0D892B9DAF55002B8A48 /* UIViewController+Extension.swift */,
+				422D5F232BAAC5120085E6D0 /* UIFont+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -641,10 +679,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				422D5F352BAAC6090085E6D0 /* Pretendard-Bold.otf in Resources */,
+				422D5F312BAAC6090085E6D0 /* Pretendard-ExtraLight.otf in Resources */,
+				422D5F322BAAC6090085E6D0 /* Pretendard-Light.otf in Resources */,
+				422D5F372BAAC6090085E6D0 /* Pretendard-SemiBold.otf in Resources */,
+				422D5F332BAAC6090085E6D0 /* Pretendard-ExtraBold.otf in Resources */,
 				42570E642B9986060042B338 /* .gitignore in Resources */,
+				422D5F2F2BAAC6090085E6D0 /* Pretendard-Thin.otf in Resources */,
 				42AD0D7A2B9B1306002B8A48 /* Localizable.xcstrings in Resources */,
 				42570E5C2B9983950042B338 /* LaunchScreen.storyboard in Resources */,
+				422D5F342BAAC6090085E6D0 /* Pretendard-Regular.otf in Resources */,
 				42570E592B9983950042B338 /* Assets.xcassets in Resources */,
+				422D5F362BAAC6090085E6D0 /* Pretendard-Black.otf in Resources */,
+				422D5F302BAAC6090085E6D0 /* Pretendard-Medium.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -665,6 +712,7 @@
 				42AD0D6E2B9B09E9002B8A48 /* MovieSearchViewModel.swift in Sources */,
 				42AD0D5A2B9AFB9F002B8A48 /* UIColor+Extension.swift in Sources */,
 				42B7EC532B9EF46E00AE0F52 /* SetProfileViewController.swift in Sources */,
+				422D5F242BAAC5120085E6D0 /* UIFont+Extension.swift in Sources */,
 				42AD0D6C2B9B09AD002B8A48 /* MovieSearchView.swift in Sources */,
 				42B7EC7D2BA02B8400AE0F52 /* PosterListViewModel.swift in Sources */,
 				42091DDB2BA58DAF006BA897 /* PosterQuizPackageRepository.swift in Sources */,

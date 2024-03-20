@@ -30,7 +30,7 @@ final class QuizResultView: BaseView {
     }
     
     override func configureView() {
-        scoreLabel.font = .boldSystemFont(ofSize: 30)
+        scoreLabel.font = .pretendard(size: 30, weight: .semiBold)
         goHomeButton.setTitle("홈으로", for: .normal)
         goHomeButton.setTitleColor(.black, for: .normal)
         goHomeButton.tintColor = .green

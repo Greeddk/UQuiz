@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ImageFileManager {
+final class ImageFileManager {
     
     static let shared = ImageFileManager()
     

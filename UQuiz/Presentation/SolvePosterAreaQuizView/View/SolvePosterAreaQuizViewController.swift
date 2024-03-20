@@ -188,10 +188,10 @@ extension SolvePosterAreaQuizViewController {
                                                y: .zero)
         emitterLayer.emitterCells = [cell]
         emitterLayer.birthRate = 2
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             emitterLayer.birthRate = 0
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             emitterLayer.removeFromSuperlayer()
         }
         
@@ -211,10 +211,10 @@ extension SolvePosterAreaQuizViewController {
         emitterLayer.emitterPosition = CGPoint(x: view.center.x, y: view.center.y)
         emitterLayer.birthRate = 1
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             emitterLayer.birthRate = 0
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             emitterLayer.removeFromSuperlayer()
         }
         view.layer.addSublayer(emitterLayer)

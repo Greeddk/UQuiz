@@ -32,7 +32,7 @@ final class MovieInfoCollectionViewCell: BaseCollectionViewCell {
     }()
     let movieTitle = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 14)
+        view.font = .pretendard(size: 14, weight: .regular)
         view.textColor = .white
         return view
     }()

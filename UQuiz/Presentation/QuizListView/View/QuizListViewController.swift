@@ -43,7 +43,8 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizCardCollectionViewCell.identifier, for: indexPath) as! QuizCardCollectionViewCell
-        let package = viewModel.outputPackageList.value[indexPath.item]
+        let list = Array(viewModel.outputPackageList.value.reversed())
+        let package = list[indexPath.item]
         viewModel.inputIndex.value = indexPath.item
         viewModel.outputProfileImage.bind { image in
             cell.setUI(package, profileImage: (image ?? UIImage(systemName: "person"))!)
@@ -54,7 +55,7 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SolvePosterAreaQuizViewController()
-        let list = Array(viewModel.outputPackageList.value[indexPath.item].quizs)
+        let list = Array(viewModel.outputPackageList.value.reversed()[indexPath.item].quizs)
         vc.viewModel.outputQuizList.value = list
         vc.info = viewModel.outputPackageList.value[indexPath.item].title
         vc.hidesBottomBarWhenPushed = true
