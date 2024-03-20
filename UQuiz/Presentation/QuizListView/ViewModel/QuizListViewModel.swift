@@ -15,6 +15,7 @@ final class QuizListViewModel {
     
     var inputFetchPackageListTrigger: Observable<Void?> = Observable(nil)
     var inputIndex: Observable<Int> = Observable(0)
+    var inputDeletePackageTrigger: Observable<Int> = Observable(0)
     
     var outputPackageList: Observable<[RealmPosterQuizPackage]> = Observable([])
     var outputProfileImage: Observable<UIImage?> = Observable(nil)
@@ -25,6 +26,9 @@ final class QuizListViewModel {
         }
         inputIndex.bind { value in
             self.fetchProfileImage(index: value)
+        }
+        inputDeletePackageTrigger.noInitBind { value in
+            self.deleteQuizPackage(index: value)
         }
     }
     
@@ -37,6 +41,11 @@ final class QuizListViewModel {
             guard let filename = outputPackageList.value[inputIndex.value].makerInfo?.profile else { return }
             outputProfileImage.value = fileManager.loadImageFromDocument(filename: filename)
         }
+    }
+    
+    private func deleteQuizPackage(index: Int) {
+        let package = outputPackageList.value.reversed()[index]
+        repository.deletePackage(package: package)
     }
     
 }

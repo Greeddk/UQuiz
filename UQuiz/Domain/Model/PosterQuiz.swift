@@ -15,6 +15,8 @@ struct PosterQuiz {
     let original_title: String
     var selectedArea: [[Int]]
     var numberOfselectArea: Int
+    let overview: String
+    let release_date: String
     
     init(item: Movie) {
         self.id = item.id
@@ -24,5 +26,7 @@ struct PosterQuiz {
         self.original_title = item.original_title
         self.selectedArea = []
         self.numberOfselectArea = 0
+        self.overview = item.overview
+        self.release_date = item.release_date
     }
 }

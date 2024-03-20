@@ -10,6 +10,7 @@ import Foundation
 final class QuizResultViewModel {
     
     var inputData: Observable<[RealmPosterQuiz]> = Observable([])
+    var inputLevel: Observable<Int> = Observable(0)
     
     var outputCorretRate: Observable<String> = Observable("")
     

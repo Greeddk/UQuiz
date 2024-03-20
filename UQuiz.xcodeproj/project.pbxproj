@@ -29,6 +29,11 @@
 		422D5F362BAAC6090085E6D0 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F2D2BAAC6090085E6D0 /* Pretendard-Black.otf */; };
 		422D5F372BAAC6090085E6D0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F2E2BAAC6090085E6D0 /* Pretendard-SemiBold.otf */; };
 		422D5F392BAACA7B0085E6D0 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D5F382BAACA7B0085E6D0 /* Level.swift */; };
+		422D5F3C2BAAE81B0085E6D0 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 422D5F3B2BAAE81B0085E6D0 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		422D5F3E2BAAE81B0085E6D0 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 422D5F3D2BAAE81B0085E6D0 /* FirebaseCrashlytics */; };
+		422D5F402BAAE81B0085E6D0 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 422D5F3F2BAAE81B0085E6D0 /* FirebaseMessaging */; };
+		422D5F452BAAEC440085E6D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F442BAAEC440085E6D0 /* GoogleService-Info.plist */; };
+		422D5F492BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D5F482BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift */; };
 		42570E502B9983920042B338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E4F2B9983920042B338 /* AppDelegate.swift */; };
 		42570E522B9983920042B338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E512B9983920042B338 /* SceneDelegate.swift */; };
 		42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E532B9983920042B338 /* MovieSearchViewController.swift */; };
@@ -105,6 +110,8 @@
 		422D5F2D2BAAC6090085E6D0 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		422D5F2E2BAAC6090085E6D0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
 		422D5F382BAACA7B0085E6D0 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		422D5F442BAAEC440085E6D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		422D5F482BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		42570E4C2B9983920042B338 /* UQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42570E4F2B9983920042B338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42570E512B9983920042B338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -161,11 +168,14 @@
 			files = (
 				42AD0D492B9AF8DC002B8A48 /* SnapKit in Frameworks */,
 				42AD0D462B9AF8D3002B8A48 /* Kingfisher in Frameworks */,
+				422D5F402BAAE81B0085E6D0 /* FirebaseMessaging in Frameworks */,
 				42AD0D4C2B9AF8F6002B8A48 /* Realm in Frameworks */,
 				42B7EC582B9EF7D100AE0F52 /* TextFieldEffects in Frameworks */,
 				42AD0D4E2B9AF8F6002B8A48 /* RealmSwift in Frameworks */,
 				42B7EC8A2BA1A14000AE0F52 /* CollectionViewPagingLayout in Frameworks */,
+				422D5F3E2BAAE81B0085E6D0 /* FirebaseCrashlytics in Frameworks */,
 				42AD0D432B9AF8CD002B8A48 /* Alamofire in Frameworks */,
+				422D5F3C2BAAE81B0085E6D0 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +385,7 @@
 			children = (
 				42091DF62BA7105F006BA897 /* View */,
 				42091DF52BA7105A006BA897 /* ViewModel */,
+				422D5F482BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift */,
 			);
 			path = QuizResultView;
 			sourceTree = "<group>";
@@ -432,6 +443,7 @@
 		42570E4E2B9983920042B338 /* UQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				422D5F442BAAEC440085E6D0 /* GoogleService-Info.plist */,
 				42570E5D2B9983950042B338 /* Info.plist */,
 				42AD0D7E2B9B1469002B8A48 /* plist */,
 				42AD0D4F2B9AF94C002B8A48 /* Application */,
@@ -616,6 +628,7 @@
 				42570E482B9983920042B338 /* Sources */,
 				42570E492B9983920042B338 /* Frameworks */,
 				42570E4A2B9983920042B338 /* Resources */,
+				422D5F432BAAEA7C0085E6D0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -630,6 +643,9 @@
 				42AD0D4D2B9AF8F6002B8A48 /* RealmSwift */,
 				42B7EC572B9EF7D100AE0F52 /* TextFieldEffects */,
 				42B7EC892BA1A14000AE0F52 /* CollectionViewPagingLayout */,
+				422D5F3B2BAAE81B0085E6D0 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				422D5F3D2BAAE81B0085E6D0 /* FirebaseCrashlytics */,
+				422D5F3F2BAAE81B0085E6D0 /* FirebaseMessaging */,
 			);
 			productName = UQuiz;
 			productReference = 42570E4C2B9983920042B338 /* UQuiz.app */;
@@ -667,6 +683,7 @@
 				42AD0D4A2B9AF8F6002B8A48 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				42B7EC562B9EF7D100AE0F52 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				42B7EC882BA1A14000AE0F52 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
+				422D5F3A2BAAE81B0085E6D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 42570E4D2B9983920042B338 /* Products */;
 			projectDirPath = "";
@@ -695,10 +712,36 @@
 				42570E592B9983950042B338 /* Assets.xcassets in Resources */,
 				422D5F362BAAC6090085E6D0 /* Pretendard-Black.otf in Resources */,
 				422D5F302BAAC6090085E6D0 /* Pretendard-Medium.otf in Resources */,
+				422D5F452BAAEC440085E6D0 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		422D5F432BAAEA7C0085E6D0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${PRODUCT_NAME}",
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Info.plist",
+				"$(TARGET_BUILD_DIR)/$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/GoogleService-Info.plist",
+				"$(TARGET_BUILD_DIR)/$(EXECUTABLE_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILD_DIR%/Build/*}/SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		42570E482B9983920042B338 /* Sources */ = {
@@ -724,6 +767,7 @@
 				42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */,
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
 				422D5F392BAACA7B0085E6D0 /* Level.swift in Sources */,
+				422D5F492BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift in Sources */,
 				42AD0D632B9AFDCB002B8A48 /* SearchMovie.swift in Sources */,
 				42091DE02BA5EAEE006BA897 /* SolvePosterAreaQuizViewController.swift in Sources */,
 				42AD0D5C2B9AFBD6002B8A48 /* UIView+Extension.swift in Sources */,
@@ -904,6 +948,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HR74YJR7W4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UQuiz/Info.plist;
@@ -983,6 +1028,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		422D5F3A2BAAE81B0085E6D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.23.0;
+			};
+		};
 		42AD0D412B9AF8CC002B8A48 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1034,6 +1087,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		422D5F3B2BAAE81B0085E6D0 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 422D5F3A2BAAE81B0085E6D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		422D5F3D2BAAE81B0085E6D0 /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 422D5F3A2BAAE81B0085E6D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		422D5F3F2BAAE81B0085E6D0 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 422D5F3A2BAAE81B0085E6D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		42AD0D422B9AF8CD002B8A48 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 42AD0D412B9AF8CC002B8A48 /* XCRemoteSwiftPackageReference "Alamofire" */;

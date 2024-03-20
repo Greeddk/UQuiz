@@ -35,6 +35,7 @@ final class MakePosterAreaQuizViewController: BaseViewController {
         let resetButton = UIBarButtonItem(title: "선택초기화", style: .plain, target: self, action: #selector(resetButtonClicked))
         navigationItem.rightBarButtonItem = resetButton
         setNavigationBackButton()
+        navigationItem.title = "\(viewModel.outputNumberOfLevelSelectedArea.value)개의 영역을 선택해주세요"
     }
     
     private func fetchPoster() {

@@ -29,6 +29,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         viewModel.outputGameOverStatus.noInitBind { value in
             let vc = QuizResultViewController()
             vc.viewModel.inputData.value = self.viewModel.outputQuizList.value
+            vc.viewModel.inputLevel.value = self.viewModel.inputLevel.value
             self.navigationController?.pushViewController(vc, animated: true)
         }
         viewModel.outputCurrentPercentage.bind { value in

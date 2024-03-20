@@ -12,11 +12,10 @@ import CollectionViewPagingLayout
 final class QuizListView: BaseView {
     
     let logoView = UIImageView()
-    let deleteButton = UIButton()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     
     override func configureHierarchy() {
-        addSubviews([logoView, deleteButton, collectionView])
+        addSubviews([logoView, collectionView])
     }
     
     override func setConstraints() {
@@ -25,10 +24,6 @@ final class QuizListView: BaseView {
             make.top.equalTo(self).offset(50)
             make.width.equalTo(100)
             make.height.equalTo(40)
-        }
-        deleteButton.snp.makeConstraints { make in
-            make.centerY.equalTo(logoView)
-            make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-10)
         }
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(logoView.snp.bottom)
@@ -41,8 +36,6 @@ final class QuizListView: BaseView {
         collectionView.showsHorizontalScrollIndicator = false
         logoView.image = .uqizlogo
         logoView.contentMode = .scaleAspectFit
-        deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
-        deleteButton.tintColor = .pointOrange
     }
     
     private func createLayout() -> CollectionViewPagingLayout {

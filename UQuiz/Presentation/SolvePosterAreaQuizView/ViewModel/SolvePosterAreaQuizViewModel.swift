@@ -18,6 +18,7 @@ final class SolvePosterAreaQuizViewModel {
     var inputAnswerSubmit: Observable<String?> = Observable(nil)
     var inputSetTimerTrigger: Observable<Void?> = Observable(nil)
     var inputInvalidTimerTrigger: Observable<Void?> = Observable(nil)
+    var inputLevel: Observable<Int> = Observable(0)
     
     var outputCurrentPercentage: Observable<Float> = Observable(0)
     var outputQuizList: Observable<[RealmPosterQuiz]> = Observable([])

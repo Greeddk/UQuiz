@@ -23,7 +23,7 @@ final class PosterQuizPackageRepository {
             tmp.area.append(objectsIn: value)
             tmpSelectedList.append(tmp)
         }
-        return RealmPosterQuiz(movieId: quiz.id, genre: tmpGenre, poster: quiz.poster ?? "", title: quiz.title, original_title: quiz.original_title, selectedArea: tmpSelectedList, numberOfselectArea: quiz.numberOfselectArea)
+        return RealmPosterQuiz(movieId: quiz.id, genre: tmpGenre, poster: quiz.poster ?? "", title: quiz.title, original_title: quiz.original_title, selectedArea: tmpSelectedList, numberOfselectArea: quiz.numberOfselectArea, overview: quiz.overview, release_date: quiz.release_date)
     }
     
     func createPackage(package: [PosterQuiz], title: String, makerInfo: RealmMakerInfo, level: Level) {

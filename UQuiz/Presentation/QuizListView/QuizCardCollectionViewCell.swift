@@ -22,9 +22,10 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     let profileContainer = UIView()
     let makerProfile = UIImageView()
     let makerNickname = UILabel()
+    let deleteButton = UIButton()
     
     override func configureHierarchy() {
-        contentView.addSubviews([cardViewContainer, title, numberOfQuizs, profileContainer, indexLabel])
+        contentView.addSubviews([cardViewContainer, title, numberOfQuizs, profileContainer, indexLabel, deleteButton])
         cardViewContainer.addSubviews([cardBackgroundView])
         cardBackgroundView.addSubviews([posterView])
         cardViewContainer.addSubview(levelImage)
@@ -32,15 +33,11 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func setConstraints() {
-        indexLabel.snp.makeConstraints { make in
-            make.top.equalTo(contentView.safeAreaLayoutGuide).offset(30)
-            make.centerX.equalTo(contentView)
-        }
         cardViewContainer.snp.makeConstraints { make in
             make.width.equalTo(200)
             make.height.equalTo(250)
             make.centerX.equalTo(contentView)
-            make.centerY.equalTo(contentView).offset(-50)
+            make.centerY.equalTo(contentView).offset(-80)
         }
         cardBackgroundView.snp.makeConstraints { make in
             make.edges.equalTo(cardViewContainer)
@@ -76,6 +73,14 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
             make.leading.equalTo(makerProfile.snp.trailing).offset(12)
             make.trailing.lessThanOrEqualTo(profileContainer.snp.trailing).offset(-16)
         }
+        deleteButton.snp.makeConstraints { make in
+            make.top.equalTo(profileContainer.snp.bottom).offset(20)
+            make.trailing.equalTo(contentView).offset(-20)
+        }
+        indexLabel.snp.makeConstraints { make in
+            make.top.equalTo(deleteButton)
+            make.centerX.equalTo(contentView)
+        }
     }
     
     override func configureView() {
@@ -96,6 +101,8 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         makerNickname.font = .pretendard(size: 20, weight: .regular)
         makerNickname.textColor = .white
         levelImage.contentMode = .scaleAspectFit
+        deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        deleteButton.tintColor = .pointOrange
     }
     
     func setUI(_ package: RealmPosterQuizPackage, profileImage: UIImage) {
@@ -129,6 +136,10 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
 
 extension QuizCardCollectionViewCell: TransformableView {
     
+    var selectableView: UIView? {
+        cardBackgroundView
+    }
+    
     func transform(progress: CGFloat) {
         transformCardView(progress: progress)
         transformProfileView(progress: progress)
@@ -137,8 +148,8 @@ extension QuizCardCollectionViewCell: TransformableView {
         title.transform = normalTransform
         numberOfQuizs.transform = normalTransform
         indexLabel.transform = normalTransform
+        deleteButton.transform = normalTransform
     }
-    
     
     // MARK: Private functions
     
