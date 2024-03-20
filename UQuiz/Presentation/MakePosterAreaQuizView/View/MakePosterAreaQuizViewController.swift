@@ -55,7 +55,8 @@ final class MakePosterAreaQuizViewController: BaseViewController {
     @objc
     private func nextMovieButtonClicked() {
         let numberOfSelectArea = viewModel.outputQuizPackage.value[viewModel.currentIndex.value].numberOfselectArea
-        if  numberOfSelectArea == 5 {
+        let levelValue = viewModel.outputNumberOfLevelSelectedArea.value
+        if  numberOfSelectArea == levelValue {
             if viewModel.outputQuizPackage.value.count == viewModel.currentIndex.value + 1 {
                 showTextFieldAlert(title: "이름을 정해주세요", message: "퀴즈의 이름을 입력해주세요!", placeHolder: "타이틀") { title in
                     self.viewModel.inputQuizTitle.value = title
@@ -71,7 +72,7 @@ final class MakePosterAreaQuizViewController: BaseViewController {
                 fetchCollectionViewSelectedData()
             }
         } else {
-            showAlert(title: "더 선택해주세요!", message: "5곳의 영역을 선택해주세요", okTitle: "확인") { }
+            showAlert(title: "더 선택해주세요!", message: "\(levelValue)곳의 영역을 선택해주세요", okTitle: "확인") { }
         }
     }
     

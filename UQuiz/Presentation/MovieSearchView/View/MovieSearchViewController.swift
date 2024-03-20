@@ -56,7 +56,24 @@ final class MovieSearchViewController: BaseViewController {
         let list = Array(viewModel.outputAddedToPackage.value)
         vc.viewModel.inputQuizPackage.value = list
         vc.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(vc, animated: true)
+        
+        let alert = UIAlertController(title: "난이도 선택", message: "만들고 싶은 난이도를 선택해주세요!", preferredStyle: .alert)
+        let beginner = UIAlertAction(title: "초보", style: .default) { _ in
+            vc.viewModel.inputLevel.value = Level.beginner
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        let intermediate = UIAlertAction(title: "중수", style: .default) { _ in
+            vc.viewModel.inputLevel.value = Level.intermediate
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        let expert = UIAlertAction(title: "고수", style: .default) { _ in
+            vc.viewModel.inputLevel.value = Level.expert
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        alert.addAction(beginner)
+        alert.addAction(intermediate)
+        alert.addAction(expert)
+        present(alert, animated: true)
     }
 
 }

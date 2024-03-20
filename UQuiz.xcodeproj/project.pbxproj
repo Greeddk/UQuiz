@@ -28,6 +28,7 @@
 		422D5F352BAAC6090085E6D0 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F2C2BAAC6090085E6D0 /* Pretendard-Bold.otf */; };
 		422D5F362BAAC6090085E6D0 /* Pretendard-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F2D2BAAC6090085E6D0 /* Pretendard-Black.otf */; };
 		422D5F372BAAC6090085E6D0 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F2E2BAAC6090085E6D0 /* Pretendard-SemiBold.otf */; };
+		422D5F392BAACA7B0085E6D0 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D5F382BAACA7B0085E6D0 /* Level.swift */; };
 		42570E502B9983920042B338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E4F2B9983920042B338 /* AppDelegate.swift */; };
 		42570E522B9983920042B338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E512B9983920042B338 /* SceneDelegate.swift */; };
 		42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E532B9983920042B338 /* MovieSearchViewController.swift */; };
@@ -103,6 +104,7 @@
 		422D5F2C2BAAC6090085E6D0 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		422D5F2D2BAAC6090085E6D0 /* Pretendard-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Black.otf"; sourceTree = "<group>"; };
 		422D5F2E2BAAC6090085E6D0 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
+		422D5F382BAACA7B0085E6D0 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		42570E4C2B9983920042B338 /* UQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42570E4F2B9983920042B338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42570E512B9983920042B338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -257,8 +259,8 @@
 		42091DE82BA6FE04006BA897 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				42AD0D6B2B9B09AD002B8A48 /* MovieSearchView.swift */,
 				42570E532B9983920042B338 /* MovieSearchViewController.swift */,
+				42AD0D6B2B9B09AD002B8A48 /* MovieSearchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -501,6 +503,7 @@
 				42AD0D622B9AFDCB002B8A48 /* SearchMovie.swift */,
 				42B7EC712BA0251700AE0F52 /* Poster.swift */,
 				42B7EC822BA178FF00AE0F52 /* PosterQuiz.swift */,
+				422D5F382BAACA7B0085E6D0 /* Level.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				42091DCF2BA2E469006BA897 /* ProfileManagerViewModel.swift in Sources */,
 				42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */,
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
+				422D5F392BAACA7B0085E6D0 /* Level.swift in Sources */,
 				42AD0D632B9AFDCB002B8A48 /* SearchMovie.swift in Sources */,
 				42091DE02BA5EAEE006BA897 /* SolvePosterAreaQuizViewController.swift in Sources */,
 				42AD0D5C2B9AFBD6002B8A48 /* UIView+Extension.swift in Sources */,

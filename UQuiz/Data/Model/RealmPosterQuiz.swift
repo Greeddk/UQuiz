@@ -13,15 +13,17 @@ final class RealmPosterQuizPackage: Object {
     @Persisted var title: String
     @Persisted var quizs: List<RealmPosterQuiz>
     @Persisted var makerInfo: RealmMakerInfo?
+    @Persisted var level: Int
     var numberOfQuiz: Int {
         self.quizs.count
     }
     
-    convenience init(title: String, quizs: List<RealmPosterQuiz>, maker: RealmMakerInfo) {
+    convenience init(title: String, quizs: List<RealmPosterQuiz>, maker: RealmMakerInfo, level: Level.RawValue) {
         self.init()
         self.title = title
         self.quizs = quizs
         self.makerInfo = maker
+        self.level = level
     }
     
 }

@@ -15,6 +15,7 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     let indexLabel = UILabel()
     let cardViewContainer = UIView()
     let cardBackgroundView = UIView()
+    let levelImage = UIImageView()
     let posterView = UIImageView()
     let title = UILabel()
     let numberOfQuizs = UILabel()
@@ -26,6 +27,7 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         contentView.addSubviews([cardViewContainer, title, numberOfQuizs, profileContainer, indexLabel])
         cardViewContainer.addSubviews([cardBackgroundView])
         cardBackgroundView.addSubviews([posterView])
+        cardViewContainer.addSubview(levelImage)
         profileContainer.addSubviews([makerProfile, makerNickname])
     }
     
@@ -42,6 +44,11 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         }
         cardBackgroundView.snp.makeConstraints { make in
             make.edges.equalTo(cardViewContainer)
+        }
+        levelImage.snp.makeConstraints { make in
+            make.centerX.equalTo(cardBackgroundView)
+            make.centerY.equalTo(cardBackgroundView).offset(-40)
+            make.height.equalTo(90)
         }
         posterView.snp.makeConstraints { make in
             make.edges.equalTo(cardBackgroundView)
@@ -82,11 +89,13 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         title.font = .pretendard(size: 30, weight: .bold)
         title.numberOfLines = 2
         numberOfQuizs.font = .pretendard(size: 14, weight: .thin)
-        profileContainer.backgroundColor = .test
+        profileContainer.backgroundColor = .pointOrange
         profileContainer.layer.cornerRadius = 20
         makerProfile.layer.cornerRadius = 15
         makerProfile.clipsToBounds = true
         makerNickname.font = .pretendard(size: 20, weight: .regular)
+        makerNickname.textColor = .white
+        levelImage.contentMode = .scaleAspectFit
     }
     
     func setUI(_ package: RealmPosterQuizPackage, profileImage: UIImage) {
@@ -98,6 +107,18 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         numberOfQuizs.text = "\(package.numberOfQuiz)문제"
         makerNickname.text = package.makerInfo?.nickname
         makerProfile.image = profileImage
+        levelImage.image = {
+            switch package.level {
+            case 0:
+                return UIImage(named: "Begginer")
+            case 1:
+                return UIImage(named: "Intermediate")
+            case 2:
+                return UIImage(named: "Expert")
+            default:
+                return UIImage(named: "Begginer")
+            }
+        }()
     }
     
     func setIndexLabel(index: String) {
@@ -133,9 +154,9 @@ extension QuizCardCollectionViewCell: TransformableView {
     private func transformCardView(progress: CGFloat) {
         let translationX: CGFloat = bounds.width * progress
         
-//        let imageScale = 1 - abs(0.5 * progress)
-//        title.transform = CGAffineTransform(translationX: translationX, y: progress * cardViewContainer.frame.height / 8)
-//            .scaledBy(x: imageScale, y: imageScale)
+        let imageScale = 1 - abs(0.5 * progress)
+        levelImage.transform = CGAffineTransform(translationX: translationX, y: progress * cardBackgroundView.frame.height / 8)
+            .scaledBy(x: imageScale, y: imageScale)
         
         let cardBackgroundScale = 1 - abs(0.3 * progress)
         cardBackgroundView.transform = CGAffineTransform(translationX: translationX / 1.55, y: 0)

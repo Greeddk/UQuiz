@@ -18,7 +18,6 @@ final class QuizListViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
         viewModel.inputFetchPackageListTrigger.value = ()
     }
     
@@ -27,10 +26,6 @@ final class QuizListViewController: BaseViewController {
         mainView.collectionView.delegate = self
         mainView.collectionView.register(QuizCardCollectionViewCell.self, forCellWithReuseIdentifier: QuizCardCollectionViewCell.identifier)
         mainView.collectionView.isPagingEnabled = true
-    }
-    
-    private func setNavigationBar() {
-        navigationItem.title = "MainView"
     }
 
 }

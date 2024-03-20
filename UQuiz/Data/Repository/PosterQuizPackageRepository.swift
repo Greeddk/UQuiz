@@ -26,12 +26,12 @@ final class PosterQuizPackageRepository {
         return RealmPosterQuiz(movieId: quiz.id, genre: tmpGenre, poster: quiz.poster ?? "", title: quiz.title, original_title: quiz.original_title, selectedArea: tmpSelectedList, numberOfselectArea: quiz.numberOfselectArea)
     }
     
-    func createPackage(package: [PosterQuiz], title: String, makerInfo: RealmMakerInfo) {
+    func createPackage(package: [PosterQuiz], title: String, makerInfo: RealmMakerInfo, level: Level) {
         let tmp = List<RealmPosterQuiz>()
         package.forEach {
             tmp.append(changeModelToRealmObject(quiz: $0))
         }
-        let quizPackage = RealmPosterQuizPackage(title: title, quizs: tmp, maker: makerInfo)
+        let quizPackage = RealmPosterQuizPackage(title: title, quizs: tmp, maker: makerInfo, level: level.rawValue)
         do {
             try realm.write { 
                 realm.add(quizPackage)

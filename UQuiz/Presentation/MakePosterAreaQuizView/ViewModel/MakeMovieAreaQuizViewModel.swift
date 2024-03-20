@@ -18,10 +18,12 @@ final class MakeMovieAreaQuizViewModel {
     var inputResetSelectedAreaTrigger: Observable<Void?> = Observable(nil)
     var inputSavePackageToRealmTrigger: Observable<Void?> = Observable(nil)
     var inputQuizTitle: Observable<String> = Observable("영화 맞추기")
+    var inputLevel: Observable<Level> = Observable(.beginner)
     
     var outputQuizPackage: Observable<[PosterQuiz]> = Observable([])
     var currentIndex: Observable<Int> = Observable(0)
     var outputSelectedCellList: Observable<[Int]> = Observable([])
+    var outputNumberOfLevelSelectedArea: Observable<Int> = Observable(3)
     var alertTrigger: Observable<String> = Observable("")
     
     private let cellArea: [Int] = [-102, -101, -100, -99, -98, -52, -51, -50, -49, -48, -2, -1, 0, 1, 2, 48, 49, 50, 51, 52, 98, 99, 100, 101, 102]
@@ -46,11 +48,25 @@ final class MakeMovieAreaQuizViewModel {
         inputSavePackageToRealmTrigger.noInitBind { _ in
             self.saveQuiz()
         }
+        inputLevel.bind { level in
+            self.adjustNunberOfSelectedArea(level)
+        }
+    }
+    
+    private func adjustNunberOfSelectedArea(_ level: Level) {
+        switch self.inputLevel.value {
+        case .beginner:
+            outputNumberOfLevelSelectedArea.value = 5
+        case .intermediate:
+            outputNumberOfLevelSelectedArea.value = 4
+        case .expert:
+            outputNumberOfLevelSelectedArea.value = 3
+        }
     }
     
     private func saveQuiz() {
         let maker = makerRepository.fetchMakerInfo()
-        quizRepository.createPackage(package: outputQuizPackage.value, title: inputQuizTitle.value, makerInfo: maker)
+        quizRepository.createPackage(package: outputQuizPackage.value, title: inputQuizTitle.value, makerInfo: maker, level: inputLevel.value)
     }
     
     private func validateArea(index: Int) -> Bool {
@@ -66,13 +82,15 @@ final class MakeMovieAreaQuizViewModel {
     }
     
     private func selectArea(index: Int) {
-        let quizItem = outputQuizPackage.value[currentIndex.value]
         
-        if quizItem.numberOfselectArea >= 5 {
-            alertTrigger.value = "영역 선택은 최대 5개까지 가능합니다!"
+        let quizItem = outputQuizPackage.value[currentIndex.value]
+        let numberOfArea = outputNumberOfLevelSelectedArea.value
+        if quizItem.numberOfselectArea >= numberOfArea {
+            alertTrigger.value = "영역 선택은 최대 \(numberOfArea)개까지 가능합니다!"
             return
         }
         
+        //TODO: 분기 나눠서 처리하기
         if index % 50 == 0 || index % 50 == 1 { //왼쪽
             print(index)
             alertTrigger.value = "조금 더 안쪽 부분을 선택해주세요!"
