@@ -53,12 +53,15 @@ final class PosterQuizPackageRepository {
     
     func fetchPackages() -> [RealmPosterQuizPackage] {
         print(realm.configuration.fileURL)
-        return Array(realm.objects(RealmPosterQuizPackage.self))
+        return Array(realm.objects(RealmPosterQuizPackage.self).reversed())
     }
     
     func deletePackage(package: RealmPosterQuizPackage) {
         do {
             try realm.write {
+                package.quizs.forEach { quiz in
+                    realm.delete(quiz)
+                }
                 realm.delete(package)
             }
         } catch {

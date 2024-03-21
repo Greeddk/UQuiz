@@ -137,7 +137,7 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
 extension QuizCardCollectionViewCell: TransformableView {
     
     var selectableView: UIView? {
-        cardBackgroundView
+        nil
     }
     
     func transform(progress: CGFloat) {

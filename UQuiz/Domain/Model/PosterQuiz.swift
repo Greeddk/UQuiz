@@ -27,6 +27,6 @@ struct PosterQuiz {
         self.selectedArea = []
         self.numberOfselectArea = 0
         self.overview = item.overview
-        self.release_date = item.release_date
+        self.release_date = item.release_date ?? ""
     }
 }

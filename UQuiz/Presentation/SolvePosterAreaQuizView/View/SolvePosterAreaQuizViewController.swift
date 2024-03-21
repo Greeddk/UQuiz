@@ -58,7 +58,7 @@ extension SolvePosterAreaQuizViewController {
     // MARK: 시간 초과시 알러트
     private func timeOverAction() {
         mainView.setTextFieldAndButtonEnable(isEnabled: false)
-        self.showAlert(title: "시간초과", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
+        self.showAlert(title: "시간초과", message: "3초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
             self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
             self.mainView.collectionView.isHidden = true
             self.resetTimeLimitBar()
@@ -68,14 +68,14 @@ extension SolvePosterAreaQuizViewController {
     }
     
     private func resetTimeLimitBar() {
-        UIView.animate(withDuration: 5.5, animations: {
+        UIView.animate(withDuration: 3.5, animations: {
             self.viewModel.inputTimeLimitBarPercentage.value = 0
         })
     }
     
     // MARK: 다음 퀴즈 fetch
     private func goNext() {
-        let timeDelay: DispatchTimeInterval = .seconds(5)
+        let timeDelay: DispatchTimeInterval = .seconds(3)
         DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay) {
             self.viewModel.inputNextIndexTrigger.value = ()
             self.fetchPoster()
@@ -93,7 +93,7 @@ extension SolvePosterAreaQuizViewController {
         if value {
             mainView.setTextFieldAndButtonEnable(isEnabled: false)
             viewModel.inputInvalidTimerTrigger.value = ()
-            showAlert(title: "정답", message: "5초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
+            showAlert(title: "정답", message: "3초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
                 self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
                 self.mainView.collectionView.isHidden = true
                 self.resetTimeLimitBar()
@@ -189,10 +189,10 @@ extension SolvePosterAreaQuizViewController {
                                                y: .zero)
         emitterLayer.emitterCells = [cell]
         emitterLayer.birthRate = 2
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             emitterLayer.birthRate = 0
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             emitterLayer.removeFromSuperlayer()
         }
         
@@ -212,10 +212,10 @@ extension SolvePosterAreaQuizViewController {
         emitterLayer.emitterPosition = CGPoint(x: view.center.x, y: view.center.y)
         emitterLayer.birthRate = 1
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             emitterLayer.birthRate = 0
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             emitterLayer.removeFromSuperlayer()
         }
         view.layer.addSublayer(emitterLayer)

@@ -28,7 +28,7 @@ final class QuizListViewController: BaseViewController {
         mainView.collectionView.isPagingEnabled = true
         navigationController?.isNavigationBarHidden = true
     }
-
+    
 }
 
 extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -39,7 +39,7 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: QuizCardCollectionViewCell.identifier, for: indexPath) as! QuizCardCollectionViewCell
-        let list = Array(viewModel.outputPackageList.value.reversed())
+        let list = Array(viewModel.outputPackageList.value)
         let package = list[indexPath.item]
         viewModel.inputIndex.value = indexPath.item
         viewModel.outputProfileImage.bind { image in
@@ -50,17 +50,17 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(sender:)), for: .touchUpInside)
         return cell
     }
-    // TODO: Touch가 안됨...
+    
     @objc private func deleteButtonTapped(sender: UIButton) {
-        print(#function)
         viewModel.inputDeletePackageTrigger.value = sender.tag
+        mainView.collectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = SolvePosterAreaQuizViewController()
-        let list = Array(viewModel.outputPackageList.value.reversed()[indexPath.item].quizs)
+        let list = Array(viewModel.outputPackageList.value[indexPath.item].quizs)
         vc.viewModel.outputQuizList.value = list
-        vc.viewModel.inputLevel.value = viewModel.outputPackageList.value.reversed()[indexPath.item].level
+        vc.viewModel.inputLevel.value = viewModel.outputPackageList.value[indexPath.item].level
         vc.info = viewModel.outputPackageList.value[indexPath.item].title
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)

@@ -27,7 +27,6 @@ final class MovieSearchViewModel {
             } else {
                 self.outputAddedToPackage.value.insert(value)
             }
-            print("outputaddedList",self.outputAddedToPackage.value)
         }
     }
     

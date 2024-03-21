@@ -19,6 +19,7 @@ final class QuizListViewModel {
     
     var outputPackageList: Observable<[RealmPosterQuizPackage]> = Observable([])
     var outputProfileImage: Observable<UIImage?> = Observable(nil)
+    var outputReloadViewTrigger: Observable<Void?> = Observable(nil)
     
     init() {
         inputFetchPackageListTrigger.bind { _ in
@@ -44,7 +45,8 @@ final class QuizListViewModel {
     }
     
     private func deleteQuizPackage(index: Int) {
-        let package = outputPackageList.value.reversed()[index]
+        let package = outputPackageList.value[index]
+        outputPackageList.value.remove(at: index)
         repository.deletePackage(package: package)
     }
     

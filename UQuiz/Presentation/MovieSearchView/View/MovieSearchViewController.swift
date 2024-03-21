@@ -103,7 +103,6 @@ extension MovieSearchViewController: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function)
         viewModel.inputButtonClickedTrigger.value = viewModel.outputRequestList.value[indexPath.item]
         collectionView.reloadItems(at: [indexPath])
     }

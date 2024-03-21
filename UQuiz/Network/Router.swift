@@ -50,7 +50,6 @@ enum Router: URLRequestConvertible {
         case .posters(_):
             return request
         }
-        print(request)
         return request
     }
 }

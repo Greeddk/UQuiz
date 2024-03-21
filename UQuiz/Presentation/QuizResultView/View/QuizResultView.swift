@@ -11,21 +11,29 @@ import SnapKit
 final class QuizResultView: BaseView {
 
     private let scoreLabel = UILabel()
+    private let levelImageView = UIImageView()
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
     let goHomeButton = UIButton()
     
     override func configureHierarchy() {
-        addSubviews([scoreLabel, goHomeButton])
+        addSubviews([scoreLabel, collectionView, goHomeButton])
     }
     
     override func setConstraints() {
         scoreLabel.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview()
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
+            make.centerX.equalTo(self.safeAreaLayoutGuide)
+            make.width.equalTo(100)
+            make.height.equalTo(50)
         }
-        
+        collectionView.snp.makeConstraints { make in
+            make.top.equalTo(scoreLabel.snp.bottom).offset(10)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
+            make.height.equalTo(460)
+        }
         goHomeButton.snp.makeConstraints { make in
             make.centerX.equalTo(self.safeAreaLayoutGuide)
-            make.top.equalTo(scoreLabel.snp.bottom).offset(50)
+            make.top.equalTo(collectionView.snp.bottom).offset(10)
         }
     }
     
@@ -34,6 +42,14 @@ final class QuizResultView: BaseView {
         goHomeButton.setTitle("홈으로", for: .normal)
         goHomeButton.setTitleColor(.black, for: .normal)
         goHomeButton.tintColor = .green
+        collectionView.backgroundColor = .green
+    }
+    
+    private func createLayout() -> UICollectionViewLayout {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 300, height: 450)
+        return layout
     }
     
     func setUI(score: String) {

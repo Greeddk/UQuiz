@@ -1,5 +1,5 @@
 {
-  "originHash" : "cda21fc5df4168d8f5fa35abeb082152b312ab31f52258d0ccf2c20aa59db5c4",
+  "originHash" : "9b385f1eea500d1573d6d00f59cc6ec166852fb67fa3f50fd61af9ac6a5ef063",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -87,8 +87,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/google/gtm-session-fetcher.git",
       "state" : {
-        "revision" : "76135c9f4e1ac85459d5fec61b6f76ac47ab3a4c",
-        "version" : "3.3.1"
+        "revision" : "9534039303015a84837090d20fa21cae6e5eadb6",
+        "version" : "3.3.2"
       }
     },
     {
@@ -151,7 +151,7 @@
       "location" : "https://github.com/realm/realm-swift.git",
       "state" : {
         "branch" : "master",
-        "revision" : "7a2f7d41ffa409978a6b5e475c2ee57f08222705"
+        "revision" : "33a1eee6ebe4f6a3475c78e8900b7c41c1d74296"
       }
     },
     {

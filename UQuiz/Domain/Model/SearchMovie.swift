@@ -18,7 +18,7 @@ struct Movie: Decodable, Hashable, Identifiable {
     let overview: String
     let title: String
     let original_title: String
-    let release_date: String
+    let release_date: String?
     
     enum CodingKeys: String, CodingKey {
         case id
