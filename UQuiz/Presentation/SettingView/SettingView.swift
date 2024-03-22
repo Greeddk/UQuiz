@@ -73,11 +73,20 @@ final class SettingView: BaseView {
         profileImage.layer.borderColor = UIColor.white.cgColor
         profileImage.layer.borderWidth = 4
         profileImage.layer.cornerRadius = 30
+        profileImage.clipsToBounds = true
         profileImage.image = UIImage(systemName: "star")
         nicknameLabel.font = .pretendard(size: 30, weight: .medium)
         nicknameLabel.textColor = .white
         nicknameLabel.text = "test"
         changeNicknameButton.tintColor = .white
         changeNicknameButton.setImage(UIImage(systemName: "pencil.circle"), for: .normal)
+    }
+    
+    func fetchProfile(image: UIImage?) {
+        if image == nil {
+            profileImage.image = .defaultAvatar
+        } else {
+            profileImage.image = image
+        }
     }
 }

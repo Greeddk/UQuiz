@@ -142,7 +142,6 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
             }
         }()
         makerNickname.text = package.makerInfo?.nickname
-        
     }
     
     func setProfile(profileImage: UIImage?) {

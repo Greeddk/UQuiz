@@ -18,7 +18,18 @@ final class SettingViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         profileViewModel.inputLoadProfileImageTrigger.value = ()
+        profileViewModel.outputUserProfileImage.bind { image in
+            self.mainView.fetchProfile(image: image)
+        }
+        profileViewModel.outputNickname.bind { nickname in
+            self.mainView.nicknameLabel.text = nickname
+        }
     }
     // TODO: 이미지나 닉네임이 변경되었을 시, 샐이 리로드 되게하기
     

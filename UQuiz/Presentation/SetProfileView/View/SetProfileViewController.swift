@@ -19,7 +19,11 @@ final class SetProfileViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenViewIsTapped()
         mainView.nicknameTextField.becomeFirstResponder()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.mainView.nicknameTextField.resignFirstResponder()
+        }
         viewModel.outputNicknameValidation.noInitBind { [weak self] text in
             self?.mainView.validLabel.text = text
         }
