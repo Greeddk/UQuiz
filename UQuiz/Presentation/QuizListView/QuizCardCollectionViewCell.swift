@@ -34,21 +34,6 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func setConstraints() {
-        profileContainer.snp.makeConstraints { make in
-            make.bottom.equalTo(cardViewContainer.snp.top).offset(-20)
-            make.centerX.equalTo(contentView)
-            make.height.equalTo(50)
-        }
-        makerProfile.snp.makeConstraints { make in
-            make.leading.equalTo(profileContainer).offset(16)
-            make.centerY.equalTo(profileContainer)
-            make.size.equalTo(30)
-        }
-        makerNickname.snp.makeConstraints { make in
-            make.centerY.equalTo(profileContainer)
-            make.leading.equalTo(makerProfile.snp.trailing).offset(12)
-            make.trailing.lessThanOrEqualTo(profileContainer.snp.trailing).offset(-16)
-        }
         cardViewContainer.snp.makeConstraints { make in
             make.width.equalTo(200)
             make.height.equalTo(250)
@@ -57,6 +42,21 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         }
         cardBackgroundView.snp.makeConstraints { make in
             make.edges.equalTo(cardViewContainer)
+        }
+        profileContainer.snp.makeConstraints { make in
+            make.bottom.equalTo(cardViewContainer.snp.top).offset(-20)
+            make.centerX.equalTo(contentView)
+            make.height.equalTo(50)
+        }
+        makerProfile.snp.makeConstraints { make in
+            make.leading.equalTo(profileContainer).offset(16)
+            make.centerY.equalTo(profileContainer)
+            make.size.equalTo(40)
+        }
+        makerNickname.snp.makeConstraints { make in
+            make.centerY.equalTo(profileContainer)
+            make.leading.equalTo(makerProfile.snp.trailing).offset(12)
+            make.trailing.lessThanOrEqualTo(profileContainer.snp.trailing).offset(-16)
         }
         levelImage.snp.makeConstraints { make in
             make.centerX.equalTo(cardBackgroundView)
@@ -95,8 +95,9 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     override func configureView() {
         profileContainer.backgroundColor = .pointOrange
         profileContainer.layer.cornerRadius = 20
-        makerProfile.layer.cornerRadius = 15
+        makerProfile.contentMode = .scaleAspectFill
         makerProfile.clipsToBounds = true
+        makerProfile.layer.cornerRadius = 20
         makerNickname.font = .pretendard(size: 20, weight: .regular)
         makerNickname.textColor = .white
         levelImage.contentMode = .scaleAspectFit

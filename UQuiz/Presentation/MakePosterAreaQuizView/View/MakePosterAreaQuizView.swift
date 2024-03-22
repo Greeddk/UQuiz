@@ -53,35 +53,45 @@ final class MakePosterAreaQuizView: BaseView {
             make.width.equalTo(360)
             make.height.equalTo(540)
         }
-        
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(posterView)
         }
-        
         previousMovieButton.snp.makeConstraints { make in
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(20)
-            make.size.equalTo(60)
+            make.width.equalTo(90)
+            make.height.equalTo(50)
         }
-        
         showPostersButton.snp.makeConstraints { make in
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
-            make.size.equalTo(60)
+            make.width.equalTo(120)
+            make.height.equalTo(50)
         }
-        
         nextMovieButton.snp.makeConstraints { make in
             make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
             make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
-            make.size.equalTo(60)
+            make.width.equalTo(90)
+            make.height.equalTo(50)
         }
-        
     }
     
     override func configureView() {
-        previousMovieButton.setImage(UIImage(named: "previousButton"), for: .normal)
-        showPostersButton.setImage(UIImage(named: "posterButton"), for: .normal)
-        nextMovieButton.setImage(UIImage(named: "nextButton"), for: .normal)
+        previousMovieButton.backgroundColor = .pointOrange
+        previousMovieButton.setTitle("PREV", for: .normal)
+        previousMovieButton.setTitleColor(.white, for: .normal)
+        previousMovieButton.titleLabel?.font = .pretendard(size: 24, weight: .bold)
+        previousMovieButton.layer.cornerRadius = 8
+        showPostersButton.backgroundColor = .lightGreen
+        showPostersButton.setTitle("다른포스터", for: .normal)
+        showPostersButton.titleLabel?.font = .pretendard(size: 18, weight: .semiBold)
+        showPostersButton.setTitleColor(.white, for: .normal)
+        showPostersButton.layer.cornerRadius = 8
+        nextMovieButton.backgroundColor = .pointOrange
+        nextMovieButton.setTitle("NEXT", for: .normal)
+        nextMovieButton.setTitleColor(.white, for: .normal)
+        nextMovieButton.titleLabel?.font = .pretendard(size: 24, weight: .bold)
+        nextMovieButton.layer.cornerRadius = 8
     }
     
     func fetchPoster(detailURL: String?) {

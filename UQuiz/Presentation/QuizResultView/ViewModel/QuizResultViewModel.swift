@@ -23,7 +23,7 @@ final class QuizResultViewModel {
     private func makeStatistics() {
         let totalData = inputData.value
         let correctData = inputData.value.filter { $0.isCorrect == true }
-        outputCorretRate.value = "\(correctData.count) / \(totalData.count) "
+        outputCorretRate.value = "\(correctData.count) of \(totalData.count) "
     }
     
 }

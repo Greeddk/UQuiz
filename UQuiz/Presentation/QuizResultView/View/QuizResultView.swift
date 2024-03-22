@@ -24,31 +24,35 @@ final class QuizResultView: BaseView {
             make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
             make.width.equalTo(100)
-            make.height.equalTo(50)
         }
         collectionView.snp.makeConstraints { make in
-            make.top.equalTo(scoreLabel.snp.bottom).offset(10)
+            make.centerY.equalTo(self.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide)
-            make.height.equalTo(460)
+            make.height.equalTo(500)
         }
         goHomeButton.snp.makeConstraints { make in
             make.centerX.equalTo(self.safeAreaLayoutGuide)
-            make.top.equalTo(collectionView.snp.bottom).offset(10)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
+            make.width.equalTo(100)
+            make.height.equalTo(50)
         }
     }
     
     override func configureView() {
-        scoreLabel.font = .pretendard(size: 30, weight: .semiBold)
+        collectionView.showsHorizontalScrollIndicator = false
+        scoreLabel.font = .pretendard(size: 30, weight: .bold)
+        scoreLabel.textAlignment = .center
         goHomeButton.setTitle("홈으로", for: .normal)
-        goHomeButton.setTitleColor(.black, for: .normal)
-        goHomeButton.tintColor = .green
-        collectionView.backgroundColor = .green
+        goHomeButton.setTitleColor(.white, for: .normal)
+        goHomeButton.titleLabel?.font = .pretendard(size: 24, weight: .bold)
+        goHomeButton.backgroundColor = .pointOrange
+        goHomeButton.layer.cornerRadius = 12
     }
     
     private func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 300, height: 450)
+        layout.itemSize = CGSize(width: 320, height: 500)
         return layout
     }
     

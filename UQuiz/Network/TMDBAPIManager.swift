@@ -10,8 +10,7 @@ import Alamofire
 import os
 
 final class TMDBAPIManager {
-    
-    private let logger = Logger(subsystem: Bundle.main.bundleIdentifier!, category: "APIManger")
+
     static let shared = TMDBAPIManager()
     
     func requestMovieInfo<T:Decodable>(type: T.Type, query: String, completionHandler: @escaping (T) -> Void) {
@@ -21,10 +20,10 @@ final class TMDBAPIManager {
                 if response.response?.statusCode == 200 {
                     completionHandler(success)
                 } else if response.response?.statusCode == 500 {
-                    self.logger.error("statusCode Error")
+                    print("statusCode Error")
                 }
             case .failure(let failure):
-                self.logger.error("통신 에러 \(failure)")
+                print("통신 에러 \(failure)")
             }
         }
         
@@ -36,7 +35,7 @@ final class TMDBAPIManager {
             case .success(let success):
                 completionHandler(success.posters)
             case .failure(let failure):
-                self.logger.error("통신 에러 \(failure)")
+                print("통신 에러 \(failure)")
             }
         }
     }
