@@ -57,19 +57,19 @@ final class MakePosterAreaQuizView: BaseView {
             make.edges.equalTo(posterView)
         }
         previousMovieButton.snp.makeConstraints { make in
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(20)
             make.width.equalTo(90)
             make.height.equalTo(50)
         }
         showPostersButton.snp.makeConstraints { make in
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
             make.width.equalTo(120)
             make.height.equalTo(50)
         }
         nextMovieButton.snp.makeConstraints { make in
-            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-5)
+            make.bottom.equalTo(self.safeAreaLayoutGuide).offset(-10)
             make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-20)
             make.width.equalTo(90)
             make.height.equalTo(50)

@@ -147,7 +147,7 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     
     func setProfile(profileImage: UIImage?) {
         guard let profileImage = profileImage else {
-            makerProfile.image = UIImage(systemName: "person")
+            makerProfile.image = .defaultAvatar
             return
         }
         makerProfile.image = profileImage

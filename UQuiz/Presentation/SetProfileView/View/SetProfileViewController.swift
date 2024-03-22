@@ -21,9 +21,9 @@ final class SetProfileViewController: BaseViewController {
         super.viewDidLoad()
         hideKeyboardWhenViewIsTapped()
         mainView.nicknameTextField.becomeFirstResponder()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            self.mainView.nicknameTextField.resignFirstResponder()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//            self.mainView.nicknameTextField.resignFirstResponder()
+//        }
         viewModel.outputNicknameValidation.noInitBind { [weak self] text in
             self?.mainView.validLabel.text = text
         }
@@ -80,6 +80,12 @@ final class SetProfileViewController: BaseViewController {
 extension SetProfileViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         viewModel.inputTextFieldChanged.value = textField.text
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        submitButtonClicked()
+        return true
     }
 }
 

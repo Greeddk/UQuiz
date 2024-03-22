@@ -19,6 +19,7 @@ final class QuizListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.inputFetchPackageListTrigger.value = ()
+        print(viewModel.outputPackageList.value)
         viewModel.outputPackageList.bind { [weak self] _ in
             self?.mainView.collectionView.reloadData()
             self?.mainView.collectionView.performBatchUpdates({

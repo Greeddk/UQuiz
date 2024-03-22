@@ -42,7 +42,7 @@ final class SetProfileView: BaseView {
         nicknameTextField.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(20)
             make.top.equalTo(cameraImageView.snp.bottom).offset(50)
-            make.height.equalTo(50)
+            make.height.equalTo(60)
         }
         validLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).offset(20)
@@ -70,12 +70,10 @@ final class SetProfileView: BaseView {
         validLabel.text = "만든 퀴즈에 표시될 닉네임을 입력해주세요"
         validLabel.font = .pretendard(size: 16, weight: .regular)
         nicknameTextField.placeholder = "닉네임"
+        nicknameTextField.placeholderColor = .black
+        nicknameTextField.textColor = .black
         nicknameTextField.font = .pretendard(size: 16, weight: .regular)
         nicknameTextField.placeholderFontScale = 1.1
-        nicknameTextField.borderActiveColor = .pointOrange
-        nicknameTextField.textColor = .black
-        nicknameTextField.borderInactiveColor = .lightGray
-        nicknameTextField.placeholderColor = .systemGray
         submitButton.setTitleColor(.white, for: .normal)
         submitButton.layer.cornerRadius = 8
         submitButton.backgroundColor = .pointOrange
