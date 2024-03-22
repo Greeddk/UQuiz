@@ -7,19 +7,19 @@
 
 import UIKit
 import SnapKit
-import TextFieldEffects
 
 final class SetProfileView: BaseView {
     
     let logoView = UIImageView()
     let roundProfileImage = RoundImageView(frame: .zero)
     let cameraImageView = UIImageView()
-    let nicknameTextField = HoshiTextField()
+    let textFieldBackground = UIView()
+    let nicknameTextField = UITextField()
     let validLabel = UILabel()
     let submitButton = UIButton()
     
     override func configureHierarchy() {
-        addSubviews([logoView, roundProfileImage, cameraImageView, nicknameTextField, validLabel, submitButton])
+        addSubviews([logoView, roundProfileImage, cameraImageView, textFieldBackground, nicknameTextField, validLabel, submitButton])
     }
     
     override func setConstraints() {
@@ -40,9 +40,13 @@ final class SetProfileView: BaseView {
             make.trailing.equalTo(roundProfileImage.snp.trailing).offset(1)
         }
         nicknameTextField.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(20)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(40)
             make.top.equalTo(cameraImageView.snp.bottom).offset(50)
-            make.height.equalTo(60)
+            make.height.equalTo(40)
+        }
+        textFieldBackground.snp.makeConstraints { make in
+            make.verticalEdges.equalTo(nicknameTextField).inset(-5)
+            make.horizontalEdges.equalTo(nicknameTextField).inset(-20)
         }
         validLabel.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).offset(20)
@@ -69,11 +73,12 @@ final class SetProfileView: BaseView {
         cameraImageView.tintColor = .pointOrange
         validLabel.text = "만든 퀴즈에 표시될 닉네임을 입력해주세요"
         validLabel.font = .pretendard(size: 16, weight: .regular)
+        textFieldBackground.layer.borderColor = UIColor.pointOrange.cgColor
+        textFieldBackground.layer.borderWidth = 2
+        textFieldBackground.layer.cornerRadius = 12
         nicknameTextField.placeholder = "닉네임"
-        nicknameTextField.placeholderColor = .black
         nicknameTextField.textColor = .black
         nicknameTextField.font = .pretendard(size: 16, weight: .regular)
-        nicknameTextField.placeholderFontScale = 1.1
         submitButton.setTitleColor(.white, for: .normal)
         submitButton.layer.cornerRadius = 8
         submitButton.backgroundColor = .pointOrange

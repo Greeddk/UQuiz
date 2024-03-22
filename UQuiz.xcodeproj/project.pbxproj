@@ -18,6 +18,7 @@
 		42091DF82BA7126C006BA897 /* QuizResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DF72BA7126C006BA897 /* QuizResultViewController.swift */; };
 		42091DFA2BA7128B006BA897 /* QuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DF92BA7128B006BA897 /* QuizResultView.swift */; };
 		42091DFC2BA713A3006BA897 /* QuizResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DFB2BA713A3006BA897 /* QuizResultViewModel.swift */; };
+		421C7A542BADC8BA002D5DDF /* QuizByDeveloper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421C7A532BADC8BA002D5DDF /* QuizByDeveloper.swift */; };
 		422D5F242BAAC5120085E6D0 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D5F232BAAC5120085E6D0 /* UIFont+Extension.swift */; };
 		422D5F2F2BAAC6090085E6D0 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F262BAAC6090085E6D0 /* Pretendard-Thin.otf */; };
 		422D5F302BAAC6090085E6D0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F272BAAC6090085E6D0 /* Pretendard-Medium.otf */; };
@@ -69,7 +70,6 @@
 		42B7EC512B9EE77B00AE0F52 /* MakePosterAreaQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC502B9EE77B00AE0F52 /* MakePosterAreaQuizView.swift */; };
 		42B7EC532B9EF46E00AE0F52 /* SetProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC522B9EF46E00AE0F52 /* SetProfileViewController.swift */; };
 		42B7EC552B9EF49C00AE0F52 /* SetProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC542B9EF49C00AE0F52 /* SetProfileView.swift */; };
-		42B7EC582B9EF7D100AE0F52 /* TextFieldEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 42B7EC572B9EF7D100AE0F52 /* TextFieldEffects */; };
 		42B7EC5B2B9EF82200AE0F52 /* RoundImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC5A2B9EF82200AE0F52 /* RoundImageView.swift */; };
 		42B7EC5D2B9F065200AE0F52 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC5C2B9F065200AE0F52 /* UserDefaultsManager.swift */; };
 		42B7EC5F2B9F06E500AE0F52 /* SetProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC5E2B9F06E500AE0F52 /* SetProfileViewModel.swift */; };
@@ -98,6 +98,7 @@
 		42091DF72BA7126C006BA897 /* QuizResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewController.swift; sourceTree = "<group>"; };
 		42091DF92BA7128B006BA897 /* QuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultView.swift; sourceTree = "<group>"; };
 		42091DFB2BA713A3006BA897 /* QuizResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewModel.swift; sourceTree = "<group>"; };
+		421C7A532BADC8BA002D5DDF /* QuizByDeveloper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizByDeveloper.swift; sourceTree = "<group>"; };
 		422D5F232BAAC5120085E6D0 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		422D5F262BAAC6090085E6D0 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		422D5F272BAAC6090085E6D0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -168,7 +169,6 @@
 				42AD0D462B9AF8D3002B8A48 /* Kingfisher in Frameworks */,
 				422D5F402BAAE81B0085E6D0 /* FirebaseMessaging in Frameworks */,
 				42AD0D4C2B9AF8F6002B8A48 /* Realm in Frameworks */,
-				42B7EC582B9EF7D100AE0F52 /* TextFieldEffects in Frameworks */,
 				42AD0D4E2B9AF8F6002B8A48 /* RealmSwift in Frameworks */,
 				42B7EC8A2BA1A14000AE0F52 /* CollectionViewPagingLayout in Frameworks */,
 				422D5F3E2BAAE81B0085E6D0 /* FirebaseCrashlytics in Frameworks */,
@@ -523,6 +523,7 @@
 			children = (
 				42091DF32BA70247006BA897 /* Model */,
 				42091DD72BA58CE6006BA897 /* Repository */,
+				421C7A532BADC8BA002D5DDF /* QuizByDeveloper.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -638,7 +639,6 @@
 				42AD0D482B9AF8DC002B8A48 /* SnapKit */,
 				42AD0D4B2B9AF8F6002B8A48 /* Realm */,
 				42AD0D4D2B9AF8F6002B8A48 /* RealmSwift */,
-				42B7EC572B9EF7D100AE0F52 /* TextFieldEffects */,
 				42B7EC892BA1A14000AE0F52 /* CollectionViewPagingLayout */,
 				422D5F3B2BAAE81B0085E6D0 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				422D5F3D2BAAE81B0085E6D0 /* FirebaseCrashlytics */,
@@ -678,7 +678,6 @@
 				42AD0D442B9AF8D3002B8A48 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				42AD0D472B9AF8DC002B8A48 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				42AD0D4A2B9AF8F6002B8A48 /* XCRemoteSwiftPackageReference "realm-swift" */,
-				42B7EC562B9EF7D100AE0F52 /* XCRemoteSwiftPackageReference "TextFieldEffects" */,
 				42B7EC882BA1A14000AE0F52 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
 				422D5F3A2BAAE81B0085E6D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
@@ -758,6 +757,7 @@
 				422D5F242BAAC5120085E6D0 /* UIFont+Extension.swift in Sources */,
 				42AD0D6C2B9B09AD002B8A48 /* MovieSearchView.swift in Sources */,
 				42B7EC7D2BA02B8400AE0F52 /* PosterListViewModel.swift in Sources */,
+				421C7A542BADC8BA002D5DDF /* QuizByDeveloper.swift in Sources */,
 				42091DDB2BA58DAF006BA897 /* PosterQuizPackageRepository.swift in Sources */,
 				42091DF82BA7126C006BA897 /* QuizResultViewController.swift in Sources */,
 				42091DCF2BA2E469006BA897 /* ProfileManagerViewModel.swift in Sources */,
@@ -1066,14 +1066,6 @@
 				kind = branch;
 			};
 		};
-		42B7EC562B9EF7D100AE0F52 /* XCRemoteSwiftPackageReference "TextFieldEffects" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/raulriera/TextFieldEffects.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.7.0;
-			};
-		};
 		42B7EC882BA1A14000AE0F52 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/amirdew/CollectionViewPagingLayout.git";
@@ -1124,11 +1116,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 42AD0D4A2B9AF8F6002B8A48 /* XCRemoteSwiftPackageReference "realm-swift" */;
 			productName = RealmSwift;
-		};
-		42B7EC572B9EF7D100AE0F52 /* TextFieldEffects */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 42B7EC562B9EF7D100AE0F52 /* XCRemoteSwiftPackageReference "TextFieldEffects" */;
-			productName = TextFieldEffects;
 		};
 		42B7EC892BA1A14000AE0F52 /* CollectionViewPagingLayout */ = {
 			isa = XCSwiftPackageProductDependency;
