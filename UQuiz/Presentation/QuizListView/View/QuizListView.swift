@@ -20,8 +20,8 @@ final class QuizListView: BaseView {
     
     override func setConstraints() {
         logoView.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(-40)
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(5)
-            make.top.equalTo(self.safeAreaLayoutGuide).offset(10)
             make.width.equalTo(100)
             make.height.equalTo(40)
         }
@@ -34,7 +34,7 @@ final class QuizListView: BaseView {
     override func configureView() {
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
-        logoView.image = .uqizlogo
+        logoView.image = .uquizLogo
         logoView.contentMode = .scaleAspectFit
     }
     

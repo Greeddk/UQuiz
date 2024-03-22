@@ -10,6 +10,7 @@ import SnapKit
 
 final class MovieSearchView: BaseView {
     
+    let logoView = UIImageView()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: configureLayout())
     let searchBar = UISearchBar()
     private var cellWidth: CGFloat = 0
@@ -25,10 +26,16 @@ final class MovieSearchView: BaseView {
     }
     
     override func configureHierarchy() {
-        addSubviews([searchBar, collectionView])
+        addSubviews([logoView, searchBar, collectionView])
     }
     
     override func setConstraints() {
+        logoView.snp.makeConstraints { make in
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(-40)
+            make.leading.equalTo(self.safeAreaLayoutGuide).offset(5)
+            make.width.equalTo(100)
+            make.height.equalTo(40)
+        }
         searchBar.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide)
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(10)
@@ -43,6 +50,8 @@ final class MovieSearchView: BaseView {
     }
     
     override func configureView() {
+        logoView.image = .uquizLogo
+        logoView.contentMode = .scaleAspectFit
         searchBar.searchBarStyle = .minimal
         searchBar.placeholder = "MovieSearchView_placeholder".localized
     }

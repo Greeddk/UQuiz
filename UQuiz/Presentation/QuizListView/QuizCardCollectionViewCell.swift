@@ -35,7 +35,7 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     
     override func setConstraints() {
         profileContainer.snp.makeConstraints { make in
-            make.top.equalTo(contentView).offset(15)
+            make.bottom.equalTo(cardViewContainer.snp.top).offset(-20)
             make.centerX.equalTo(contentView)
             make.height.equalTo(50)
         }
@@ -68,7 +68,8 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         }
         title.snp.makeConstraints { make in
             make.centerX.equalTo(contentView)
-            make.top.equalTo(cardBackgroundView.snp.bottom).offset(40)
+            make.top.equalTo(cardBackgroundView.snp.bottom).offset(30)
+            make.horizontalEdges.equalTo(contentView).inset(20)
         }
         numberOfQuizs.snp.makeConstraints { make in
             make.top.equalTo(posterView.snp.bottom).offset(2)
@@ -90,6 +91,7 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
+    // MARK: View
     override func configureView() {
         profileContainer.backgroundColor = .pointOrange
         profileContainer.layer.cornerRadius = 20
@@ -106,13 +108,14 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         cardBackgroundView.clipsToBounds = true
         title.font = .pretendard(size: 30, weight: .bold)
         title.numberOfLines = 2
+        title.textAlignment = .center
         numberOfQuizs.font = .pretendard(size: 14, weight: .thin)
         playButton.backgroundColor = .white
-        playButton.setTitle("Play", for: .normal)
+        playButton.setTitle("PLAY", for: .normal)
         playButton.setTitleColor(.pointOrange, for: .normal)
         playButton.titleLabel?.font = .pretendard(size: 30, weight: .extraBold)
-        playButton.layer.cornerRadius = 12
-        playButton.layer.borderWidth = 3
+        playButton.layer.cornerRadius = 30
+        playButton.layer.borderWidth = 5
         playButton.layer.borderColor = UIColor.pointOrange.cgColor
         indexLabel.font = .pretendard(size: 15, weight: .regular)
         deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)

@@ -84,17 +84,17 @@ final class SolvePosterAreaQuizView: BaseView {
     // MARK: View
     override func configureView() {
         timerBackView.layer.cornerRadius = 8
-        timerBackView.layer.borderColor = UIColor.purple.cgColor
-        timerBackView.layer.borderWidth = 1
+        timerBackView.layer.borderColor = UIColor.pointOrange.cgColor
+        timerBackView.layer.borderWidth = 2
         timeLimitBar.layer.cornerRadius = 8
         timeLimitBar.clipsToBounds = true
-        timeLimitBar.progressTintColor = .systemBlue
+        timeLimitBar.progressTintColor = .pointOrange
         timeLimitBar.trackTintColor = .clear
         collectionView.backgroundColor = .clear
         answerTextField.placeholder = "정답 입력"
         answerTextField.layer.cornerRadius = 12
-        answerTextField.layer.borderWidth = 1
-        answerTextField.layer.borderColor = UIColor.black.cgColor
+        answerTextField.layer.borderWidth = 2
+        answerTextField.layer.borderColor = UIColor.pointOrange.cgColor
         answerTextField.textAlignment = .center
         answerTextField.returnKeyType = .done
     }

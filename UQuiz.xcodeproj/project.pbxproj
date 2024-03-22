@@ -74,7 +74,6 @@
 		42B7EC5D2B9F065200AE0F52 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC5C2B9F065200AE0F52 /* UserDefaultsManager.swift */; };
 		42B7EC5F2B9F06E500AE0F52 /* SetProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC5E2B9F06E500AE0F52 /* SetProfileViewModel.swift */; };
 		42B7EC612B9F0BBD00AE0F52 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC602B9F0BBD00AE0F52 /* SettingView.swift */; };
-		42B7EC632B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC622B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift */; };
 		42B7EC722BA0251700AE0F52 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC712BA0251700AE0F52 /* Poster.swift */; };
 		42B7EC792BA0290B00AE0F52 /* PosterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC782BA0290B00AE0F52 /* PosterListView.swift */; };
 		42B7EC7B2BA02AB800AE0F52 /* PosterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC7A2BA02AB800AE0F52 /* PosterListViewController.swift */; };
@@ -149,7 +148,6 @@
 		42B7EC5C2B9F065200AE0F52 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		42B7EC5E2B9F06E500AE0F52 /* SetProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetProfileViewModel.swift; sourceTree = "<group>"; };
 		42B7EC602B9F0BBD00AE0F52 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		42B7EC622B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingCollectionViewCell.swift; sourceTree = "<group>"; };
 		42B7EC712BA0251700AE0F52 /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
 		42B7EC782BA0290B00AE0F52 /* PosterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListView.swift; sourceTree = "<group>"; };
 		42B7EC7A2BA02AB800AE0F52 /* PosterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterListViewController.swift; sourceTree = "<group>"; };
@@ -337,7 +335,7 @@
 				42B7EC4D2B9EE67A00AE0F52 /* MakePosterAreaQuizView */,
 				42B7EC772BA028D700AE0F52 /* PosterListView */,
 				42B7EC472B9ED54200AE0F52 /* SettingView */,
-				42AD0D812B9C9A89002B8A48 /* SetNicknameView */,
+				42AD0D812B9C9A89002B8A48 /* SetProfileView */,
 				42091DF42BA71033006BA897 /* QuizResultView */,
 			);
 			path = Presentation;
@@ -555,13 +553,13 @@
 			path = plist;
 			sourceTree = "<group>";
 		};
-		42AD0D812B9C9A89002B8A48 /* SetNicknameView */ = {
+		42AD0D812B9C9A89002B8A48 /* SetProfileView */ = {
 			isa = PBXGroup;
 			children = (
 				42091DEC2BA6FE3E006BA897 /* View */,
 				42091DEB2BA6FE3A006BA897 /* ViewModel */,
 			);
-			path = SetNicknameView;
+			path = SetProfileView;
 			sourceTree = "<group>";
 		};
 		42AD0D862B9D9075002B8A48 /* TabBar */ = {
@@ -577,7 +575,6 @@
 			children = (
 				42B7EC482B9ED56A00AE0F52 /* SettingViewController.swift */,
 				42B7EC602B9F0BBD00AE0F52 /* SettingView.swift */,
-				42B7EC622B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift */,
 			);
 			path = SettingView;
 			sourceTree = "<group>";
@@ -786,7 +783,6 @@
 				42570E502B9983920042B338 /* AppDelegate.swift in Sources */,
 				42091DD92BA58D1E006BA897 /* MakerInfoRepository.swift in Sources */,
 				42B7EC5F2B9F06E500AE0F52 /* SetProfileViewModel.swift in Sources */,
-				42B7EC632B9F0D0000AE0F52 /* ProfileSettingCollectionViewCell.swift in Sources */,
 				42091DCC2BA2D64C006BA897 /* ImageFileManager.swift in Sources */,
 				42570E522B9983920042B338 /* SceneDelegate.swift in Sources */,
 				42AD0D882B9D95C5002B8A48 /* MainTabBarController.swift in Sources */,

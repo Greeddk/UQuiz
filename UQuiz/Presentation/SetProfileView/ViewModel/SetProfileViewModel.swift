@@ -35,6 +35,9 @@ final class SetProfileViewModel {
         } else if text.count > 10 {
             outputNicknameValidation.value = "닉네임은 10글자 이하로 입력해주세요"
             outputValidation.value = false
+        } else if text.contains(" ") {
+            outputNicknameValidation.value = "공백은 포함할 수 없습니다"
+            outputValidation.value = false
         } else {
             outputNicknameValidation.value = "사용해도 좋은 닉네임입니다!"
             outputValidation.value = true

@@ -11,7 +11,6 @@ import os
 
 final class MovieSearchViewController: BaseViewController {
     
-    let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "error", category: "MovieSearchViewController")
     let viewModel = MovieSearchViewModel()
     let mainView = MovieSearchView()
 
@@ -45,9 +44,11 @@ final class MovieSearchViewController: BaseViewController {
         } else {
             makeQuizPackageButton.isEnabled = false
         }
-        
         navigationItem.rightBarButtonItem = makeQuizPackageButton
     }
+    
+    @objc
+    private func emptyAction() { }
     
     @objc
     private func makeQuizPackageButtonClicked() {

@@ -27,12 +27,16 @@ final class QuizListViewController: BaseViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func configureViewController() {
         mainView.collectionView.dataSource = self
         mainView.collectionView.delegate = self
         mainView.collectionView.register(QuizCardCollectionViewCell.self, forCellWithReuseIdentifier: QuizCardCollectionViewCell.identifier)
         mainView.collectionView.isPagingEnabled = true
-        navigationController?.isNavigationBarHidden = true
     }
     
 }

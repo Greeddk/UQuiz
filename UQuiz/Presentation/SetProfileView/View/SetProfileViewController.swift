@@ -19,6 +19,7 @@ final class SetProfileViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.nicknameTextField.becomeFirstResponder()
         viewModel.outputNicknameValidation.noInitBind { [weak self] text in
             self?.mainView.validLabel.text = text
         }

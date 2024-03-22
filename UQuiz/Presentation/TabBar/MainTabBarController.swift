@@ -47,15 +47,15 @@ final class MainTabBarController: UITabBarController {
             viewControllers[index].tabBarItem.image = menuList[index].tabBarIcon
         }
         
-        tabBar.layer.borderColor = UIColor.green.cgColor
-        tabBar.layer.borderWidth = 1
-        
         let appearance = UITabBarAppearance()
         appearance.configureWithTransparentBackground()
+        appearance.stackedLayoutAppearance.normal.iconColor = .white
         tabBar.standardAppearance = appearance
         tabBar.scrollEdgeAppearance = appearance
-        tabBar.layer.borderColor = UIColor.lightGray.cgColor
+        tabBar.layer.borderColor = UIColor.pointOrange.cgColor
         tabBar.layer.borderWidth = 1
+        tabBar.tintColor = .pointYellow
+        tabBar.backgroundColor = .pointOrange
         
         setViewControllers(viewControllers, animated: true)
     }
