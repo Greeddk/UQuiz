@@ -22,11 +22,11 @@ final class QuizListViewModel {
     var outputReloadViewTrigger: Observable<Void?> = Observable(nil)
     
     init() {
-        inputFetchPackageListTrigger.bind { _ in
+        inputFetchPackageListTrigger.noInitBind { _ in
             self.fetchList()
         }
-        inputIndex.bind { value in
-            self.fetchProfileImage(index: value)
+        inputIndex.noInitBind { [weak self] value in
+            self?.fetchProfileImage(index: value)
         }
         inputDeletePackageTrigger.noInitBind { value in
             self.deleteQuizPackage(index: value)

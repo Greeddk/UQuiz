@@ -105,15 +105,13 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         deleteButton.tintColor = .pointOrange
     }
     
-    func setUI(_ package: RealmPosterQuizPackage, profileImage: UIImage) {
+    func setUI(_ package: RealmPosterQuizPackage) {
         title.text = package.title
         guard let detailURL = package.quizs.last?.poster else { return }
         let url = PosterURL.thumbnailURL(detailURL: detailURL).endpoint
         let processor = BlurImageProcessor(blurRadius: 20.0)
         posterView.kf.setImage(with: url, options: [.processor(processor)])
         numberOfQuizs.text = "\(package.numberOfQuiz)문제"
-        makerNickname.text = package.makerInfo?.nickname
-        makerProfile.image = profileImage
         levelImage.image = {
             switch package.level {
             case 0:
@@ -126,6 +124,16 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
                 return UIImage(named: "Begginer")
             }
         }()
+        makerNickname.text = package.makerInfo?.nickname
+        
+    }
+    
+    func setProfile(profileImage: UIImage?) {
+        guard let profileImage = profileImage else {
+            makerProfile.image = UIImage(systemName: "person")
+            return
+        }
+        makerProfile.image = profileImage
     }
     
     func setIndexLabel(index: String) {

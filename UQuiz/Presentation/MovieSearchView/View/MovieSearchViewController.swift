@@ -24,7 +24,6 @@ final class MovieSearchViewController: BaseViewController {
         self.hideKeyboardWhenViewIsTapped()
         viewModel.outputRequestList.bind { _ in
             self.mainView.collectionView.reloadData()
-            self.logger.info("outputList \(self.viewModel.outputRequestList.value)")
         }
         viewModel.outputAddedToPackage.bind { _ in
             self.setNavigationBar()
@@ -70,9 +69,11 @@ final class MovieSearchViewController: BaseViewController {
             vc.viewModel.inputLevel.value = Level.expert
             self.navigationController?.pushViewController(vc, animated: true)
         }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
         alert.addAction(beginner)
         alert.addAction(intermediate)
         alert.addAction(expert)
+        alert.addAction(cancel)
         present(alert, animated: true)
     }
 
