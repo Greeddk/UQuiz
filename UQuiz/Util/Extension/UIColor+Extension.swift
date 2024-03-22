@@ -9,7 +9,7 @@ import UIKit
 
 extension UIColor {
     static let primaryColor = UIColor(named: "PointOrange")
-    static let secondaryColor = UIColor(named: "Background")
-    static let testColor = UIColor(named: "Test")
+    static let secondaryColor = UIColor(named: "LightGreen")
+    static let darkGreenColor = UIColor(named: "DarkGreen")
 }
 

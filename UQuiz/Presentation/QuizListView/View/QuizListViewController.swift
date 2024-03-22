@@ -55,23 +55,26 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.setIndexLabel(index: "\(indexPath.item + 1) / \(viewModel.outputPackageList.value.count)")
         cell.deleteButton.tag = indexPath.item
         cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(sender:)), for: .touchUpInside)
+        cell.playButton.tag = indexPath.item
+        cell.playButton.addTarget(self, action: #selector(playButtonTapped(sender:)), for: .touchUpInside)
         return cell
     }
+
+}
+
+extension QuizListViewController {
     
     @objc private func deleteButtonTapped(sender: UIButton) {
         viewModel.inputDeletePackageTrigger.value = sender.tag
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let vc = SolvePosterAreaQuizViewController()
-//        let list = Array(viewModel.outputPackageList.value[indexPath.item].quizs)
-//        vc.viewModel.outputQuizList.value = list
-//        vc.viewModel.inputLevel.value = viewModel.outputPackageList.value[indexPath.item].level
-//        vc.info = viewModel.outputPackageList.value[indexPath.item].title
-//        vc.hidesBottomBarWhenPushed = true
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-
+    @objc private func playButtonTapped(sender: UIButton) {
+        let vc = SolvePosterAreaQuizViewController()
+        let list = Array(viewModel.outputPackageList.value[sender.tag].quizs)
+        vc.viewModel.outputQuizList.value = list
+        vc.viewModel.inputLevel.value = viewModel.outputPackageList.value[sender.tag].level
+        vc.info = viewModel.outputPackageList.value[sender.tag].title
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }
-
-

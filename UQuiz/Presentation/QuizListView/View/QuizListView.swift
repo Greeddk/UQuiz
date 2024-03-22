@@ -21,7 +21,7 @@ final class QuizListView: BaseView {
     override func setConstraints() {
         logoView.snp.makeConstraints { make in
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(5)
-            make.top.equalTo(self).offset(50)
+            make.top.equalTo(self.safeAreaLayoutGuide).offset(10)
             make.width.equalTo(100)
             make.height.equalTo(40)
         }

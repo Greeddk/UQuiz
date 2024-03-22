@@ -12,20 +12,21 @@ import Kingfisher
 
 final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     
-    let indexLabel = UILabel()
+    let profileContainer = UIView()
+    let makerProfile = UIImageView()
+    let makerNickname = UILabel()
     let cardViewContainer = UIView()
     let cardBackgroundView = UIView()
     let levelImage = UIImageView()
     let posterView = UIImageView()
     let title = UILabel()
     let numberOfQuizs = UILabel()
-    let profileContainer = UIView()
-    let makerProfile = UIImageView()
-    let makerNickname = UILabel()
+    let playButton = UIButton()
+    let indexLabel = UILabel()
     let deleteButton = UIButton()
     
     override func configureHierarchy() {
-        contentView.addSubviews([cardViewContainer, title, numberOfQuizs, profileContainer, indexLabel, deleteButton])
+        contentView.addSubviews([cardViewContainer, title, numberOfQuizs, profileContainer, indexLabel, deleteButton, playButton])
         cardViewContainer.addSubviews([cardBackgroundView])
         cardBackgroundView.addSubviews([posterView])
         cardViewContainer.addSubview(levelImage)
@@ -33,11 +34,26 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func setConstraints() {
+        profileContainer.snp.makeConstraints { make in
+            make.top.equalTo(contentView).offset(15)
+            make.centerX.equalTo(contentView)
+            make.height.equalTo(50)
+        }
+        makerProfile.snp.makeConstraints { make in
+            make.leading.equalTo(profileContainer).offset(16)
+            make.centerY.equalTo(profileContainer)
+            make.size.equalTo(30)
+        }
+        makerNickname.snp.makeConstraints { make in
+            make.centerY.equalTo(profileContainer)
+            make.leading.equalTo(makerProfile.snp.trailing).offset(12)
+            make.trailing.lessThanOrEqualTo(profileContainer.snp.trailing).offset(-16)
+        }
         cardViewContainer.snp.makeConstraints { make in
             make.width.equalTo(200)
             make.height.equalTo(250)
             make.centerX.equalTo(contentView)
-            make.centerY.equalTo(contentView).offset(-80)
+            make.centerY.equalTo(contentView).offset(-75)
         }
         cardBackgroundView.snp.makeConstraints { make in
             make.edges.equalTo(cardViewContainer)
@@ -58,23 +74,14 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
             make.top.equalTo(posterView.snp.bottom).offset(2)
             make.trailing.equalTo(posterView.snp.trailing).offset(-4)
         }
-        profileContainer.snp.makeConstraints { make in
-            make.top.equalTo(title.snp.bottom).offset(30)
+        playButton.snp.makeConstraints { make in
+            make.top.equalTo(title.snp.bottom).offset(20)
             make.centerX.equalTo(contentView)
             make.height.equalTo(60)
-        }
-        makerProfile.snp.makeConstraints { make in
-            make.leading.equalTo(profileContainer).offset(16)
-            make.centerY.equalTo(profileContainer)
-            make.size.equalTo(30)
-        }
-        makerNickname.snp.makeConstraints { make in
-            make.centerY.equalTo(profileContainer)
-            make.leading.equalTo(makerProfile.snp.trailing).offset(12)
-            make.trailing.lessThanOrEqualTo(profileContainer.snp.trailing).offset(-16)
+            make.width.equalTo(150)
         }
         deleteButton.snp.makeConstraints { make in
-            make.top.equalTo(profileContainer.snp.bottom).offset(20)
+            make.top.equalTo(playButton.snp.bottom).offset(20)
             make.trailing.equalTo(contentView).offset(-20)
         }
         indexLabel.snp.makeConstraints { make in
@@ -84,7 +91,13 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     }
     
     override func configureView() {
-        indexLabel.font = .pretendard(size: 15, weight: .regular)
+        profileContainer.backgroundColor = .pointOrange
+        profileContainer.layer.cornerRadius = 20
+        makerProfile.layer.cornerRadius = 15
+        makerProfile.clipsToBounds = true
+        makerNickname.font = .pretendard(size: 20, weight: .regular)
+        makerNickname.textColor = .white
+        levelImage.contentMode = .scaleAspectFit
         cardViewContainer.layer.shadowOffset = .init(width: 0, height: 0.5)
         cardViewContainer.layer.shadowOpacity = 0.7
         cardViewContainer.layer.shadowRadius = 7
@@ -94,13 +107,14 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         title.font = .pretendard(size: 30, weight: .bold)
         title.numberOfLines = 2
         numberOfQuizs.font = .pretendard(size: 14, weight: .thin)
-        profileContainer.backgroundColor = .pointOrange
-        profileContainer.layer.cornerRadius = 20
-        makerProfile.layer.cornerRadius = 15
-        makerProfile.clipsToBounds = true
-        makerNickname.font = .pretendard(size: 20, weight: .regular)
-        makerNickname.textColor = .white
-        levelImage.contentMode = .scaleAspectFit
+        playButton.backgroundColor = .white
+        playButton.setTitle("Play", for: .normal)
+        playButton.setTitleColor(.pointOrange, for: .normal)
+        playButton.titleLabel?.font = .pretendard(size: 30, weight: .extraBold)
+        playButton.layer.cornerRadius = 12
+        playButton.layer.borderWidth = 3
+        playButton.layer.borderColor = UIColor.pointOrange.cgColor
+        indexLabel.font = .pretendard(size: 15, weight: .regular)
         deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
         deleteButton.tintColor = .pointOrange
     }
@@ -150,24 +164,25 @@ extension QuizCardCollectionViewCell: TransformableView {
     
     func transform(progress: CGFloat) {
         transformCardView(progress: progress)
-        transformProfileView(progress: progress)
+        transformBottomViews(progress: progress)
         
         let normalTransform = CGAffineTransform(translationX: bounds.width * progress, y: 0)
         title.transform = normalTransform
         numberOfQuizs.transform = normalTransform
-        indexLabel.transform = normalTransform
-        deleteButton.transform = normalTransform
+        profileContainer.transform = normalTransform
     }
     
-    // MARK: Private functions
-    
-    private func transformProfileView(progress: CGFloat) {
+    private func transformBottomViews(progress: CGFloat) {
         let angle = .pi * progress
         var transform = CATransform3DIdentity
         transform.m34 = -0.008
         transform = CATransform3DRotate(transform, angle, 0, 1, 0)
-        profileContainer.layer.transform = transform
-        profileContainer.alpha = abs(progress) > 0.5 ? 0 : 1
+        indexLabel.layer.transform = transform
+        indexLabel.alpha = abs(progress) > 0.5 ? 0 : 1
+        deleteButton.layer.transform = transform
+        deleteButton.alpha = abs(progress) > 0.5 ? 0 : 1
+        playButton.layer.transform = transform
+        playButton.alpha = abs(progress) > 0.5 ? 0 : 1
     }
     
     private func transformCardView(progress: CGFloat) {
