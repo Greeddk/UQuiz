@@ -38,6 +38,11 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         viewModel.outputTimeOverStatus.noInitBind { _ in
             self.timeOverAction()
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchCollectionViewSelectedArea()
         viewModel.inputSetTimerTrigger.value = ()
     }
     
@@ -119,11 +124,20 @@ extension SolvePosterAreaQuizViewController {
         mainView.collectionView.isHidden = false
         resetCollectionView()
         let list =  Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea)
-        let flattenedList = list.flatMap { $0.area }
-        for index in flattenedList {
-            let cell = mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
-            cell?.backgroundColor = .clear
+        let level = viewModel.inputLevel.value
+        var delay: TimeInterval = 0
+        
+        for array in list {
+            let areaIndex = Array(array.area)
+            UIView.animate(withDuration: 2, delay: delay, options: [], animations: {
+                for index in areaIndex {
+                    let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+                    cell?.backgroundColor = .clear
+                }
+            }, completion: nil)
+            delay += Double(level) + 2
         }
+        
     }
     
     // MARK: CollectionView 초기화
@@ -144,15 +158,7 @@ extension SolvePosterAreaQuizViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        let selectedArea = Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea).flatMap { data in
-            data.area
-        }
-        //TODO: 차례대로 나타나게 하기
-        if selectedArea.contains(indexPath.item) {
-            cell.backgroundColor = .clear
-        } else {
-            cell.backgroundColor = .black
-        }
+        cell.backgroundColor = .black
         return cell
     }
     
