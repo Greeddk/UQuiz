@@ -18,7 +18,7 @@
 		42091DF82BA7126C006BA897 /* QuizResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DF72BA7126C006BA897 /* QuizResultViewController.swift */; };
 		42091DFA2BA7128B006BA897 /* QuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DF92BA7128B006BA897 /* QuizResultView.swift */; };
 		42091DFC2BA713A3006BA897 /* QuizResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DFB2BA713A3006BA897 /* QuizResultViewModel.swift */; };
-		421C7A562BAFF382002D5DDF /* initial.realm in Resources */ = {isa = PBXBuildFile; fileRef = 421C7A552BAFF382002D5DDF /* initial.realm */; };
+		421C7A592BB02903002D5DDF /* initial.realm in Resources */ = {isa = PBXBuildFile; fileRef = 421C7A582BB02903002D5DDF /* initial.realm */; };
 		422D5F242BAAC5120085E6D0 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D5F232BAAC5120085E6D0 /* UIFont+Extension.swift */; };
 		422D5F2F2BAAC6090085E6D0 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F262BAAC6090085E6D0 /* Pretendard-Thin.otf */; };
 		422D5F302BAAC6090085E6D0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F272BAAC6090085E6D0 /* Pretendard-Medium.otf */; };
@@ -98,7 +98,7 @@
 		42091DF72BA7126C006BA897 /* QuizResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewController.swift; sourceTree = "<group>"; };
 		42091DF92BA7128B006BA897 /* QuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultView.swift; sourceTree = "<group>"; };
 		42091DFB2BA713A3006BA897 /* QuizResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewModel.swift; sourceTree = "<group>"; };
-		421C7A552BAFF382002D5DDF /* initial.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = initial.realm; sourceTree = "<group>"; };
+		421C7A582BB02903002D5DDF /* initial.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = initial.realm; sourceTree = "<group>"; };
 		422D5F232BAAC5120085E6D0 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		422D5F262BAAC6090085E6D0 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		422D5F272BAAC6090085E6D0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -408,7 +408,7 @@
 		421C7A572BB004A6002D5DDF /* InitialData */ = {
 			isa = PBXGroup;
 			children = (
-				421C7A552BAFF382002D5DDF /* initial.realm */,
+				421C7A582BB02903002D5DDF /* initial.realm */,
 			);
 			path = InitialData;
 			sourceTree = "<group>";
@@ -703,7 +703,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				421C7A562BAFF382002D5DDF /* initial.realm in Resources */,
+				421C7A592BB02903002D5DDF /* initial.realm in Resources */,
 				422D5F352BAAC6090085E6D0 /* Pretendard-Bold.otf in Resources */,
 				422D5F312BAAC6090085E6D0 /* Pretendard-ExtraLight.otf in Resources */,
 				422D5F322BAAC6090085E6D0 /* Pretendard-Light.otf in Resources */,
@@ -951,7 +951,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HR74YJR7W4;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -984,7 +984,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = HR74YJR7W4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UQuiz/Info.plist;
