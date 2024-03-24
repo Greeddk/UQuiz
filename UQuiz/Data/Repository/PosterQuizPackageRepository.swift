@@ -69,4 +69,21 @@ final class PosterQuizPackageRepository {
         }
     }
     
+    func fetchInitialData() {
+        let initialRealmURL = Bundle.main.url(forResource: "initial", withExtension: "realm")
+        
+        let config = Realm.Configuration(fileURL: initialRealmURL, readOnly: false)
+
+        do {
+            let initialRealm = try Realm(configuration: config)
+            try realm.write {
+                for object in initialRealm.objects(RealmPosterQuizPackage.self) {
+                    realm.create(RealmPosterQuizPackage.self, value: object, update: .modified)
+                }
+            }
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+        }
+    }
+    
 }

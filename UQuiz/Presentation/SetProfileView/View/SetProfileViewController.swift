@@ -62,6 +62,7 @@ final class SetProfileViewController: BaseViewController {
             imageViewModel.inputUserNickname.value = text
             imageViewModel.inputUserProfileSaveTrigger.value = ()
             if !UserDefaultsManager.shared.userState {
+                viewModel.inputInitialDataTrigger.value = ()
                 viewModel.inputUserStateChangeTrigger.value = ()
                 let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
                 let sceneDelegate = windowScene?.delegate as? SceneDelegate

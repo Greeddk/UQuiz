@@ -9,16 +9,21 @@ import Foundation
 
 final class SetProfileViewModel {
     
+    let repository = PosterQuizPackageRepository()
     private let udManager = UserDefaultsManager.shared
     
     var inputUserStateChangeTrigger: Observable<Void?> = Observable(nil)
     var inputTextFieldChanged: Observable<String?> = Observable(nil)
+    var inputInitialDataTrigger: Observable<Void?> = Observable(nil)
     
     var outputNicknameValidation: Observable<String> = Observable("")
     var outputValidation: Observable<Bool> = Observable(false)
     
     
     init() {
+        inputInitialDataTrigger.noInitBind { _ in
+            self.fetchInitialData()
+        }
         inputUserStateChangeTrigger.noInitBind { [weak self] _ in
             self?.changeUserState()
         }
@@ -26,6 +31,10 @@ final class SetProfileViewModel {
             guard let text = text else { return }
             self?.validateNickname(text)
         }
+    }
+    
+    private func  fetchInitialData() {
+        repository.fetchInitialData()
     }
     
     private func validateNickname(_ text: String) {
