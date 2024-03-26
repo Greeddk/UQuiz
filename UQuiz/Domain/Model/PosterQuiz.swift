@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PosterQuiz {
+struct PosterQuiz: Codable {
     let id: Int
     let genre: [Int]?
     var poster: String?
@@ -28,5 +28,19 @@ struct PosterQuiz {
         self.numberOfselectArea = 0
         self.overview = item.overview
         self.release_date = item.release_date ?? ""
+    }
+}
+
+extension PosterQuiz {
+    init(id: Int, genre: [Int]?, poster: String?, title: String, original_title: String, selectedArea: [[Int]], numberOfselectArea: Int, overview: String, release_date: String) {
+        self.id = id
+        self.genre = genre
+        self.poster = poster
+        self.title = title
+        self.original_title = original_title
+        self.selectedArea = selectedArea
+        self.numberOfselectArea = numberOfselectArea
+        self.overview = overview
+        self.release_date = release_date
     }
 }

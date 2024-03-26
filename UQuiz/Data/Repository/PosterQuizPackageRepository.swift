@@ -11,6 +11,7 @@ import RealmSwift
 final class PosterQuizPackageRepository {
     
     private let realm = try! Realm()
+    private let fileManager = FileManager.default
     
     private func changeModelToRealmObject(quiz: PosterQuiz) -> RealmPosterQuiz {
         let tmpGenre = List<Int>()
@@ -70,12 +71,11 @@ final class PosterQuizPackageRepository {
     }
     
     func fetchInitialData() {
-        let initialRealmURL = Bundle.main.url(forResource: "initial", withExtension: "realm")
-        
-        let config = Realm.Configuration(fileURL: initialRealmURL, readOnly: false)
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentDirectory.appendingPathComponent("InitialData.realm")
 
         do {
-            let initialRealm = try Realm(configuration: config)
+            let initialRealm = try Realm(fileURL: fileURL)
             try realm.write {
                 for object in initialRealm.objects(RealmPosterQuizPackage.self) {
                     realm.create(RealmPosterQuizPackage.self, value: object, update: .modified)
@@ -83,6 +83,21 @@ final class PosterQuizPackageRepository {
             }
         } catch let error as NSError {
             print("Error: \(error.localizedDescription)")
+        }
+    }
+    
+    func copyInitialRealm() {
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentDirectory.appendingPathComponent("InitialData.realm")
+        
+        if !fileManager.fileExists(atPath: fileURL.path) {
+            let bundleURL = Bundle.main.url(forResource: "initial", withExtension: "realm")!
+            
+            do {
+                try fileManager.copyItem(at: bundleURL, to: fileURL)
+            } catch {
+                print("Error copy file: \(error)")
+            }
         }
     }
     

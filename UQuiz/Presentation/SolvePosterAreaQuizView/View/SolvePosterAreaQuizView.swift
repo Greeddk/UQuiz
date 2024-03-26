@@ -74,8 +74,8 @@ final class SolvePosterAreaQuizView: BaseView {
         }
         
         answerTextField.snp.makeConstraints { make in
-            make.top.lessThanOrEqualTo(collectionView.snp.bottom).offset(10)
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(40)
+            make.bottom.lessThanOrEqualTo(self.keyboardLayoutGuide.snp.top).offset(-1)
             make.height.equalTo(40)
         }
         
@@ -97,6 +97,7 @@ final class SolvePosterAreaQuizView: BaseView {
         answerTextField.layer.borderColor = UIColor.pointOrange.cgColor
         answerTextField.textAlignment = .center
         answerTextField.returnKeyType = .done
+        answerTextField.backgroundColor = .white
     }
     
     // MARK: collectionView Layout

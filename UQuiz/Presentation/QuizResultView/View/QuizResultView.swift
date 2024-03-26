@@ -23,7 +23,7 @@ final class QuizResultView: BaseView {
         scoreLabel.snp.makeConstraints { make in
             make.top.equalTo(self.safeAreaLayoutGuide).offset(20)
             make.centerX.equalTo(self.safeAreaLayoutGuide)
-            make.width.equalTo(100)
+            make.width.equalTo(300)
         }
         collectionView.snp.makeConstraints { make in
             make.centerY.equalTo(self.safeAreaLayoutGuide)

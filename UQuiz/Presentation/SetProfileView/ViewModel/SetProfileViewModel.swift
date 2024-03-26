@@ -34,6 +34,7 @@ final class SetProfileViewModel {
     }
     
     private func  fetchInitialData() {
+        repository.copyInitialRealm()
         repository.fetchInitialData()
     }
     

@@ -19,7 +19,6 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupKeyboardEvent()
         viewModel.outputIsCorrect.noInitBind { value in
             self.judgeValue(value: value)
         }

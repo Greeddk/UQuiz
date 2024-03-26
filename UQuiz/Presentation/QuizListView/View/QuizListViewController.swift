@@ -15,7 +15,7 @@ final class QuizListViewController: BaseViewController {
     override func loadView() {
         self.view = mainView
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.inputFetchPackageListTrigger.value = ()
@@ -23,7 +23,7 @@ final class QuizListViewController: BaseViewController {
             self?.mainView.collectionView.reloadData()
             self?.mainView.collectionView.performBatchUpdates({
                 self?.mainView.collectionView.collectionViewLayout.invalidateLayout()
-                  })
+            })
         }
     }
     
@@ -61,12 +61,50 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.deleteButton.addTarget(self, action: #selector(deleteButtonTapped(sender:)), for: .touchUpInside)
         cell.playButton.tag = indexPath.item
         cell.playButton.addTarget(self, action: #selector(playButtonTapped(sender:)), for: .touchUpInside)
+        cell.shareButton.tag = indexPath.item
+        cell.shareButton.addTarget(self, action: #selector(shareButtonTapped(sender:)), for: .touchUpInside)
+        cell.shareButton.isHidden = true
         return cell
     }
-
+    
 }
 
 extension QuizListViewController {
+    
+    @objc private func shareButtonTapped(sender: UIButton) {
+//        do {
+//            let transferPackage = viewModel.outputPackageList.value[sender.tag]
+//            let encoder = JSONEncoder()
+//            let jsonData = try encoder.encode(transferPackage)
+//            
+//            // 파일을 생성하고 해당 파일의 URL을 얻습니다.
+//            //            let fileURL = try saveDataToFile(data: jsonData, fileName: "\(transferPackage.id)")
+//            
+//            // UIActivityViewController를 사용하여 파일을 공유합니다.
+//            let activityViewController = UIActivityViewController(activityItems: [jsonData], applicationActivities: nil)
+//            
+//            // 제외할 액티비티 타입을 설정합니다.
+//            activityViewController.excludedActivityTypes = [
+//                .postToTencentWeibo, .addToReadingList, .assignToContact, .mail,
+//                .markupAsPDF, .openInIBooks, .postToVimeo, .postToFlickr,
+//                .saveToCameraRoll, .sharePlay, .print
+//            ]
+//            
+//            // 공유 액티비티가 완료되었을 때 호출되는 핸들러를 정의합니다.
+//            activityViewController.completionWithItemsHandler = { type, completed, items, error in
+//                if completed {
+//                    print("COMPLETED: ", items)
+//                } else {
+//                    print("FAILED: ", error?.localizedDescription)
+//                }
+//            }
+//            
+//            self.present(activityViewController, animated: true, completion: nil)
+//            
+//        } catch {
+//            print("Error encoding quiz package: \(error)")
+//        }
+    }
     
     @objc private func deleteButtonTapped(sender: UIButton) {
         viewModel.inputDeletePackageTrigger.value = sender.tag
@@ -82,3 +120,4 @@ extension QuizListViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
 }
+

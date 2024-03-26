@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>프로필 사진을 변경하려면 사진 앨범 액세스 허용 버튼을 클릭하십시오. 자세한 내용은 개인 정보 보호 정책을 참조하십시오.</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Pretendard-Light.otf</string>

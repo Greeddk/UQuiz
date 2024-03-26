@@ -24,9 +24,10 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
     let playButton = UIButton()
     let indexLabel = UILabel()
     let deleteButton = UIButton()
+    let shareButton = UIButton()
     
     override func configureHierarchy() {
-        contentView.addSubviews([cardViewContainer, title, numberOfQuizs, profileContainer, indexLabel, deleteButton, playButton])
+        contentView.addSubviews([cardViewContainer, title, numberOfQuizs, profileContainer, indexLabel, deleteButton, playButton, shareButton])
         cardViewContainer.addSubviews([cardBackgroundView])
         cardBackgroundView.addSubviews([posterView])
         cardViewContainer.addSubview(levelImage)
@@ -81,13 +82,17 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
             make.height.equalTo(60)
             make.width.equalTo(150)
         }
-        deleteButton.snp.makeConstraints { make in
+        shareButton.snp.makeConstraints { make in
             make.top.equalTo(playButton.snp.bottom).offset(20)
             make.trailing.equalTo(contentView).offset(-20)
         }
         indexLabel.snp.makeConstraints { make in
-            make.top.equalTo(deleteButton)
+            make.top.equalTo(shareButton)
             make.centerX.equalTo(contentView)
+        }
+        deleteButton.snp.makeConstraints { make in
+            make.top.equalTo(shareButton)
+            make.leading.equalTo(contentView).offset(20)
         }
     }
     
@@ -121,6 +126,8 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         indexLabel.font = .pretendard(size: 15, weight: .regular)
         deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
         deleteButton.tintColor = .pointOrange
+        shareButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        shareButton.tintColor = .pointOrange
     }
     
     func setUI(_ package: RealmPosterQuizPackage) {
@@ -186,6 +193,8 @@ extension QuizCardCollectionViewCell: TransformableView {
         deleteButton.alpha = abs(progress) > 0.5 ? 0 : 1
         playButton.layer.transform = transform
         playButton.alpha = abs(progress) > 0.5 ? 0 : 1
+        shareButton.layer.transform = transform
+        shareButton.alpha = abs(progress) > 0.5 ? 0 : 1
     }
     
     private func transformCardView(progress: CGFloat) {

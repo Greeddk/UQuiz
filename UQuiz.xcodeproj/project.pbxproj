@@ -19,6 +19,8 @@
 		42091DFA2BA7128B006BA897 /* QuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DF92BA7128B006BA897 /* QuizResultView.swift */; };
 		42091DFC2BA713A3006BA897 /* QuizResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DFB2BA713A3006BA897 /* QuizResultViewModel.swift */; };
 		421C7A592BB02903002D5DDF /* initial.realm in Resources */ = {isa = PBXBuildFile; fileRef = 421C7A582BB02903002D5DDF /* initial.realm */; };
+		421C7A5B2BB059B6002D5DDF /* PosterQuizPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421C7A5A2BB059B6002D5DDF /* PosterQuizPackage.swift */; };
+		421C7A5D2BB05AD1002D5DDF /* MakerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421C7A5C2BB05AD1002D5DDF /* MakerInfo.swift */; };
 		422D5F242BAAC5120085E6D0 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D5F232BAAC5120085E6D0 /* UIFont+Extension.swift */; };
 		422D5F2F2BAAC6090085E6D0 /* Pretendard-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F262BAAC6090085E6D0 /* Pretendard-Thin.otf */; };
 		422D5F302BAAC6090085E6D0 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F272BAAC6090085E6D0 /* Pretendard-Medium.otf */; };
@@ -86,6 +88,19 @@
 		42B7EC8C2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC8B2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		421C7A702BB14D8D002D5DDF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		42091DCB2BA2D64C006BA897 /* ImageFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileManager.swift; sourceTree = "<group>"; };
 		42091DCE2BA2E469006BA897 /* ProfileManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManagerViewModel.swift; sourceTree = "<group>"; };
@@ -99,6 +114,8 @@
 		42091DF92BA7128B006BA897 /* QuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultView.swift; sourceTree = "<group>"; };
 		42091DFB2BA713A3006BA897 /* QuizResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewModel.swift; sourceTree = "<group>"; };
 		421C7A582BB02903002D5DDF /* initial.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = initial.realm; sourceTree = "<group>"; };
+		421C7A5A2BB059B6002D5DDF /* PosterQuizPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterQuizPackage.swift; sourceTree = "<group>"; };
+		421C7A5C2BB05AD1002D5DDF /* MakerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerInfo.swift; sourceTree = "<group>"; };
 		422D5F232BAAC5120085E6D0 /* UIFont+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		422D5F262BAAC6090085E6D0 /* Pretendard-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Thin.otf"; sourceTree = "<group>"; };
 		422D5F272BAAC6090085E6D0 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -522,6 +539,8 @@
 				42B7EC712BA0251700AE0F52 /* Poster.swift */,
 				42B7EC822BA178FF00AE0F52 /* PosterQuiz.swift */,
 				422D5F382BAACA7B0085E6D0 /* Level.swift */,
+				421C7A5A2BB059B6002D5DDF /* PosterQuizPackage.swift */,
+				421C7A5C2BB05AD1002D5DDF /* MakerInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -631,6 +650,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 42570E602B9983950042B338 /* Build configuration list for PBXNativeTarget "UQuiz" */;
 			buildPhases = (
+				421C7A702BB14D8D002D5DDF /* Embed Foundation Extensions */,
 				42570E482B9983920042B338 /* Sources */,
 				42570E492B9983920042B338 /* Frameworks */,
 				42570E4A2B9983920042B338 /* Resources */,
@@ -663,7 +683,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1510;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					42570E4B2B9983920042B338 = {
@@ -773,6 +793,7 @@
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
 				422D5F392BAACA7B0085E6D0 /* Level.swift in Sources */,
 				422D5F492BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift in Sources */,
+				421C7A5B2BB059B6002D5DDF /* PosterQuizPackage.swift in Sources */,
 				42AD0D632B9AFDCB002B8A48 /* SearchMovie.swift in Sources */,
 				42091DE02BA5EAEE006BA897 /* SolvePosterAreaQuizViewController.swift in Sources */,
 				42AD0D5C2B9AFBD6002B8A48 /* UIView+Extension.swift in Sources */,
@@ -798,6 +819,7 @@
 				42B7EC7B2BA02AB800AE0F52 /* PosterListViewController.swift in Sources */,
 				42AD0D802B9C695A002B8A48 /* PosterURL.swift in Sources */,
 				42B7EC792BA0290B00AE0F52 /* PosterListView.swift in Sources */,
+				421C7A5D2BB05AD1002D5DDF /* MakerInfo.swift in Sources */,
 				42091DFA2BA7128B006BA897 /* QuizResultView.swift in Sources */,
 				42AD0D692B9B010F002B8A48 /* APIKey.swift in Sources */,
 				42B7EC832BA178FF00AE0F52 /* PosterQuiz.swift in Sources */,
@@ -948,24 +970,30 @@
 		42570E612B9983950042B338 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UQuiz/UQuiz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HR74YJR7W4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UQuiz/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 변경하려면 사진 앨범 액세스 허용 버튼을 클릭하십시오. 자세한 내용은 개인 정보 보호 정책을 참조하십시오.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.greed.UQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -981,23 +1009,29 @@
 		42570E622B9983950042B338 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UQuiz/UQuiz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = HR74YJR7W4;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = UQuiz/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "프로필 사진을 변경하려면 사진 앨범 액세스 허용 버튼을 클릭하십시오. 자세한 내용은 개인 정보 보호 정책을 참조하십시오.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.1;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.greed.UQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

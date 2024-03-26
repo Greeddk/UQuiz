@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-final class RealmPosterQuizPackage: Object {
+final class RealmPosterQuizPackage: Object, Codable {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var title: String
     @Persisted var quizs: List<RealmPosterQuiz>
@@ -25,10 +25,18 @@ final class RealmPosterQuizPackage: Object {
         self.makerInfo = maker
         self.level = level
     }
-    
+
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(title, forKey: .title)
+        try container.encode(quizs, forKey: .quizs)
+        try container.encode(makerInfo, forKey: .makerInfo)
+        try container.encode(level, forKey: .level)
+    }
 }
 
-final class RealmPosterQuiz: Object {
+final class RealmPosterQuiz: Object, Codable  {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var movieId: Int
     @Persisted var genre: List<Int>
@@ -54,14 +62,34 @@ final class RealmPosterQuiz: Object {
         self.overview = overview
         self.release_date = release_date
     }
+    
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(movieId, forKey: .movieId)
+        try container.encode(genre, forKey: .genre)
+        try container.encode(poster, forKey: .poster)
+        try container.encode(title, forKey: .title)
+        try container.encode(original_title, forKey: .original_title)
+        try container.encode(selectedArea, forKey: .selectedArea)
+        try container.encode(numberOfselectArea, forKey: .numberOfselectArea)
+        try container.encode(isCorrect, forKey: .isCorrect)
+        try container.encode(overview, forKey: .overview)
+        try container.encode(release_date, forKey: .release_date)
+    }
 
 }
 
-final class RealmSelectedArea: EmbeddedObject {
+final class RealmSelectedArea: EmbeddedObject, Codable  {
     @Persisted var area: List<Int>
+
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(area, forKey: .area)
+    }
 }
 
-final class RealmMakerInfo: Object {
+final class RealmMakerInfo: Object, Codable  {
     @Persisted(primaryKey: true) var id: ObjectId
     @Persisted var nickname: String
     @Persisted var profile: String
@@ -70,5 +98,12 @@ final class RealmMakerInfo: Object {
         self.init()
         self.nickname = nickname
         self.profile = profile
+    }
+    
+    func encode(to encoder: any Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(nickname, forKey: .nickname)
+        try container.encode(profile, forKey: .profile)
     }
 }
