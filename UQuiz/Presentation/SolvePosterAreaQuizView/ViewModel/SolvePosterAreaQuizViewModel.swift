@@ -12,6 +12,7 @@ final class SolvePosterAreaQuizViewModel {
     let repository = PosterQuizPackageRepository()
     
     var timer = Timer()
+    var isPaused: Bool = false
     
     var inputTimeLimitBarPercentage: Observable<Float> = Observable(0)
     var inputNextIndexTrigger: Observable<Void?> = Observable(nil)
@@ -19,6 +20,7 @@ final class SolvePosterAreaQuizViewModel {
     var inputSetTimerTrigger: Observable<Void?> = Observable(nil)
     var inputInvalidTimerTrigger: Observable<Void?> = Observable(nil)
     var inputLevel: Observable<Int> = Observable(0)
+    var inputPauseButtonTapped: Observable<Void?> = Observable(nil)
     
     var outputCurrentPercentage: Observable<Float> = Observable(0)
     var outputQuizList: Observable<[RealmPosterQuiz]> = Observable([])
@@ -27,6 +29,7 @@ final class SolvePosterAreaQuizViewModel {
     var outputIsCorrect: Observable<Bool> = Observable(false)
     var outputTimeOverStatus: Observable<Void?> = Observable(nil)
     var outputGameOverStatus: Observable<Bool> = Observable(false)
+    var outputIsPaused: Observable<Bool> = Observable(false)
     
     init() {
         inputSetTimerTrigger.bind { _ in
@@ -43,6 +46,19 @@ final class SolvePosterAreaQuizViewModel {
         }
         inputAnswerSubmit.noInitBind { answer in
             self.markingAnswer(answer)
+        }
+        inputPauseButtonTapped.noInitBind { _ in
+            self.togglePause()
+        }
+    }
+    
+    private func togglePause() {
+        isPaused.toggle()
+        outputIsPaused.value = isPaused
+        if isPaused {
+            timer.invalidate()
+        } else {
+            setTimer()
         }
     }
     

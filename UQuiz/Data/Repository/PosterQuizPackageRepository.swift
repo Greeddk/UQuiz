@@ -77,7 +77,11 @@ final class PosterQuizPackageRepository {
         do {
             let initialRealm = try Realm(fileURL: fileURL)
             try realm.write {
-                for object in initialRealm.objects(RealmPosterQuizPackage.self) {
+                let quizPackages = initialRealm.objects(RealmPosterQuizPackage.self)
+
+                // 레벨이 큰 순서대로 정렬합니다.
+                let sortedQuizPackages = quizPackages.sorted { $0.level > $1.level }
+                for object in sortedQuizPackages {
                     realm.create(RealmPosterQuizPackage.self, value: object, update: .modified)
                 }
             }

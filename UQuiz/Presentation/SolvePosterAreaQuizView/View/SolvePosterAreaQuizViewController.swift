@@ -15,10 +15,11 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     
     override func loadView() {
         self.view = mainView
-        hideKeyboardWhenViewIsTapped()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKeyboardWhenViewIsTapped()
         viewModel.outputIsCorrect.noInitBind { value in
             self.judgeValue(value: value)
         }
@@ -37,6 +38,12 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         viewModel.outputTimeOverStatus.noInitBind { _ in
             self.timeOverAction()
         }
+        viewModel.outputCurrentIndex.bind { _ in
+            self.checkQuizCount()
+        }
+        viewModel.outputIsPaused.bind { isPaused in
+            self.mainView.setUIWhenPaused(isPaused: isPaused)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +56,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         mainView.collectionView.dataSource = self
         mainView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         mainView.answerTextField.delegate = self
+        mainView.pauseButton.addTarget(self, action: #selector(pauseButtonTapped), for: .touchUpInside)
         let detailURL = viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].poster
         mainView.fetchPoster(detailURL: detailURL)
         navigationController?.isNavigationBarHidden = true
@@ -58,6 +66,26 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
 
 // MARK: Private Func
 extension SolvePosterAreaQuizViewController {
+    
+    @objc private func pauseButtonTapped() {
+        viewModel.inputPauseButtonTapped.value = ()
+        let vc = PauseModalViewController()
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        vc.resumeCompletionHandler = {
+            self.viewModel.inputPauseButtonTapped.value = ()
+        }
+        vc.exitCompletionHandler = {
+            self.viewModel.inputInvalidTimerTrigger.value = ()
+            self.navigationController?.popViewController(animated: true)
+        }
+        present(vc, animated: true)
+    }
+    
+    // MARK: 퀴즈 남은 개수
+    private func checkQuizCount() {
+        mainView.setQuizCount(currentIndex: viewModel.outputCurrentIndex.value + 1, totalIndex: viewModel.outputQuizList.value.count)
+    }
     
     // MARK: 시간 초과시 알러트
     private func timeOverAction() {
@@ -92,17 +120,37 @@ extension SolvePosterAreaQuizViewController {
         }
     }
     
+    // MARK: 정답 스킵하고 넘어가기
+    private func skipAnswer() {
+        self.viewModel.inputNextIndexTrigger.value = ()
+        self.viewModel.inputTimeLimitBarPercentage.value = 0
+        self.fetchPoster()
+        self.fetchCollectionViewSelectedArea()
+        self.mainView.setTextFieldAndButtonEnable(isEnabled: true)
+        self.mainView.clearTextField()
+        if !self.viewModel.outputGameOverStatus.value {
+            self.viewModel.inputSetTimerTrigger.value = ()
+        }
+    }
+    
     // MARK: 정답 / 오답 판별
     private func judgeValue(value: Bool) {
         if value {
             mainView.setTextFieldAndButtonEnable(isEnabled: false)
             viewModel.inputInvalidTimerTrigger.value = ()
-            showAlert(title: "정답", message: "3초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
+            let alert = UIAlertController(title: "정답", message: "3초 동안 포스터를 공개하고 다음으로 넘어갑니다. 스킵하고 싶다면 스킵해주세요.", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "확인", style: .default) { _ in
                 self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
                 self.mainView.collectionView.isHidden = true
                 self.resetTimeLimitBar()
                 self.goNext()
             }
+            let skip = UIAlertAction(title: "Skip", style: .default) { _ in
+                self.skipAnswer()
+            }
+            alert.addAction(ok)
+            alert.addAction(skip)
+            present(alert, animated: true)
             createCongratsParticles()
         } else {
             mainView.posterView.shake()
