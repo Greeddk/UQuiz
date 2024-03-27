@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol timerDelegate: AnyObject {
+    func stopTimer()
+    func resumeTimer()
+}
+
 final class SolvePosterAreaQuizViewModel {
     
     let repository = PosterQuizPackageRepository()
@@ -36,7 +41,7 @@ final class SolvePosterAreaQuizViewModel {
             self.setTimer()
         }
         inputInvalidTimerTrigger.bind { _ in
-            self.timer.invalidate()
+            self.stopTimer()
         }
         inputTimeLimitBarPercentage.bind { value in
             self.outputCurrentPercentage.value = value
@@ -56,9 +61,9 @@ final class SolvePosterAreaQuizViewModel {
         isPaused.toggle()
         outputIsPaused.value = isPaused
         if isPaused {
-            timer.invalidate()
+            stopTimer()
         } else {
-            setTimer()
+            resumeTimer()
         }
     }
     
@@ -96,6 +101,18 @@ final class SolvePosterAreaQuizViewModel {
             outputIsCorrect.value = false
             repository.updateQuizIsCorrect(outputQuizList.value[outputCurrentIndex.value], isCorrect: false)
         }
+    }
+    
+}
+
+extension SolvePosterAreaQuizViewModel: timerDelegate {
+    
+    func stopTimer() {
+        timer.invalidate()
+    }
+    
+    func resumeTimer() {
+        setTimer()
     }
     
 }

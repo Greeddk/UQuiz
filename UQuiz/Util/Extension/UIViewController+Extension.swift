@@ -43,6 +43,17 @@ extension UIViewController {
         present(alert, animated: true)
     }
     
+    func showAlertWithCancel(title: String, message: String, okTitle: String, action: @escaping (() -> Void)) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: okTitle, style: .default) { _ in
+            action()
+        }
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
+    
     func showTextFieldAlert(title: String, message: String, placeHolder: String, action: @escaping ((String) -> Void)) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addTextField() { textField in
