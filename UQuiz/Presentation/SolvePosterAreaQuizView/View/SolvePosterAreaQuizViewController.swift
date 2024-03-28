@@ -15,6 +15,8 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     var timeBarAnimation: UIViewPropertyAnimator?
     var animators: [UIViewPropertyAnimator] = []
     var animatorProgress: [CGFloat] = []
+    var showAnswerAnimation: UIViewPropertyAnimator?
+    var isBackground = false
     
     override func loadView() {
         self.view = mainView
@@ -76,6 +78,7 @@ extension SolvePosterAreaQuizViewController {
         if let value = notification.userInfo?["willResign"] as? Bool {
             if value && viewModel.isPaused == false {
                 pauseButtonTapped()
+                isBackground = true
             }
         }
     }
@@ -85,13 +88,19 @@ extension SolvePosterAreaQuizViewController {
         viewModel.inputPauseButtonTapped.value = ()
         timeBarAnimation?.pauseAnimation()
         pauseAnimations()
+        presentPauseModalView()
+    }
+    
+    private func presentPauseModalView() {
         let vc = PauseModalViewController()
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         vc.resumeCompletionHandler = {
             self.viewModel.inputPauseButtonTapped.value = ()
-            self.timeBarAnimation?.startAnimation()
             self.resumeAnimations()
+            self.isBackground = false
+            self.timeBarAnimation?.startAnimation()
+            self.showAnswerAnimation?.startAnimation()
         }
         vc.exitCompletionHandler = {
             self.viewModel.inputInvalidTimerTrigger.value = ()
@@ -126,15 +135,18 @@ extension SolvePosterAreaQuizViewController {
     
     // MARK: 다음 퀴즈 fetch
     private func goNext() {
-        let timeDelay: DispatchTimeInterval = .seconds(3)
-        DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay) {
-            self.viewModel.inputNextIndexTrigger.value = ()
-            self.fetchPoster()
-            self.fetchCollectionViewSelectedArea()
-            self.mainView.setTextFieldAndButtonEnable(isEnabled: true)
-            self.mainView.clearTextField()
-            if !self.viewModel.outputGameOverStatus.value {
-                self.viewModel.inputSetTimerTrigger.value = ()
+        showAnswerAnimation = UIViewPropertyAnimator(duration: 3, curve: .linear)
+        showAnswerAnimation?.startAnimation()
+        showAnswerAnimation?.addCompletion { position in
+            if position == .end {
+                self.viewModel.inputNextIndexTrigger.value = ()
+                self.fetchPoster()
+                self.fetchCollectionViewSelectedArea()
+                self.mainView.setTextFieldAndButtonEnable(isEnabled: true)
+                self.mainView.clearTextField()
+                if !self.viewModel.outputGameOverStatus.value {
+                    self.viewModel.inputSetTimerTrigger.value = ()
+                }
             }
         }
     }
@@ -195,15 +207,17 @@ extension SolvePosterAreaQuizViewController {
     private func startAreaAnimation() {
         let list = Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea)
         let level = viewModel.inputLevel.value
+        
         animatorProgress = Array(repeating: 0, count: list.count)
+        print(animatorProgress.count)
 
         for array in list {
             let areaIndex = Array(array.area)
             
-            let animator = UIViewPropertyAnimator(duration: 2, curve: .linear) {
+            let animator = UIViewPropertyAnimator(duration: TimeInterval(2 + level), curve: .linear) {
                 for index in areaIndex {
                     let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
-                    cell?.backgroundColor = .clear
+                    cell?.backgroundColor = .white.withAlphaComponent(0.01)
                 }
             }
             animators.append(animator)
@@ -229,22 +243,58 @@ extension SolvePosterAreaQuizViewController {
             animator.pauseAnimation()
             animatorProgress[index] = animator.fractionComplete
         }
+        
     }
 
     private func resumeAnimations() {
+        
         guard let lastIndex = animatorProgress.firstIndex(where: { $0 != 0 }) else { return }
+        let nextIndex = lastIndex + 1
+        let list = Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea)
         let level = viewModel.inputLevel.value
-        var nextIndex = lastIndex + 1
+        var listLastIndex = list.count - 1
         
+        if isBackground {
+            
+            // lastIndex의 보이는 정도 복구
+            for index in Array(list[lastIndex].area) {
+                let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+                cell?.backgroundColor = .black.withAlphaComponent(1 - animatorProgress[lastIndex])
+            }
+            // 아직 안보이는 부분 검은색으로 다시 칠하기 / 애니메이션 주기
+            for restIndex in lastIndex + 1...listLastIndex {
+                let areaList = list[restIndex]
+                let areaIndex = Array(areaList.area)
+                for index in areaIndex {
+                    let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+                    cell?.backgroundColor = .black
+                }
+                let animator = UIViewPropertyAnimator(duration: TimeInterval(2 + level), curve: .linear) {
+                    for index in areaIndex {
+                        let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+                        cell?.backgroundColor = .clear
+                    }
+                }
+                animators[restIndex] = animator
+            }
+//            animators[lastIndex].stopAnimation(false)
+            // lastIndex 애니메이션 주기
+            let restTime: CGFloat = CGFloat((2 + level)) * (1 - animatorProgress[lastIndex])
+            let animator = UIViewPropertyAnimator(duration: Double(restTime), curve: .linear) {
+                for index in Array(list[lastIndex].area) {
+                    let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+                    cell?.backgroundColor = .clear
+                }
+            }
+            animators[lastIndex] = animator
+        }
         animators[lastIndex].startAnimation()
-        
         animators[lastIndex].addCompletion { position in
             if position == .end {
                 self.startNextAnimation(index: nextIndex)
             }
         }
     }
-
 
     // MARK: CollectionView 초기화
     private func resetCollectionView() {
