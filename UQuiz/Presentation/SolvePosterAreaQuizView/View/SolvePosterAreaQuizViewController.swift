@@ -135,10 +135,11 @@ extension SolvePosterAreaQuizViewController {
     
     // MARK: 다음 퀴즈 fetch
     private func goNext() {
-        showAnswerAnimation = UIViewPropertyAnimator(duration: 3, curve: .linear)
+        showAnswerAnimation = UIViewPropertyAnimator(duration: 3, curve: .linear) { }
         showAnswerAnimation?.startAnimation()
         showAnswerAnimation?.addCompletion { position in
             if position == .end {
+                print("asdf")
                 self.viewModel.inputNextIndexTrigger.value = ()
                 self.fetchPoster()
                 self.fetchCollectionViewSelectedArea()
@@ -207,9 +208,8 @@ extension SolvePosterAreaQuizViewController {
     private func startAreaAnimation() {
         let list = Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea)
         let level = viewModel.inputLevel.value
-        
+        animatorProgress = []
         animatorProgress = Array(repeating: 0, count: list.count)
-        print(animatorProgress.count)
 
         for array in list {
             let areaIndex = Array(array.area)
@@ -217,7 +217,7 @@ extension SolvePosterAreaQuizViewController {
             let animator = UIViewPropertyAnimator(duration: TimeInterval(2 + level), curve: .linear) {
                 for index in areaIndex {
                     let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
-                    cell?.backgroundColor = .white.withAlphaComponent(0.01)
+                    cell?.backgroundColor = .clear
                 }
             }
             animators.append(animator)
@@ -237,7 +237,7 @@ extension SolvePosterAreaQuizViewController {
             self?.startNextAnimation(index: index + 1)
         }
     }
-    
+    // TODO: 다음 문제에서 에러가 발생함
     private func pauseAnimations() {
         for (index, animator) in animators.enumerated() {
             animator.pauseAnimation()
@@ -252,7 +252,7 @@ extension SolvePosterAreaQuizViewController {
         let nextIndex = lastIndex + 1
         let list = Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea)
         let level = viewModel.inputLevel.value
-        var listLastIndex = list.count - 1
+        let listLastIndex = list.count - 1
         
         if isBackground {
             
@@ -277,7 +277,7 @@ extension SolvePosterAreaQuizViewController {
                 }
                 animators[restIndex] = animator
             }
-//            animators[lastIndex].stopAnimation(false)
+
             // lastIndex 애니메이션 주기
             let restTime: CGFloat = CGFloat((2 + level)) * (1 - animatorProgress[lastIndex])
             let animator = UIViewPropertyAnimator(duration: Double(restTime), curve: .linear) {
