@@ -139,13 +139,15 @@ final class SolvePosterAreaQuizView: BaseView {
 // MARK: Public Func
 extension SolvePosterAreaQuizView {
     
-    func setUIWhenPaused(isPaused: Bool) {
+    func setUIWhenPaused(isPaused: Bool, isShowAnswer: Bool) {
         if isPaused {
             pauseButton.setImage(UIImage(systemName: "play.fill"), for: .normal)
         } else {
             pauseButton.setImage(UIImage(systemName: "pause.fill"), for: .normal)
         }
-        pauseView.isHidden = !isPaused
+        if !isShowAnswer {
+            pauseView.isHidden = !isPaused
+        }
     }
     
     func setQuizCount(currentIndex: Int, totalIndex: Int) {

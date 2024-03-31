@@ -12,11 +12,11 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
     let mainView = SolvePosterAreaQuizView()
     let viewModel = SolvePosterAreaQuizViewModel()
     
-    var timeBarAnimation: UIViewPropertyAnimator?
     var animators: [UIViewPropertyAnimator] = []
     var animatorProgress: [CGFloat] = []
     var showAnswerAnimation: UIViewPropertyAnimator?
-    var isBackground = false
+    var answerTimeAnimation: UIViewPropertyAnimator?
+    var answerTimeProgress: CGFloat = 0
     
     override func loadView() {
         self.view = mainView
@@ -47,7 +47,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
             self.checkQuizCount()
         }
         viewModel.outputIsPaused.bind { isPaused in
-            self.mainView.setUIWhenPaused(isPaused: isPaused)
+            self.mainView.setUIWhenPaused(isPaused: isPaused, isShowAnswer: self.viewModel.outputIsShowAnswer.value)
         }
     }
     
@@ -56,7 +56,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
         fetchCollectionViewSelectedArea()
         viewModel.inputSetTimerTrigger.value = ()
     }
-
+    
     override func configureViewController() {
         mainView.collectionView.dataSource = self
         mainView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
@@ -78,25 +78,52 @@ extension SolvePosterAreaQuizViewController {
         if let value = notification.userInfo?["willResign"] as? Bool {
             if value {
                 pauseButtonTapped()
-                isBackground = true
             }
         }
     }
     
     // MARK: 일시정지 기능
     @objc private func pauseButtonTapped() {
-        viewModel.inputPauseButtonTapped.value = ()
-        timeBarAnimation?.pauseAnimation()
-        pauseAnimations()
-        presentPauseModalView()
+        if !viewModel.outputIsPaused.value {
+            viewModel.inputPauseButtonTapped.value = ()
+            presentPauseModalView()
+            if viewModel.outputIsShowAnswer.value {
+                showAnswerAnimation?.stopAnimation(false)
+                showAnswerAnimation?.finishAnimation(at: .current)
+                guard let animator = answerTimeAnimation else { return }
+                answerTimeProgress = animator.fractionComplete
+            } else {
+                pauseAnimations()
+            }
+        }
     }
     
-    private func resumeAction() {
+    private func resumeShowAnswer() {
+        self.viewModel.inputResumeActionTrigger.value = ()
+        self.showAnswerAnimation?.startAnimation()
+        let restTime = 3 * (1 - answerTimeProgress)
+        showAnswerAnimation = UIViewPropertyAnimator(duration: restTime, curve: .easeIn) {
+            self.resetCollectionView()
+        }
+        showAnswerAnimation?.startAnimation()
+        showAnswerAnimation?.addCompletion { position in
+            if position == .end {
+                self.viewModel.inputNextIndexTrigger.value = ()
+                self.fetchCollectionViewSelectedArea()
+                self.fetchPoster()
+                self.mainView.setTextFieldAndButtonEnable(isEnabled: true)
+                self.mainView.clearTextField()
+                if !self.viewModel.outputGameOverStatus.value {
+                    self.viewModel.inputSetTimerTrigger.value = ()
+                }
+                self.viewModel.outputIsShowAnswer.value = false
+            }
+        }
+    }
+    
+    private func resumeQuiz() {
         self.viewModel.inputResumeActionTrigger.value = ()
         self.resumeAnimations()
-        self.isBackground = false
-        self.timeBarAnimation?.startAnimation()
-        self.showAnswerAnimation?.startAnimation()
     }
     
     private func presentPauseModalView() {
@@ -104,7 +131,11 @@ extension SolvePosterAreaQuizViewController {
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         vc.resumeCompletionHandler = {
-            self.resumeAction()
+            if self.viewModel.outputIsShowAnswer.value {
+                self.resumeShowAnswer()
+            } else {
+                self.resumeQuiz()
+            }
         }
         vc.exitCompletionHandler = {
             self.viewModel.inputInvalidTimerTrigger.value = ()
@@ -122,7 +153,9 @@ extension SolvePosterAreaQuizViewController {
     private func timeOverAction() {
         mainView.setTextFieldAndButtonEnable(isEnabled: false)
         self.showAlert(title: "시간초과", message: "3초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") {
+            self.viewModel.outputIsShowAnswer.value = true
             self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
+            self.finishAnimations()
             self.mainView.collectionView.isHidden = true
             self.resetTimeLimitBar()
             self.goNext()
@@ -131,19 +164,14 @@ extension SolvePosterAreaQuizViewController {
     }
     
     private func resetTimeLimitBar() {
-        timeBarAnimation = UIViewPropertyAnimator(duration: 3, curve: .linear) {
-            self.viewModel.inputTimeLimitBarPercentage.value = 0.1
-        }
-        timeBarAnimation?.startAnimation()
-        timeBarAnimation?.addCompletion { [weak self] position in
-            guard position == .end else { return }
-            self?.viewModel.inputTimeLimitBarPercentage.value = 0
-        }
+        viewModel.inputResetTimerTrigger.value = ()
     }
     
     // MARK: 다음 퀴즈 fetch
     private func goNext() {
-        showAnswerAnimation = UIViewPropertyAnimator(duration: 3, curve: .easeIn) { }
+        showAnswerAnimation = UIViewPropertyAnimator(duration: 3, curve: .easeIn) {
+            self.resetCollectionView()
+        }
         showAnswerAnimation?.startAnimation()
         showAnswerAnimation?.addCompletion { position in
             if position == .end {
@@ -155,6 +183,7 @@ extension SolvePosterAreaQuizViewController {
                 if !self.viewModel.outputGameOverStatus.value {
                     self.viewModel.inputSetTimerTrigger.value = ()
                 }
+                self.viewModel.outputIsShowAnswer.value = false
             }
         }
     }
@@ -179,9 +208,10 @@ extension SolvePosterAreaQuizViewController {
             viewModel.inputInvalidTimerTrigger.value = ()
             let alert = UIAlertController(title: "정답", message: "3초 동안 포스터를 공개하고 다음으로 넘어갑니다. 스킵하고 싶다면 스킵해주세요.", preferredStyle: .alert)
             let ok = UIAlertAction(title: "확인", style: .default) { _ in
+                self.viewModel.outputIsShowAnswer.value = true
                 self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
-                self.mainView.collectionView.isHidden = true
                 self.finishAnimations()
+                self.mainView.collectionView.isHidden = true
                 self.resetTimeLimitBar()
                 self.goNext()
             }
@@ -218,7 +248,7 @@ extension SolvePosterAreaQuizViewController {
         let list = Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea)
         let level = viewModel.inputLevel.value
         animatorProgress = Array(repeating: 0, count: list.count)
-
+        
         for array in list {
             let areaIndex = Array(array.area)
             
@@ -232,7 +262,7 @@ extension SolvePosterAreaQuizViewController {
         }
         startNextAnimation(index: 0)
     }
-
+    
     private func startNextAnimation(index: Int) {
         guard index < animators.count else { return }
         
@@ -245,21 +275,21 @@ extension SolvePosterAreaQuizViewController {
             self?.startNextAnimation(index: index + 1)
         }
     }
-    // TODO: 다음 문제에서 에러가 발생함
+
     private func pauseAnimations() {
         for (index, animator) in animators.enumerated() {
-            animator.pauseAnimation()
             animatorProgress[index] = animator.fractionComplete
+            animator.stopAnimation(true)
         }
     }
     
     private func finishAnimations() {
-        for (index, animator) in animators.enumerated() {
+        for (_, animator) in animators.enumerated() {
             animator.stopAnimation(true)
         }
         animators = []
     }
-
+    
     private func resumeAnimations() {
         
         guard let lastIndex = animatorProgress.firstIndex(where: { $0 != 0 }) else { return }
@@ -268,13 +298,13 @@ extension SolvePosterAreaQuizViewController {
         let level = viewModel.inputLevel.value
         let listLastIndex = list.count - 1
         
-        if isBackground {
-            
-            // lastIndex의 보이는 정도 복구
-            for index in Array(list[lastIndex].area) {
-                let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
-                cell?.backgroundColor = .black.withAlphaComponent(1 - animatorProgress[lastIndex])
-            }
+        // lastIndex의 보이는 정도 복구
+        for index in Array(list[lastIndex].area) {
+            let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+            cell?.backgroundColor = .black.withAlphaComponent(1 - animatorProgress[lastIndex])
+        }
+        
+        if lastIndex < listLastIndex {
             // 아직 안보이는 부분 검은색으로 다시 칠하기 / 애니메이션 주기
             for restIndex in lastIndex + 1...listLastIndex {
                 let areaList = list[restIndex]
@@ -291,17 +321,18 @@ extension SolvePosterAreaQuizViewController {
                 }
                 animators[restIndex] = animator
             }
-
-            // lastIndex 애니메이션 주기
-            let restTime: CGFloat = CGFloat((2 + level)) * (1 - animatorProgress[lastIndex])
-            let animator = UIViewPropertyAnimator(duration: Double(restTime), curve: .linear) {
-                for index in Array(list[lastIndex].area) {
-                    let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
-                    cell?.backgroundColor = .clear
-                }
-            }
-            animators[lastIndex] = animator
         }
+        
+        // lastIndex 애니메이션 주기
+        let restTime: CGFloat = CGFloat((2 + level)) * (1 - animatorProgress[lastIndex])
+        let animator = UIViewPropertyAnimator(duration: Double(restTime), curve: .linear) {
+            for index in Array(list[lastIndex].area) {
+                let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+                cell?.backgroundColor = .clear
+            }
+        }
+        animators[lastIndex] = animator
+        
         animators[lastIndex].startAnimation()
         animators[lastIndex].addCompletion { position in
             if position == .end {
@@ -309,7 +340,7 @@ extension SolvePosterAreaQuizViewController {
             }
         }
     }
-
+    
     // MARK: CollectionView 초기화
     private func resetCollectionView() {
         for index in 0...3749 {

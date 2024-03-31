@@ -17,7 +17,6 @@ final class SolvePosterAreaQuizViewModel {
     let repository = PosterQuizPackageRepository()
     
     var timer = Timer()
-    var isPaused: Bool = false
     
     var inputTimeLimitBarPercentage: Observable<Float> = Observable(0)
     var inputNextIndexTrigger: Observable<Void?> = Observable(nil)
@@ -27,6 +26,8 @@ final class SolvePosterAreaQuizViewModel {
     var inputLevel: Observable<Int> = Observable(0)
     var inputPauseButtonTapped: Observable<Void?> = Observable(nil)
     var inputResumeActionTrigger: Observable<Void?> = Observable(nil)
+    var inputResetTimerTrigger: Observable<Void?> = Observable(nil)
+    var inputIsShowAnswer: Observable<Bool> = Observable(false)
     
     var outputCurrentPercentage: Observable<Float> = Observable(0)
     var outputQuizList: Observable<[RealmPosterQuiz]> = Observable([])
@@ -36,6 +37,8 @@ final class SolvePosterAreaQuizViewModel {
     var outputTimeOverStatus: Observable<Void?> = Observable(nil)
     var outputGameOverStatus: Observable<Bool> = Observable(false)
     var outputIsPaused: Observable<Bool> = Observable(false)
+    var outputIsShowAnswer: Observable<Bool> = Observable(false)
+    var outputGoNextTrigger: Observable<Void?> = Observable(nil)
     
     init() {
         inputSetTimerTrigger.bind { _ in
@@ -54,21 +57,30 @@ final class SolvePosterAreaQuizViewModel {
             self.markingAnswer(answer)
         }
         inputPauseButtonTapped.noInitBind { _ in
-            self.isPaused = true
-            self.updateIsPauseValue()
+            self.updateIsPauseValue(true)
         }
         inputResumeActionTrigger.noInitBind { _ in
-            self.isPaused = false
-            self.updateIsPauseValue()
+            self.updateIsPauseValue(false)
+        }
+        inputResetTimerTrigger.noInitBind { _ in
+            self.resetTimer()
+        }
+        inputIsShowAnswer.noInitBind { value in
+            self.outputIsShowAnswer.value = value
+            print(self.outputIsShowAnswer)
         }
     }
     
-    private func updateIsPauseValue() {
+    private func updateIsPauseValue(_ isPaused: Bool) {
         outputIsPaused.value = isPaused
         if isPaused {
             stopTimer()
         } else {
-            resumeTimer()
+            if outputIsShowAnswer.value {
+                resetTimer()
+            } else {
+                resumeTimer()
+            }
         }
     }
     
@@ -78,6 +90,17 @@ final class SolvePosterAreaQuizViewModel {
             if self.outputCurrentPercentage.value >= 1 {
                 self.inputInvalidTimerTrigger.value = ()
                 self.outputTimeOverStatus.value = ()
+            }
+        }
+    }
+    
+    private func resetTimer() {
+        let savedValue = self.outputCurrentPercentage.value
+        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
+            self.outputCurrentPercentage.value -= (1 / 300) * savedValue
+            if self.outputCurrentPercentage.value <= 0 {
+                self.inputInvalidTimerTrigger.value = ()
+                self.outputCurrentPercentage.value = 0
             }
         }
     }
