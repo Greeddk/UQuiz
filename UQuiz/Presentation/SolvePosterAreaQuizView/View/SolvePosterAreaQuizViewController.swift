@@ -76,7 +76,7 @@ extension SolvePosterAreaQuizViewController {
     // MARK: NotificationCenter (백그라운드 상태로 변화할때)
     @objc private func sceneResignStatusNotification(notification: NSNotification) {
         if let value = notification.userInfo?["willResign"] as? Bool {
-            if value && viewModel.isPaused == false {
+            if value {
                 pauseButtonTapped()
                 isBackground = true
             }
@@ -91,16 +91,20 @@ extension SolvePosterAreaQuizViewController {
         presentPauseModalView()
     }
     
+    private func resumeAction() {
+        self.viewModel.inputResumeActionTrigger.value = ()
+        self.resumeAnimations()
+        self.isBackground = false
+        self.timeBarAnimation?.startAnimation()
+        self.showAnswerAnimation?.startAnimation()
+    }
+    
     private func presentPauseModalView() {
         let vc = PauseModalViewController()
         vc.modalPresentationStyle = .overFullScreen
         vc.modalTransitionStyle = .crossDissolve
         vc.resumeCompletionHandler = {
-            self.viewModel.inputPauseButtonTapped.value = ()
-            self.resumeAnimations()
-            self.isBackground = false
-            self.timeBarAnimation?.startAnimation()
-            self.showAnswerAnimation?.startAnimation()
+            self.resumeAction()
         }
         vc.exitCompletionHandler = {
             self.viewModel.inputInvalidTimerTrigger.value = ()
@@ -127,22 +131,25 @@ extension SolvePosterAreaQuizViewController {
     }
     
     private func resetTimeLimitBar() {
-        timeBarAnimation = UIViewPropertyAnimator(duration: 3.5, curve: .linear) {
-            self.viewModel.inputTimeLimitBarPercentage.value = 0
+        timeBarAnimation = UIViewPropertyAnimator(duration: 3, curve: .linear) {
+            self.viewModel.inputTimeLimitBarPercentage.value = 0.1
         }
         timeBarAnimation?.startAnimation()
+        timeBarAnimation?.addCompletion { [weak self] position in
+            guard position == .end else { return }
+            self?.viewModel.inputTimeLimitBarPercentage.value = 0
+        }
     }
     
     // MARK: 다음 퀴즈 fetch
     private func goNext() {
-        showAnswerAnimation = UIViewPropertyAnimator(duration: 3, curve: .linear) { }
+        showAnswerAnimation = UIViewPropertyAnimator(duration: 3, curve: .easeIn) { }
         showAnswerAnimation?.startAnimation()
         showAnswerAnimation?.addCompletion { position in
             if position == .end {
-                print("asdf")
                 self.viewModel.inputNextIndexTrigger.value = ()
-                self.fetchPoster()
                 self.fetchCollectionViewSelectedArea()
+                self.fetchPoster()
                 self.mainView.setTextFieldAndButtonEnable(isEnabled: true)
                 self.mainView.clearTextField()
                 if !self.viewModel.outputGameOverStatus.value {
@@ -156,8 +163,8 @@ extension SolvePosterAreaQuizViewController {
     private func skipAnswer() {
         self.viewModel.inputNextIndexTrigger.value = ()
         self.viewModel.inputTimeLimitBarPercentage.value = 0
-        self.fetchPoster()
         self.fetchCollectionViewSelectedArea()
+        self.fetchPoster()
         self.mainView.setTextFieldAndButtonEnable(isEnabled: true)
         self.mainView.clearTextField()
         if !self.viewModel.outputGameOverStatus.value {
@@ -174,10 +181,12 @@ extension SolvePosterAreaQuizViewController {
             let ok = UIAlertAction(title: "확인", style: .default) { _ in
                 self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
                 self.mainView.collectionView.isHidden = true
+                self.finishAnimations()
                 self.resetTimeLimitBar()
                 self.goNext()
             }
             let skip = UIAlertAction(title: "Skip", style: .default) { _ in
+                self.finishAnimations()
                 self.skipAnswer()
             }
             alert.addAction(ok)
@@ -208,7 +217,6 @@ extension SolvePosterAreaQuizViewController {
     private func startAreaAnimation() {
         let list = Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea)
         let level = viewModel.inputLevel.value
-        animatorProgress = []
         animatorProgress = Array(repeating: 0, count: list.count)
 
         for array in list {
@@ -243,7 +251,13 @@ extension SolvePosterAreaQuizViewController {
             animator.pauseAnimation()
             animatorProgress[index] = animator.fractionComplete
         }
-        
+    }
+    
+    private func finishAnimations() {
+        for (index, animator) in animators.enumerated() {
+            animator.stopAnimation(true)
+        }
+        animators = []
     }
 
     private func resumeAnimations() {

@@ -47,7 +47,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneWillResignActive(_ scene: UIScene) {
-        print(#function)
         guard let window = window else {
             return
         }

@@ -7,7 +7,6 @@
 
 import UIKit
 import Kingfisher
-import os
 
 final class MovieSearchViewController: BaseViewController {
     
