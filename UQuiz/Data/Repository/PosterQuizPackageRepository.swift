@@ -84,8 +84,8 @@ final class PosterQuizPackageRepository {
                     realm.create(RealmPosterQuizPackage.self, value: object, update: .modified)
                 }
             }
-        } catch let error as NSError {
-            print("Error: \(error.localizedDescription)")
+        } catch {
+            print("Error: \(error)")
         }
     }
     

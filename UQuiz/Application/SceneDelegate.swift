@@ -13,6 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var blurView: UIVisualEffectView?
     
+    let gameManager = GameManager.shared
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
         guard let scene = (scene as? UIWindowScene) else { return }
@@ -26,6 +28,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             window?.rootViewController = SetProfileViewController()
         }
+        
+        gameManager.authenticateUser()
         
         window?.makeKeyAndVisible()
     }

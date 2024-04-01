@@ -18,7 +18,6 @@
 		42091DF82BA7126C006BA897 /* QuizResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DF72BA7126C006BA897 /* QuizResultViewController.swift */; };
 		42091DFA2BA7128B006BA897 /* QuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DF92BA7128B006BA897 /* QuizResultView.swift */; };
 		42091DFC2BA713A3006BA897 /* QuizResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42091DFB2BA713A3006BA897 /* QuizResultViewModel.swift */; };
-		421C7A592BB02903002D5DDF /* initial.realm in Resources */ = {isa = PBXBuildFile; fileRef = 421C7A582BB02903002D5DDF /* initial.realm */; };
 		421C7A5B2BB059B6002D5DDF /* PosterQuizPackage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421C7A5A2BB059B6002D5DDF /* PosterQuizPackage.swift */; };
 		421C7A5D2BB05AD1002D5DDF /* MakerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421C7A5C2BB05AD1002D5DDF /* MakerInfo.swift */; };
 		421C7AE02BB2BB88002D5DDF /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 421C7ADF2BB2BB88002D5DDF /* UILabel+Extension.swift */; };
@@ -40,6 +39,10 @@
 		422D5F402BAAE81B0085E6D0 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 422D5F3F2BAAE81B0085E6D0 /* FirebaseMessaging */; };
 		422D5F452BAAEC440085E6D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F442BAAEC440085E6D0 /* GoogleService-Info.plist */; };
 		422D5F492BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D5F482BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift */; };
+		42429D8A2BB984E80077923B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 42429D892BB984E80077923B /* Realm */; };
+		42429D8C2BB984E80077923B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42429D8B2BB984E80077923B /* RealmSwift */; };
+		42429D8E2BB987B80077923B /* initial.realm in Resources */ = {isa = PBXBuildFile; fileRef = 42429D8D2BB987B80077923B /* initial.realm */; };
+		42429D962BBA9E830077923B /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42429D952BBA9E830077923B /* GameManager.swift */; };
 		42570E502B9983920042B338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E4F2B9983920042B338 /* AppDelegate.swift */; };
 		42570E522B9983920042B338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E512B9983920042B338 /* SceneDelegate.swift */; };
 		42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42570E532B9983920042B338 /* MovieSearchViewController.swift */; };
@@ -49,8 +52,6 @@
 		42AD0D432B9AF8CD002B8A48 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 42AD0D422B9AF8CD002B8A48 /* Alamofire */; };
 		42AD0D462B9AF8D3002B8A48 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 42AD0D452B9AF8D3002B8A48 /* Kingfisher */; };
 		42AD0D492B9AF8DC002B8A48 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 42AD0D482B9AF8DC002B8A48 /* SnapKit */; };
-		42AD0D4C2B9AF8F6002B8A48 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 42AD0D4B2B9AF8F6002B8A48 /* Realm */; };
-		42AD0D4E2B9AF8F6002B8A48 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42AD0D4D2B9AF8F6002B8A48 /* RealmSwift */; };
 		42AD0D542B9AFA33002B8A48 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D532B9AFA33002B8A48 /* BaseViewController.swift */; };
 		42AD0D562B9AFAD9002B8A48 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D552B9AFAD9002B8A48 /* BaseView.swift */; };
 		42AD0D582B9AFB53002B8A48 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AD0D572B9AFB53002B8A48 /* BaseCollectionViewCell.swift */; };
@@ -116,7 +117,6 @@
 		42091DF72BA7126C006BA897 /* QuizResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewController.swift; sourceTree = "<group>"; };
 		42091DF92BA7128B006BA897 /* QuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultView.swift; sourceTree = "<group>"; };
 		42091DFB2BA713A3006BA897 /* QuizResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultViewModel.swift; sourceTree = "<group>"; };
-		421C7A582BB02903002D5DDF /* initial.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = initial.realm; sourceTree = "<group>"; };
 		421C7A5A2BB059B6002D5DDF /* PosterQuizPackage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterQuizPackage.swift; sourceTree = "<group>"; };
 		421C7A5C2BB05AD1002D5DDF /* MakerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakerInfo.swift; sourceTree = "<group>"; };
 		421C7ADF2BB2BB88002D5DDF /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
@@ -135,6 +135,8 @@
 		422D5F382BAACA7B0085E6D0 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		422D5F442BAAEC440085E6D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		422D5F482BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		42429D8D2BB987B80077923B /* initial.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = initial.realm; sourceTree = "<group>"; };
+		42429D952BBA9E830077923B /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		42570E4C2B9983920042B338 /* UQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42570E4F2B9983920042B338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		42570E512B9983920042B338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -191,11 +193,11 @@
 				42AD0D492B9AF8DC002B8A48 /* SnapKit in Frameworks */,
 				42AD0D462B9AF8D3002B8A48 /* Kingfisher in Frameworks */,
 				422D5F402BAAE81B0085E6D0 /* FirebaseMessaging in Frameworks */,
-				42AD0D4C2B9AF8F6002B8A48 /* Realm in Frameworks */,
-				42AD0D4E2B9AF8F6002B8A48 /* RealmSwift in Frameworks */,
+				42429D8C2BB984E80077923B /* RealmSwift in Frameworks */,
 				42B7EC8A2BA1A14000AE0F52 /* CollectionViewPagingLayout in Frameworks */,
 				422D5F3E2BAAE81B0085E6D0 /* FirebaseCrashlytics in Frameworks */,
 				42AD0D432B9AF8CD002B8A48 /* Alamofire in Frameworks */,
+				42429D8A2BB984E80077923B /* Realm in Frameworks */,
 				422D5F3C2BAAE81B0085E6D0 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,6 +378,7 @@
 		42091DF12BA7011E006BA897 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				42429D942BBA9E780077923B /* Game */,
 				42AD0D6F2B9B0ADE002B8A48 /* Observable */,
 				42091DCA2BA2D625006BA897 /* File */,
 				42091DD62BA58CDB006BA897 /* UserDefaults */,
@@ -432,7 +435,7 @@
 		421C7A572BB004A6002D5DDF /* InitialData */ = {
 			isa = PBXGroup;
 			children = (
-				421C7A582BB02903002D5DDF /* initial.realm */,
+				42429D8D2BB987B80077923B /* initial.realm */,
 			);
 			path = InitialData;
 			sourceTree = "<group>";
@@ -468,6 +471,14 @@
 				422D5F262BAAC6090085E6D0 /* Pretendard-Thin.otf */,
 			);
 			path = Font;
+			sourceTree = "<group>";
+		};
+		42429D942BBA9E780077923B /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				42429D952BBA9E830077923B /* GameManager.swift */,
+			);
+			path = Game;
 			sourceTree = "<group>";
 		};
 		42570E432B9983920042B338 = {
@@ -690,12 +701,12 @@
 				42AD0D422B9AF8CD002B8A48 /* Alamofire */,
 				42AD0D452B9AF8D3002B8A48 /* Kingfisher */,
 				42AD0D482B9AF8DC002B8A48 /* SnapKit */,
-				42AD0D4B2B9AF8F6002B8A48 /* Realm */,
-				42AD0D4D2B9AF8F6002B8A48 /* RealmSwift */,
 				42B7EC892BA1A14000AE0F52 /* CollectionViewPagingLayout */,
 				422D5F3B2BAAE81B0085E6D0 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				422D5F3D2BAAE81B0085E6D0 /* FirebaseCrashlytics */,
 				422D5F3F2BAAE81B0085E6D0 /* FirebaseMessaging */,
+				42429D892BB984E80077923B /* Realm */,
+				42429D8B2BB984E80077923B /* RealmSwift */,
 			);
 			productName = UQuiz;
 			productReference = 42570E4C2B9983920042B338 /* UQuiz.app */;
@@ -730,9 +741,9 @@
 				42AD0D412B9AF8CC002B8A48 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				42AD0D442B9AF8D3002B8A48 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				42AD0D472B9AF8DC002B8A48 /* XCRemoteSwiftPackageReference "SnapKit" */,
-				42AD0D4A2B9AF8F6002B8A48 /* XCRemoteSwiftPackageReference "realm-swift" */,
 				42B7EC882BA1A14000AE0F52 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */,
 				422D5F3A2BAAE81B0085E6D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				42429D882BB984E80077923B /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 42570E4D2B9983920042B338 /* Products */;
 			projectDirPath = "";
@@ -748,7 +759,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				421C7A592BB02903002D5DDF /* initial.realm in Resources */,
+				42429D8E2BB987B80077923B /* initial.realm in Resources */,
 				422D5F352BAAC6090085E6D0 /* Pretendard-Bold.otf in Resources */,
 				422D5F312BAAC6090085E6D0 /* Pretendard-ExtraLight.otf in Resources */,
 				422D5F322BAAC6090085E6D0 /* Pretendard-Light.otf in Resources */,
@@ -816,6 +827,7 @@
 				42091DCF2BA2E469006BA897 /* ProfileManagerViewModel.swift in Sources */,
 				42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */,
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
+				42429D962BBA9E830077923B /* GameManager.swift in Sources */,
 				422D5F392BAACA7B0085E6D0 /* Level.swift in Sources */,
 				422D5F492BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift in Sources */,
 				421C7A5B2BB059B6002D5DDF /* PosterQuizPackage.swift in Sources */,
@@ -1020,7 +1032,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.greed.UQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1058,7 +1070,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.4;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.greed.UQuiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1104,6 +1116,14 @@
 				minimumVersion = 10.23.0;
 			};
 		};
+		42429D882BB984E80077923B /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = exactVersion;
+				version = 10.48.0;
+			};
+		};
 		42AD0D412B9AF8CC002B8A48 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1126,14 +1146,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.7.1;
-			};
-		};
-		42AD0D4A2B9AF8F6002B8A48 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/realm/realm-swift.git";
-			requirement = {
-				branch = master;
-				kind = branch;
 			};
 		};
 		42B7EC882BA1A14000AE0F52 /* XCRemoteSwiftPackageReference "CollectionViewPagingLayout" */ = {
@@ -1162,6 +1174,16 @@
 			package = 422D5F3A2BAAE81B0085E6D0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseMessaging;
 		};
+		42429D892BB984E80077923B /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42429D882BB984E80077923B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		42429D8B2BB984E80077923B /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 42429D882BB984E80077923B /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
 		42AD0D422B9AF8CD002B8A48 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 42AD0D412B9AF8CC002B8A48 /* XCRemoteSwiftPackageReference "Alamofire" */;
@@ -1176,16 +1198,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 42AD0D472B9AF8DC002B8A48 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
-		};
-		42AD0D4B2B9AF8F6002B8A48 /* Realm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 42AD0D4A2B9AF8F6002B8A48 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = Realm;
-		};
-		42AD0D4D2B9AF8F6002B8A48 /* RealmSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 42AD0D4A2B9AF8F6002B8A48 /* XCRemoteSwiftPackageReference "realm-swift" */;
-			productName = RealmSwift;
 		};
 		42B7EC892BA1A14000AE0F52 /* CollectionViewPagingLayout */ = {
 			isa = XCSwiftPackageProductDependency;

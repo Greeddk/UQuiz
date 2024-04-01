@@ -139,7 +139,7 @@ extension SolvePosterAreaQuizViewController {
         }
         vc.exitCompletionHandler = {
             self.viewModel.inputInvalidTimerTrigger.value = ()
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: true)
         }
         present(vc, animated: true)
     }
@@ -252,7 +252,7 @@ extension SolvePosterAreaQuizViewController {
         for array in list {
             let areaIndex = Array(array.area)
             
-            let animator = UIViewPropertyAnimator(duration: TimeInterval(2 + level), curve: .linear) {
+            let animator = UIViewPropertyAnimator(duration: TimeInterval(2 + level / 2), curve: .linear) {
                 for index in areaIndex {
                     let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
                     cell?.backgroundColor = .clear
@@ -313,7 +313,7 @@ extension SolvePosterAreaQuizViewController {
                     let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
                     cell?.backgroundColor = .black
                 }
-                let animator = UIViewPropertyAnimator(duration: TimeInterval(2 + level), curve: .linear) {
+                let animator = UIViewPropertyAnimator(duration: TimeInterval(2 + level / 2), curve: .linear) {
                     for index in areaIndex {
                         let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
                         cell?.backgroundColor = .clear
@@ -324,7 +324,7 @@ extension SolvePosterAreaQuizViewController {
         }
         
         // lastIndex 애니메이션 주기
-        let restTime: CGFloat = CGFloat((2 + level)) * (1 - animatorProgress[lastIndex])
+        let restTime: CGFloat = CGFloat((2 + level / 2)) * (1 - animatorProgress[lastIndex])
         let animator = UIViewPropertyAnimator(duration: Double(restTime), curve: .linear) {
             for index in Array(list[lastIndex].area) {
                 let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
