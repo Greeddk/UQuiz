@@ -90,6 +90,11 @@
 		42B7EC872BA1A12700AE0F52 /* QuizListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC862BA1A12700AE0F52 /* QuizListView.swift */; };
 		42B7EC8A2BA1A14000AE0F52 /* CollectionViewPagingLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 42B7EC892BA1A14000AE0F52 /* CollectionViewPagingLayout */; };
 		42B7EC8C2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7EC8B2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift */; };
+		42D680622BC3E4250087B90C /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D680612BC3E4250087B90C /* UserInfo.swift */; };
+		42D680662BC3F8740087B90C /* CreateMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D680652BC3F8740087B90C /* CreateMatchViewController.swift */; };
+		42D680682BC3F8AC0087B90C /* CreateMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D680672BC3F8AC0087B90C /* CreateMatchView.swift */; };
+		42D6806A2BC400710087B90C /* ReceiveMatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D680692BC400710087B90C /* ReceiveMatchView.swift */; };
+		42D6806C2BC400810087B90C /* ReceiveMatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42D6806B2BC400810087B90C /* ReceiveMatchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -183,6 +188,11 @@
 		42B7EC842BA1A06100AE0F52 /* QuizListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListViewModel.swift; sourceTree = "<group>"; };
 		42B7EC862BA1A12700AE0F52 /* QuizListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizListView.swift; sourceTree = "<group>"; };
 		42B7EC8B2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		42D680612BC3E4250087B90C /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		42D680652BC3F8740087B90C /* CreateMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMatchViewController.swift; sourceTree = "<group>"; };
+		42D680672BC3F8AC0087B90C /* CreateMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateMatchView.swift; sourceTree = "<group>"; };
+		42D680692BC400710087B90C /* ReceiveMatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMatchView.swift; sourceTree = "<group>"; };
+		42D6806B2BC400810087B90C /* ReceiveMatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveMatchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -577,6 +587,7 @@
 				422D5F382BAACA7B0085E6D0 /* Level.swift */,
 				421C7A5A2BB059B6002D5DDF /* PosterQuizPackage.swift */,
 				421C7A5C2BB05AD1002D5DDF /* MakerInfo.swift */,
+				42D680612BC3E4250087B90C /* UserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -646,6 +657,8 @@
 		42B7EC4A2B9ED57D00AE0F52 /* QuizListView */ = {
 			isa = PBXGroup;
 			children = (
+				42D680642BC3F8520087B90C /* ReceiveMatchView */,
+				42D680632BC3F83B0087B90C /* CreateMatchView */,
 				42091DEE2BA6FE50006BA897 /* View */,
 				42091DED2BA6FE4B006BA897 /* ViewModel */,
 				42B7EC8B2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift */,
@@ -677,6 +690,24 @@
 				42091DE92BA6FE1C006BA897 /* ViewModel */,
 			);
 			path = PosterListView;
+			sourceTree = "<group>";
+		};
+		42D680632BC3F83B0087B90C /* CreateMatchView */ = {
+			isa = PBXGroup;
+			children = (
+				42D680652BC3F8740087B90C /* CreateMatchViewController.swift */,
+				42D680672BC3F8AC0087B90C /* CreateMatchView.swift */,
+			);
+			path = CreateMatchView;
+			sourceTree = "<group>";
+		};
+		42D680642BC3F8520087B90C /* ReceiveMatchView */ = {
+			isa = PBXGroup;
+			children = (
+				42D680692BC400710087B90C /* ReceiveMatchView.swift */,
+				42D6806B2BC400810087B90C /* ReceiveMatchViewController.swift */,
+			);
+			path = ReceiveMatchView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -827,8 +858,11 @@
 				42091DCF2BA2E469006BA897 /* ProfileManagerViewModel.swift in Sources */,
 				42570E542B9983920042B338 /* MovieSearchViewController.swift in Sources */,
 				42AD0D652B9B00AD002B8A48 /* TMDBAPIManager.swift in Sources */,
+				42D680682BC3F8AC0087B90C /* CreateMatchView.swift in Sources */,
 				42429D962BBA9E830077923B /* GameManager.swift in Sources */,
+				42D6806C2BC400810087B90C /* ReceiveMatchViewController.swift in Sources */,
 				422D5F392BAACA7B0085E6D0 /* Level.swift in Sources */,
+				42D680662BC3F8740087B90C /* CreateMatchViewController.swift in Sources */,
 				422D5F492BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift in Sources */,
 				421C7A5B2BB059B6002D5DDF /* PosterQuizPackage.swift in Sources */,
 				42AD0D632B9AFDCB002B8A48 /* SearchMovie.swift in Sources */,
@@ -837,6 +871,7 @@
 				421C7AE02BB2BB88002D5DDF /* UILabel+Extension.swift in Sources */,
 				421C7AE62BB2DDB2002D5DDF /* PauseModalView.swift in Sources */,
 				42B7EC722BA0251700AE0F52 /* Poster.swift in Sources */,
+				42D680622BC3E4250087B90C /* UserInfo.swift in Sources */,
 				42B7EC8C2BA1A3BE00AE0F52 /* QuizCardCollectionViewCell.swift in Sources */,
 				42AD0D8A2B9DAF55002B8A48 /* UIViewController+Extension.swift in Sources */,
 				42AD0D7D2B9B132D002B8A48 /* String+Extension.swift in Sources */,
@@ -846,6 +881,7 @@
 				42AD0D562B9AFAD9002B8A48 /* BaseView.swift in Sources */,
 				42091DE22BA5EB02006BA897 /* SolvePosterAreaQuizViewModel.swift in Sources */,
 				42091DFC2BA713A3006BA897 /* QuizResultViewModel.swift in Sources */,
+				42D6806A2BC400710087B90C /* ReceiveMatchView.swift in Sources */,
 				42B7EC7F2BA02FB100AE0F52 /* MakeMovieAreaQuizViewModel.swift in Sources */,
 				42B7EC4C2B9ED58B00AE0F52 /* QuizListViewController.swift in Sources */,
 				42570E502B9983920042B338 /* AppDelegate.swift in Sources */,

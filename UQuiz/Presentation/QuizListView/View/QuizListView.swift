@@ -13,9 +13,10 @@ final class QuizListView: BaseView {
     
     let logoView = UIImageView()
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+    let receiveButton = UIButton()
     
     override func configureHierarchy() {
-        addSubviews([logoView, collectionView])
+        addSubviews([logoView, collectionView, receiveButton])
     }
     
     override func setConstraints() {
@@ -24,6 +25,10 @@ final class QuizListView: BaseView {
             make.leading.equalTo(self.safeAreaLayoutGuide).offset(5)
             make.width.equalTo(100)
             make.height.equalTo(40)
+        }
+        receiveButton.snp.makeConstraints { make in
+            make.top.equalTo(logoView.snp.bottom).offset(8)
+            make.trailing.equalTo(self.safeAreaLayoutGuide).offset(-12)
         }
         collectionView.snp.makeConstraints { make in
             make.top.equalTo(logoView.snp.bottom)
@@ -36,10 +41,13 @@ final class QuizListView: BaseView {
         collectionView.showsHorizontalScrollIndicator = false
         logoView.image = .uquizLogo
         logoView.contentMode = .scaleAspectFit
+        receiveButton.setImage(UIImage(systemName: "square.and.arrow.down"), for: .normal)
+        receiveButton.tintColor = .pointOrange
     }
     
     private func createLayout() -> CollectionViewPagingLayout {
         let layout = CollectionViewPagingLayout()
+        layout.numberOfVisibleItems = 4
         return layout
     }
     

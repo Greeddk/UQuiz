@@ -37,8 +37,13 @@ final class QuizListViewController: BaseViewController {
         mainView.collectionView.delegate = self
         mainView.collectionView.register(QuizCardCollectionViewCell.self, forCellWithReuseIdentifier: QuizCardCollectionViewCell.identifier)
         mainView.collectionView.isPagingEnabled = true
+        mainView.receiveButton.addTarget(self, action: #selector(receiveButtonTapped), for: .touchUpInside)
     }
     
+    @objc private func receiveButtonTapped() {
+        let vc = ReceiveMatchViewController()
+        present(vc, animated: true)
+    }
 }
 
 extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -63,7 +68,6 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.playButton.addTarget(self, action: #selector(playButtonTapped(sender:)), for: .touchUpInside)
         cell.shareButton.tag = indexPath.item
         cell.shareButton.addTarget(self, action: #selector(shareButtonTapped(sender:)), for: .touchUpInside)
-        cell.shareButton.isHidden = true
         return cell
     }
     
@@ -72,7 +76,9 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
 extension QuizListViewController {
     
     @objc private func shareButtonTapped(sender: UIButton) {
-
+        let modalVC = CreateMatchViewController()
+//        modalVC
+        present(modalVC, animated: true)
     }
     
     @objc private func deleteButtonTapped(sender: UIButton) {
