@@ -109,9 +109,6 @@ document 폴더에 저장한 realm 파일을 불러와서 사용하였다.
 
 </details>
 
-
-<br>
-
 [Realm 초기 데이터 사용하기 블로그글](https://d0ngurrrrrrr.tistory.com/134)
 <br>
 <br>
