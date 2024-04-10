@@ -84,21 +84,32 @@
 <br>
 
 ## 3. CollectionViewPagingLayout 화면 reloadData가 안 되는 버그
+<p align="center">
+<img width="24%" src="https://github.com/Greeddk/UQuiz/assets/116425551/0e0b07c0-578c-43be-a8d7-27b18b7231e5"/>  
+</p>
 
  퀴즈 목록에서 중간 index의 퀴즈를 삭제하면 위와 같이 화면이 나타나는 버그가 있었다. 이 버그는 그냥 터치만 한번 해줘도 풀리는 버그였다. 하지만 이 버그는 눈에 잘 보이는 문제인 만큼 꽤나 치명적인 버그라고 생각했다. 해결 방법은 performBatchUpdates와 invalidateLayout이라는 메서드를 사용했다.
 ```
-            self?.mainView.collectionView.reloadData()
-            self?.mainView.collectionView.performBatchUpdates({
-                self?.mainView.collectionView.collectionViewLayout.invalidateLayout()
-            })
+  self?.mainView.collectionView.reloadData()
+  self?.mainView.collectionView.performBatchUpdates({
+  self?.mainView.collectionView.collectionViewLayout.invalidateLayout()
+  })
 ```
 위 메서드들은 CollectionView의 레이아웃을 업데이트할 때, 특히 애니메이션과 함께 변경할 때 사용하는 메서드들로 '동적인 레이아웃 업데이트 시 사용'하거나 '애니메이션을 부드럽게 처리하는데' 사용한다고 한다. 즉 이런 버그는 UICollectionViewPagingLayout이라는 라이브러리를 활용해서 애니메이션과 동적인 레이아웃 UI를 구현해서 발생하는 버그였다.
 <br>
 <br>
 
 ## 4. BlurView가 사라지는 버그
+<p align="center">
+<img width="24%" src="https://github.com/Greeddk/UQuiz/assets/116425551/1f480fa1-753f-4899-bd80-304d82e4d487"/>
+</p>
 
  위 사진처럼 보이면 안 되는 이미지가 Blur가 사라지면서 보이게 되는 버그가 발생했다. 이를 해결하기 위한 방법 중 내가 아는 방법으로는 2가지 방법이 있다. 첫 번째는 CIFilter를 활용하는 방법이다. 두 번째 방법은 위 이미지를 Kingfisher로 가져오는 것이라 Kingfisher의 내장 기능 중 Blur를 처리해 주는 process를 사용하는 것이다. 이번 프로젝트에선 후자의 방법으로 위의 버그를 해결했다.
+ ```
+  let url = PosterURL.thumbnailURL(detailURL: detailURL).endpoint
+  let processor = BlurImageProcessor(blurRadius: 20.0)
+  posterView.kf.setImage(with: url, options: [.processor(processor)])
+```
 <br>
 <br>
 
@@ -121,26 +132,26 @@
 
  bind 뿐만 아니라 초기화할 때 값이 전달될 필요가 없을 경우를 위해 새로운 메서드를 만들어서 활용했다. 이 코드의 차이를 RxSwift로 치환해서 생각해 보자면 subscribe를 할 때의 PublishSubject와 BehaviorSubject의 차이가 될 수 있겠다. (혹시 아니라면 말해주세요..)
 ```
-    private var closure: ((T) -> Void)?
+  private var closure: ((T) -> Void)?
     
-    var value: T {
+  var value: T {
         didSet {
             closure?(value)
-        }
-    }
+      }
+  }
     
-    init(_ value: T) {
-        self.value = value
-    }
+  init(_ value: T) {
+      self.value = value
+  }
     
-    func bind(_ closure: @escaping (T) -> Void) {
-        closure(value)
-        self.closure = closure
-    }
+  func bind(_ closure: @escaping (T) -> Void) {
+      closure(value)
+      self.closure = closure
+  }
     
-    func noInitBind(_ closure: @escaping (T) -> Void) {
-        self.closure = closure
-    }
+  func noInitBind(_ closure: @escaping (T) -> Void) {
+      self.closure = closure
+  }
 ```
 <br>
 <br>
