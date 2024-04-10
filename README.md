@@ -18,13 +18,6 @@
   <br/>
 </div>
 
-## 기획 계기
-
-유튜브 혹은 예능을 보면 포스터의 일부분을 보여주고 정답을 맞히는 게임을 하는 모습을 볼 수 있는데,
-그 사람들처럼 나도 저런 게임을 하고 싶다 혹은 퀴즈를 만들어서 다른 사람에게 풀어보게 하고 싶다는 생각이 들 때가 종종 있다.
-그래서 쉽게 퀴즈를 만들 수 있고, 공유할 수 있는 앱이 있으면 재밌겠다는 생각을 바탕으로 기획을 하게 되었다.  
-<br>
-
 ## 개발 기간과 v1.0 버전 기능
 ### 개발 기간
 - 3/8 ~ 3/24 (약 16일)
@@ -71,14 +64,155 @@
 
 ## 1. Realm에 Initial Data 넣기
  데이터베이스로 사용하는 Realm에 처음부터 내가 임의로 설정한 데이터를 넣고 싶어서 고민을 하게 되었다. 물론 간단한 데이터라면 하드코딩을 해서 넣어줄 수도 있다. 그러나 퀴즈 데이터와 같이 많은 데이터를 가지고 있는 경우라면 하드코딩으로 처리하기가 쉽지 않다. 그래서 realm 데이터를 Bundle에 추가해서 앱을 처음 시작할 때 데이터를 추가하는 방식을 활용했다.
+ 
+<details>
+<summary>코드 보기</summary>
+  
+```
+   func copyInitialRealm() {
+   	let fileManager = FileManager.default
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentDirectory.appendingPathComponent("InitialData.realm")
+        
+        if !fileManager.fileExists(atPath: fileURL.path) {
+            let bundleURL = Bundle.main.url(forResource: "initial", withExtension: "realm")!
+            
+            do {
+                try fileManager.copyItem(at: bundleURL, to: fileURL)
+            } catch {
+                print("Error copy file: \(error)")
+            }
+        }
+    }
+```
+ bundle에 있는 realm 파일을 document 폴더에 저장한 후
+```
+ func fetchInitialData() {
+       	let fileManager = FileManager.default
+        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = documentDirectory.appendingPathComponent("InitialData.realm")
+ 
+        do {
+            let initialRealm = try Realm(fileURL: fileURL)
+            try realm.write {
+                for object in initialRealm.objects(yourRealmModel.self) {
+                    realm.create(yourRealmModel.self, value: object, update: .modified)
+                }
+            }
+        } catch let error as NSError {
+            print("Error: \(error.localizedDescription)")
+        }
+    }
+```
+
+document 폴더에 저장한 realm 파일을 불러와서 사용하였다.
+
+</details>
+
+
 <br>
-[트러블 슈팅 블로그글](https://d0ngurrrrrrr.tistory.com/134)
+
+[Realm 초기 데이터 사용하기 블로그글](https://d0ngurrrrrrr.tistory.com/134)
 <br>
 <br>
 
 ## 2. 애니메이션 백그라운드 상태에서 포그라운드 상태로 돌아왔을 때 버그
  UIVIewPropertyAnimator을 활용해서 collectionViewCell의 색을 바꾸려고 했다. 그런데 앱이 백그라운드 상태로 갔다가 다시 포그라운드 상태로 돌아왔을 때, 애니메이션이 다 끝난 상태로 되어버리는 버그가 있었다. 이를 해결하기 위해 기존 진행율을 저장해 놓았다가 다시 애니메이션을 지정해 줘서 진행되게 하는 방법으로 문제를 해결했다.
 <br>
+
+<details>
+<summary>코드 보기</summary>
+
+```
+	// SceneDelegate
+func sceneDidEnterBackground(_ scene: UIScene) {
+   NotificationCenter.default.post(name: Notification.Name("SceneResign"), object: nil, userInfo: ["willResign": true])
+}
+```
+SceneDelegate에서 백그라운드 상태로 전환될 때를 케치
+
+```
+// 애니메이션을 실행한 ViewController에서
+override func ViewDidLoad() {
+	  NotificationCenter.default.addObserver(self, selector: #selector(sceneResignStatusNotification), name: NSNotification.Name("SceneResign"), object: nil)
+}
+ 
+// MARK: NotificationCenter (백그라운드 상태로 변화할때)
+@objc private func sceneResignStatusNotification(notification: NSNotification) {
+   if let value = notification.userInfo?["willResign"] as? Bool {
+       isBackground = true
+       pauseAnimations()
+   }
+}
+```
+애니메이션이 진행중이던 뷰컨트롤러에서 백그라운드 상태로 전환될 때, 애니메이션을 중지
+
+```
+    // UIViewPropertyAnimator 객체를 저장한 배열
+    var animators: [UIViewPropertyAnimator] = []
+    // 애니메이션 진행률 저장 
+    var animatorProgress: [CGFloat] = []
+    
+	private func resumeAnimations() {
+        
+        // 애니메이션이 완료되면 1.0이 아닌 0으로 저장이 되기 때문에, 0이 아닌 애니메이션을 찾음
+        guard let lastIndex = animatorProgress.firstIndex(where: { $0 != 0 }) else { return }
+        let nextIndex = lastIndex + 1
+        // 애니메이션이 표시될 cell 정보가 기억된 배열
+        let list = Array(viewModel.outputQuizList.value[viewModel.outputCurrentIndex.value].selectedArea)
+        let listLastIndex = list.count - 1
+        
+        // 백그라운드 상태인지 아닌지 Bool 값으로 구별
+        if isBackground {
+            
+            // 마지막 애니메이션의 보이는 정도 복구
+            for index in Array(list[lastIndex].area) {
+                let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+                cell?.backgroundColor = .black.withAlphaComponent(1 - animatorProgress[lastIndex])
+            }
+            // 아직 안보이는 부분 검은색으로 다시 칠하기
+            for restIndex in lastIndex + 1...listLastIndex {
+                let areaList = list[restIndex]
+                let areaIndex = Array(areaList.area)
+                for index in areaIndex {
+                    let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+                    cell?.backgroundColor = .black
+                }
+                // 애니메이션 다시 지정
+                let animator = UIViewPropertyAnimator(duration: TimeInterval(2), curve: .linear) {
+                    for index in areaIndex {
+                        let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+                        cell?.backgroundColor = .clear
+                    }
+                }
+                animators[restIndex] = animator
+            }
+ 
+            // 진행율로 애니메이션 남은 시간 계산하기
+            let restTime: CGFloat = CGFloat(2) * (1 - animatorProgress[lastIndex])
+            // 마지막 애니메이션 진행중인 곳에 애니메이션 주기
+            let animator = UIViewPropertyAnimator(duration: Double(restTime), curve: .linear) {
+                for index in Array(list[lastIndex].area) {
+                    let cell = self.mainView.collectionView.cellForItem(at: IndexPath(item: index, section: 0))
+                    cell?.backgroundColor = .clear
+                }
+            }
+            animators[lastIndex] = animator
+        }
+        // 마지막 애니메이션 시작하기
+        animators[lastIndex].startAnimation()
+        // 애니메이션이 끝나면 그 다음 애니메이션 시작
+        animators[lastIndex].addCompletion { position in
+            if position == .end {
+                self.startNextAnimation(index: nextIndex)
+            }
+        }
+    }
+```
+포그라운드 상태로 돌아왔을 때, 애니메이션을 다시 시작
+
+</details>
+
 [트러블 슈팅 블로그글](https://d0ngurrrrrrr.tistory.com/141)
 <br>
 <br>
@@ -112,130 +246,3 @@
 ```
 <br>
 <br>
-
-
-# 🤔회고
-## 잘한 점
-### 1. 같은 API라도 차별성이 있는지?
-  기획적인 측면이겠지만, 같은 API라도 차별성이 있는 무언가를 할 수 있다. 예를 들어 영화 정보 API를 가지고 단순히 영화 정보를 가져오는 게 아니라, 영화 정보 등을 이용해 포스터 보고 영화 제목 맞추기 등 퀴즈를 맞히는 앱으로 만들 수 있다. 단순히 영화 정보를 보여주는 이미 존재하는 앱을 만드는 건 여러 측면에서 의미가 없다고 생각을 했다. (물론 코딩 능력의 성장은 가능하겠지만...) 그래서 기획에서부터 앱의 차별화를 두어 많은 사람들이 재밌게 사용할 수 있는 앱을 기획했다. 그래서 개인 앱 프로젝트로 새로운 걸 시도했다는 점에서, 진부해 보이는 API라도 새로운 기능을 제공하는 앱을 만들었다는 것에 의미가 있다고 생각한다.
-<br>
-<br>
-
-### 2. 새로운 라이브러리 사용
- UICollectionViewPagingLayout 사용
-  기존의 FSPager과 같은 유명한 라이브러리도 있었지만 이번 프로젝트에서는 비교적 덜 유명한 새로운 라이브러리를 사용해 보았다. 우선 이유는 크게 3가지가 있다. 첫째로 FSPager는 SPM을 지원하지 않는다. 둘째로 남들과는 차별화된 UI를 구현하고 싶었다. 마지막으로 새로운 라이브러리를 내가 직접 구현해 보며 도큐먼트를 잘 이해할 수 있는지, 남이 짠 코드를 내 것으로 만들어서 잘 적용할 수 있는지 테스트해보고 싶었다. 결과적으로 3개의 목적을 모두 달성했다. SPM을 활용하였고, 남들과는 차별화된 UI를 구현했으며, 도큐먼트와 샘플 코드 등을 활용해 어떻게 사용하는지 파악해서 구현에 성공했다. 이를 통해 개발자로서 성장도 할 수 있었다.
-<br>
-<br>
-
-### 3. 이전에 받은 피드백을 고려했는지?
-#### 3-1. Custom Observable를 활용할 때, 초기값을 넣어주면 실행되는 bind 메서드뿐만 아니라 다른 걸 만들어서 사용했는지?
-
- bind 뿐만 아니라 초기화할 때 값이 전달될 필요가 없을 경우를 위해 새로운 메서드를 만들어서 활용했다. 이 코드의 차이를 RxSwift로 치환해서 생각해 보자면 subscribe를 할 때의 PublishSubject와 BehaviorSubject의 차이가 될 수 있겠다. (혹시 아니라면 말해주세요..)
-```
-  private var closure: ((T) -> Void)?
-    
-  var value: T {
-        didSet {
-            closure?(value)
-      }
-  }
-    
-  init(_ value: T) {
-      self.value = value
-  }
-    
-  func bind(_ closure: @escaping (T) -> Void) {
-      closure(value)
-      self.closure = closure
-  }
-    
-  func noInitBind(_ closure: @escaping (T) -> Void) {
-      self.closure = closure
-  }
-```
-<br>
-<br>
-
-#### 3-2. 모델을 만들 때, 모델을 생성하는 로직을 만들지 말고 이니셜라이저로 만들어보기
-
- 영화 검색을 통해 받아온 데이터를 이니셜라이저를 이용해서 퀴즈 데이터로 치환을 하였다. 로직을 추가적으로 만들 필요 없이 효율적으로 데이터를 치환할 수 있었다.
-<br>
-<br>
-
-#### 3-3. Alamofire Router 패턴 사용
-
-  물론 Moya도 있지만 Alamofire에 URLRequestConvertible을 활용해서 Router 패턴을 구현하였다. 사용하면서 느낀 점은 메서드랑 path가 다양할수록 더 효과적인 패턴일 것이라는 생각이 들었다.
-
-```
-enum Router: URLRequestConvertible {
-    case search([String: String])
-    case posters(Int)
-    
-    var baseURL: URL {
-        return URL(string: "https://api.themoviedb.org/3")!
-    }
-    
-    var headers: HTTPHeaders {
-        return ["Authorization": APIKey.tmdb]
-    }
-    
-    var method: HTTPMethod {
-        switch self {
-        case .search:
-            return .get
-        case .posters:
-            return .get
-        }
-    }
-    
-    var path: String {
-        switch self {
-        case .search:
-            return "search/movie"
-        case .posters(let id):
-            return "movie/\(id)/images"
-        }
-    }
-    
-    func asURLRequest() throws -> URLRequest {
-        let url = baseURL.appendingPathComponent(path)
-        var request = URLRequest(url: url)
-        request.method = method
-        request.headers = headers
-        
-        switch self {
-        case let .search(Parameters):
-            request = try URLEncodedFormParameterEncoder().encode(Parameters, into: request)
-        case .posters(_):
-            return request
-        }
-        return request
-    }
-}
-```
-<br>
-<br>
-
-#### 3-4. Swift 성능 최적화를 위한 WMO
-
- 앱의 최적화를 위해 Dynamic Dispatch를 줄이려고 메서드를 private으로 만들고 final을 class 앞에 붙였다. 이를 통해 각각의 파일이 어떻게 의존하고 있는지를 더 명확하게 하였고, 런타임 성능을 향상할 수 있게 하였다.
-<br>
-<br>
-
-### 4. 꾸준히 개발일지를 작성했는지?
- 블로그를 보면 알겠지만, 개인 프로젝트를 시작하고나서부터 꾸준히 주 6회 이상 개발을 하며 개발일지를 작성하였다. 물론 모든 고민들과 시행착오들이 모두 개발일지에 담기지는 않았지만, 되돌아보면 중간중간 어떤 문제로 어려움을 겪었는지 또 꾸준히 어떤 걸 새로 익혔는지 파악할 수 있었다. 
-<br>
-<br>
-
-## 반성할 점
-### 1. 라이브러리와 기능 구현 테스트를 통해 이슈를 미리 인지했는지?
- 사실 이번 앱을 만들면서 가장 중요한 기능이 사용자가 포스터에서 보일 곳을 선택하게 하는 것과 처음 보는 라이브러리로 구현하는 UI였다. 선택하는 부분은 이런저런 방법을 고민하다가 CollectionView를 활용해서 구현을 하였다. (일주일 동안 이것저것 테스트를 해보았다.) 하지만 UICollectionViewPagingLayout 같은 경우에는 메인 뷰를 구현할 때가 돼서야 부랴부랴 구현을 해보았고, 그 과정에서 안되거나 각종 버그들 때문에 많은 시간을 소비했었다. 미리 테스트를 해보았다면 시간을 아끼고 다른 것에 공수를 더 투입할 수 있었을 텐데 말이다.
-
- 이와 같은 맥락으로 공유 기능도 마찬가지이다. 공유기능을 넣을 때가 돼서야 구현에 들어갔고, 여러 공유 방법이 안된다는 것을 뒤늦게 알았다. 이것을 고민하고 테스트해 보느라 업데이트 기간을 3일가량 날려서 아쉬웠다. 
-<br>
-<br>
-
-
-#### 2. 이전에 받은 피드백을 고려했는지?
-아직 이전에 받은 피드백 중 수용 못한 부분들도 있다. 대표적으론 NWPathMonitor를 활용한 네트워크 상태를 감지하는 부분이 있다. 업데이트를 통해 구현할 것이지만 위의 반성할 점에서 시간을 좀 아껴서 구현했다면 충분히 처음 출시했을 때 포함할 수 있었다고 생각한다.
-
