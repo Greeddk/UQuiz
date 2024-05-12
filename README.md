@@ -20,7 +20,7 @@
 
 ## 개발 기간과 v1.0 버전 기능
 ### 개발 기간
-- 3/8 ~ 3/24 (약 16일)
+- 2024.3.8 ~ 2024.3.24 (약 16일)
 - 업데이트 진행중
 <br>
 
@@ -57,8 +57,8 @@
 ### 기술 스택
 - UIKit / MVVM / Custom Observable
 - CollectionViewPagingLayout / SnapKit / CodeBaseUI
-- Realm
-- Alamofire / Decodable / Kingfisher
+- Realm Repository Pattern
+- Alamofire Router Pattern / Kingfisher
 - SPM
 <br>
 <br>
