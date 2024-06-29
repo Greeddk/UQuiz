@@ -29,7 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = SetProfileViewController()
         }
         
-        gameManager.authenticateUser()
+//        gameManager.authenticateUser()
         
         window?.makeKeyAndVisible()
     }
@@ -69,7 +69,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     func sceneDidEnterBackground(_ scene: UIScene) {
-        print("background")
         NotificationCenter.default.post(name: Notification.Name("SceneResign"), object: nil, userInfo: ["willResign": true])
     }
     

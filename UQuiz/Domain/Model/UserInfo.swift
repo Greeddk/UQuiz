@@ -21,8 +21,6 @@ final class UserInfo: Identifiable {
         self.name = UserDefaults.standard.string(forKey: "username") ?? ""
         self.profileImageURL = UserDefaults.standard.url(forKey: "profileURL") ?? URL(string: "onboarding2img")!
         self.profileImage = (UserDefaults.standard.array(forKey: "profileArr") as? [Int]) ?? []
-        
-        //        print("userinfo update = \(name), \(profileImageURL)!!")
     }
 }
 
@@ -35,7 +33,6 @@ extension UserInfo: Codable {
         case profileImage
         case myMissionPhoto
         case myMisssion
-        //        case userHistory
     }
     
     func encode(to encoder: Encoder) throws {
@@ -48,7 +45,6 @@ extension UserInfo: Codable {
             try container.encode(imageData, forKey: .myMissionPhoto)
         }
         try container.encode(myMission, forKey: .myMisssion)
-        //        try container.encode(userHistory, forKey: .userHistory)
     }
     
     convenience init(from decoder: Decoder) throws {
@@ -63,7 +59,6 @@ extension UserInfo: Codable {
             myMissionPhoto = UIImage(data: imageData) ?? UIImage()
         }
         myMission = try container.decode(String.self, forKey: .myMisssion)
-        //        userHistory = try container.decode(UserHistory.self, forKey: .userHistory)
     }
     
 }

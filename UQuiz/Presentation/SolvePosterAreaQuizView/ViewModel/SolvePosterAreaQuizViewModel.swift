@@ -85,6 +85,7 @@ final class SolvePosterAreaQuizViewModel {
     }
     
     private func setTimer() {
+        stopTimer()
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             self.outputCurrentPercentage.value += 1/2000
             if self.outputCurrentPercentage.value >= 1 {
@@ -96,6 +97,7 @@ final class SolvePosterAreaQuizViewModel {
     
     private func resetTimer() {
         let savedValue = self.outputCurrentPercentage.value
+        stopTimer()
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
             self.outputCurrentPercentage.value -= (1 / 300) * savedValue
             if self.outputCurrentPercentage.value <= 0 {

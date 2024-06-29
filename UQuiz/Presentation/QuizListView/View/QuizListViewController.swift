@@ -38,6 +38,7 @@ final class QuizListViewController: BaseViewController {
         mainView.collectionView.register(QuizCardCollectionViewCell.self, forCellWithReuseIdentifier: QuizCardCollectionViewCell.identifier)
         mainView.collectionView.isPagingEnabled = true
         mainView.receiveButton.addTarget(self, action: #selector(receiveButtonTapped), for: .touchUpInside)
+        mainView.receiveButton.isHidden = true
     }
     
     @objc private func receiveButtonTapped() {
@@ -68,6 +69,7 @@ extension QuizListViewController: UICollectionViewDataSource, UICollectionViewDe
         cell.playButton.addTarget(self, action: #selector(playButtonTapped(sender:)), for: .touchUpInside)
         cell.shareButton.tag = indexPath.item
         cell.shareButton.addTarget(self, action: #selector(shareButtonTapped(sender:)), for: .touchUpInside)
+        cell.shareButton.isHidden = true
         return cell
     }
     
