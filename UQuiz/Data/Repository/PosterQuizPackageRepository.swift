@@ -53,7 +53,6 @@ final class PosterQuizPackageRepository {
     }
     
     func fetchPackages() -> [RealmPosterQuizPackage] {
-        print(realm.configuration.fileURL)
         return Array(realm.objects(RealmPosterQuizPackage.self).reversed())
     }
     

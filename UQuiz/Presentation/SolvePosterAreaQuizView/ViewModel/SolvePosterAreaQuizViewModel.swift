@@ -39,35 +39,34 @@ final class SolvePosterAreaQuizViewModel {
     var outputIsPaused: Observable<Bool> = Observable(false)
     var outputIsShowAnswer: Observable<Bool> = Observable(false)
     var outputGoNextTrigger: Observable<Void?> = Observable(nil)
-    
+
     init() {
-        inputSetTimerTrigger.bind { _ in
-            self.setTimer()
+        inputSetTimerTrigger.bind { [weak self] _ in
+            self?.setTimer()
         }
-        inputInvalidTimerTrigger.bind { _ in
-            self.stopTimer()
+        inputInvalidTimerTrigger.bind { [weak self] _ in
+            self?.stopTimer()
         }
-        inputTimeLimitBarPercentage.bind { value in
-            self.outputCurrentPercentage.value = value
+        inputTimeLimitBarPercentage.bind { [weak self] value in
+            self?.outputCurrentPercentage.value = value
         }
-        inputNextIndexTrigger.noInitBind { _ in
-            self.manageIndex()
+        inputNextIndexTrigger.noInitBind { [weak self] _ in
+            self?.manageIndex()
         }
-        inputAnswerSubmit.noInitBind { answer in
-            self.markingAnswer(answer)
+        inputAnswerSubmit.noInitBind { [weak self] answer in
+            self?.markingAnswer(answer)
         }
-        inputPauseButtonTapped.noInitBind { _ in
-            self.updateIsPauseValue(true)
+        inputPauseButtonTapped.noInitBind { [weak self] _ in
+            self?.updateIsPauseValue(true)
         }
-        inputResumeActionTrigger.noInitBind { _ in
-            self.updateIsPauseValue(false)
+        inputResumeActionTrigger.noInitBind { [weak self] _ in
+            self?.updateIsPauseValue(false)
         }
-        inputResetTimerTrigger.noInitBind { _ in
-            self.resetTimer()
+        inputResetTimerTrigger.noInitBind { [weak self] _ in
+            self?.resetTimer()
         }
-        inputIsShowAnswer.noInitBind { value in
-            self.outputIsShowAnswer.value = value
-            print(self.outputIsShowAnswer)
+        inputIsShowAnswer.noInitBind { [weak self] value in
+            self?.outputIsShowAnswer.value = value
         }
     }
     
@@ -86,7 +85,8 @@ final class SolvePosterAreaQuizViewModel {
     
     private func setTimer() {
         stopTimer()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
             self.outputCurrentPercentage.value += 1/2000
             if self.outputCurrentPercentage.value >= 1 {
                 self.inputInvalidTimerTrigger.value = ()
@@ -98,7 +98,8 @@ final class SolvePosterAreaQuizViewModel {
     private func resetTimer() {
         let savedValue = self.outputCurrentPercentage.value
         stopTimer()
-        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
             self.outputCurrentPercentage.value -= (1 / 300) * savedValue
             if self.outputCurrentPercentage.value <= 0 {
                 self.inputInvalidTimerTrigger.value = ()
