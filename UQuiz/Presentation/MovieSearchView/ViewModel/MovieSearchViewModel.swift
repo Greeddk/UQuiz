@@ -17,11 +17,11 @@ final class MovieSearchViewModel {
     var outputAddedToPackage: Observable<Set<Movie>> = Observable([])
     
     init() {
-        inputAPIRequest.bind { value in
-            self.callRequest(query: value)
+        inputAPIRequest.bind { [weak self] value in
+            self?.callRequest(query: value)
         }
-        inputButtonClickedTrigger.bind { value in
-            guard let value = value else { return }
+        inputButtonClickedTrigger.bind { [weak self] value in
+            guard let self = self, let value = value else { return }
             if self.outputAddedToPackage.value.contains(value) {
                 self.outputAddedToPackage.value.remove(value)
             } else {
@@ -32,7 +32,8 @@ final class MovieSearchViewModel {
     
     private func callRequest(query: String?) {
         guard let query = query else { return }
-        apiManager.requestMovieInfo(type: SearchMovie.self, query: query) { value in
+        apiManager.requestMovieInfo(type: SearchMovie.self, query: query) { [weak self] value in
+            guard let self = self else { return }
             let tmpList = value.results.filter { $0.poster != nil }
             self.outputRequestList.value = tmpList
         }

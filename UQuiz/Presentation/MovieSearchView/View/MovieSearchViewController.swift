@@ -20,11 +20,11 @@ final class MovieSearchViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.hideKeyboardWhenViewIsTapped()
-        viewModel.outputRequestList.bind { _ in
-            self.mainView.collectionView.reloadData()
+        viewModel.outputRequestList.bind { [weak self] _ in
+            self?.mainView.collectionView.reloadData()
         }
-        viewModel.outputAddedToPackage.bind { _ in
-            self.setNavigationBar()
+        viewModel.outputAddedToPackage.bind { [weak self] _ in
+            self?.setNavigationBar()
         }
     }
 
@@ -47,9 +47,6 @@ final class MovieSearchViewController: BaseViewController {
     }
     
     @objc
-    private func emptyAction() { }
-    
-    @objc
     private func makeQuizPackageButtonClicked() {
         let vc = MakePosterAreaQuizViewController()
         let list = Array(viewModel.outputAddedToPackage.value)
@@ -57,15 +54,18 @@ final class MovieSearchViewController: BaseViewController {
         vc.hidesBottomBarWhenPushed = true
         
         let alert = UIAlertController(title: "난이도 선택", message: "만들고 싶은 난이도를 선택해주세요!", preferredStyle: .alert)
-        let beginner = UIAlertAction(title: "초보", style: .default) { _ in
+        let beginner = UIAlertAction(title: "초보", style: .default) { [weak self] _ in
+            guard let self = self else { return }
             vc.viewModel.inputLevel.value = Level.beginner
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        let intermediate = UIAlertAction(title: "중수", style: .default) { _ in
+        let intermediate = UIAlertAction(title: "중수", style: .default) { [weak self] _ in
+            guard let self = self else { return }
             vc.viewModel.inputLevel.value = Level.intermediate
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        let expert = UIAlertAction(title: "고수", style: .default) { _ in
+        let expert = UIAlertAction(title: "고수", style: .default) { [weak self] _ in
+            guard let self = self else { return }
             vc.viewModel.inputLevel.value = Level.expert
             self.navigationController?.pushViewController(vc, animated: true)
         }
