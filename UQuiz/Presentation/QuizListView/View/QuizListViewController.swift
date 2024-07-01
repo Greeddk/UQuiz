@@ -79,7 +79,6 @@ extension QuizListViewController {
     
     @objc private func shareButtonTapped(sender: UIButton) {
         let modalVC = CreateMatchViewController()
-//        modalVC
         present(modalVC, animated: true)
     }
     
