@@ -13,7 +13,7 @@ final class TMDBAPIManager {
     static let shared = TMDBAPIManager()
     
     func requestMovieInfo<T:Decodable>(type: T.Type, query: String, completionHandler: @escaping (T) -> Void) {
-        AF.request(Router.search(["query": query, "language": "ko-KR"])).responseDecodable(of: type) { response in
+        AF.request(Router.search(["query": query, "language": "language".localized])).responseDecodable(of: type) { response in
             switch response.result {
             case .success(let success):
                 if response.response?.statusCode == 200 {

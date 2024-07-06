@@ -118,7 +118,7 @@ final class SolvePosterAreaQuizViewModel {
     
     private func markingAnswer(_ answer: String?) {
         guard let answer = answer else {
-            outputStatusString.value = "정답을 입력해주세요"
+            outputStatusString.value = "SolvePosterVM_NoAnswerMessage".localized
             return
         }
         let quizItem = outputQuizList.value[outputCurrentIndex.value]

@@ -83,7 +83,7 @@ extension QuizListViewController {
     }
     
     @objc private func deleteButtonTapped(sender: UIButton) {
-        showAlertWithCancel(title: "삭제", message: "퀴즈를 삭제하시겠습니까?", okTitle: "삭제하기") {
+        showAlertWithCancel(title: "QuizListVC_AlertTitle".localized, message: "QuizListVC_AlertMessage".localized, okTitle: "QuizListVC_AlertOK".localized) {
             self.viewModel.inputDeletePackageTrigger.value = sender.tag
         }
     }

@@ -40,16 +40,16 @@ final class SetProfileViewModel {
     
     private func validateNickname(_ text: String) {
         if text.count <= 1 {
-            outputNicknameValidation.value = "닉네임을 두글자 이상 입력해주세요"
+            outputNicknameValidation.value = "SetProfileVM_ShortNickMessage".localized
             outputValidation.value = false
         } else if text.count > 10 {
-            outputNicknameValidation.value = "닉네임은 10글자 이하로 입력해주세요"
+            outputNicknameValidation.value = "SetProfileVM_LongNickMessage".localized
             outputValidation.value = false
         } else if text.contains(" ") {
-            outputNicknameValidation.value = "공백은 포함할 수 없습니다"
+            outputNicknameValidation.value = "SetProfileVM_IncludeSpaceNickMessage".localized
             outputValidation.value = false
         } else {
-            outputNicknameValidation.value = "사용해도 좋은 닉네임입니다!"
+            outputNicknameValidation.value = "SetProfileVM_ValidateNickMessage".localized
             outputValidation.value = true
         }
     }

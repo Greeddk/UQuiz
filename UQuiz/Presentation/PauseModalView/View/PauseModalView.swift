@@ -46,17 +46,16 @@ final class PauseModalView: BaseView {
     override func configureView() {
         backView.backgroundColor = .white
         backView.layer.cornerRadius = 30
-        resumeButton.setTitle("이어하기", for: .normal)
+        resumeButton.setTitle("PauseModal_Continue".localized, for: .normal)
         resumeButton.setTitleColor(.white, for: .normal)
         resumeButton.titleLabel?.font = .pretendard(size: 24, weight: .bold)
         resumeButton.backgroundColor = .pointOrange
         resumeButton.layer.cornerRadius = 12
-        exitButton.setTitle("나가기", for: .normal)
+        exitButton.setTitle("PauseModal_Exit".localized, for: .normal)
         exitButton.setTitleColor(.white, for: .normal)
         exitButton.titleLabel?.font = .pretendard(size: 24, weight: .bold)
         exitButton.backgroundColor = .pointOrange
         exitButton.layer.cornerRadius = 12
     }
-    
     
 }

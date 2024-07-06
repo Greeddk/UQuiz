@@ -19,7 +19,7 @@ final class MakePosterAreaQuizViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.alertTrigger.noInitBind { message in
-            self.showAlert(title: "주의!", message: message, okTitle: "확인") { }
+            self.showAlert(title: "MakePosterQuizVC_AlertTitle".localized, message: message, okTitle: "ExtensionVC_AlertOK".localized) { }
         }
     }
     
@@ -32,10 +32,10 @@ final class MakePosterAreaQuizViewController: BaseViewController {
         mainView.nextMovieButton.addTarget(self, action: #selector(nextMovieButtonClicked), for: .touchUpInside)
         mainView.previousMovieButton.addTarget(self, action: #selector(previousMovieButtonClicked), for: .touchUpInside)
         fetchPoster()
-        let resetButton = UIBarButtonItem(title: "선택초기화", style: .plain, target: self, action: #selector(resetButtonClicked))
+        let resetButton = UIBarButtonItem(title: "MakePosterQuizVC_NavigationResetButton".localized, style: .plain, target: self, action: #selector(resetButtonClicked))
         navigationItem.rightBarButtonItem = resetButton
         setNavigationBackButton()
-        navigationItem.title = "\(viewModel.outputNumberOfLevelSelectedArea.value)개의 영역을 선택해주세요"
+        navigationItem.title = String(format: "MakePosterQuizVC_NavigationTitle".localized, viewModel.outputNumberOfLevelSelectedArea.value)
     }
     
     private func fetchPoster() {
@@ -59,7 +59,7 @@ final class MakePosterAreaQuizViewController: BaseViewController {
         let levelValue = viewModel.outputNumberOfLevelSelectedArea.value
         if  numberOfSelectArea == levelValue {
             if viewModel.outputQuizPackage.value.count == viewModel.currentIndex.value + 1 {
-                showTextFieldAlert(title: "이름을 정해주세요", message: "퀴즈의 이름을 입력해주세요!", placeHolder: "타이틀") { title in
+                showTextFieldAlert(title: "MakePosterQuizVC_CompleteQuizAlertTitle".localized, message: "MakePosterQuizVC_CompleteQuizAlertMessage".localized, placeHolder: "MakePosterQuizVC_CompleteQuizAlertPlaceholder".localized) { title in
                     self.viewModel.inputQuizTitle.value = title
                     self.viewModel.inputSavePackageToRealmTrigger.value = ()
                     let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene
@@ -73,7 +73,7 @@ final class MakePosterAreaQuizViewController: BaseViewController {
                 fetchCollectionViewSelectedData()
             }
         } else {
-            showAlert(title: "더 선택해주세요!", message: "\(levelValue)곳의 영역을 선택해주세요", okTitle: "확인") { }
+            showAlert(title: "MakePosterQuizVC_IncompleteQuizAlertTitle".localized, message: String(format: "MakePosterQuizVC_IncompleteQuizAlertMessage".localized, levelValue), okTitle: "ExtensionVC_AlertOK".localized) { }
         }
     }
     
@@ -84,7 +84,7 @@ final class MakePosterAreaQuizViewController: BaseViewController {
             fetchPoster()
             fetchCollectionViewSelectedData()
         } else {
-            showAlert(title: "이전 영화가 없습니다", message: "영역 선택 혹은 다음으로 넘어가주세요!", okTitle: "확인") { }
+            showAlert(title: "MakePosterQuizVC_PreviousButtonClickedAlertTitle".localized, message: "MakePosterQuizVC_PreviousButtonClickedAlertMessage".localized, okTitle: "ExtensionVC_AlertOK".localized) { }
         }
     }
     

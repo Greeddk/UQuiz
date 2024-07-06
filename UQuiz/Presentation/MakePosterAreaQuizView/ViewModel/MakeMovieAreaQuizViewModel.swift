@@ -74,7 +74,7 @@ final class MakeMovieAreaQuizViewModel {
         for value in cellArea {
             let flattedList = outputQuizPackage.value[currentIndex.value].selectedArea.flatMap { $0 }
             if flattedList.contains(index + value) {
-                alertTrigger.value = "같은 영역을 선택할 수 없습니다!"
+                alertTrigger.value = "MakePosterQuizVM_InvalidateAreaMessage".localized
                 return false
             }
         }
@@ -86,23 +86,19 @@ final class MakeMovieAreaQuizViewModel {
         let quizItem = outputQuizPackage.value[currentIndex.value]
         let numberOfArea = outputNumberOfLevelSelectedArea.value
         if quizItem.numberOfselectArea >= numberOfArea {
-            alertTrigger.value = "영역 선택은 최대 \(numberOfArea)개까지 가능합니다!"
+            alertTrigger.value = String(format: "MakePosterQuizVM_SelectAreaMessage".localized, numberOfArea)
             return
         }
         
         //TODO: 분기 나눠서 처리하기
         if index % 50 == 0 || index % 50 == 1 { //왼쪽
-            print(index)
-            alertTrigger.value = "조금 더 안쪽 부분을 선택해주세요!"
+            alertTrigger.value = "MakePosterQuizVM_SelectInsideAreaMessage".localized
         } else if (0...99).contains(index) { //위쪽
-            print(index)
-            alertTrigger.value = "조금 더 안쪽 부분을 선택해주세요!"
+            alertTrigger.value = "MakePosterQuizVM_SelectInsideAreaMessage".localized
         } else if index % 50 == 48 || index % 50 == 49 { //오른쪽
-            print(index)
-            alertTrigger.value = "조금 더 안쪽 부분을 선택해주세요!"
+            alertTrigger.value = "MakePosterQuizVM_SelectInsideAreaMessage".localized
         } else if (3651...3749).contains(index) { //아래쪽
-            print(index)
-            alertTrigger.value = "조금 더 안쪽 부분을 선택해주세요!"
+            alertTrigger.value = "MakePosterQuizVM_SelectInsideAreaMessage".localized
         } else {
             if validateArea(index: index) {
                 var tmp: [Int] = []

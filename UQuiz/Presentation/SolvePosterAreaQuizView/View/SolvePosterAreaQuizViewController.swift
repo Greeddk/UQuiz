@@ -30,7 +30,7 @@ final class SolvePosterAreaQuizViewController: BaseViewController {
             self?.judgeValue(value: value)
         }
         viewModel.outputStatusString.noInitBind { [weak self] text in
-            self?.showAlert(title: "", message: text, okTitle: "확인") { }
+            self?.showAlert(title: "", message: text, okTitle: "ExtensionVC_AlertOK".localized) { }
         }
         viewModel.outputGameOverStatus.noInitBind { [weak self] value in
             guard let self = self else { return }
@@ -158,7 +158,7 @@ extension SolvePosterAreaQuizViewController {
     // MARK: 시간 초과시 알러트
     private func timeOverAction() {
         mainView.setTextFieldAndButtonEnable(isEnabled: false)
-        self.showAlert(title: "시간초과", message: "3초 동안 포스터를 공개하고 다음으로 넘어갑니다", okTitle: "확인") { [weak self] in
+        self.showAlert(title: "SolvePosterVC_Time'sUpTitle".localized, message: "SolvePosterVC_Time'sUpMessage".localized, okTitle: "ExtensionVC_AlertOK".localized) { [weak self] in
             guard let self = self else { return }
             self.viewModel.outputIsShowAnswer.value = true
             self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title
@@ -214,8 +214,8 @@ extension SolvePosterAreaQuizViewController {
         if value {
             mainView.setTextFieldAndButtonEnable(isEnabled: false)
             viewModel.inputInvalidTimerTrigger.value = ()
-            let alert = UIAlertController(title: "정답", message: "3초 동안 포스터를 공개하고 다음으로 넘어갑니다. 스킵하고 싶다면 스킵해주세요.", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            let alert = UIAlertController(title: "SolvePosterVC_CorrectTitle".localized, message: "SolvePosterVC_CorrectMessage".localized, preferredStyle: .alert)
+            let ok = UIAlertAction(title: "ExtensionVC_AlertOK".localized, style: .default) { [weak self] _ in
                 guard let self = self else { return }
                 self.viewModel.outputIsShowAnswer.value = true
                 self.mainView.answerTextField.text = self.viewModel.outputQuizList.value[self.viewModel.outputCurrentIndex.value].title

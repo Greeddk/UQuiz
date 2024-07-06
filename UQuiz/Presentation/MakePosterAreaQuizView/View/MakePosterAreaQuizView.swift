@@ -83,7 +83,7 @@ final class MakePosterAreaQuizView: BaseView {
         previousMovieButton.titleLabel?.font = .pretendard(size: 24, weight: .bold)
         previousMovieButton.layer.cornerRadius = 8
         showPostersButton.backgroundColor = .lightGreen
-        showPostersButton.setTitle("다른포스터", for: .normal)
+        showPostersButton.setTitle("MakePosterQuizView_ShowPostersButtonTitle".localized, for: .normal)
         showPostersButton.titleLabel?.font = .pretendard(size: 18, weight: .semiBold)
         showPostersButton.setTitleColor(.white, for: .normal)
         showPostersButton.layer.cornerRadius = 8

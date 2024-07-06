@@ -136,7 +136,7 @@ final class QuizCardCollectionViewCell: BaseCollectionViewCell {
         let url = PosterURL.thumbnailURL(detailURL: detailURL).endpoint
         let processor = BlurImageProcessor(blurRadius: 20.0)
         posterView.kf.setImage(with: url, options: [.processor(processor)])
-        numberOfQuizs.text = "\(package.numberOfQuiz)문제"
+        numberOfQuizs.text = String(format: "QuizCardCollectionViewCell_Quiz".localized, package.numberOfQuiz)
         levelImage.image = {
             switch package.level {
             case 0:
