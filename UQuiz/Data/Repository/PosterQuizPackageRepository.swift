@@ -89,17 +89,28 @@ final class PosterQuizPackageRepository {
     }
     
     func copyInitialRealm() {
-        let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        guard let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            print("Error: Unable to access document directory")
+            return
+        }
         let fileURL = documentDirectory.appendingPathComponent("InitialData.realm")
         
-        if !fileManager.fileExists(atPath: fileURL.path) {
-            let bundleURL = Bundle.main.url(forResource: "initial", withExtension: "realm")!
-            
-            do {
-                try fileManager.copyItem(at: bundleURL, to: fileURL)
-            } catch {
-                print("Error copy file: \(error)")
-            }
+        guard !fileManager.fileExists(atPath: fileURL.path) else {
+            return
+        }
+
+        let language = "language".localized
+        let resourceName = (language == "en-US") ? "initialEn" : "initial"
+        
+        guard let bundleURL = Bundle.main.url(forResource: resourceName, withExtension: "realm") else {
+            print("Error: Unable to find resource \(resourceName).realm in bundle")
+            return
+        }
+        
+        do {
+            try fileManager.copyItem(at: bundleURL, to: fileURL)
+        } catch {
+            print("Error copying file: \(error)")
         }
     }
     

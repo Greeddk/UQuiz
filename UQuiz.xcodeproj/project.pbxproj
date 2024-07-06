@@ -39,6 +39,7 @@
 		422D5F402BAAE81B0085E6D0 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 422D5F3F2BAAE81B0085E6D0 /* FirebaseMessaging */; };
 		422D5F452BAAEC440085E6D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 422D5F442BAAEC440085E6D0 /* GoogleService-Info.plist */; };
 		422D5F492BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422D5F482BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift */; };
+		4237C4792C398A62001A657C /* initialEn.realm in Resources */ = {isa = PBXBuildFile; fileRef = 4237C4782C398917001A657C /* initialEn.realm */; };
 		42429D8A2BB984E80077923B /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 42429D892BB984E80077923B /* Realm */; };
 		42429D8C2BB984E80077923B /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 42429D8B2BB984E80077923B /* RealmSwift */; };
 		42429D8E2BB987B80077923B /* initial.realm in Resources */ = {isa = PBXBuildFile; fileRef = 42429D8D2BB987B80077923B /* initial.realm */; };
@@ -140,6 +141,7 @@
 		422D5F382BAACA7B0085E6D0 /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		422D5F442BAAEC440085E6D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		422D5F482BAB09A50085E6D0 /* MovieCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		4237C4782C398917001A657C /* initialEn.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = initialEn.realm; sourceTree = "<group>"; };
 		42429D8D2BB987B80077923B /* initial.realm */ = {isa = PBXFileReference; lastKnownFileType = file; path = initial.realm; sourceTree = "<group>"; };
 		42429D952BBA9E830077923B /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		42570E4C2B9983920042B338 /* UQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -446,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				42429D8D2BB987B80077923B /* initial.realm */,
+				4237C4782C398917001A657C /* initialEn.realm */,
 			);
 			path = InitialData;
 			sourceTree = "<group>";
@@ -801,6 +804,7 @@
 				42AD0D7A2B9B1306002B8A48 /* Localizable.xcstrings in Resources */,
 				42570E5C2B9983950042B338 /* LaunchScreen.storyboard in Resources */,
 				422D5F342BAAC6090085E6D0 /* Pretendard-Regular.otf in Resources */,
+				4237C4792C398A62001A657C /* initialEn.realm in Resources */,
 				42570E592B9983950042B338 /* Assets.xcassets in Resources */,
 				422D5F362BAAC6090085E6D0 /* Pretendard-Black.otf in Resources */,
 				422D5F302BAAC6090085E6D0 /* Pretendard-Medium.otf in Resources */,
