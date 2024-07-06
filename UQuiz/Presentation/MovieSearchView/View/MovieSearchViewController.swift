@@ -53,23 +53,23 @@ final class MovieSearchViewController: BaseViewController {
         vc.viewModel.inputQuizPackage.value = list
         vc.hidesBottomBarWhenPushed = true
         
-        let alert = UIAlertController(title: "난이도 선택", message: "만들고 싶은 난이도를 선택해주세요!", preferredStyle: .alert)
-        let beginner = UIAlertAction(title: "초보", style: .default) { [weak self] _ in
+        let alert = UIAlertController(title: "MovieSearchVC_AlertTitle".localized, message: "MovieSearchVC_AlertMessage".localized, preferredStyle: .alert)
+        let beginner = UIAlertAction(title: "MovieSearchVC_AlertBeginner".localized, style: .default) { [weak self] _ in
             guard let self = self else { return }
             vc.viewModel.inputLevel.value = Level.beginner
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        let intermediate = UIAlertAction(title: "중수", style: .default) { [weak self] _ in
+        let intermediate = UIAlertAction(title: "MovieSearchVC_AlertImtermediate".localized, style: .default) { [weak self] _ in
             guard let self = self else { return }
             vc.viewModel.inputLevel.value = Level.intermediate
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        let expert = UIAlertAction(title: "고수", style: .default) { [weak self] _ in
+        let expert = UIAlertAction(title: "MovieSearchVC_AlertExpert".localized, style: .default) { [weak self] _ in
             guard let self = self else { return }
             vc.viewModel.inputLevel.value = Level.expert
             self.navigationController?.pushViewController(vc, animated: true)
         }
-        let cancel = UIAlertAction(title: "취소", style: .destructive)
+        let cancel = UIAlertAction(title: "ExtensionVC_AlertCancel".localized, style: .destructive)
         alert.addAction(beginner)
         alert.addAction(intermediate)
         alert.addAction(expert)

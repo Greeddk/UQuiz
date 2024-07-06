@@ -42,7 +42,7 @@ final class QuizResultView: BaseView {
         collectionView.showsHorizontalScrollIndicator = false
         scoreLabel.font = .pretendard(size: 30, weight: .bold)
         scoreLabel.textAlignment = .center
-        goHomeButton.setTitle("홈으로", for: .normal)
+        goHomeButton.setTitle("QuizResultView_Home".localized, for: .normal)
         goHomeButton.setTitleColor(.white, for: .normal)
         goHomeButton.titleLabel?.font = .pretendard(size: 24, weight: .bold)
         goHomeButton.backgroundColor = .pointOrange

@@ -48,7 +48,7 @@ extension UIViewController {
         let ok = UIAlertAction(title: okTitle, style: .default) { _ in
             action()
         }
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let cancel = UIAlertAction(title: "ExtensionVC_AlertCancel".localized, style: .cancel)
         alert.addAction(ok)
         alert.addAction(cancel)
         present(alert, animated: true)
@@ -59,12 +59,12 @@ extension UIViewController {
         alert.addTextField() { textField in
             textField.placeholder = placeHolder
         }
-        let ok = UIAlertAction(title: "확인", style: .default) { _ in
+        let ok = UIAlertAction(title: "ExtensionVC_AlertOK".localized, style: .default) { _ in
             if let title = alert.textFields?[0].text {
                 action(title)
             }
         }
-        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        let cancel = UIAlertAction(title: "ExtensionVC_AlertCancel".localized, style: .cancel)
         alert.addAction(ok)
         alert.addAction(cancel)
         present(alert, animated: true)

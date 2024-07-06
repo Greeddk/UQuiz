@@ -119,7 +119,7 @@ final class SolvePosterAreaQuizView: BaseView {
         timeLimitBar.progressTintColor = .pointOrange
         timeLimitBar.trackTintColor = .clear
         collectionView.backgroundColor = .clear
-        answerTextField.placeholder = "정답 입력"
+        answerTextField.placeholder = "SolvePosterView_TextFieldPlaceHolder".localized
         answerTextField.layer.cornerRadius = 12
         answerTextField.layer.borderWidth = 2
         answerTextField.layer.borderColor = UIColor.pointOrange.cgColor

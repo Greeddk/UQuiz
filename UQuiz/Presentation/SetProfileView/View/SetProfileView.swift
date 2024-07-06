@@ -49,12 +49,12 @@ final class SetProfileView: BaseView {
             make.horizontalEdges.equalTo(nicknameTextField).inset(-20)
         }
         validLabel.snp.makeConstraints { make in
-            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).offset(20)
+            make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(20)
             make.top.equalTo(nicknameTextField.snp.bottom).offset(8)
-            make.height.equalTo(20)
+            make.height.equalTo(40)
         }
         submitButton.snp.makeConstraints { make in
-            make.top.equalTo(validLabel.snp.bottom).offset(40)
+            make.top.equalTo(validLabel.snp.bottom).offset(20)
             make.horizontalEdges.equalTo(self.safeAreaLayoutGuide).inset(20)
             make.height.equalTo(50)
         }
@@ -71,18 +71,19 @@ final class SetProfileView: BaseView {
         cameraImageView.backgroundColor = .white
         cameraImageView.layer.cornerRadius = 16
         cameraImageView.tintColor = .pointOrange
-        validLabel.text = "만든 퀴즈에 표시될 닉네임을 입력해주세요"
+        validLabel.text = "SetProfileView_ValidLabel".localized
+        validLabel.numberOfLines = 2
         validLabel.font = .pretendard(size: 16, weight: .regular)
         textFieldBackground.layer.borderColor = UIColor.pointOrange.cgColor
         textFieldBackground.layer.borderWidth = 2
         textFieldBackground.layer.cornerRadius = 12
-        nicknameTextField.placeholder = "닉네임"
+        nicknameTextField.placeholder = "SetProfileView_Nickname".localized
         nicknameTextField.textColor = .black
         nicknameTextField.font = .pretendard(size: 16, weight: .regular)
         submitButton.setTitleColor(.white, for: .normal)
         submitButton.layer.cornerRadius = 8
         submitButton.backgroundColor = .pointOrange
-        submitButton.setTitle("완료", for: .normal)
+        submitButton.setTitle("Done".localized, for: .normal)
         submitButton.titleLabel?.font = .pretendard(size: 20, weight: .bold)
     }
     
